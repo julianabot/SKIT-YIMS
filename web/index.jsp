@@ -16,5 +16,6 @@
         <h1>Raphaelle Marasigan</h1>
         <h1>Sharmaine Crystel Argañosa</h1>
         <h1>Kyle Wilson Garcia IV</h1>
+        <h1>MAXINE GRACE UY</h1>
     </body>
 </html>
