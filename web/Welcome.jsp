@@ -3,11 +3,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>SYSTERS</title>
+        <title>SKIT-YIMS</title>
     </head>
     <body>
-        <h1>Monica Mendiola</h1>
-        <h1>Raphaelle Marasigan</h1>
-        <h1>Sharmaine Crystel Argañosa</h1>
+        <h1>Hello World!</h1>
     </body>
 </html>
