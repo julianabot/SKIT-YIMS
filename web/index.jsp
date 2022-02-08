@@ -15,5 +15,6 @@
         <h1>Monica Mendiola</h1>
         <h1>Raphaelle Marasigan</h1>
         <h1>Sharmaine Crystel Argañosa</h1>
+        <h1>Kyle Wilson Garcia IV</h1>
     </body>
 </html>
