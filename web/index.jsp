@@ -18,6 +18,6 @@
         <h1>Sharmaine Crystel Argañosa</h1>
         <h1>Kyle Wilson Garcia IV</h1>
         <h1>Maxine Grace Uy</h1>
-        <h1>blank</h1>
+        <h1>Jace Allyana Go</h1>
     </body>
 </html>
