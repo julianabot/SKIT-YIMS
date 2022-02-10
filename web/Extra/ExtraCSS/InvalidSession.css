@@ -1,0 +1,436 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap%27');
+
+*{
+    font-family: 'Montserrat';
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+nav{
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    top: 0;
+    font-family: Montserrat;
+    font-weight: 900;
+    height: 80px;
+    background-color: #8B3535;
+    padding: 0.5%;
+}
+.header-logo{
+    height: 90%;
+    margin-left: 1%;
+    margin-right: 1%;
+    float: left;
+}
+nav .logo{
+    float: left;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-family: Montserrat;    
+    font-size: 20px;
+    line-height: 70px;
+    margin-left: 0%;
+}
+nav .links{
+    float: right;
+    padding: 0;
+    margin: 0;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav .links ul{
+    width: 20%;
+}
+nav .links li{
+    list-style: none;
+}
+nav .links a{
+    display: block;
+    padding: 1em;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+nav .links li{
+    list-style: none;
+}
+nav .links a{
+    display: block;
+    padding: 1em;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+#nav-toggle{
+    position: absolute;
+    top: -100%;
+}
+nav .icon-burger{
+    display: none;
+    position: absolute;
+    right: 5%;
+    top: 50%;   
+    transform: translateY(-50%);
+    float: right;
+}
+nav .icon-burger .line{
+    width: 30px;
+    height: 5px;
+    background-color: white;
+    margin: 5px;
+    border-radius: 3px;
+    transition: all .3s ease-in-out;
+}
+
+#Login{
+    background: white;
+    color: #8B3535;
+    font-family: Montserrat;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+@media screen and (max-width: 780px){
+    nav .logo{
+        float: none;
+        width: auto;
+        justify-content: center;
+        margin: 0;
+    }
+    nav .links{
+        float: none;
+        position: fixed;
+        z-index: 9;
+        left: 0;
+        right: 0;
+        top: 80px;
+        bottom: 100%;
+        width: auto;
+        height: auto;
+        flex-direction: column;
+        justify-content: space-evenly;
+        background-color: rgba(113, 41, 41, 0.65);
+        overflow: hidden;
+        box-sizing: border-box;
+        transition: all .5s ease-in-out;
+    }
+    nav .links a{
+        font-size: 20px;      
+    }    
+    nav :checked ~ .links{
+        bottom: 0;
+    }
+    nav .icon-burger{
+        display: block; 
+    }
+    nav :checked ~ .icon-burger .line:nth-child(1) {
+        transform: translateY(10px) rotate(225deg);
+    }
+    nav :checked ~ .icon-burger .line:nth-child(3) {
+        transform: translateY(-10px) rotate(-225deg);
+    }
+    nav :checked ~ .icon-burger .line:nth-child(2) {
+        opacity: 0;
+    }
+}
+
+/*SK LOGO*/
+.header-logo{
+    height: 90%;
+    margin-left: 1%;
+    margin-right: 1%;
+    float: left;
+}
+
+
+
+.logout-btn{
+    background:white;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    line-height: 30px;
+    text-align: center;
+    color: #391847;
+    font-size: 15px;
+    padding: 7px 20px;
+    border-radius: 30px;
+    border: none;
+    font-weight: bold;
+}
+
+.Signin-btn
+{
+    background:white;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    line-height: 30px;
+    text-align: center;
+    color: #0A2351;
+    font-size: 15px;
+    padding: 7px 20px;
+    border-radius: 30px;
+    border: none;
+    font-weight: bold;
+}
+
+.err-inv-main {
+    margin: 25%;
+    width: 50%;
+    justify-content: center;
+}
+
+.err-main {
+    margin-top: 20%;
+    margin-bottom: 14%;
+    margin-left: 25%;
+    width: 50%;
+    justify-content: center;
+}
+.err-message{
+    font-size: 5rem;
+    font-weight: bold;
+    text-align: center;
+    color: #8B3535;
+}
+
+.err-red{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    color: black;
+    margin-top: 30px;
+}
+
+.home-red {
+    font-weight: 900;
+    color: #828282;
+}
+
+.Footer-Container{
+    background: #1C2E4D;
+    display: flex;
+    padding: 3%;
+    color: white;
+}
+.Footer-Container .Flex-Footer-Content{
+    width: 100%;
+    padding-right: 30px;
+    padding-left: 30px;
+    margin: auto;
+}
+.Footer-Container .label{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 0.175em;
+    padding-bottom: 10px;
+    color: white;
+}
+.Footer-Container .f-content{
+    font-family: Montserrat;
+    font-style: normal;
+    font-size: 15px;
+    color: white;
+}
+#mock-email-button{
+    background: #C4C4C4;
+    color: white;
+    font-family: 'Montserrat';
+    font-style: normal;
+    line-height: 30px;
+    text-align: center;
+    color: #1C2E4D;
+    font-size: 15px;
+    padding: 5px 20px;
+    border: none;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.Footer-Actual{
+    font-family: 'Montserrat';
+    font-style: normal;
+    background: #101E35;
+    font-size: 15px;
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: right;
+    padding-right: 30px;
+}
+
+
+@media screen and (max-width: 780px){
+    nav .logo{
+        float: none;
+        width: auto;
+        justify-content: center;
+    }
+    nav .links{
+        float: none;
+        position: fixed;
+        z-index: 9;
+        left: 0;
+        right: 0;
+        top: 80px;
+        bottom: 100%;
+        width: auto;
+        height: auto;
+        flex-direction: column;
+        justify-content: space-evenly;
+        background-color: rgba(28, 46, 77, 0.65);
+        overflow: hidden;
+        box-sizing: border-box;
+	transition: all .5s ease-in-out;
+    }
+    nav .links a{
+        font-size: 20px;      
+    }    
+    nav :checked ~ .links{
+        bottom: 0;
+    }
+    nav .icon-burger{
+        display: block; 
+    }
+    nav :checked ~ .icon-burger .line:nth-child(1) {
+	transform: translateY(10px) rotate(225deg);
+    }
+    nav :checked ~ .icon-burger .line:nth-child(3) {
+	transform: translateY(-10px) rotate(-225deg);
+    }
+    nav :checked ~ .icon-burger .line:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .err-message{
+        font-size: 2.5rem;
+        
+    }
+}
+
+.Footer-Container{
+    margin-top: 10%;
+    background: #1C2E4D;
+    display: flex;
+    padding: 3%;
+    color: white;
+}
+.Footer-Container .Flex-Footer-Content{
+    width: 100%;
+    padding-right: 30px;
+    padding-left: 30px;
+    margin: auto;
+}
+.Footer-Container .label{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 0.175em;
+    padding-bottom: 10px;
+    color: white;
+}
+.Footer-Container .f-content{
+    font-family: Montserrat;
+    font-style: normal;
+    font-size: 15px;
+    color: white;
+}
+#mock-email-button{
+    background: #C4C4C4;
+    color: white;
+    font-family: 'Montserrat';
+    font-style: normal;
+    line-height: 30px;
+    text-align: center;
+    color: #1C2E4D;
+    font-size: 15px;
+    padding: 5px 20px;
+    border: none;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.Footer-Actual{
+    font-family: 'Montserrat';
+    font-style: normal;
+    background: #101E35;
+    font-size: 15px;
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: right;
+    padding-right: 30px;
+}
+@media (max-width:780px){
+    .Footer-Container{
+        flex-direction: column;
+    }
+    .Footer-Container .label{
+        font-size: 1rem; 
+    }
+    .Footer-Container .fcontent{
+        font-size: 0.5rem;
+    }
+    #Contact-Us{
+        padding-top: 20px;
+    }
+    #Links{
+        padding-top: 20px;
+    }
+    #Email-Us{
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+@media(max-width: 400px){
+
+    nav .logo{
+       display: none;
+    }
+
+}
+@media (max-width: 280px){
+    .Footer-Container{
+        flex-direction: column;
+    }
+
+}
+@media
+only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min--moz-device-pixel-ratio: 1.5),
+only screen and (min-device-pixel-ratio: 1.5){
+
+    html,
+    body{
+        width:100%;
+        overflow-x:hidden;
+    }
+
+}                             
