@@ -30,11 +30,12 @@
                         <option value="employed">Working/Employed</option>
                         <option value="unemployed">Unemployed</option>
                         <option value="looking">Currently Looking For a Job</option>
+                        <!-- others with input type field-->
                     </select>
                 </div>
                 <br>
                 <div style="background-color: antiquewhite">
-                    <label for="job">If employed please specify your job. If none, type N/A. (Kung nagtratrabaho, isulat ang uri ng trabaho. Kung wala, isulat N/A).</label><br>
+                    <label for="job">If employed, please specify your job. If none, type N/A. (Kung nagtratrabaho, isulat ang uri ng trabaho. Kung wala, isulat N/A).</label><br>
                     <input type="text" id="job" name="job"><br>
                 </div>
                 <br>
@@ -46,9 +47,10 @@
                         <option value="jhs">Junior High School Level</option>
                         <option value="jhsgrad">Junior High School Graduate</option>
                         <option value="shs">Senior High School Level</option>
-                        <option value="shsgrad">Senior High School Level Graduate</option>
+                        <option value="shsgrad">Senior High School Graduate</option>
                         <option value="college">College Level</option>
                         <option value="collegegrad">College Graduate</option>
+                        <!-- others with input type field-->
                     </select>
                 </div>
                 <br>
@@ -64,7 +66,7 @@
                 <div style="background-color: antiquewhite">
                     <label for="typePWD">
                         Type of disability (Type N/A if not applicable)<br>
-                        Isulat ang N/A kung wala
+                        Ano ang uri ng kapansanan? Isulat ang N/A kung wala.
                     </label><br>
                     <input type="text" id="typePWD" name="typePWD"><br>
                 </div>

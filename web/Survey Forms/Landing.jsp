@@ -11,7 +11,7 @@
             <h1>Welcome to the SK Ibayo-Tipas Youth Resident Survey</h1>
         </div>
         <div style = "background-color: blueviolet">
-            <p>The responses from the Youth Residents of Ibayo-Tipas are collected and processed with the utmost confidentiality according to the Data Privacy Act of 2012. The data collected will be used to monitor youth resident categories in order to help the SK Council organize and plan events. The data from Youth Residents that exceed the 31-year-old mark will be archived and passed on to the respective Ibayo-Tipas' official database.</p>
+            <p>The responses from the Youth Residents of Ibayo-Tipas are collected and processed with the utmost confidentiality according to the Data Privacy Act of 2012. The data collected will be used to monitor youth resident categories in order to help the SK Council organize and plan events. The data from Youth Residents that exceed the 30-year-old mark will be archived and passed on to the respective Ibayo-Tipas' official database.</p>
         </div>
         <div style = "background-color: greenyellow">
             <h2>Captcha ror</h2>
