@@ -14,7 +14,7 @@
             <form>
 
                 <div style="background-color: antiquewhite">
-                    <label for="name">Name of Resident (Pangalan ng Residente)</label><br>
+                    <label for="name">Full Name of Resident (Buong Pangalan ng Residente)</label><br>
                     <input type="text" id="name" name="name"><br>
                 </div>
 
@@ -30,7 +30,7 @@
                     </select>
                 </div>
                 <div style="background-color: antiquewhite">
-                    <label for="birthday">Birthday:</label>
+                    <label for="birthday">Birthday (Kaarawan):</label>
                     <input type="date" placeholder="mm-dd-yyyy" name="birthday">
 
                 </div>
@@ -55,7 +55,7 @@
                 <br>
                 <div style="background-color: antiquewhite">
                     <p>Upload ID Picture with Complete Address <br>
-                        Preferably any School ID for 15-17 years old, any Government Issued ID or preferably National ID for 18-30 years old) <br>
+                        (Preferably any School ID for 15-17 years old, any Government Issued ID or preferably National ID for 18-30 years old) <br>
                         I-Upload ang litrato ng ID kung saan makikita ang kumpletong address ng tirahan <br>
                         (Mas mabuti na ID mula sa paaralan para sa mga 15-17 taong gulang, at kahit anong ID mula sa gobyerno, mas mabuting National ID kung mayroon na, para sa mga 18-30 taong gulang)</p>
                 </div>

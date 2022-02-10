@@ -49,9 +49,28 @@
                 <br>
                 <div style="background-color: antiquewhite">
                     <label for="nosibs">No. of Siblings (Ilan kayong Magkakapatid)?</label><br>
-                    <input type="text" id="nosibs" name="nosibs">
+                    <input type="number" id="nosibs" name="nosibs">
                 </div>
-                
+                <br> 
+                <!-- dapat may condition dito ilang no. of siblings? Pending pa here-->
+                <div style="background-color: antiquewhite">
+                    <label for="workingsib">Sibling Working Status (Katayuan sa Trabaho):</label>               
+                    <select name="workingsib">
+                        <option value="degrees">Degree Holder</option>
+                        <option value="workings">Working</option>
+                        <option value="unemployeds">Unemployed</option>
+                        <option value="students">Full-Time Student</option>
+                        <option value="nas">Not Applicable</option>
+                    </select>
+                </div>
+                <br>
+                <div style="background-color: antiquewhite">
+                    <label for="breadwinner">Who is the breadwinner in your family? Sino ang kumikita para sa pamilya?</label><br>
+                    <input type="text" id="breadwinner" name="breadwinner">
+                </div>
+                <br>
+                <button type="button">Back</button>
+                <button type="button">Proceed</button>
             </form>
         </div> 
 

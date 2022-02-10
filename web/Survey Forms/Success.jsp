@@ -7,7 +7,7 @@
     </head>
     <body>
         <div style ="background-color: red">
-            <img src="img/SK_Logo.png" alt="SK Logo">
+        <img src="img/SK_Logo.png" alt="SK Logo" width="100" height="100">
             <div style ="background-color: aquamarine">
                 <h1>Your response is submitted.</h1>
             <p>
