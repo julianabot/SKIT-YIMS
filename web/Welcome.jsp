@@ -8,16 +8,16 @@
         <!--INSERT SESSION MANAGEMENT LINE-->
         <title>SKIT-YIMS</title>
     </head>
-    
+
     <body>
         <!--Header-->
         <nav>
             <input id="nav-toggle" type="checkbox">
             <img src="img/SK_Logo.png" class="header-logo">
-            
+
             <!--This section contains the "Eruditio Academy" text taken from the webxml-->
             <div class="logo"><%out.print(getServletContext().getInitParameter("header"));%></div>
-            
+
             <ul class="links">
                 <li class="About"><a href="#about-us">About</a></li>
                 <li class="Events"><a href="#events">Events</a></li>
@@ -29,7 +29,7 @@
                 <div class="line"></div>
             </label>
         </nav>
-        
+
         <!--Hero Section-->
         <section id="Hero-Section" class="Hero-Section">
             <p class="heading">Title</p>
@@ -37,12 +37,102 @@
             <!-- redirect to About tab -->
             <p class="button"><a href="Landing.jsp" target="_blank">Fill out Forms</a></p>
         </section>
-        
+
         <!--Events Section-->
-        <div class="Events" style="background: aqua" id="events">
-            <p>k</p>
+        <!-- Container for the image gallery -->
+        <div class="container">
+            <!-- Full-width images with number text -->
+            <div class="mySlides">
+                <img src="https://i.imgur.com/W17sxjX.jpg" style="width:30%" id="imgEvent">
+            </div>
+
+            <div class="mySlides">
+                <img src="https://i.imgur.com/FbHGGSg.jpgg" style="width:30%" id="imgEvent">
+            </div>
+
+            <div class="mySlides">
+                <img src="https://i.imgur.com/4Bq9xP0.png" style="width:30%" id="imgEvent">
+            </div>
+
+            <div class="mySlides">
+                <img src="https://i.imgur.com/GMcEULG.png" style="width:30%" id="imgEvent">
+            </div>
+
+            <div class="mySlides">
+                <img src="https://i.imgur.com/jfEkrEP.jpg" style="width:30%" id="imgEvent">
+            </div>
+
+            <div class="mySlides">
+                <img src="https://i.imgur.com/QoWp0qP.png" style="width:30%" id="imgEvent">
+            </div>
+
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+
+
+            <!-- Image text -->
+            <!--<div class="caption-container">
+                <p id="caption"></p>
+            </div>-->
+
+            <!-- Thumbnail images -->
+            <div class="row">
+                <div class="column">
+                    <img class="demo cursor" src="https://i.imgur.com/W17sxjX.jpg" style="width:100%" onclick="currentSlide(1)">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="https://i.imgur.com/FbHGGSg.jpg" style="width:100%" onclick="currentSlide(2)">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="https://i.imgur.com/4Bq9xP0.png" style="width:100%" onclick="currentSlide(3)">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="https://i.imgur.com/GMcEULG.png" style="width:100%" onclick="currentSlide(4)">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="https://i.imgur.com/jfEkrEP.jpg" style="width:100%" onclick="currentSlide(5)">
+                </div>
+                <div class="column">
+                    <img class="demo cursor" src="https://i.imgur.com/QoWp0qP.png" style="width:100%" onclick="currentSlide(6)">
+                </div>
+            </div>
+            <script>
+                var slideIndex = 1;
+                showSlides(slideIndex);
+
+                function plusSlides(n) {
+                    showSlides(slideIndex += n);
+                }
+
+                function currentSlide(n) {
+                    showSlides(slideIndex = n);
+                }
+
+                function showSlides(n) {
+                    var i;
+                    var slides = document.getElementsByClassName("mySlides");
+                    var dots = document.getElementsByClassName("demo");
+
+                    if (n > slides.length) {
+                        slideIndex = 1;
+                    }
+                    if (n < 1) {
+                        slideIndex = slides.length;
+                    }
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                    }
+                    for (i = 0; i < dots.length; i++) {
+                        dots[i].className = dots[i].className.replace(" active", "");
+                    }
+                    slides[slideIndex - 1].style.display = "block";
+                    dots[slideIndex - 1].className += " active";
+
+                }
+            </script>
         </div>
-        
+
         <!--About US-->
         <div class="about-row">
             <div class="about-column-left">
@@ -89,14 +179,14 @@
                     four human dimensions in children: </p>
             </div>
         </div>
-        
+
         <!--Organizational Chart-->
         <div class="Organizational-Chart">
             <p class="Organizational-Chart-Header">Know our SK-Ibayo Tipas Council Members</p>
             <p class="Organizational-Chart-Subheading">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
             <img src="img/SK_Organizational_Chart.png" class="Organizational-Chart-Image">
         </div>
-        
+
         <!--Footer-->
         <section class="Footer-Container">
             <div class="Flex-Footer-Content" id="Contact-Us">
@@ -117,7 +207,7 @@
                 <p class="f-content" id="mock-email-button">Send Email</p>
             </div>
         </section>
-        
+
         <!--Footer text from webxml-->
         <footer class="Footer-Actual"><%out.print(getServletContext().getInitParameter("footer"));%></footer>
     </body>
