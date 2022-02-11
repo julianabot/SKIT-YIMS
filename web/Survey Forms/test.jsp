@@ -45,7 +45,7 @@
         </style>
     </head>
     <body>
-        <img src="img/SK_Logo.png" alt="SK Logo" width="100" height="100">
+        <img src="../img/SK_Logo.png" alt="SK Logo" width="100" height="100">
         <div style = "background-color: red;">
             <h1>SK Ibayo-Tipas:<br>Youth Resident Survey</h1>
         </div>
@@ -56,6 +56,7 @@
             <button class="tablinks" onclick="showTab(event, 'Contact')">Contact Details</button>
             <button class="tablinks" onclick="showTab(event, 'Family')">Family Details</button>
             <button class="tablinks" onclick="showTab(event, 'Survey')">Survey</button>
+            <button style="display:none;" class="tablinks" onclick="showTab(event, 'Vaccination')">Vaccination</button>
         </div>
 
         <div style="background-color: aqua" overflow:auto>
@@ -66,9 +67,7 @@
                             <label for="name">Full Name of Resident (Buong Pangalan ng Residente)</label><br>
                             <input type="text" id="name" name="name"><br>
                         </div>
-
                         <br>
-
                         <div style="background-color: antiquewhite">
                             <label for="age">Age (Edad):</label>
                             <select name="age">
@@ -81,25 +80,21 @@
                         <div style="background-color: antiquewhite">
                             <label for="birthday">Birthday (Kaarawan):</label>
                             <input type="date" placeholder="mm-dd-yyyy" name="birthday">
-
                         </div>
-
                         <br>
                         <div style="background-color: antiquewhite">
                             <p>Gender (Kasarian)</p>
-                              <input type="radio" id="female" name="female" value="female">
-                              <label for="female">Female (Babae)</label><br>
-                              <input type="radio" id="male" name="male" value="male">
-                              <label for="male">Male (Lalaki)</label><br>
-                              <input type="radio" id="prefer" name="prefer" value="prefer">
-                              <label for="prefer">Prefer not to say</label>
-
+                              <input type="radio" id="gender" name="gender" value="female">
+                              <label for="gender">Female (Babae)</label><br>
+                              <input type="radio" id="gender" name="gender" value="male">
+                              <label for="gender">Male (Lalaki)</label><br>
+                              <input type="radio" id="gender" name="gender" value="prefer">
+                              <label for="gender">Prefer not to say</label>
                         </div>
                         <br>
                         <div style="background-color: antiquewhite">
                             <label for="address">Full Address (Buong Address ng Tirahan)</label><br>
                             <input type="text" id="address" name="address"><br>
-
                         </div>
                         <br>
                         <div style="background-color: antiquewhite">
@@ -110,14 +105,12 @@
                         </div>
                         <div style="background-color: antiquewhite">
                             <input type="file" id="myFile" name="filename">
-
                         </div>
                     </div>
                 </div>
 
                 <div id="Details" class="tabcontent">
                     <div style="background-color: lightblue">
-
                         <div style="background-color: antiquewhite">
                             <label for="civil">Civil Status (Katayuang Sibil):</label>               
                             <select name="civil">
@@ -163,10 +156,10 @@
                         <div style="background-color: antiquewhite">
                             <p>Do you identify as a Person With Disability (PWD)?
                                 <br> Ikaw ba ay nabibilang sa mga Persons With Disabilities (PWD)?</p>
-                              <input type="radio" id="yespwd" name="yespwd" value="yespwd">
-                              <label for="yespwd">Yes</label><br>
-                              <input type="radio" id="nopwd" name="nopwd" value="nopwd">
-                              <label for="nopwd">No</label><br>
+                              <input type="radio" id="pwd" name="pwd" value="pwd">
+                              <label for="pwd">Yes</label><br>
+                              <input type="radio" id="pwd" name="pwd" value="pwd">
+                              <label for="pwd">No</label><br>
                         </div>
                         <br>
                         <div style="background-color: antiquewhite">
@@ -213,10 +206,10 @@
                         </div>
                         <div style="background-color: antiquewhite">
                             <p>Mother's Status (Estado ng iyong Nanay)</p>
-                              <input type="radio" id="alivem" name="alivem" value="alivem">
-                              <label for="alivem">Alive (Buhay)</label><br>
-                              <input type="radio" id="deceasedm" name="deceasedm" value="deceasedm">
-                              <label for="deceasedm">Deceased (Pumanaw)</label><br>
+                              <input type="radio" id="motherstat" name="motherstat" value="alivem">
+                              <label for="motherstat">Alive (Buhay)</label><br>
+                              <input type="radio" id="motherstat" name="motherstat" value="deceasedm">
+                              <label for="motherstat">Deceased (Pumanaw)</label><br>
                         </div>
                         <br>
                         <div style="background-color: antiquewhite">
@@ -230,10 +223,10 @@
                         </div>
                         <div style="background-color: antiquewhite">
                             <p>Father's Status (Estado ng iyong Tatay)</p>
-                              <input type="radio" id="alivem" name="alivef" value="alivef">
-                              <label for="alivef">Alive (Buhay)</label><br>
-                              <input type="radio" id="deceasedf" name="deceasedf" value="deceasedf">
-                              <label for="deceasedf">Deceased (Pumanaw)</label><br>
+                              <input type="radio" id="fatherstat" name="fatherstat" value="alivef">
+                              <label for="fatherstat">Alive (Buhay)</label><br>
+                              <input type="radio" id="fatherstat" name="fatherstat" value="deceasedf">
+                              <label for="fatherstat">Deceased (Pumanaw)</label><br>
                         </div>
                         <br>
                         <div style="background-color: antiquewhite">
@@ -269,17 +262,17 @@
                     <div style="background-color:lightblue">
                         <div style="background-color: antiquewhite">
                             <p>Are you a registered SK voter? Nakapag-rehistro ka ba upang bumoto sa SK?</p>
-                              <input type="radio" id="yesvoter" name="yesvoter" value="yesvoter">
-                              <label for="yesvoter">Yes (Oo)</label><br>
-                              <input type="radio" id="novoter" name="novoter" value="novoter">
-                              <label for="novoter">No (Hindi)</label><br>
+                              <input type="radio" id="voter" name="voter" value="yesvoter">
+                              <label for="voter">Yes (Oo)</label><br>
+                              <input type="radio" id="voter" name="voter" value="novoter">
+                              <label for="voter">No (Hindi)</label><br>
                         </div>
                         <div style="background-color: antiquewhite">
                             <p>Are you a member of an organization? Parte ka ba ng isang organisasyon?</p>
-                              <input type="radio" id="yesorg" name="yesorg" value="yesorg">
-                              <label for="yesvoter">Yes (Oo)</label><br>
-                              <input type="radio" id="noorg" name="noorg" value="noorg">
-                              <label for="noorg">No (Hindi)</label><br>
+                              <input type="radio" id="org" name="org" value="yesorg">
+                              <label for="org">Yes (Oo)</label><br>
+                              <input type="radio" id="org" name="org" value="noorg">
+                              <label for="org">No (Hindi)</label><br>
                         </div>
                         <br>
                         <div style="background-color: antiquewhite">
@@ -289,12 +282,12 @@
                         <div style="background-color: antiquewhite">
                             <label for="proj">Are you willing to support the incoming projects of SK-Ibayo Tipas?
                                 <br>(Handa ka bang suportahan ang mga paparating na proyekto ng SK-Ibayo Tipas?)</label><br>
-                              <input type="radio" id="yesproj" name="yesproj" value="yesproj">
-                              <label for="yesproj">Yes</label><br>
-                              <input type="radio" id="noproj" name="noproj" value="noproj">
-                              <label for="noproj">No</label><br>
-                              <input type="radio" id="maybeproj" name="noproj" value="noproj">
-                              <label for="noproj">Maybe</label><br>
+                              <input type="radio" id="proj" name="proj" value="yesproj">
+                              <label for="proj">Yes</label><br>
+                              <input type="radio" id="noproj" name="proj" value="noproj">
+                              <label for="proj">No</label><br>
+                              <input type="radio" id="proj" name="proj" value="maybeproj">
+                              <label for="proj">Maybe</label><br>
                         </div>
                         <div style="background-color: antiquewhite">
                             <label for="support">How will you show your support in the upcoming projects?
@@ -309,10 +302,55 @@
                         <p>Click here to proceed to resident vaccination form. >></p>
                     </div>
                 </div>
+                <div id="Vaccination" class="tabcontent">
+                    <div style="background-color:lightblue">
+                        <div style="background-color: antiquewhite">
+                            <p>Have you been vaccinated for Covid-19? 
+                                (Ikaw ba ay nabakuna na laban Covid-19?)
+                            </p>
+                              <input type="radio" id="yesvax" name="yesvax" value="yesvax">
+                              <label for="yesvax">Yes (Oo)</label><br>
+                              <input type="radio" id="novax" name="novax" value="novax">
+                              <label for="novax">No (Hindi)</label><br>
+                        </div>
+                        <div style="background-color: antiquewhite">
+                            <p>If not, are you willing to be vaccinated if given the chance?
+                                (Kung hindi, may kagustuhan ka ba mabakuna kapag nagkaroon ng pagkakataon?)
+                            </p>
+                              <input type="radio" id="yeswilling" name="yeswilling" value="yeswilling">
+                              <label for="yeswilling">Yes (Oo)</label><br>
+                              <input type="radio" id="nowilling" name="nowilling" value="nowilling">
+                              <label for="nowilling">No (Hindi)</label><br>
+                        </div>
+                        <br>
+                        <div style="background-color: antiquewhite">
+                            <label for="brand">If yes, what brand of vaccine did you receive? Kung oo, ano ang brand ng iyong bakuna?</label>
+                            <select name="brand">
+                                <option value="pfizer">Pfizer-BioNTech</option>
+                                <option value="oxford">Oxford-AstraZeneca</option>
+                                <option value="sinovac">CoronaVac (Sinovac)</option>
+                                <option value="sputnik">Gamaleya Sputnik V</option>
+                                <option value="jnj">Johnson and Johnson's Janssen</option>
+                                <option value="bharat">Bharat BioTech</option>
+                                <option value="moderna">Moderna</option>
+                                <option value="sinopharma">Sinopharm</option>
+                            </select>
+                        </div>
+                        <div style="background-color: antiquewhite">
+                            <label for="vstatus">What is your Vaccine Status? (tagalog version di ko alam) </label>
+                            <select name="vstatus">
+                                <option value="novaccine">Not Vaccinated</option>
+                                <option value="firstdose">First Dose</option>
+                                <option value="seconddose">Second Dose</option>
+                                <option value="booster">Booster</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
 
-
+        <!-- remove back in first tab, replace proceed in the last tab with submit-->
         <button onclick="prev()" class="previous">Back</button>
         <button onclick="next()" class="next">Proceed</button>
 
@@ -378,6 +416,5 @@
             document.getElementById("defaultOpen").click();
             evt.currentTarget.className += " active";
         </script>
-
     </body>
 </html> 
