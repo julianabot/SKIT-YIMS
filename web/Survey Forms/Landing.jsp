@@ -4,8 +4,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!--        <link rel="skLogo" type="image/png" href="img/SK_Logo.png" />-->
-        <link href="Survey Forms/SurveyCSS/Landing.css" rel="stylesheet" type="text/css">
+        <link href="../Survey Forms/SurveyCSS/Landing.css" rel="stylesheet" type="text/css">
         <title>Landing Page</title>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>
     <body>
         <!--Header-->
@@ -34,9 +35,16 @@
         <div class="subheading">
             <p>The responses from the Youth Residents of Ibayo-Tipas are collected and processed with the utmost confidentiality according to the Data Privacy Act of 2012. The data collected will be used to monitor youth resident categories in order to help the SK Council organize and plan events. The data from Youth Residents that exceed the 30-year-old mark will be archived and passed on to the respective Ibayo-Tipas' official database.</p>
         </div>
-        <div style = "background-color: greenyellow">
-            <h2>Captcha ror</h2>
-        </div>
+                    <center> 
+                        <div class="g-recaptcha"
+                             data-sitekey="6LcPvNsaAAAAAB_JssCHLi_bMPU1g9jVrBtaAtpi">
+                        </div>
+
+                        <!--
+                        <input class="submitbtn" type="Submit" name="Login" value="Log In">
+                        <p><% out.print(getServletContext().getInitParameter("footer"));%></p>
+                        -->
+                    </center>
         <div class="button-container">
             <button type="button" class="start-button">Start Survey</button>
         </div>
