@@ -36,11 +36,21 @@ span{
     
 }
 
+.container{
+    background-color: white;
+    width: 90%;
+    display: block;
+    margin: 20px auto;
+    margin-top: 0;
+    border-radius: 0 0 10px 10px;
+}
+
 .container-main{
     background-color: white;
     width: 100%;
     margin-right: auto;
     margin-left: auto;
+    border-radius: 0 0 10px 10px;
 }
 
 .content-container {
@@ -48,6 +58,11 @@ span{
     margin: auto;
     padding-top: 10px;
     padding-bottom: 10px;
+    border-radius: 0 0 10px 10px;
+}
+
+.content-divider{
+    height: 20px;
 }
 
 .long-textbox{
@@ -57,25 +72,58 @@ span{
     display: block;
 }
 
-.age-select {
-    width: 20%;
-    font-size: 1.2em;
-}
 
 .table {
-    display: table;
+    display: flex;
     width: 100%;
 }
 
-.table-cell {
-    display: table-cell;
+.age-group{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
 }
 
+.age-select{
+    width: 100%;
+    margin-right: auto;
+    font-size: 1.2em;
+    height: 35px;
+    margin: 10px auto;
+    border: none;
+    background-color: #E2E2E2;
+}
+
+.divider-row{
+    width: 15px;
+}
+
+.birthday-select{
+    width: 100%;
+    font-size: 1.2em;
+    height: 30px;
+    margin: 10px auto;
+}
+
+.gender-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.radial-row{
+    display: flex;
+}
+
+.divider-choices{
+    width: 25px;
+}
 .dropdown {
     width: 100%;
-    padding: 0.8%;
-    margin-top: 0.5%;
-    margin-bottom: 0.5%;
+    font-size: 1.2em;
+    height: 35px;
+    margin: 10px auto;
+    border: none;
+    background-color: #E2E2E2;
 }
 
 .link-proceed {
@@ -113,6 +161,8 @@ span{
     opacity: 0.6;
     transition: 0.3s;
     font-weight: bold;
+    
+    margin: 20px;
 }
 
 .next {
@@ -129,15 +179,53 @@ span{
     font-family: Montserrat;
     border-radius: 5px;
     font-weight: bold;
-    opacity: 0.6;
     transition: 0.3s;
     cursor: pointer;
+    
+    margin: 20px;
 }
 
 .previous:hover {
-   opacity: 1;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .next:hover {
-   opacity: 1;
+   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
+
+.upload-group{
+    text-align: center;
+}
+
+.upload-group a{
+    font-size: 0.8em;
+}
+
+.button-container{
+    margin: 5px auto;
+    width: 100%;
+    text-align: center;
+    
+}
+
+#upload-button{
+    background-color: #E9DEDE;
+}
+
+#fake-button{
+    background-color: #E9DEDE;
+    color: #828282;
+    font-family: "Montserrat";
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    font-weight: bold;
+    font-size: 0.8em;
+    padding: 10px 20px;
+}
+#file-chosen{
+    color: #828282;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
