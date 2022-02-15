@@ -2,6 +2,7 @@
 
 *{
     font-family: 'Montserrat';
+
 }
 
 *{
@@ -11,7 +12,10 @@
     list-style: none;
     box-sizing: border-box;
 }
-
+body{
+    font-family: 'Montserrat';
+    background: #FFF9E9;
+}
 nav{
     position: fixed;
     z-index: 10;
@@ -35,7 +39,7 @@ nav .logo{
     display: flex;
     align-items: center;
     color: white;
-    font-family: Montserrat;    
+    font-family: Montserrat;   
     font-size: 20px;
     line-height: 70px;
     margin-left: 0%;
@@ -99,7 +103,7 @@ nav .icon-burger .line{
 }
 
 #Login{
-    background: white;
+    background: #FFF9E9;
     color: #8B3535;
     font-family: Montserrat;
     font-size: 15px;
@@ -204,84 +208,53 @@ nav .icon-burger .line{
     justify-content: center;
 }
 
+.err-class{
+    /* margin-top: 17%;
+    margin-bottom: 14%;
+    margin-left: 25%; */
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 96px;
+    font-weight: 900;
+}
+
 .err-main {
-    margin-top: 20%;
+    margin-top: 17%;
     margin-bottom: 14%;
     margin-left: 25%;
     width: 50%;
     justify-content: center;
+    align-content: center;
 }
 .err-message{
-    font-size: 5rem;
-    font-weight: bold;
-    text-align: center;
-    color: #8B3535;
-}
-
-.err-red{
-    font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
+    font-size: 45px;
+    justify-content: center;
+    align-content: center;
     text-align: center;
     color: black;
-    margin-top: 30px;
+    margin: 3%;
+    margin-bottom: 10%;
+}
+
+
+.err-red{
+   font-size: 25px;
+   font-weight: 900;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    background: #8B3535;
+    color: white;
+    padding: 10px 20px;
+    
+    margin-left: 33%;
 }
 
 .home-red {
     font-weight: 900;
     color: #828282;
-}
-
-.Footer-Container{
-    background: #1C2E4D;
-    display: flex;
-    padding: 3%;
-    color: white;
-}
-.Footer-Container .Flex-Footer-Content{
-    width: 100%;
-    padding-right: 30px;
-    padding-left: 30px;
-    margin: auto;
-}
-.Footer-Container .label{
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 20px;
-    letter-spacing: 0.175em;
-    padding-bottom: 10px;
-    color: white;
-}
-.Footer-Container .f-content{
-    font-family: Montserrat;
-    font-style: normal;
-    font-size: 15px;
-    color: white;
-}
-#mock-email-button{
-    background: #C4C4C4;
-    color: white;
-    font-family: 'Montserrat';
-    font-style: normal;
-    line-height: 30px;
-    text-align: center;
-    color: #1C2E4D;
-    font-size: 15px;
-    padding: 5px 20px;
-    border: none;
-    font-weight: bold;
-    margin-top: 20px;
-}
-.Footer-Actual{
-    font-family: 'Montserrat';
-    font-style: normal;
-    background: #101E35;
-    font-size: 15px;
-    color: white;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    text-align: right;
-    padding-right: 30px;
 }
 
 
@@ -333,9 +306,10 @@ nav .icon-burger .line{
     }
 }
 
+/*FOOTER*/
 .Footer-Container{
     margin-top: 10%;
-    background: #1C2E4D;
+    background: #8B3535;
     display: flex;
     padding: 3%;
     color: white;
@@ -368,7 +342,7 @@ nav .icon-burger .line{
     font-style: normal;
     line-height: 30px;
     text-align: center;
-    color: #1C2E4D;
+    color: #8B3535;
     font-size: 15px;
     padding: 5px 20px;
     border: none;
@@ -378,7 +352,7 @@ nav .icon-burger .line{
 .Footer-Actual{
     font-family: 'Montserrat';
     font-style: normal;
-    background: #101E35;
+    background: #712929;
     font-size: 15px;
     color: white;
     padding-top: 20px;
@@ -396,22 +370,12 @@ nav .icon-burger .line{
     .Footer-Container .fcontent{
         font-size: 0.5rem;
     }
-    #Contact-Us{
-        padding-top: 20px;
-    }
-    #Links{
-        padding-top: 20px;
-    }
-    #Email-Us{
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
 }
 
 @media(max-width: 400px){
 
     nav .logo{
-       display: none;
+        display: none;
     }
 
 }
@@ -433,4 +397,5 @@ only screen and (min-device-pixel-ratio: 1.5){
         overflow-x:hidden;
     }
 
-}                             
+}
+                         
