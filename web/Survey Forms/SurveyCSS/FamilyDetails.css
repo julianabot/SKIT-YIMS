@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap%27');
+body {
+    font-family: 'Montserrat';
+    background-color: #FFF9E9;
+}
+
+img {
+    display: block; 
+    margin-right: auto; 
+    margin-left: auto;
+}
+
+.heading {
+    font-size: 0.8em;
+    text-align: center;
+    font-weight: bold;
+}
+
+.content {
+    background-color: white;
+    width: 80%;
+    margin: auto;
+    padding: 2%;
+    border-radius: 20px;
+
+}
+
+span {
+    font-style: italic;
+    color: #828282;
+}
+
+input[type=text], input[type=number] {
+    width: 100%;
+    padding: 0.8%;
+    margin-top: 0.5%;
+}
+
+select {
+    width: 15%;
+    padding: 0.8%;
+    margin-top: 0.5%;
+    margin-left: 1%;
+}
+
+.buttons {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 2%;
+}
+
+.button-back {
+    background-color: white;
+    border-color: #8B3535;
+    border-width: 1px;
+    width: 15%;
+    color: #8B3535;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2em;
+    font-family: Montserrat;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-proceed {
+    background-color: #8B3535;
+    border-color: #8B3535;
+    border-width: 1px;
+    width: 15%;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2em;
+    font-family: Montserrat;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.divider {
+    width: 15%;
+}
