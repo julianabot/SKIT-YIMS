@@ -130,9 +130,7 @@
 
                                 <script>
                                     const actualBtn = document.getElementById('myFile');
-
                                     const fileChosen = document.getElementById('file-chosen');
-
                                     actualBtn.addEventListener('change', function () {
                                         fileChosen.textContent = this.files[0].name
                                     })
@@ -312,15 +310,15 @@
 
                             <div>
                                 <label for="nosibs" class="label-english">No. of Siblings&emsp;<span>Ilan kayong Magkakapatid?</span></label><br>
-                                <input type="number" min="0" oninput="validity.valid||(value='');" id="nosibs" name="nosibs" class="dropdown">
+                                <input type="number" min="0" value="1" oninput="siblingSelection(this.value)"  id="nosibs" name="nosibs" class="dropdown">
                             </div>
 
                             <div class="content-divider"></div>
 
                             <!-- dapat may condition dito ilang no. of siblings? Pending pa here-->
-                            <div>
+                            <div id="sibSelection" class="original">
                                 <label for="workingsib" class="label-english">Sibling Working Status&emsp;<span>Katayuan sa Trabaho</span></label>               
-                                <select name="workingsib" class="dropdown">
+                                <select name="workingsib" id="selection" class="dropdown">
                                     <option value="degrees">Degree Holder</option>
                                     <option value="workings">Working</option>
                                     <option value="unemployeds">Unemployed</option>
@@ -328,6 +326,8 @@
                                     <option value="nas">Not Applicable</option>
                                 </select>
                             </div>
+
+                            <div id="clonecontainer"></div>
 
                             <div class="content-divider"></div>
 
@@ -468,7 +468,17 @@
             <button onclick="next()" class="next">Proceed</button>
         </div>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script type="text/javascript">
+                function siblingSelection(times) {
+                    $("#clonecontainer").html('');
+                    for (var i = 1; i < times; i++) {
+                        var clons = $(".original").first().clone();
+                        $("#clonecontainer").append(clons);
+                    }
+                }
 
+        </script>
         <script>
             var counter = 0;
             function showTab(evt, tabName) {
@@ -487,7 +497,6 @@
 
             function next() {
                 counter = (counter + 1) % 5;
-
                 var i, tabcontent, tablinks;
                 tabcontent = document.getElementsByClassName("tabcontent");
                 for (i = 0; i < tabcontent.length; i++) {
@@ -509,7 +518,6 @@
                 counter = (counter - 1) % 5;
                 if (counter == -1)
                     counter = 2;
-
                 var i, tabcontent, tablinks;
                 tabcontent = document.getElementsByClassName("tabcontent");
                 for (i = 0; i < tabcontent.length; i++) {
