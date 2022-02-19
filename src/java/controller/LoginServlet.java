@@ -93,6 +93,10 @@ public class LoginServlet extends HttpServlet {
                 iPassword = records.getString(2);
                 iName = records.getString(3);
                 iRole = records.getString(4);
+                
+                //Encrypting the password
+                String ePassword = Security.decrypt(iPassword);
+                iPassword = ePassword;
             }
 
             if (username.equals(iUsername) && verify) {
