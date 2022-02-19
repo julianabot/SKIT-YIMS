@@ -12,6 +12,8 @@
                 overflow: hidden;
                 border: 1px solid #ccc;
                 background-color: #f1f1f1;
+                width: 90%;
+                margin: auto;
             }
 
             /* Style the buttons inside the tab */
@@ -42,6 +44,7 @@
                 padding: 6px 12px;
                 border: 1px solid #ccc;
                 border-top: none;
+                
             }
         </style>
     </head>
@@ -288,7 +291,7 @@
                             <div class="content-divider"></div>
 
                             <div>
-                                <p class="label-english">Father's Status &emsp; <span>Estado ng iyong Tatay</span></p>
+                                <p class="label-english">Father's Status&emsp;<span>Estado ng iyong Tatay</span></p>
                                 <div class="radial-row">
                                       <input type="radio" id="fatherstat" name="fatherstat" value="alivef">
                                       <label for="fatherstat" class="label-english">Alive <span>(Buhay)</span></label><br>
@@ -339,7 +342,7 @@
                 <div id="Survey" class="tabcontent">
                     <div class="container-main">
                         <div class="content-container">
-                            <p class="label-english">Are you a registered SK voter? &emsp; <span>Nakapag-rehistro ka ba upang bumoto sa SK?</span></p>
+                            <p class="label-english">Are you a registered SK voter?&emsp;<span>Nakapag-rehistro ka ba upang bumoto sa SK?</span></p>
                             <div class="radial-row">  
                                 <input type="radio" id="voter" name="voter" value="yesvoter">
                                   <label for="voter" class="label-english">Yes <span>(Oo)</span></label>
@@ -351,7 +354,7 @@
                             <div class="content-divider"></div>
 
                             <div>
-                                <p class="label-english">Are you a member of an organization? &emsp; <span>Parte ka ba ng isang organisasyon?</span></p>
+                                <p class="label-english">Are you a member of an organization?&emsp;<span>Parte ka ba ng isang organisasyon?</span></p>
                                   <div class="radial-row">
                                     <input type="radio" id="org" name="org" value="yesorg">
                                       <label for="org" class="label-english">Yes <span>(Oo)</span></label>
@@ -419,7 +422,7 @@
                             </div>
                             <div>
                                 <p class="label-english" class="label-english">If not, are you willing to be vaccinated if given the chance?
-                                    &emsp; <span>Kung hindi, may kagustuhan ka ba mabakuna kapag nagkaroon ng pagkakataon?</span>
+                                    &emsp;<span>Kung hindi, may kagustuhan ka ba mabakuna kapag nagkaroon ng pagkakataon?</span>
                                 </p>
                                 <div class="radial-row">
                                       <input type="radio" id="yeswilling" name="yeswilling" value="yeswilling">
