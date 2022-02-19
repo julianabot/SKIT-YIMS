@@ -44,7 +44,7 @@
                 padding: 6px 12px;
                 border: 1px solid #ccc;
                 border-top: none;
-                
+
             }
         </style>
     </head>
@@ -312,7 +312,7 @@
 
                             <div>
                                 <label for="nosibs" class="label-english">No. of Siblings&emsp;<span>Ilan kayong Magkakapatid?</span></label><br>
-                                <input type="number" id="nosibs" name="nosibs" class="dropdown">
+                                <input type="number" min="0" oninput="validity.valid||(value='');" id="nosibs" name="nosibs" class="dropdown">
                             </div>
 
                             <div class="content-divider"></div>
