@@ -39,7 +39,7 @@
             <div class="signup-form">
                 <h1 class="Sign"> Log in </h1>
                 <center> <p class ="Error" style="color: #B6922E">${errorLogin}</p></center>
-                <form action="LoginServlet" method="POST">
+                <form action="../LoginServlet" method="POST">
 
                     <input class="unp" type="text" name="uname" placeholder="Username" maxlength="16" required><br>
                     <input class="unp" type="password" name="password" placeholder="Password"  minlength="8" required ><br>
@@ -49,9 +49,9 @@
                     <a class="forgot-btn">Forgot password?</a>
                     <br>
                     <center> 
-                        <div class="g-recaptcha"
-                             data-sitekey="6LcPvNsaAAAAAB_JssCHLi_bMPU1g9jVrBtaAtpi">
-                        </div>
+                        <!--                        <div class="g-recaptcha"
+                                                     data-sitekey="6LcPvNsaAAAAAB_JssCHLi_bMPU1g9jVrBtaAtpi">
+                                                </div>-->
 
                         <input class="submitbtn" type="Submit" name="Login" value="Log In">
                         <p class="footer-name"><% out.print(getServletContext().getInitParameter("footer"));%></p>
