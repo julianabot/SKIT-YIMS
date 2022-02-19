@@ -77,7 +77,7 @@ public class LoginServlet extends HttpServlet {
             String password = request.getParameter("password");
 
             String iUsername = null, iPassword = null, iName = null, iRole = null;
-
+            checkException = null;
             String query = "SELECT * FROM admin WHERE username = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, username);
@@ -103,16 +103,16 @@ public class LoginServlet extends HttpServlet {
 
                 } else {
                     request.setAttribute("errorLogin", "Wrong password! Try again.");
-                    request.getRequestDispatcher("Account/Success.jsp").forward(request, response);
+                    request.getRequestDispatcher("Account/Login.jsp").forward(request, response);
                 }
             } else {
                 request.setAttribute("errorLogin", "Username does not exist.");
-                request.getRequestDispatcher("Account/Success.jsp").forward(request, response);
+                request.getRequestDispatcher("Account/Login.jsp").forward(request, response);
             }
 
         } catch (Exception e) {
             request.setAttribute("errorLogin", checkException);
-            request.getRequestDispatcher("Account/Success.jsp").forward(request, response);
+            request.getRequestDispatcher("Account/Login.jsp").forward(request, response);
         }
     }
     @Override
