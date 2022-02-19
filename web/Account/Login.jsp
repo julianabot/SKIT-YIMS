@@ -45,9 +45,9 @@
                     <input class="unp" type="password" name="password" placeholder="Password"  minlength="8" required ><br>
                     <br>
                     <center> 
-                        <!--<div class="g-recaptcha"
-                        data-sitekey="6LcPvNsaAAAAAB_JssCHLi_bMPU1g9jVrBtaAtpi">
-                        </div>-->
+                        <div class="g-recaptcha"
+                            data-sitekey="6LcPvNsaAAAAAB_JssCHLi_bMPU1g9jVrBtaAtpi">
+                        </div>
                         <input class="submitbtn" type="Submit" name="Login" value="Log In">
                         <p class="footer-name"><% out.print(getServletContext().getInitParameter("footer"));%></p>
                     </center>

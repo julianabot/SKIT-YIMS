@@ -73,6 +73,11 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            //Captcha
+            String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
+            System.out.println(gRecaptchaResponse);
+            boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
+            
             String username = request.getParameter("uname");
             String password = request.getParameter("password");
 
@@ -90,7 +95,7 @@ public class LoginServlet extends HttpServlet {
                 iRole = records.getString(4);
             }
 
-            if (username.equals(iUsername)) {
+            if (username.equals(iUsername) && verify) {
                 if (password.equals(iPassword)) {
                     HttpSession session = request.getSession();
 
