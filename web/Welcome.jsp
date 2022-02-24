@@ -16,11 +16,11 @@
             <img src="img/SK_Logo.png" class="header-logo">
 
             <!--This section contains the "Eruditio Academy" text taken from the webxml-->
-            <div class="logo"><%out.print(getServletContext().getInitParameter("header"));%></div>
+            <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>
 
             <ul class="links">
-                <li class="About"><a href="#about-us">About</a></li>
-                <li class="Events"><a href="#events">Events</a></li>
+                <li class="About"><a href="#About-Section">About</a></li>
+                <li class="Events"><a href="#Events-Section-Header">Events</a></li>
                 <li class="Login"><a href="Login.jsp" id="Login">Login</a></li>
             </ul>
             <label for="nav-toggle" class="icon-burger">
@@ -35,150 +35,163 @@
             <p class="heading">Title</p>
             <p class ="subheading">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <!-- redirect to About tab -->
-            <p class="button"><a href="Landing.jsp" target="_blank">Fill out Forms</a></p>
+            <p class="button"><a href="Survey Forms/Landing.jsp" target="_blank">Fill out Forms</a></p>
         </section>
 
+        <div class="space-divider"></div>
         <!--Events Section-->
         <!-- Container for the image gallery -->
-        <div class="container">
-            <!-- Full-width images with number text -->
-            <div class="mySlides">
-                <img src="https://i.imgur.com/W17sxjX.jpg" style="width:30%" id="imgEvent">
-            </div>
 
-            <div class="mySlides">
-                <img src="https://i.imgur.com/FbHGGSg.jpgg" style="width:30%" id="imgEvent">
-            </div>
+        <!-- Container for the image gallery -->
 
-            <div class="mySlides">
-                <img src="https://i.imgur.com/4Bq9xP0.png" style="width:30%" id="imgEvent">
-            </div>
-
-            <div class="mySlides">
-                <img src="https://i.imgur.com/GMcEULG.png" style="width:30%" id="imgEvent">
-            </div>
-
-            <div class="mySlides">
-                <img src="https://i.imgur.com/jfEkrEP.jpg" style="width:30%" id="imgEvent">
-            </div>
-
-            <div class="mySlides">
-                <img src="https://i.imgur.com/QoWp0qP.png" style="width:30%" id="imgEvent">
-            </div>
-
-            <!-- Next and previous buttons -->
-            <a class="prev" onclick="plusSlides(-1)">❮</a>
-            <a class="next" onclick="plusSlides(1)">❯</a>
-
-
-            <!-- Image text -->
-            <!--<div class="caption-container">
-                <p id="caption"></p>
-            </div>-->
-
-            <!-- Thumbnail images -->
-            <div class="row">
-                <div class="column">
-                    <img class="demo cursor" src="https://i.imgur.com/W17sxjX.jpg" style="width:100%" onclick="currentSlide(1)">
+        <div class="Events-Section">
+            <p class="Events-Section-Header" id="Events-Section-Header">SK Ibayo Tipas' Events</p>
+            <p class="Events-Section-Subheading">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+            <!-- Container for the image gallery -->
+            <div class="events-container">
+                <!-- Full-width images with number text -->
+                <div class="mySlides">
+                    <img src="https://i.imgur.com/fp0OhRr.png" style="width:50%" id="imgEvent">
                 </div>
-                <div class="column">
-                    <img class="demo cursor" src="https://i.imgur.com/FbHGGSg.jpg" style="width:100%" onclick="currentSlide(2)">
-                </div>
-                <div class="column">
-                    <img class="demo cursor" src="https://i.imgur.com/4Bq9xP0.png" style="width:100%" onclick="currentSlide(3)">
-                </div>
-                <div class="column">
-                    <img class="demo cursor" src="https://i.imgur.com/GMcEULG.png" style="width:100%" onclick="currentSlide(4)">
-                </div>
-                <div class="column">
-                    <img class="demo cursor" src="https://i.imgur.com/jfEkrEP.jpg" style="width:100%" onclick="currentSlide(5)">
-                </div>
-                <div class="column">
-                    <img class="demo cursor" src="https://i.imgur.com/QoWp0qP.png" style="width:100%" onclick="currentSlide(6)">
-                </div>
-            </div>
-            <script>
-                var slideIndex = 1;
-                showSlides(slideIndex);
 
-                function plusSlides(n) {
-                    showSlides(slideIndex += n);
-                }
+                <div class="mySlides">
+                    <img src="https://i.imgur.com/XyxLMQZ.png" style="width:50%" id="imgEvent">
+                </div>
 
-                function currentSlide(n) {
-                    showSlides(slideIndex = n);
-                }
+                <div class="mySlides">
+                    <img src="https://i.imgur.com/DWHZ9Ur.png" style="width:50%" id="imgEvent">
+                </div>
 
-                function showSlides(n) {
-                    var i;
-                    var slides = document.getElementsByClassName("mySlides");
-                    var dots = document.getElementsByClassName("demo");
+                <div class="mySlides">
+                    <img src="https://i.imgur.com/Bv5Qfiz.png" style="width:50%" id="imgEvent">
+                </div>
 
-                    if (n > slides.length) {
-                        slideIndex = 1;
+                <div class="mySlides">
+                    <img src="https://i.imgur.com/RFGU7CQ.png" style="width:50%" id="imgEvent">
+                </div>
+
+                <div class="mySlides">
+                    <img src="https://i.imgur.com/VdHjSht.png" style="width:50%" id="imgEvent">
+                </div>
+
+                <!-- Next and previous buttons -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                <!-- Image text -->
+                <div class="caption-container">
+                    <p id="caption"></p>
+                </div>
+
+                <!-- Thumbnail images -->
+                <div class="row">
+                    <div class="column">
+                        <img class="demo cursor" src="https://i.imgur.com/fp0OhRr.png" style="width:100%" onclick="currentSlide(1)" alt="Diorama: Our Future Barangay">
+                    </div>
+                    <div class="column">
+                        <img class="demo cursor" src="https://i.imgur.com/XyxLMQZ.png" style="width:100%" onclick="currentSlide(2)" alt="Parol Making Contest">
+                    </div>
+                    <div class="column">
+                        <img class="demo cursor" src="https://i.imgur.com/DWHZ9Ur.png" style="width:100%" onclick="currentSlide(3)" alt="Local Brand Holidays Bazaar">
+                    </div>
+                    <div class="column">
+                        <img class="demo cursor" src="https://i.imgur.com/Bv5Qfiz.png" style="width:100%" onclick="currentSlide(4)" alt="Mobile Legends Tournament 1 Day League">
+                    </div>
+                    <div class="column">
+                        <img class="demo cursor" src="https://i.imgur.com/RFGU7CQ.png" style="width:100%" onclick="currentSlide(5)" alt="Salin Kaalaman">
+                    </div>
+                    <div class="column">
+                        <img class="demo cursor" src="https://i.imgur.com/VdHjSht.png" style="width:100%" onclick="currentSlide(6)" alt="Kasama Kita Ngayong Pasko">
+                    </div>
+                </div>
+                <script>
+                    var slideIndex = 1;
+                    showSlides(slideIndex);
+
+// Next/previous controls
+                    function plusSlides(n) {
+                        showSlides(slideIndex += n);
                     }
-                    if (n < 1) {
-                        slideIndex = slides.length;
-                    }
-                    for (i = 0; i < slides.length; i++) {
-                        slides[i].style.display = "none";
-                    }
-                    for (i = 0; i < dots.length; i++) {
-                        dots[i].className = dots[i].className.replace(" active", "");
-                    }
-                    slides[slideIndex - 1].style.display = "block";
-                    dots[slideIndex - 1].className += " active";
 
-                }
-            </script>
+// Thumbnail image controls
+                    function currentSlide(n) {
+                        showSlides(slideIndex = n);
+                    }
+
+                    function showSlides(n) {
+                        var i;
+                        var slides = document.getElementsByClassName("mySlides");
+                        var dots = document.getElementsByClassName("demo");
+                        var captionText = document.getElementById("caption");
+                        if (n > slides.length) {
+                            slideIndex = 1
+                        }
+                        if (n < 1) {
+                            slideIndex = slides.length
+                        }
+                        for (i = 0; i < slides.length; i++) {
+                            slides[i].style.display = "none";
+                        }
+                        for (i = 0; i < dots.length; i++) {
+                            dots[i].className = dots[i].className.replace(" active", "");
+                        }
+                        slides[slideIndex - 1].style.display = "block";
+                        dots[slideIndex - 1].className += " active";
+                        captionText.innerHTML = dots[slideIndex - 1].alt;
+                    }
+                </script>
+            </div>
         </div>
 
         <!--About US-->
-        <div class="about-row">
-            <div class="about-column-left">
-                <h1 class="heading">About Us</h1>
+        <div class="About-Section" id="About-Section">
+            <div class="about-row">
+                <div class="about-column-left">
+                    <h1 class="heading">About Us</h1>
 
-                <p class="sub-heading">
-                    “We develop the four human dimensions in children and youth: body, mind, heart and spirit.”
-                </p> 
-            </div>
-            <br>
-            <div class ="about-column-right">
-                <p class="sub-info"> Eruditio Academy is an education service
-                    institution that offers online and offline
-                    learning and development programs for
-                    preschool to high school. 
-                </p>
+                    <p class="sub-heading">
+                        “We develop the four human dimensions in children and youth: body, mind, heart and spirit.”
+                    </p> 
+                </div>
                 <br>
-                <p class="sub-info">
-                    Eruditio subscribes to the whole child
-                    deveopment approach. We develop the four human dimensions in children and
-                    youth: body, mind, heart and spirit.
-                </p>
-                <br>
-                <p class="sub-info">
-                    Moreover, we give equal emphasis to parent education and empowerment
-                    thru parenting seminars, workshops and
-                    access to learning and development
-                    materials.
-                </p>
-            </div>
+                <div class ="about-column-right">
+                    <p class="sub-info"> Eruditio Academy is an education service
+                        institution that offers online and offline
+                        learning and development programs for
+                        preschool to high school. 
+                    </p>
+                    <br>
+                    <p class="sub-info">
+                        Eruditio subscribes to the whole child
+                        deveopment approach. We develop the four human dimensions in children and
+                        youth: body, mind, heart and spirit.
+                    </p>
+                    <br>
+                    <p class="sub-info">
+                        Moreover, we give equal emphasis to parent education and empowerment
+                        thru parenting seminars, workshops and
+                        access to learning and development
+                        materials.
+                    </p>
+                </div>
 
-        </div>
-        <div class="lower-row">
-            <div class="lower-column-left">
-                <p class="heading">Our Experience</p>
-                <p class = "sub-heading">1. We have over 12 years cumulative experience in education services.</p>
-                <p class = "sub-heading">2. We have successfully delivered online learning programs to over 200 students.</p>
-                <p class = "sub-heading">3. We have been supporting several homeschooling families during this pandemic.</p>
             </div>
-            <div class="lower-column-right">
-                <p class="heading">Our Approach</p>
-                <p class = "sub-heading">Eruditio subscribes to the Whole Child 
-                    Development approach. We believe in the development of the 
-                    four human dimensions in children: </p>
+            <div class="lower-row">
+                <div class="lower-column-left">
+                    <p class="heading">Our Experience</p>
+                    <p class = "sub-heading">1. We have over 12 years cumulative experience in education services.</p>
+                    <p class = "sub-heading">2. We have successfully delivered online learning programs to over 200 students.</p>
+                    <p class = "sub-heading">3. We have been supporting several homeschooling families during this pandemic.</p>
+                </div>
+                <div class="lower-column-right">
+                    <p class="heading">Our Approach</p>
+                    <p class = "sub-heading">Eruditio subscribes to the Whole Child 
+                        Development approach. We believe in the development of the 
+                        four human dimensions in children: </p>
+                </div>
             </div>
         </div>
+
 
         <!--Organizational Chart-->
         <div class="Organizational-Chart">
@@ -197,9 +210,8 @@
             </div>
             <div class="Flex-Footer-Content" id="Links">
                 <p class="label">LINKS</p>
-                <a href="HomeForNonUsers.jsp" class="f-content">Home <br> </a>
-                <a href="#About-Us" class="f-content">About <br> </a>
-                <a href="UserTerms.jsp" class="f-content">Events</a>
+                <a href="https://www.facebook.com/skibayotipas" target="_blank" class="f-content">Facebook<br> </a>
+                <a href="Survey Forms/Landing.jsp" class="f-content">Survey</a>
             </div>
             <div class="Flex-Footer-Content" id="Email-Us">
                 <p class="label">EMAIL US</p>
@@ -209,6 +221,6 @@
         </section>
 
         <!--Footer text from webxml-->
-        <footer class="Footer-Actual"><%out.print(getServletContext().getInitParameter("footer"));%></footer>
+        <footer class="Footer-Actual"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></footer>
     </body>
 </html>
