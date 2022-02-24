@@ -9,17 +9,17 @@
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>
     <body>
-        <!--Header-->
+        <!--HEADER-->
         <nav>
             <input id="nav-toggle" type="checkbox">
-            <img src="img/SK_Logo.png" class="header-logo">
-            
+            <img src="../img/SK_Logo.png" class="header-logo">
+
             <!--This section contains the "Eruditio Academy" text taken from the webxml-->
-            <div class="logo"><%out.print(getServletContext().getInitParameter("header"));%></div>
-            
+            <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>
+
             <ul class="links">
-                <li class="Home"><a href="Welcome.jsp">Home</a></li>
-                <li class="Login"><a href="Login.jsp" id="Login">Login</a></li>
+                <li class="About"><a href="../Welcome.jsp">Home</a></li>
+                <li class="Login"><a href="../Account/Login.jsp" id="Login">Log In</a></li>
             </ul>
             <label for="nav-toggle" class="icon-burger">
                 <div class="line"></div>
@@ -28,7 +28,7 @@
             </label>
         </nav>
             
-        <img src="img/SK_Logo.png" alt="SK Logo" id="Logo">
+        <img src="../img/SK_Logo.png" alt="SK Logo" id="Logo">
         <div class="heading">
             <h1>Welcome to the SK Ibayo-Tipas Youth Resident Survey</h1>
         </div>
