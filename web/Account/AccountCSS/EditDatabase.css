@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap%27');
+*{
+    font-family: 'Montserrat';
+}
+
+body{
+    background-color:#FFF9E9;
+}
+
+/*NAVBAR*/
+nav{
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    top: 0;
+    font-family: Montserrat;
+    font-weight: 900;
+    height: 7%;
+    background-color: #8B3535;
+    padding: 0.5%;
+}
+
+.logo{
+    height: 100%;
+}
+
+#SK-Text-NavBar{
+    padding: 0;
+    display: inline-block;
+    vertical-align:middle;
+}
+
+nav .logo{
+    float: left;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-family: Montserrat; 
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1.2em;
+    line-height: 80px;
+}
+
+nav .links{
+    float: right;
+    padding: 0;
+    margin: 0;
+    width: 35%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav .links ul{
+    width: 20%;
+}
+
+nav .links li{
+    list-style: none;
+}
+
+nav .links a{
+    display: block;
+    padding: 1em;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+#nav-toggle{
+    position: absolute;
+    top: -100%;
+}
+
+nav .icon-burger{
+    display: none;
+    position: absolute;
+    right: 5%;
+    top: 50%;   
+    transform: translateY(-50%);
+}
+
+nav .icon-burger .line{
+    width: 30px;
+    height: 5px;
+    background-color: white;
+    margin: 5px;
+    border-radius: 3px;
+    transition: all .3s ease-in-out;
+}
+
+#Login{
+    background: white;
+    color: #8B3535;
+    font-family: Montserrat;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+@media screen and (max-width: 1048px){
+    nav .logo{
+        float: none;
+        width: auto;
+        justify-content: center;
+        margin: 0;
+    }
+    nav .links{
+        float: none;
+        position: fixed;
+        z-index: 9;
+        left: 0;
+        right: 0;
+        top: 80px;
+        bottom: 100%;
+        width: auto;
+        height: auto;
+        flex-direction: column;
+        justify-content: space-evenly;
+        background-color: rgba(113, 41, 41, 0.65);
+        overflow: hidden;
+        box-sizing: border-box;
+        transition: all .5s ease-in-out;
+    }
+    nav .links a{
+        font-size: 1.5em;      
+    }    
+    nav :checked ~ .links{
+        bottom: 0;
+    }
+    nav .icon-burger{
+        display: block; 
+    }
+    nav :checked ~ .icon-burger .line:nth-child(1) {
+        transform: translateY(10px) rotate(225deg);
+    }
+    nav :checked ~ .icon-burger .line:nth-child(3) {
+        transform: translateY(-10px) rotate(-225deg);
+    }
+    nav :checked ~ .icon-burger .line:nth-child(2) {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 600px){
+    #SK-Text-NavBar{
+        display: none;
+    }
+}
+
+/*SK LOGO*/
+.header-logo{
+    height: 100%;
+    margin-left: 1%;
+    margin-right: 1%;
+    float: left;
+}
+
+.navbar-spacer{
+    height: 80px;
+}
+
+.search-archive{
+    display: flex;
+    width: 100%;
+    align-items: baseline;
+}
+
+.wrapper{
+    border-style: none !important;
+    height: 100%;
+}
+
+.wrapper input{
+    font-size: 1em;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.search-button{
+    padding: 7px 10px;
+    background-color: #8B3535;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.horizontal-spacer{
+    width: 20px;
+}
+
+.archive-button-container{
+    height: 100%;
+}
+
+.archive-button{
+    height: 100%;
+    font-size: 0.8em;
+    height: 100%;
+    padding: 7px 10px;
+    background-color: #E9DEDE;
+    border: none;
+    color: #8B3535;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.database-title{
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    align-content: flex-start;
+}
+
+.database-title-container{
+    display: flex;
+    align-items: baseline;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.sort-filter button{
+    background-color: white;
+    padding: 7px 10px;
+    font-weight: bold;
+    border-color: grey;
+    border-radius: 5px;
+}
+
+.bottom-buttons-container{
+    display: flex;
+    width: 30%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.bottom-button{
+    margin: 15px auto;
+    padding: 7px 10px;
+    background-color: #8B3535;
+    color: white;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 1.2em;
+    width: 200px;
+}
+
+#cancel-button{
+    background-color: #828282;
+    color: white;
+}
+

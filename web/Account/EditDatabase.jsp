@@ -5,6 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Edit Database</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="AccountCSS/EditDatabase.css" rel="stylesheet" type="text/css">
         <style>
             body {font-family: Arial;}
 
@@ -51,21 +52,52 @@
                 display:inline-block;
             }
         </style>
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
     </head>
     <body>
-        <div style="background-color: #FFF9E9">
-            <div>
-             <div class="wrapper">
-                <input type="text" />
-                <button>GO</button>
-             </div>
-             <button type="button">Export Archived Data</button> 
+        <!--HEADER-->
+        <nav>
+            <input id="nav-toggle" type="checkbox">
+            <img src="../img/SK_Logo.png" class="header-logo">
+
+            <!--This section contains the "Eruditio Academy" text taken from the webxml-->
+            <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>
+
+            <ul class="links">
+                <li class="About"><a href="../Welcome.jsp">Home</a></li>
+                <li class="Events"><a href="#events">Database</a></li>
+                <li class="Events"><a href="#events">Account</a></li>
+                <li class="Login"><a href="Login.jsp" id="Login">Log Out</a></li>
+            </ul>
+            <label for="nav-toggle" class="icon-burger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </label>
+        </nav>
+        <div class="navbar-spacer"></div> 
+        
+        <div>
+            <div class="search-archive">
+                <div class="wrapper">
+                    <input type="text" placeholder="Search for a resident">
+                    <button class="search-button"><i class="fas fa-search"></i>&nbsp; Search</button>
+                </div>
+                <div class="horizontal-spacer"></div>
+                <div class="archive-button-container">
+                    <button type="button" class="archive-button">Export Archived Data</button> </div>
             </div>
-            <div>
-             <h1>SK Ibayo-Tipas Youth Residents Database</h1>
-             <button type="button">Sort</button> 
-             <button type="button">Filter</button> 
+            
+            <div class="database-title-container">
+                <div class="database-title">Edit Database</div>
+                <div class="sort-filter">
+                    <button type="button"><i class='fas fa-sort'></i>&nbsp;&nbsp;Sort</button> 
+                    <button type="button"><i class='fas fa-filter'></i>&nbsp;&nbsp;Filter</button> 
+                </div>
             </div>
+            
             <div class="tab">
                 <button class="tablinks" onclick="showTab(event, 'All')" id="defaultOpen">All</button>
                 <button class="tablinks" onclick="showTab(event, 'Information')">Basic Information</button>
@@ -76,8 +108,10 @@
                 <button class="tablinks" onclick="showTab(event, 'Vaccination')">Vaccination Details</button>
                 <button style="display:none;" class="tablinks" onclick="showTab(event, 'Vaccination')">Vaccination</button>
             </div>
-            <div>
-                <button type="button">Save Changes</button> 
+            <div class="bottom-buttons-container">
+                <button type="button" class="bottom-button" id="cancel-button">Cancel</button> 
+                <div class="horizontal-spacer"></div>
+                <button type="button" class="bottom-button">Save Changes</button> 
             </div>
         </div>
     </body>
