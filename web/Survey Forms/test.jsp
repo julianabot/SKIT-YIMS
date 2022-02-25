@@ -62,17 +62,17 @@
             <button class="tablinks" onclick="showTab(event, 'Contact')">Contact Details</button>
             <button class="tablinks" onclick="showTab(event, 'Family')">Family Details</button>
             <button class="tablinks" onclick="showTab(event, 'Survey')">Survey</button>
-            <button style="display:none;" class="tablinks" onclick="showTab(event, 'Vaccination')">Vaccination</button>
+            <button class="tablinks" onclick="showTab(event, 'Vaccination')">Vaccination</button>
         </div>
 
         <div overflow:auto class="container">
-            <form>
+            <form action="../SurveyServlet" method="POST">
                 <div id="Info" class="tabcontent">
                     <div class="container-main">
                         <div class="content-container">
                             <div>
-                                <label for="name" class="label-english">Full Name of Resident&emsp;<span>Buong Pangalan ng Residente</span></label><br>
-                                <input type="text" id="name" name="name" class="long-textbox">
+                                <label for="name" class="label-english" >Full Name of Resident&emsp;<span>Buong Pangalan ng Residente</span></label><br>
+                                <input type="text" id="name" name="name" class="long-textbox" placeholder=" First Name Last Name">
                             </div>
 
                             <div class="content-divider"></div>
@@ -81,16 +81,16 @@
                                 <div class="age-group">
                                     <label for="age" class="label-english" >Age&emsp;<span>Edad</span></label>
                                     <select name="age" class="age-select">
-                                        <option value="fourteen">14 years old and below</option>
-                                        <option value="fifteen">15-20 years old</option>
-                                        <option value="twentyone">21-30 years old</option>
-                                        <option value="thirtyone">31 years old and above</option>
+                                        <option value="14 years old and below">14 years old and below</option>
+                                        <option value="15-20 years old">15-20 years old</option>
+                                        <option value="21-30 years old">21-30 years old</option>
+                                        <option value="31 years old and above">31 years old and above</option>
                                     </select>
                                 </div>
                                 <div class="divider-row"></div>
                                 <div class="age-group">
                                     <label for="birthday" class="label-english" class="table-cell">Birthday&emsp;<span>Kaarawan</span></label>
-                                    <input type="date" placeholder="mm-dd-yyyy" name="birthday" class="birthday-select">
+                                    <input type="date" name="birthday" class="birthday-select">
                                 </div>
                             </div>
 
@@ -99,13 +99,13 @@
                             <div class="gender-group">
                                 <p class="label-english">Gender&emsp;<span>Kasarian</span></p>
                                 <div class="radial-row">
-                                      <input type="radio" id="gender" name="gender" value="female">
+                                      <input type="radio" id="gender" name="gender" value="Female (Babae)">
                                       <label for="gender" class="label-english">Female <span>(Babae)</span></label>
                                     <div class="divider-choices"></div>
-                                      <input type="radio" id="gender" name="gender" value="male">
+                                      <input type="radio" id="gender" name="gender" value="Male (Lalaki)">
                                       <label for="gender" class="label-english">Male <span>(Lalaki)</span></label>
                                     <div class="divider-choices"></div>
-                                      <input type="radio" id="gender" name="gender" value="prefer">
+                                      <input type="radio" id="gender" name="gender" value="Prefer not to say">
                                       <label for="gender" class="label-english">Prefer not to say <span>(Pinipiling hindi sabihin)</span></label>
                                 </div>
                             </div>
@@ -135,7 +135,7 @@
                                         fileChosen.textContent = this.files[0].name
                                     })
                                 </script>
-                                <input type="file" id="myFile" name="filename" hidden/>
+                                <input type="file" id="myFile" name="validID" hidden/>
                                 <label for="myFile" id="fake-button">Choose File</label>
                                 <span id="file-chosen">&emsp;no file chosen</span>
                             </div>
@@ -149,9 +149,9 @@
                             <div>
                                 <label for="civil" class="label-english">Civil Status&emsp;<span>Katayuang Sibil</span></label><br>               
                                 <select name="civil" class="dropdown">
-                                    <option value="single">Single</option>
-                                    <option value="married">Married</option>
-                                    <option value="widowed">Widowed</option>
+                                    <option value="Single">Single</option>
+                                    <option value="Married">Married</option>
+                                    <option value="Widowed">Widowed</option>
                                 </select>
                             </div>
 
@@ -160,12 +160,12 @@
                             <div>
                                 <label for="working" class="label-english">Working Status&emsp;<span>Katayuan sa Trabaho</span></label><br>               
                                 <select name="working" class="dropdown">
-                                    <option value="fstudent">Full-Time Student</option>
-                                    <option value="wstudent">Working Student</option>
-                                    <option value="osy">Out of School Youth</option>
-                                    <option value="employed">Working/Employed</option>
-                                    <option value="unemployed">Unemployed</option>
-                                    <option value="looking">Currently Looking For a Job</option>
+                                    <option value="Full-Time Student">Full-Time Student</option>
+                                    <option value="Working Student">Working Student</option>
+                                    <option value="Out of School Youth">Out of School Youth</option>
+                                    <option value="Working/Employed">Working/Employed</option>
+                                    <option value="Unemployed">Unemployed</option>
+                                    <option value="Currently Looking For a Job">Currently Looking For a Job</option>
                                     <!-- others with input type field-->
                                 </select>
                             </div>
@@ -173,21 +173,21 @@
                             <div class="content-divider"></div>
 
                             <div>
-                                <label for="job" class="label-english">If employed, please specify your job. If none, type N/A.&emsp;<span>Kung nagtratrabaho, isulat ang uri ng trabaho. Kung wala, isulat N/A.</span></label><br>
-                                <input type="text" id="job" name="job" class="long-textbox"><br>
+                                <label for="jobEmployed" class="label-english">If employed, please specify your job. If none, type N/A.&emsp;<span>Kung nagtratrabaho, isulat ang uri ng trabaho. Kung wala, isulat N/A.</span></label><br>
+                                <input type="text" id="job" name="jobEmployed" class="long-textbox"><br>
                             </div>
                             <br>
                             <div>
                                 <label for="education" class="label-english">Highest Educational Attainment&emsp;<span>Pinakamataaas na Edukasyon na Natamo</span></label><br>               
                                 <select name="education" class="dropdown">
-                                    <option value="elementary">Elementary Level</option>
-                                    <option value="elemgrad">Elementary Graduate</option>
-                                    <option value="jhs">Junior High School Level</option>
-                                    <option value="jhsgrad">Junior High School Graduate</option>
-                                    <option value="shs">Senior High School Level</option>
-                                    <option value="shsgrad">Senior High School Graduate</option>
-                                    <option value="college">College Level</option>
-                                    <option value="collegegrad">College Graduate</option>
+                                    <option value="Elementary Level">Elementary Level</option>
+                                    <option value="Elementary Graduate">Elementary Graduate</option>
+                                    <option value="Junior High School Level">Junior High School Level</option>
+                                    <option value="Junior High School Graduate">Junior High School Graduate</option>
+                                    <option value="Senior High School Level">Senior High School Level</option>
+                                    <option value="Senior High School Graduate">Senior High School Graduate</option>
+                                    <option value="College Level">College Level</option>
+                                    <option value="College Graduate">College Graduate</option>
                                     <!-- others with input type field-->
                                 </select>
                             </div>
@@ -197,10 +197,10 @@
                             <div>
                                 <p class="label-english">Do you identify as a Person With Disability (PWD)?&emsp;<span>Ikaw ba ay nabibilang sa mga Persons With Disabilities (PWD)?</span></p>
                                 <div class="radial-row">
-                                      <input type="radio" id="pwd" name="pwd" value="pwd">
+                                      <input type="radio" id="pwd" name="pwd" value="Yes">
                                       <label for="pwd" class="label-english">Yes <span>(Oo)</span></label>
                                     <div class="divider-choices"></div>
-                                      <input type="radio" id="pwd" name="pwd" value="pwd">
+                                      <input type="radio" id="pwd" name="pwd" value="No">
                                       <label for="pwd" class="label-english">No <span>(Hindi)</span></label>
                                 </div>
                             </div>
@@ -223,8 +223,8 @@
                         <div class="content-container">
                             <div>
                                 <!-- To be fixed formatting!!! para sa database-->
-                                <label for="number" class="label-english">Contact Number&emsp;<span>Numerong Maaring Tawagan</span></label><br>
-                                <input type="tel" id="phone" name="phone" pattern="[+]{1}[0-9]{11}" class="long-textbox">
+                                <label for="phone" class="label-english">Contact Number&emsp;<span>Numerong Maaring Tawagan</span></label><br>
+                                <input type="tel" id="phone" name="phone" class="long-textbox">
                             </div>
 
                             <div class="content-divider"></div>
@@ -237,15 +237,8 @@
                             <div class="content-divider"></div>
 
                             <div>
-                                <label for="fbname" class="label-english">Facebook Name&emsp;<span>Pangalan ng Account sa Facebook</span></label>
-                                <input type="fbname" id="fbname" name="fbname" class="long-textbox">
-                            </div>
-
-                            <div class="content-divider"></div>
-
-                            <div>
-                                <label for="fburl" class="label-english">Facebook URL&emsp;<span>URL patungo sa Facebook Profile</span></label>
-                                <input type="fburl" id="fburl" name="fburl" class="long-textbox">
+                                <label for="fb" class="label-english">Facebook Name or URL&emsp;<span>Pangalan o URLKng Account sa Facebook</span></label>
+                                <input type="fb" id="fbname" name="fb" class="long-textbox">
                             </div>
                         </div>
                     </div>
@@ -265,10 +258,10 @@
                             <div>
                                 <p class="label-english">Mother's Status&emsp;<span>Estado ng iyong Nanay</span></p>
                                 <div class="radial-row">
-                                      <input type="radio" id="motherstat" name="motherstat" value="alivem">
-                                      <label for="motherstat" class="label-english">Alive <span>(Buhay)</span></label><br>
+                                      <input type="radio" id="motherstat" name="motherstat" value="Living">
+                                      <label for="motherstat" class="label-english">Living <span>(Buhay)</span></label><br>
                                     <div class="divider-choices"></div>
-                                      <input type="radio" id="motherstat" name="motherstat" value="deceasedm">
+                                      <input type="radio" id="motherstat" name="motherstat" value="Deceased">
                                       <label for="motherstat" class="label-english">Deceased <span>(Pumanaw)</span></label><br>
                                 </div>
                             </div>
@@ -291,10 +284,10 @@
                             <div>
                                 <p class="label-english">Father's Status&emsp;<span>Estado ng iyong Tatay</span></p>
                                 <div class="radial-row">
-                                      <input type="radio" id="fatherstat" name="fatherstat" value="alivef">
-                                      <label for="fatherstat" class="label-english">Alive <span>(Buhay)</span></label><br>
+                                      <input type="radio" id="fatherstat" name="fatherstat" value="Living">
+                                      <label for="fatherstat" class="label-english">Living <span>(Buhay)</span></label><br>
                                     <div class="divider-choices"></div>
-                                      <input type="radio" id="fatherstat" name="fatherstat" value="deceasedf">
+                                      <input type="radio" id="fatherstat" name="fatherstat" value="Deceased">
                                       <label for="fatherstat" class="label-english">Deceased <span>(Pumanaw)</span></label><br>
                                 </div>
                             </div>
@@ -319,11 +312,11 @@
                             <div id="sibSelection" class="original">
                                 <label for="workingsib" class="label-english">Sibling Working Status&emsp;<span>Katayuan sa Trabaho</span></label>               
                                 <select name="workingsib" id="selection" class="dropdown">
-                                    <option value="degrees">Degree Holder</option>
-                                    <option value="workings">Working</option>
-                                    <option value="unemployeds">Unemployed</option>
-                                    <option value="students">Full-Time Student</option>
-                                    <option value="nas">Not Applicable</option>
+                                    <option value="Degree Holder">Degree Holder</option>
+                                    <option value="Working">Working</option>
+                                    <option value="Unemployed">Unemployed</option>
+                                    <option value="Full-Time Student">Full-Time Student</option>
+                                    <option value="Not Applicable">Not Applicable</option>
                                 </select>
                             </div>
 
@@ -344,10 +337,10 @@
                         <div class="content-container">
                             <p class="label-english">Are you a registered SK voter?&emsp;<span>Nakapag-rehistro ka ba upang bumoto sa SK?</span></p>
                             <div class="radial-row">  
-                                <input type="radio" id="voter" name="voter" value="yesvoter">
+                                <input type="radio" id="voter" name="voter" value="Yes">
                                   <label for="voter" class="label-english">Yes <span>(Oo)</span></label>
                                 <div class="divider-choices"></div>
-                                  <input type="radio" id="voter" name="voter" value="novoter">
+                                  <input type="radio" id="voter" name="voter" value="No">
                                   <label for="voter" class="label-english">No <span>(Hindi)</span></label>
                             </div>
 
@@ -356,10 +349,10 @@
                             <div>
                                 <p class="label-english">Are you a member of an organization?&emsp;<span>Parte ka ba ng isang organisasyon?</span></p>
                                   <div class="radial-row">
-                                    <input type="radio" id="org" name="org" value="yesorg">
+                                    <input type="radio" id="org" name="org" value="Yes">
                                       <label for="org" class="label-english">Yes <span>(Oo)</span></label>
                                     <div class="divider-choices"></div>
-                                      <input type="radio" id="org" name="org" value="noorg">
+                                      <input type="radio" id="org" name="org" value="No">
                                       <label for="org" class="label-english">No <span>(Hindi)</span></label>
                                 </div>
                             </div>
@@ -367,8 +360,8 @@
                             <div class="content-divider"></div>
 
                             <div>
-                                <label for="org" class="label-english">If yes, please specify which organization.&emsp;<span>Kung oo, anong organisasyon?</span></label><br>
-                                <input type="text" id="org" name="org" class="long-textbox">
+                                <label for="orgname" class="label-english">If yes, please specify which organization.&emsp;<span>Kung oo, anong organisasyon?</span></label><br>
+                                <input type="text" id="org" name="orgname" class="long-textbox">
                             </div>
 
                             <div class="content-divider"></div>
@@ -377,13 +370,13 @@
                                 <label for="proj" class="label-english">Are you willing to support the incoming projects of SK-Ibayo Tipas?
                                     <br><span>Handa ka bang suportahan ang mga paparating na proyekto ng SK-Ibayo Tipas?</span></label><br>
                                 <div class="radial-row">
-                                      <input type="radio" id="proj" name="proj" value="yesproj">
+                                      <input type="radio" id="proj" name="proj" value="Yes">
                                       <label for="proj" class="label-english">Yes <span>(Oo)</span></label><br>
                                     <div class="divider-choices"></div>
-                                      <input type="radio" id="noproj" name="proj" value="noproj">
+                                      <input type="radio" id="noproj" name="proj" value="No">
                                       <label for="proj" class="label-english">No <span>(Hindi)</span></label><br>
                                     <div class="divider-choices"></div>
-                                      <input type="radio" id="proj" name="proj" value="maybeproj">
+                                      <input type="radio" id="proj" name="proj" value="Maybe">
                                       <label for="proj" class="label-english">Maybe <span>(Hindi Sigurado)</span></label><br>
                                 </div>
                             </div>
@@ -397,13 +390,18 @@
                             </div>
 
                             <div class="content-divider"></div>
-
+                            <div>
+                                <label for="jobchance" class="label-english">If you are given a chance to have a job, what makes you worthy among others?
+                                    <br><span>Kung ikaw ay bibigyan ng pagkakataong magkaroon ng  hanapbuhay, bakit ikaw ang karapat-dapat?</span></label><br>
+                                <input type="text" id="message" name="jobchance" class="long-textbox">
+                            </div>
+                            <div class="content-divider"></div>
                             <div>
                                 <label for="message" class="label-english">What would you like to say to the current SK-Council of Ibayo-Tipas?
                                     <br><span>Ano ang iyong mensahe o mungkahi sa kasalukuyang konseho ng Sangguniang Kabataan-Ibayo Tipas?</span></label><br>
                                 <input type="text" id="message" name="message" class="long-textbox">
+
                             </div>
-                            <p class="link-proceed">Click here to proceed to resident vaccination form. >></p>
                         </div>
                     </div>
                 </div>
@@ -414,50 +412,52 @@
                                 <p class="label-english">Have you been vaccinated for Covid-19?&emsp;<span>Ikaw ba ay nabakuna na laban Covid-19?</span>
                                 </p>
 
-                                  <input type="radio" id="yesvax" name="yesvax" value="yesvax">
-                                  <label for="yesvax" class="label-english">Yes <span>(Oo)</span></label><br>
+                                  <input type="radio" id="yesvax" name="vax" value="Yes">
+                                  <label for="vax" class="label-english">Yes <span>(Oo)</span></label><br>
                                 <div class="divider-choices"></div>
-                                  <input type="radio" id="novax" name="novax" value="novax">
-                                  <label for="novax" class="label-english">No <span>(Hindi)</span></label><br>
+                                  <input type="radio" id="novax" name="vax" value="No">
+                                  <label for="vax" class="label-english">No <span>(Hindi)</span></label><br>
                             </div>
                             <div>
                                 <p class="label-english" class="label-english">If not, are you willing to be vaccinated if given the chance?
                                     &emsp;<span>Kung hindi, may kagustuhan ka ba mabakuna kapag nagkaroon ng pagkakataon?</span>
                                 </p>
                                 <div class="radial-row">
-                                      <input type="radio" id="yeswilling" name="yeswilling" value="yeswilling">
-                                      <label for="yeswilling" class="label-english">Yes <span>(Oo)</span></label><br>
+                                      <input type="radio" id="yeswilling" name="willing" value="Yes">
+                                      <label for="willing" class="label-english">Yes <span>(Oo)</span></label><br>
                                     <div class="divider-choices"></div>
-                                      <input type="radio" id="nowilling" name="nowilling" value="nowilling">
-                                      <label for="nowilling" class="label-english">No <span>(Hindi)</span></label><br>
+                                      <input type="radio" id="nowilling" name="willing" value="No">
+                                      <label for="willing" class="label-english">No <span>(Hindi)</span></label><br>
                                 </div>
                             </div>
                             <br>
                             <div>
                                 <label for="brand" class="label-english">If yes, what brand of vaccine did you receive?&emsp;<span>Kung oo, ano ang brand ng iyong bakuna?</span></label>
                                 <select name="brand" class="dropdown">
-                                    <option value="pfizer">Pfizer-BioNTech</option>
-                                    <option value="oxford">Oxford-AstraZeneca</option>
-                                    <option value="sinovac">CoronaVac (Sinovac)</option>
-                                    <option value="sputnik">Gamaleya Sputnik V</option>
-                                    <option value="jnj">Johnson and Johnson's Janssen</option>
-                                    <option value="bharat">Bharat BioTech</option>
-                                    <option value="moderna">Moderna</option>
-                                    <option value="sinopharma">Sinopharm</option>
+                                    <option value="Pfizer-BioNTech">Pfizer-BioNTech</option>
+                                    <option value="Oxford-AstraZeneca">Oxford-AstraZeneca</option>
+                                    <option value="CoronaVac (Sinovac)">CoronaVac (Sinovac)</option>
+                                    <option value="Gamaleya Sputnik V">Gamaleya Sputnik V</option>
+                                    <option value="Johnson and Johnson's Janssen">Johnson and Johnson's Janssen</option>
+                                    <option value="Bharat BioTech">Bharat BioTech</option>
+                                    <option value="Moderna">Moderna</option>
+                                    <option value="Sinopharm">Sinopharm</option>
                                 </select>
                             </div>
                             <div>
                                 <label for="vstatus" class="label-english">What is your Vaccine Status?&emsp;<span>Ano ang istatus ng iyong bakuna?</span> </label>
                                 <select name="vstatus" class="dropdown">
-                                    <option value="novaccine">Not Vaccinated</option>
-                                    <option value="firstdose">First Dose</option>
-                                    <option value="seconddose">Second Dose</option>
-                                    <option value="booster">Booster</option>
+                                    <option value="Not Vaccinated">Not Vaccinated</option>
+                                    <option value="First Dose">First Dose</option>
+                                    <option value="Second Dose">Second Dose</option>
+                                    <option value="Booster">Booster</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                 </div>
+                <input class="submitbtn" type="Submit" name="Survey" value="Survey">
+
             </form>
         </div>
 
