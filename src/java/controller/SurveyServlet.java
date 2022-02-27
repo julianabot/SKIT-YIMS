@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -33,6 +34,7 @@ public class SurveyServlet extends HttpServlet {
                     .append(config.getInitParameter("databaseName"));
             conn
                     = DriverManager.getConnection(url.toString(), username, password);
+            conn.setAutoCommit(true);
         } catch (SQLException sqle) {
             checkException = sqle.getMessage();
             System.out.println("SQLException error occured - "
@@ -78,12 +80,14 @@ public class SurveyServlet extends HttpServlet {
             String ageRange = request.getParameter("age");
             String birthday = request.getParameter("birthday");
             String address = request.getParameter("address");
+            String gender = request.getParameter("gender");
             String validID = request.getParameter("validID");
 
             session.setAttribute("residentName", residentName);
             session.setAttribute("ageRange", ageRange);
             session.setAttribute("birthday", birthday);
             session.setAttribute("address", address);
+            session.setAttribute("gender", gender);
             session.setAttribute("validID", validID);
 
             //2. Resident Status
@@ -132,8 +136,9 @@ public class SurveyServlet extends HttpServlet {
             session.setAttribute("breadwinner", breadwinner);
 
             //5. Survey
-            String residentVoter = request.getParameter("org");
-            String memberOfOrg = request.getParameter("orgname");
+            String residentVoter = request.getParameter("voter");
+            String memberOfOrg = request.getParameter("org");
+            String nameOfOrg = request.getParameter("orgname");
             String supportSK = request.getParameter("proj");
             String showSupport = request.getParameter("support");
             String jobChance = request.getParameter("jobchance");
@@ -141,6 +146,7 @@ public class SurveyServlet extends HttpServlet {
 
             session.setAttribute("residentVoter", residentVoter);
             session.setAttribute("memberOfOrg", memberOfOrg);
+            session.setAttribute("nameOfOrg", nameOfOrg);
             session.setAttribute("supportSK", supportSK);
             session.setAttribute("showSupport", showSupport);
             session.setAttribute("jobChance", jobChance);
@@ -156,6 +162,83 @@ public class SurveyServlet extends HttpServlet {
             session.setAttribute("willingForVaccine", willingForVaccine);
             session.setAttribute("brandOfVaccine", brandOfVaccine);
             session.setAttribute("vaccineStatus", vaccineStatus);
+
+            String basicTable = "INSERT INTO `basic-info` (name, agegroup, birthday, address, gender, validID) VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement insBasic = conn.prepareStatement(basicTable);
+
+            insBasic.setString(1, residentName);
+            insBasic.setString(2, ageRange);
+            insBasic.setString(3, birthday);
+            insBasic.setString(4, address);
+            insBasic.setString(5, gender);
+            insBasic.setString(6, validID);
+
+            insBasic.execute();
+
+            String resStatTable = "INSERT INTO `resident-status` (civilStatus, workingStatus, educationAttainment, jobEmployed, PWD, typeOfDisability) VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement insResStat = conn.prepareStatement(resStatTable);
+
+            insResStat.setString(1, civilStatus);
+            insResStat.setString(2, working);
+            insResStat.setString(3, education);
+            insResStat.setString(4, jobEmployed);
+            insResStat.setString(5, pwd);
+            insResStat.setString(6, typePWD);
+
+            insResStat.execute();
+
+            String contactTable = "INSERT INTO `contact-info` (contactNo, emailAddress, fbNameURL) VALUES (?, ?, ?)";
+            PreparedStatement insContact = conn.prepareStatement(contactTable);
+
+            insContact.setString(1, phone);
+            insContact.setString(2, email);
+            insContact.setString(3, fb);
+
+            insContact.execute();
+
+            String familyTable = "INSERT INTO `fam-status` (motherName, motherOccupation, fatherName, fatherOccupation, vitalStatusMother, vitalStatusFather, noOfSiblings, siblingEducation, breadWinner) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement insFamily = conn.prepareStatement(familyTable);
+
+            insFamily.setString(1, mother);
+            insFamily.setString(2, motherWork);
+            insFamily.setString(3, father);
+            insFamily.setString(4, fatherWork);
+            insFamily.setString(5, motherStatus);
+            insFamily.setString(6, fatherStatus);
+            insFamily.setString(7, noSiblings);
+            insFamily.setString(8, workingSibs);
+            insFamily.setString(9, breadwinner);
+
+            insFamily.execute();
+
+            String surveyTable = "INSERT INTO `resident-org` (residentVoter, memberOfOrg, nameOfOrg, supportSK, showSupport, jobChance, sayToSK) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement insSurvey = conn.prepareStatement(surveyTable);
+
+            insSurvey.setString(1, residentVoter);
+            insSurvey.setString(2, memberOfOrg);
+            insSurvey.setString(3, nameOfOrg);
+            insSurvey.setString(4, supportSK);
+            insSurvey.setString(5, showSupport);
+            insSurvey.setString(6, jobChance);
+            insSurvey.setString(7, sayToSK);
+
+            insSurvey.execute();
+
+            String vaxTable = "INSERT INTO `vaccine-info` (vaccinated, willingForVaccine, brandOfVaccine, vaccineStatus) VALUES (?, ?, ?, ?)";
+            PreparedStatement insVax = conn.prepareStatement(vaxTable);
+
+            insVax.setString(1, vaccinated);
+            insVax.setString(2, willingForVaccine);
+            insVax.setString(3, brandOfVaccine);
+            insVax.setString(4, vaccineStatus);
+
+            insVax.execute();
+
+            String trialTable = "INSERT INTO trial (trialcol) VALUES (?) ";
+            PreparedStatement insTrial = conn.prepareStatement(trialTable);
+
+            insTrial.setString(1, vaccinated);
+            insTrial.execute();
 
             request.getRequestDispatcher("Survey Forms/ViewSubmitted.jsp").forward(request, response);
 
