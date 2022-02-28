@@ -163,14 +163,11 @@ public class SurveyServlet extends HttpServlet {
             session.setAttribute("brandOfVaccine", brandOfVaccine);
             session.setAttribute("vaccineStatus", vaccineStatus);
             
-            String residentTable = "INSERT INTO `resident-info` (birthday) VALUES (?)";
-            PreparedStatement insBasic = conn.prepareStatement(residentTable);
-            
-            insBasic.setString(1, birthday);
-            insBasic.execute();
+//            String basicTable = "INSERT INTO `resident-info` (birthday) VALUES (?, ?, ?, ?, ?, ?)";
+//            PreparedStatement insBasic = conn.prepareStatement(basicTable);
 
             String basicTable = "INSERT INTO `basic-info` (name, agegroup, birthday, address, gender, validID) VALUES (?, ?, ?, ?, ?, ?)";
-            insBasic = conn.prepareStatement(basicTable);
+            PreparedStatement insBasic = conn.prepareStatement(basicTable);
 
             insBasic.setString(1, residentName);
             insBasic.setString(2, ageRange);
