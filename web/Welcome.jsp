@@ -19,9 +19,9 @@
             <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>
 
             <ul class="links">
-                <li class="About"><a href="#About-Section">About</a></li>
                 <li class="Events"><a href="#Events-Section-Header">Events</a></li>
-                <li class="Login"><a href="Login.jsp" id="Login">Login</a></li>
+                <li class="About"><a href="#About-Section">About</a></li>
+                <li class="Login"><a href="Account/Login.jsp" id="Login">Login</a></li>
             </ul>
             <label for="nav-toggle" class="icon-burger">
                 <div class="line"></div>
@@ -29,7 +29,7 @@
                 <div class="line"></div>
             </label>
         </nav>
-
+        
         <!--Hero Section-->
         <section id="Hero-Section" class="Hero-Section">
             <p class="heading">Title</p>
@@ -37,7 +37,7 @@
             <!-- redirect to About tab -->
             <p class="button"><a href="Survey Forms/Landing.jsp" target="_blank">Fill out Forms</a></p>
         </section>
-
+        
         <div class="space-divider"></div>
         <!--Events Section-->
         <!-- Container for the image gallery -->
@@ -210,17 +210,19 @@
             </div>
             <div class="Flex-Footer-Content" id="Links">
                 <p class="label">LINKS</p>
+                <a href="#About"class="f-content">About<br></a>
+                <a href="#Hero-Section"class="f-content">Home<br></a>
                 <a href="https://www.facebook.com/skibayotipas" target="_blank" class="f-content">Facebook<br> </a>
                 <a href="Survey Forms/Landing.jsp" class="f-content">Survey</a>
             </div>
             <div class="Flex-Footer-Content" id="Email-Us">
                 <p class="label">EMAIL US</p>
                 <p class="f-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
-                <p class="f-content" id="mock-email-button">Send Email</p>
+                <a class="f-content" id="mock-email-button" href="mailto:maxinehuy@gmail.com">Send Email</a>
             </div>
         </section>
 
         <!--Footer text from webxml-->
-        <footer class="Footer-Actual"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></footer>
+        <footer class="Footer-Actual"><a id="SK-Text-NavBar">&copy; Sangguniang Kabataan Ibayo-Tipas </a></footer>
     </body>
 </html>

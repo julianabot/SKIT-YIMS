@@ -22,7 +22,7 @@ nav{
     top: 0;
     font-family: Montserrat;
     font-weight: 900;
-    height: 7%;
+    height: 60px;
     background-color: #8B3535;
     padding: 0.5%;
 }
@@ -35,7 +35,7 @@ nav{
     padding: 0;
     display: inline-block;
     vertical-align:middle;
-    
+
 }
 
 nav .logo{
@@ -62,7 +62,7 @@ nav .links{
 }
 
 nav .links ul{
-    width: 40%;
+    width: 50%;
 }
 
 nav .links li{
@@ -129,7 +129,7 @@ nav .icon-burger .line{
         z-index: 9;
         left: 0;
         right: 0;
-        top: 7%;
+        top: 60px;
         bottom: 100%;
         width: auto;
         height: auto;
@@ -145,7 +145,7 @@ nav .icon-burger .line{
     }    
     nav :checked ~ .links{
         bottom: 0;
-        top: 7%;
+        top: 60px;
     }
     nav .icon-burger{
         display: block; 
@@ -164,7 +164,7 @@ nav .icon-burger .line{
 @media (max-width: 600px){
     #SK-Text-NavBar{
         display: none;
-        
+
     }
 }
 
@@ -183,37 +183,38 @@ nav .icon-burger .line{
 
 /*HERO SECTION*/
 .Hero-Section{
-    background-image: url('img/Hero-Section-Display.gif');
-    background-color: lightblue;
+    background-image: url(../img/hero_gif2.gif);
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    margin: 0;
 
 }
 .Hero-Section .heading{
-    font-size: 60px;
+    font-size: 2.5em;
     left: 217px;
-    padding-top: 300px;
+    padding-top: 200px;
     padding-left: 150px;
     color: rgba(240, 243, 240, 1);
     padding-right:100px;
+    font-weight: bold;
 }
 
 .Hero-Section .subheading{
-    font-size: 20px;
+    font-size: 1.7em;
     left: 217px;
     padding-left: 150px;
     color: rgba(240, 243, 240, 1);
     padding-right:100px;
     text-align: justify;
+    text-indent: 50px;
 }
+
 .Hero-Section .button{
     font-family: Montserrat;
     font-style: normal;
     font-weight:900;
-    font-size: 36px;
+    font-size: 50px;
     color: white;
     background: #712929;
     border-radius: 80px;
@@ -246,16 +247,16 @@ nav .icon-burger .line{
         margin-right: 2%;
         margin-left: 2%;
     }
-    
+
     .Hero-Section .subheading{
         font-size: 1.5rem;
         left: 217px;
         padding-left: 20px;
         color: rgba(240, 243, 240, 1);
         padding-right:20px;
-        
+
     }
-    
+
     .Hero-Section .button {
         text-align: center;
         margin: auto;
@@ -282,7 +283,7 @@ nav .icon-burger .line{
         padding-left: 20px;
         color: rgba(240, 243, 240, 1);
         padding-right:20px;
-        
+
     }
 }
 
@@ -292,15 +293,15 @@ nav .icon-burger .line{
     text-align: center;
     font-family: 'Montserrat';
     font-weight: bold;
-    font-size: 40px;
+    font-size: 2.5em;
     margin-bottom: 5px;
 }
 .Events-Section-Subheading{
     text-align: center;
     margin-top: 0;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     font-family: 'Montserrat';
-    font-size: 20px;
+    font-size: 1.5em;
     color:#828282;
 }
 * {
@@ -310,7 +311,6 @@ nav .icon-burger .line{
 /* Position the image container (needed to position the left and right arrows) */
 .events-container {
     position: relative;
-    
 }
 
 #imgEvent {
@@ -322,6 +322,11 @@ nav .icon-burger .line{
 /* Hide the images by default */
 .mySlides {
     display: none;
+    background-color: #8B3535;
+    width: 80%;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Add a pointer when hovering over the thumbnail images */
@@ -368,9 +373,34 @@ nav .icon-burger .line{
 /* Container for image text */
 .caption-container {
     text-align: center;
-    background-color: #222;
+    background-color: #712929;
     padding: 2px 16px;
     color: white;
+    width: 80%;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.row{
+    width: 80%;
+    display:block;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 780px){
+    .row{
+        width: 100%;
+    }
+    .caption-container{
+        width: 100%;
+    }
+    
+    .mySlides{
+        width: 100%;
+    }
 }
 
 .row:after {
@@ -430,7 +460,7 @@ nav .icon-burger .line{
 
 .abt-body{
     font-family: 'Montserrat';
-    font-size: 20px;
+    font-size: 1.3em;
     text-align: justify;
 }
 .about-column-left{
@@ -440,7 +470,7 @@ nav .icon-burger .line{
 .about-row .heading {
     font-style: normal;
     font-weight: bold;
-    font-size: 70px;
+    font-size: 2.5em;
     line-height: 89px;
     align-items: center; 
 }
@@ -451,7 +481,7 @@ nav .icon-burger .line{
     font-family: Montserrat;
     font-style: italic;
     font-weight: 1000;
-    font-size: 23px;
+    font-size: 1.3em;
     align-items: center;
     color: #1C2E4D;
     width: 80%;
@@ -474,7 +504,7 @@ nav .icon-burger .line{
     font-family: Montserrat;
     font-style: normal;
     font-weight: normal;
-    font-size: 1rem;
+    font-size: 1.3rem;
     display: flex;
     align-items: center;
     color: #000000;
@@ -487,11 +517,10 @@ nav .icon-burger .line{
         margin-left: 1%;
     }
     .about-column-left .heading{
-        font-size: 3rem;
         text-align: center;
     }
     .about-column-left .sub-heading{
-        font-size: 1rem;
+        font-size: 1.3rem;
         text-align: center;
         margin:auto;
     }
@@ -503,6 +532,10 @@ nav .icon-burger .line{
     }
     .about-row .about-column-right{
         width: 100%;
+    }
+
+    .about-column-right{
+        padding: 5px 70px;
     }
 }
 .lower-row{
@@ -549,7 +582,7 @@ nav .icon-burger .line{
 .lower-row .lower-column-right .sub-heading{
     font-family: Montserrat;
     font-style: normal;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     text-align: justify;
     align-items: center;
     color: black;
@@ -580,13 +613,13 @@ nav .icon-burger .line{
     text-align: center;
     font-family: 'Montserrat';
     font-weight: bold;
-    font-size: 40px;
+    font-size: 2.5em;
     margin-bottom: 5px;
 }
 .Organizational-Chart-Subheading{
     text-align: center;
     margin-top: 0;
-    margin-bottom: 15px;
+    margin-bottom: 1.5em;
     font-family: 'Montserrat';
     font-size: 20px;
     color:#828282;
@@ -624,7 +657,8 @@ nav .icon-burger .line{
     width: 100%;
     padding-right: 30px;
     padding-left: 30px;
-    margin: auto;
+    margin: 0px auto;
+   
 }
 .Footer-Container .label{
     font-family: Montserrat;
@@ -650,12 +684,13 @@ nav .icon-burger .line{
     line-height: 30px;
     text-align: center;
     color: #8B3535;
-    font-size: 15px;
-    padding: 5px 20px;
+    font-size: 1.2em;
+    padding: 5px 60px;
     border: none;
     font-weight: bold;
     margin-top: 20px;
     cursor: pointer;
+    width: 100%;
 }
 
 #mock-email-button:hover {
