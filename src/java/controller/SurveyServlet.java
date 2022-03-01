@@ -163,7 +163,7 @@ public class SurveyServlet extends HttpServlet {
             session.setAttribute("brandOfVaccine", brandOfVaccine);
             session.setAttribute("vaccineStatus", vaccineStatus);
             
-//            String basicTable = "INSERT INTO `resident-info` (birthday) VALUES (?, ?, ?, ?, ?, ?)";
+//            String basicTable = "INSERT INTO `basic-info` (name, agegroup, birthday, address, gender, validID) VALUES (?, ?, ?, ?, ?, ?)";
 //            PreparedStatement insBasic = conn.prepareStatement(basicTable);
 
             String basicTable = "INSERT INTO `basic-info` (name, agegroup, birthday, address, gender, validID) VALUES (?, ?, ?, ?, ?, ?)";
@@ -250,7 +250,7 @@ public class SurveyServlet extends HttpServlet {
             request.getRequestDispatcher("Survey Forms/ViewSubmitted.jsp").forward(request, response);
 
         } catch (Exception e) {
-            request.setAttribute("errorLogin", checkException);
+            request.setAttribute("errorLogin", e.toString());
             request.getRequestDispatcher("Survey Forms/ViewSubmitted.jsp").forward(request, response);
 
         }
