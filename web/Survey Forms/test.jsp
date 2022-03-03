@@ -66,7 +66,7 @@
         </div>
 
         <div overflow:auto class="container">
-            <form action="../SurveyServlet" method="POST">
+            <form action="../SurveyServlet" id = "SurveyForm" method="POST">
                 <div id="Info" class="tabcontent">
                     <div class="container-main">
                         <div class="content-container">
@@ -99,14 +99,14 @@
                             <div class="gender-group">
                                 <p class="label-english">Gender&emsp;<span>Kasarian</span></p>
                                 <div class="radial-row">
-                                      <input type="radio" id="gender" name="gender" value="Female (Babae)">
-                                      <label for="gender" class="label-english">Female <span>(Babae)</span></label>
+                                      <input type="radio" id="female" name="gender" value="Female (Babae)">
+                                      <label for="female" class="label-english">Female <span>(Babae)</span></label>
                                     <div class="divider-choices"></div>
-                                      <input type="radio" id="gender" name="gender" value="Male (Lalaki)">
-                                      <label for="gender" class="label-english">Male <span>(Lalaki)</span></label>
+                                      <input type="radio" id="male" name="gender" value="Male (Lalaki)">
+                                      <label for="male" class="label-english">Male <span>(Lalaki)</span></label>
                                     <div class="divider-choices"></div>
-                                      <input type="radio" id="gender" name="gender" value="Prefer not to say">
-                                      <label for="gender" class="label-english">Prefer not to say <span>(Pinipiling hindi sabihin)</span></label>
+                                      <input type="radio" id="prefer" name="gender" value="Prefer not to say">
+                                      <label for="prefer" class="label-english">Prefer not to say <span>(Pinipiling hindi sabihin)</span></label>
                                 </div>
                             </div>
 
@@ -117,9 +117,6 @@
                                 <label for="address" class="label-english">Full Address&emsp;<span>Buong Address ng Tirahan</span></label><br>
                                 <input type="text" id="address" name="address" class="long-textbox"><br>
                             </div>
-
-
-
                             <div class="upload-group">
                                 <p class="label-english" id="upload-main-text-english">Upload ID Picture with Complete Address <br>
                                     <a>(Preferably any School ID for 15-17 years old, any Government Issued ID or preferably National ID for 18-30 years old)</a> <br><br>
@@ -197,11 +194,11 @@
                             <div>
                                 <p class="label-english">Do you identify as a Person With Disability (PWD)?&emsp;<span>Ikaw ba ay nabibilang sa mga Persons With Disabilities (PWD)?</span></p>
                                 <div class="radial-row">
-                                      <input type="radio" id="pwd" name="pwd" value="Yes">
-                                      <label for="pwd" class="label-english">Yes <span>(Oo)</span></label>
+                                      <input type="radio" id="yes" name="pwd" value="Yes">
+                                      <label for="yes" class="label-english">Yes <span>(Oo)</span></label>
                                     <div class="divider-choices"></div>
-                                      <input type="radio" id="pwd" name="pwd" value="No">
-                                      <label for="pwd" class="label-english">No <span>(Hindi)</span></label>
+                                      <input type="radio" id="no" name="pwd" value="No">
+                                      <label for="no" class="label-english">No <span>(Hindi)</span></label>
                                 </div>
                             </div>
 
@@ -258,11 +255,11 @@
                             <div>
                                 <p class="label-english">Mother's Status&emsp;<span>Estado ng iyong Nanay</span></p>
                                 <div class="radial-row">
-                                      <input type="radio" id="motherstat" name="motherstat" value="Living">
-                                      <label for="motherstat" class="label-english">Living <span>(Buhay)</span></label><br>
+                                      <input type="radio" id="livingm" name="motherstat" value="Living">
+                                      <label for="livingm" class="label-english">Living <span>(Buhay)</span></label><br>
                                     <div class="divider-choices"></div>
-                                      <input type="radio" id="motherstat" name="motherstat" value="Deceased">
-                                      <label for="motherstat" class="label-english">Deceased <span>(Pumanaw)</span></label><br>
+                                      <input type="radio" id="deceasedm" name="motherstat" value="Deceased">
+                                      <label for="deceasedm" class="label-english">Deceased <span>(Pumanaw)</span></label><br>
                                 </div>
                             </div>
 
@@ -284,11 +281,11 @@
                             <div>
                                 <p class="label-english">Father's Status&emsp;<span>Estado ng iyong Tatay</span></p>
                                 <div class="radial-row">
-                                      <input type="radio" id="fatherstat" name="fatherstat" value="Living">
-                                      <label for="fatherstat" class="label-english">Living <span>(Buhay)</span></label><br>
+                                      <input type="radio" id="livingf" name="fatherstat" value="Living">
+                                      <label for="livingf" class="label-english">Living <span>(Buhay)</span></label><br>
                                     <div class="divider-choices"></div>
-                                      <input type="radio" id="fatherstat" name="fatherstat" value="Deceased">
-                                      <label for="fatherstat" class="label-english">Deceased <span>(Pumanaw)</span></label><br>
+                                      <input type="radio" id="deceasedf" name="fatherstat" value="Deceased">
+                                      <label for="deceasedf" class="label-english">Deceased <span>(Pumanaw)</span></label><br>
                                 </div>
                             </div>
 
@@ -337,11 +334,11 @@
                         <div class="content-container">
                             <p class="label-english">Are you a registered SK voter?&emsp;<span>Nakapag-rehistro ka ba upang bumoto sa SK?</span></p>
                             <div class="radial-row">  
-                                <input type="radio" id="voter" name="voter" value="Yes">
-                                  <label for="voter" class="label-english">Yes <span>(Oo)</span></label>
+                                <input type="radio" id="yesvoter" name="voter" value="Yes">
+                                  <label for="yesvoter" class="label-english">Yes <span>(Oo)</span></label>
                                 <div class="divider-choices"></div>
-                                  <input type="radio" id="voter" name="voter" value="No">
-                                  <label for="voter" class="label-english">No <span>(Hindi)</span></label>
+                                  <input type="radio" id="novoter" name="voter" value="No">
+                                  <label for="novoter" class="label-english">No <span>(Hindi)</span></label>
                             </div>
 
                             <div class="content-divider"></div>
@@ -349,11 +346,11 @@
                             <div>
                                 <p class="label-english">Are you a member of an organization?&emsp;<span>Parte ka ba ng isang organisasyon?</span></p>
                                   <div class="radial-row">
-                                    <input type="radio" id="org" name="org" value="Yes">
-                                      <label for="org" class="label-english">Yes <span>(Oo)</span></label>
+                                    <input type="radio" id="yesorg" name="org" value="Yes">
+                                      <label for="yesorg" class="label-english">Yes <span>(Oo)</span></label>
                                     <div class="divider-choices"></div>
-                                      <input type="radio" id="org" name="org" value="No">
-                                      <label for="org" class="label-english">No <span>(Hindi)</span></label>
+                                      <input type="radio" id="noorg" name="org" value="No">
+                                      <label for="noorg" class="label-english">No <span>(Hindi)</span></label>
                                 </div>
                             </div>
 
@@ -370,14 +367,14 @@
                                 <label for="proj" class="label-english">Are you willing to support the incoming projects of SK-Ibayo Tipas?
                                     <br><span>Handa ka bang suportahan ang mga paparating na proyekto ng SK-Ibayo Tipas?</span></label><br>
                                 <div class="radial-row">
-                                      <input type="radio" id="proj" name="proj" value="Yes">
-                                      <label for="proj" class="label-english">Yes <span>(Oo)</span></label><br>
+                                      <input type="radio" id="yesproj" name="proj" value="Yes">
+                                      <label for="yesproj" class="label-english">Yes <span>(Oo)</span></label><br>
                                     <div class="divider-choices"></div>
                                       <input type="radio" id="noproj" name="proj" value="No">
-                                      <label for="proj" class="label-english">No <span>(Hindi)</span></label><br>
+                                      <label for="noproj" class="label-english">No <span>(Hindi)</span></label><br>
                                     <div class="divider-choices"></div>
-                                      <input type="radio" id="proj" name="proj" value="Maybe">
-                                      <label for="proj" class="label-english">Maybe <span>(Hindi Sigurado)</span></label><br>
+                                      <input type="radio" id="maybeproj" name="proj" value="Maybe">
+                                      <label for="maybeproj" class="label-english">Maybe <span>(Hindi Sigurado)</span></label><br>
                                 </div>
                             </div>
 
@@ -413,21 +410,21 @@
                                 </p>
 
                                   <input type="radio" id="yesvax" name="vax" value="Yes">
-                                  <label for="vax" class="label-english">Yes <span>(Oo)</span></label><br>
+                                  <label for="yesvax" class="label-english">Yes <span>(Oo)</span></label><br>
                                 <div class="divider-choices"></div>
                                   <input type="radio" id="novax" name="vax" value="No">
-                                  <label for="vax" class="label-english">No <span>(Hindi)</span></label><br>
+                                  <label for="novax" class="label-english">No <span>(Hindi)</span></label><br>
                             </div>
                             <div>
                                 <p class="label-english" class="label-english">If not, are you willing to be vaccinated if given the chance?
                                     &emsp;<span>Kung hindi, may kagustuhan ka ba mabakuna kapag nagkaroon ng pagkakataon?</span>
                                 </p>
                                 <div class="radial-row">
-                                      <input type="radio" id="yeswilling" name="willing" value="Yes">
-                                      <label for="willing" class="label-english">Yes <span>(Oo)</span></label><br>
+                                      <input type="radio" id="yeswilling" name="willing" value="Yes" required>
+                                      <label for="yeswilling" class="label-english">Yes <span>(Oo)</span></label><br>
                                     <div class="divider-choices"></div>
                                       <input type="radio" id="nowilling" name="willing" value="No">
-                                      <label for="willing" class="label-english">No <span>(Hindi)</span></label><br>
+                                      <label for="nowilling" class="label-english">No <span>(Hindi)</span></label><br>
                                 </div>
                             </div>
                             <br>
@@ -446,7 +443,7 @@
                             </div>
                             <div>
                                 <label for="vstatus" class="label-english">What is your Vaccine Status?&emsp;<span>Ano ang istatus ng iyong bakuna?</span> </label>
-                                <select name="vstatus" class="dropdown">
+                                <select name="vstatus" class="dropdown" required >
                                     <option value="Not Vaccinated">Not Vaccinated</option>
                                     <option value="First Dose">First Dose</option>
                                     <option value="Second Dose">Second Dose</option>
@@ -456,31 +453,32 @@
                         </div>
                     </div>
                 </div>
-                <input class="submitbtn" type="Submit" name="Survey" value="Survey">
-
+                <div class="buttons">
+                    <button id = "backButton" type = "button" onclick="prev()" class="previous">Back</button>
+                    <div class="divider"></div>
+                    <button id="submitButton" type="button" onclick="next()" class="next">Proceed</button>
+                </div>
+                <button type="submit" value="submit">Submit</button>
             </form>
         </div>
 
         <!-- remove back in first tab, replace proceed in the last tab with submit-->
-        <div class="buttons">
-            <button onclick="prev()" class="previous">Back</button>
-            <div class="divider"></div>
-            <button onclick="next()" class="next">Proceed</button>
-        </div>
+
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script type="text/javascript">
-                function siblingSelection(times) {
-                    $("#clonecontainer").html('');
-                    for (var i = 1; i < times; i++) {
-                        var clons = $(".original").first().clone();
-                        $("#clonecontainer").append(clons);
-                    }
-                }
+                        function siblingSelection(times) {
+                            $("#clonecontainer").html('');
+                            for (var i = 1; i < times; i++) {
+                                var clons = $(".original").first().clone();
+                                $("#clonecontainer").append(clons);
+                            }
+                        }
 
         </script>
         <script>
             var counter = 0;
+            var tabs = ["Info", "Details", "Contact", "Family", "Survey", "Vaccination"];
             function showTab(evt, tabName) {
                 var i, tabcontent, tablinks;
                 tabcontent = document.getElementsByClassName("tabcontent");
@@ -490,13 +488,40 @@
                 tablinks = document.getElementsByClassName("tablinks");
                 for (i = 0; i < tablinks.length; i++) {
                     tablinks[i].className = tablinks[i].className.replace(" active", "");
+
                 }
                 document.getElementById(tabName).style.display = "block";
                 evt.currentTarget.className += " active";
+                counter = tabs.indexOf(tabName);
+
+                if (counter == 5) {
+                    document.getElementById("submitButton").type = "submit";
+                    document.getElementById("submitButton").innerHTML = "Submit";
+                    document.getElementById('backButton').style.visibility = 'visible';
+
+                } else if (counter != 5) {
+                    if (counter == 0) {
+                        document.getElementById('backButton').style.visibility = 'hidden';
+                    } else {
+                        document.getElementById('backButton').style.visibility = 'visible';
+                    }
+                    document.getElementById("submitButton").type = "button";
+                    document.getElementById("submitButton").innerHTML = "Proceed";
+                }
+                console.log(tabName);
+                console.log(counter);
             }
 
             function next() {
-                counter = (counter + 1) % 5;
+                counter = (counter + 1) % 6;
+                if (counter == 5) {
+                    document.getElementById("submitButton").type = "submit";
+                    document.getElementById("submitButton").innerHTML = "Submit";
+                } else if (counter != 5) {
+                    document.getElementById("submitButton").type = "button";
+                    document.getElementById("submitButton").innerHTML = "Proceed";
+                }
+                document.getElementById('backButton').style.visibility = 'visible';
                 var i, tabcontent, tablinks;
                 tabcontent = document.getElementsByClassName("tabcontent");
                 for (i = 0; i < tabcontent.length; i++) {
@@ -511,13 +536,23 @@
                     tablinks[i].className = tablinks[i].className.replace(" active", "");
                 }
                 tablinks[counter].className += " active";
+
+                console.log(tabName);
+                console.log(counter);
                 document.getElementByClassName("tabcontent").style.display = "block";
+
             }
 
             function prev() {
-                counter = (counter - 1) % 5;
-                if (counter == -1)
-                    counter = 2;
+                counter = (counter - 1) % 6;
+                if (counter == 0) {
+                    document.getElementById('backButton').style.visibility = 'hidden';
+                } else {
+                    document.getElementById('backButton').style.visibility = 'visible';
+                }
+                document.getElementById("submitButton").type = "button";
+                document.getElementById("submitButton").innerHTML = "Proceed";
+
                 var i, tabcontent, tablinks;
                 tabcontent = document.getElementsByClassName("tabcontent");
                 for (i = 0; i < tabcontent.length; i++) {
@@ -532,7 +567,10 @@
                     tablinks[i].className = tablinks[i].className.replace(" active", "");
                 }
                 tablinks[counter].className += " active";
+                console.log(tabName);
+                console.log(counter);
                 document.getElementByClassName("tabcontent").style.display = "block";
+
             }
 
             // Get the element with id="defaultOpen" and click on it
