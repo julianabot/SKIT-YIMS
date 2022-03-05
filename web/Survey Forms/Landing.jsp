@@ -9,7 +9,7 @@
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>
     <body>
-        <!--HEADER-->
+        <!--Header-->
         <nav>
             <input id="nav-toggle" type="checkbox">
             <img src="../img/SK_Logo.png" class="header-logo">
@@ -18,8 +18,8 @@
             <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>
 
             <ul class="links">
-                <li class="About"><a href="../Welcome.jsp">Home</a></li>
-                <li class="Login"><a href="../Account/Login.jsp" id="Login">Log In</a></li>
+                <li class="Home"><a href="../Welcome.jsp">Home</a></li>
+                <li class="Login"><a href="Account/Login.jsp" id="Login">Login</a></li>
             </ul>
             <label for="nav-toggle" class="icon-burger">
                 <div class="line"></div>

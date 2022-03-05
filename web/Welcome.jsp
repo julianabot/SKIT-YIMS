@@ -75,12 +75,13 @@
                 </div>
 
                 <!-- Next and previous buttons -->
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                
 
                 <!-- Image text -->
                 <div class="caption-container">
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                     <p id="caption"></p>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
                 </div>
 
                 <!-- Thumbnail images -->
@@ -209,15 +210,15 @@
                 <p class="f-content"><br> <br>47 Kalayaan Avenue, Diliman, Quezon City 1101 Philippines</p>
             </div>
             <div class="Flex-Footer-Content" id="Links">
-                <p class="label">LINKS</p>
-                <a href="#About"class="f-content">About<br></a>
-                <a href="#Hero-Section"class="f-content">Home<br></a>
-                <a href="https://www.facebook.com/skibayotipas" target="_blank" class="f-content">Facebook<br> </a>
+                <p class="label" id="links-label">LINKS</p>
+                <a href="#About-Section"class="f-content">About</a>
+                <a href="#Hero-Section"class="f-content">Home</a>
+                <a href="https://www.facebook.com/skibayotipas" target="_blank" class="f-content">Facebook </a>  
                 <a href="Survey Forms/Landing.jsp" class="f-content">Survey</a>
             </div>
             <div class="Flex-Footer-Content" id="Email-Us">
                 <p class="label">EMAIL US</p>
-                <p class="f-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+                <p class="f-content">For feedback and suggestions, feel free to reach out to us using the e-mail below.</p>
                 <a class="f-content" id="mock-email-button" href="mailto:maxinehuy@gmail.com">Send Email</a>
             </div>
         </section>
