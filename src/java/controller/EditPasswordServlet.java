@@ -13,9 +13,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-public class LoginServlet extends HttpServlet {
+public class EditPasswordServlet extends HttpServlet {
 
     Connection conn;
     String checkException;
@@ -25,7 +24,7 @@ public class LoginServlet extends HttpServlet {
 
         try {
             Class.forName(config.getInitParameter("jdbcClassName"));
-            String username = config.getInitParameter("dbUsername");
+            String username = config.getInitParameter("dbUserName");
             String password = config.getInitParameter("dbPassword");
             StringBuffer url = new StringBuffer(config.getInitParameter("jdbcDriverURL"))
                     .append("://")
@@ -51,13 +50,14 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");
+            out.println("<title>Servlet EditProfile</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet EditProfile at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -73,54 +73,53 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            //Captcha
-            String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
-            System.out.println(gRecaptchaResponse);
-            boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
 
-            String username = request.getParameter("uname");
-            String password = request.getParameter("password");
+            String password = "string", currpass, newpass, confpass, username;
+            currpass = request.getParameter("currpass");
+            newpass = request.getParameter("newpass");
+            confpass = request.getParameter("confpass");
+            username = request.getParameter("username");
 
-            String iUsername = null, iPassword = null, iName = null, iRole = null;
             checkException = null;
-            String query = "SELECT * FROM admin WHERE username = ?";
+            String query = "SELECT username, password FROM `admin-info` WHERE username = ? AND password = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
+            String oldEncryptedPassword = Security.encrypt(currpass);
+            String currpassword1 = Security.encrypt(currpass);
+
             stmt.setString(1, username);
+            stmt.setString(2, oldEncryptedPassword);
+
+            ResultSet rec = stmt.executeQuery();
+
+            while (!rec.next()) {
+                request.setAttribute("update", "Incorrrect current password");
+                request.getRequestDispatcher("Account/EditProfile.jsp").forward(request, response);
+            }
+
             ResultSet records = stmt.executeQuery();
 
             while (records.next()) {
-                iUsername = records.getString(1);
-                iPassword = records.getString(2);
-                iName = records.getString(3);
-                iRole = records.getString(4);
-
-                //Encrypting the password
-                String ePassword = Security.decrypt(iPassword);
-                iPassword = ePassword;
+                password = records.getString(1);
             }
 
-            if (username.equals(iUsername) && verify ) {
-                if (password.equals(iPassword)) {
-                    HttpSession session = request.getSession();
+            if (newpass.equals(confpass) && password.equals(currpassword1)) {
+                String newEncryptedPass = Security.encrypt(newpass);
+                String insertQuery = "UPDATE `admin-info` SET password = ? WHERE username = ?";
+                PreparedStatement ins = conn.prepareStatement(insertQuery);
+                ins.setString(1, newEncryptedPass);
+                ins.setString(2, username);
 
-                    session.setAttribute("username", iUsername);
-                    session.setAttribute("password", iPassword);
-                    session.setAttribute("name", iName);
-                    session.setAttribute("role", iRole);
+                ins.executeUpdate();
 
-                    request.getRequestDispatcher("Account/AccountInformation.jsp").forward(request, response);
+                request.setAttribute("update", "You have successfully changed your password.");
+                request.getRequestDispatcher("Account/AccountInformation.jsp").forward(request, response);
 
-                } else {
-                    request.setAttribute("errorLogin", "Wrong password! Try again.");
-                    request.getRequestDispatcher("Account/Login.jsp").forward(request, response);
-                }
             } else {
-                request.setAttribute("errorLogin", "Username does not exist.");
-                request.getRequestDispatcher("Account/Login.jsp").forward(request, response);
+                request.setAttribute("update", "Incorrrect confirm password");
+                request.getRequestDispatcher("Account/AccountInformation.jsp").forward(request, response);
             }
-
         } catch (Exception e) {
-            request.setAttribute("errorLogin", checkException);
+            request.setAttribute("update", checkException);
             request.getRequestDispatcher("Account/AccountInformation.jsp").forward(request, response);
         }
     }

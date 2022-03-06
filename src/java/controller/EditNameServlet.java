@@ -7,7 +7,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Properties;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,10 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class LoginServlet extends HttpServlet {
+public class EditNameServlet extends HttpServlet {
 
     Connection conn;
-    String checkException;
+    String errorEdit;
 
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
@@ -36,12 +35,11 @@ public class LoginServlet extends HttpServlet {
                     .append(config.getInitParameter("databaseName"));
             conn
                     = DriverManager.getConnection(url.toString(), username, password);
+            conn.setAutoCommit(true);
         } catch (SQLException sqle) {
-            checkException = sqle.getMessage();
             System.out.println("SQLException error occured - "
                     + sqle.getMessage());
         } catch (ClassNotFoundException nfe) {
-            checkException = nfe.getMessage();
             System.out.println("ClassNotFoundException error occured - "
                     + nfe.getMessage());
         }
@@ -51,13 +49,14 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");
+            out.println("<title>Servlet EditProfile</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet EditProfile at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -73,54 +72,24 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            //Captcha
-            String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
-            System.out.println(gRecaptchaResponse);
-            boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
 
-            String username = request.getParameter("uname");
-            String password = request.getParameter("password");
+            String username = request.getParameter("username");
+            String editname = request.getParameter("editname");
 
-            String iUsername = null, iPassword = null, iName = null, iRole = null;
-            checkException = null;
-            String query = "SELECT * FROM admin WHERE username = ?";
-            PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setString(1, username);
-            ResultSet records = stmt.executeQuery();
+            HttpSession session = request.getSession();
 
-            while (records.next()) {
-                iUsername = records.getString(1);
-                iPassword = records.getString(2);
-                iName = records.getString(3);
-                iRole = records.getString(4);
+            String insertQuery = "UPDATE `admin-info` SET name = ? WHERE username = ?";
+            PreparedStatement ins = conn.prepareStatement(insertQuery);
+            ins.setString(1, editname);
+            ins.setString(2, username);
+            session.setAttribute("name", editname);
+            ins.executeUpdate();
 
-                //Encrypting the password
-                String ePassword = Security.decrypt(iPassword);
-                iPassword = ePassword;
-            }
-
-            if (username.equals(iUsername) && verify ) {
-                if (password.equals(iPassword)) {
-                    HttpSession session = request.getSession();
-
-                    session.setAttribute("username", iUsername);
-                    session.setAttribute("password", iPassword);
-                    session.setAttribute("name", iName);
-                    session.setAttribute("role", iRole);
-
-                    request.getRequestDispatcher("Account/AccountInformation.jsp").forward(request, response);
-
-                } else {
-                    request.setAttribute("errorLogin", "Wrong password! Try again.");
-                    request.getRequestDispatcher("Account/Login.jsp").forward(request, response);
-                }
-            } else {
-                request.setAttribute("errorLogin", "Username does not exist.");
-                request.getRequestDispatcher("Account/Login.jsp").forward(request, response);
-            }
+            request.setAttribute("update", "UPDATED NA");
+            request.getRequestDispatcher("Account/AccountInformation.jsp").forward(request, response);
 
         } catch (Exception e) {
-            request.setAttribute("errorLogin", checkException);
+            request.setAttribute("update", e);
             request.getRequestDispatcher("Account/AccountInformation.jsp").forward(request, response);
         }
     }

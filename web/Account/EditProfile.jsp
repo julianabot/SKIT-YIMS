@@ -3,8 +3,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="skLogo" type="image/png" href="img/SK_Logo.png"/>
-        <link href="Account/AccountCSS/AccountInformation.css" rel="stylesheet" type="text/css">
+        <link rel="skLogo" type="image/png" href="../img/SK_Logo.png"/>
+        <link href="../Account/AccountCSS/EditProfile.css" rel="stylesheet" type="text/css">
         <title>Profile Account</title>
     </head>
     <body>
@@ -63,20 +63,28 @@
                     <p class="displayed-info">Username:&emsp;${username}</p>
                 </div>
 
+                <p> ${update} ${errorEdit}</p>
+                <form action = "../EditNameServlet" method = "POST">
+                    <div class="underline">
+                        <p class="displayed-info-name">Name:&emsp;${name}</p>
+                        <input type="Submit" name="savechanges" value="Save" class="edit">
+                    </div>
+                    <input type="hidden" name="username" value ="${username}" class="input">
+                    <input type="text" name="editname" placeholder="Enter New Name" required class="input-change"><br>
+                </form>
 
-                <div class="underline">
-                    <p class="displayed-info-name">Name:&emsp;${name}</p>
-                    <input type="button" value="Edit" class="edit" onclick="window.location = 'Account/EditProfile.jsp'">
-                </div>
+                <p> ${update}</p>
+                <form action = "../EditPasswordServlet" method = "POST">
+                    <div class="underline">
+                        <p class="displayed-info-pass">Password:</p>                 
+                        <input type="Submit" value="Save" name="savechanges" class="edit" minlength="8">
+                    </div>
+                    <input type="hidden" name="username" value ="${uUsername}" class="input">
+                    <input type="password" name="currpass" placeholder="Enter Current Password"  minlength="8" required class="input-change"><br>
+                    <input type="password" name="newpass" placeholder="Enter New Password"  minlength="8" required required class="input-change"><br>
+                    <input type="password" name="confpass" placeholder="Enter Confirm New Password"  minlength="8" required required class="input-change"><br>
+                </form>
 
-                <div class="underline">
-                    <p class="displayed-info-pass">Password:</p>
-                    <input type="button" value="Edit" class="edit" minlength="8" onclick="window.location = 'Account/EditProfile.jsp'"></button>
-                </div>
-
-                <div class="underline">
-                    <p class="displayed-info">${update}</p>
-                </div>
             </div>
         </div>
     </body>
