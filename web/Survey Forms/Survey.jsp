@@ -456,9 +456,9 @@
                 <div class="buttons">
                     <button id = "backButton" type = "button" onclick="prev()" class="previous">Back</button>
                     <div class="divider"></div>
-                    <button id="submitButton" type="button" onclick="next()" class="next">Proceed</button>
+                    <button id="nextButton" type="button" onclick="next()" class="next">Proceed</button>
+                    <button id="submitButton" type="submit" value="submit" class = "next">Submit</button>
                 </div>
-                <button type="submit" value="submit">Submit</button>
             </form>
         </div>
 
@@ -495,18 +495,17 @@
                 counter = tabs.indexOf(tabName);
 
                 if (counter == 5) {
-                    document.getElementById("submitButton").type = "submit";
-                    document.getElementById("submitButton").innerHTML = "Submit";
+                    document.getElementById('nextButton').style.visibility = 'hidden';
+                    document.getElementById("submitButton").style.visibility = 'visible';
                     document.getElementById('backButton').style.visibility = 'visible';
-
                 } else if (counter != 5) {
                     if (counter == 0) {
                         document.getElementById('backButton').style.visibility = 'hidden';
                     } else {
                         document.getElementById('backButton').style.visibility = 'visible';
                     }
-                    document.getElementById("submitButton").type = "button";
-                    document.getElementById("submitButton").innerHTML = "Proceed";
+                    document.getElementById("nextButton").style.visibility = 'visible';
+                    document.getElementById("submitButton").style.visibility = 'hidden';
                 }
                 console.log(tabName);
                 console.log(counter);
@@ -515,11 +514,9 @@
             function next() {
                 counter = (counter + 1) % 6;
                 if (counter == 5) {
-                    document.getElementById("submitButton").type = "submit";
-                    document.getElementById("submitButton").innerHTML = "Submit";
-                } else if (counter != 5) {
-                    document.getElementById("submitButton").type = "button";
-                    document.getElementById("submitButton").innerHTML = "Proceed";
+                    document.getElementById("submitButton").style.visibility = 'visible';
+                    document.getElementById("nextButton").style.visibility = 'hidden';
+                    document.getElementById('backButton').style.visibility = 'visible';
                 }
                 document.getElementById('backButton').style.visibility = 'visible';
                 var i, tabcontent, tablinks;
@@ -547,11 +544,11 @@
                 counter = (counter - 1) % 6;
                 if (counter == 0) {
                     document.getElementById('backButton').style.visibility = 'hidden';
+                    document.getElementById("submitButton").style.visibility = 'hidden';
                 } else {
                     document.getElementById('backButton').style.visibility = 'visible';
                 }
-                document.getElementById("submitButton").type = "button";
-                document.getElementById("submitButton").innerHTML = "Proceed";
+                document.getElementById("submitButton").style.visibility = 'hidden';
 
                 var i, tabcontent, tablinks;
                 tabcontent = document.getElementsByClassName("tabcontent");
@@ -570,7 +567,6 @@
                 console.log(tabName);
                 console.log(counter);
                 document.getElementByClassName("tabcontent").style.display = "block";
-
             }
 
             // Get the element with id="defaultOpen" and click on it
