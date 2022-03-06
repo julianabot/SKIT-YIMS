@@ -3,6 +3,11 @@
     font-family: 'Montserrat';
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 50px;
+}
+
 /*NAVBAR*/
 nav{
     position: fixed;
@@ -12,7 +17,7 @@ nav{
     top: 0;
     font-family: Montserrat;
     font-weight: 900;
-    height: 7%;
+    height: 46px;
     background-color: #8B3535;
     padding: 0.5%;
 }
@@ -25,6 +30,7 @@ nav{
     padding: 0;
     display: inline-block;
     vertical-align:middle;
+
 }
 
 nav .logo{
@@ -50,7 +56,7 @@ nav .links{
     align-items: center;
 }
 
-nav .links ul{
+nav .links{
     width: 20%;
 }
 
@@ -118,7 +124,7 @@ nav .icon-burger .line{
         z-index: 9;
         left: 0;
         right: 0;
-        top: 7%;
+        top: 60px;
         bottom: 100%;
         width: auto;
         height: auto;
@@ -134,7 +140,7 @@ nav .icon-burger .line{
     }    
     nav :checked ~ .links{
         bottom: 0;
-        top: 7%;
+        top: 60px;
     }
     nav .icon-burger{
         display: block; 
@@ -153,6 +159,7 @@ nav .icon-burger .line{
 @media (max-width: 600px){
     #SK-Text-NavBar{
         display: none;
+
     }
 }
 
