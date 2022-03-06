@@ -74,12 +74,12 @@
                 </form>
 
                 <p> ${update}</p>
-                <form action = "../EditPasswordServlet" method = "POST">
+                <form action = "../PasswordServlet" method = "POST">
                     <div class="underline">
                         <p class="displayed-info-pass">Password:</p>                 
                         <input type="Submit" value="Save" name="savechanges" class="edit" minlength="8">
                     </div>
-                    <input type="hidden" name="username" value ="${uUsername}" class="input">
+                    <input type="hidden" name="username" value ="${username}" class="input">
                     <input type="password" name="currpass" placeholder="Enter Current Password"  minlength="8" required class="input-change"><br>
                     <input type="password" name="newpass" placeholder="Enter New Password"  minlength="8" required required class="input-change"><br>
                     <input type="password" name="confpass" placeholder="Enter Confirm New Password"  minlength="8" required required class="input-change"><br>

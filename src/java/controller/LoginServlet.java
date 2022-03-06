@@ -83,7 +83,7 @@ public class LoginServlet extends HttpServlet {
 
             String iUsername = null, iPassword = null, iName = null, iRole = null;
             checkException = null;
-            String query = "SELECT * FROM admin WHERE username = ?";
+            String query = "SELECT * FROM `admin-info` WHERE username = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, username);
             ResultSet records = stmt.executeQuery();
@@ -121,7 +121,7 @@ public class LoginServlet extends HttpServlet {
 
         } catch (Exception e) {
             request.setAttribute("errorLogin", checkException);
-            request.getRequestDispatcher("Account/AccountInformation.jsp").forward(request, response);
+            request.getRequestDispatcher("Account/Login.jsp").forward(request, response);
         }
     }
 

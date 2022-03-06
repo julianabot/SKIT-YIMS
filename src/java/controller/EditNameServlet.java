@@ -18,6 +18,8 @@ public class EditNameServlet extends HttpServlet {
 
     Connection conn;
     String errorEdit;
+    String connectURL;
+
 
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
@@ -35,6 +37,7 @@ public class EditNameServlet extends HttpServlet {
                     .append(config.getInitParameter("databaseName"));
             conn
                     = DriverManager.getConnection(url.toString(), username, password);
+             connectURL = url.toString();
             conn.setAutoCommit(true);
         } catch (SQLException sqle) {
             System.out.println("SQLException error occured - "
@@ -85,7 +88,7 @@ public class EditNameServlet extends HttpServlet {
             session.setAttribute("name", editname);
             ins.executeUpdate();
 
-            request.setAttribute("update", "UPDATED NA");
+            request.setAttribute("update", connectURL);
             request.getRequestDispatcher("Account/AccountInformation.jsp").forward(request, response);
 
         } catch (Exception e) {
