@@ -35,7 +35,39 @@
     </div>
     <div class ="form-group">
         <label>Age Group</label>
-        <input type="text" class="form-control" name ="age" value = "<%= res.getString("agegroup")%>"/>
+        <select name="age" class="age-select">
+            <%
+                if (res.getString("agegroup").equals("14 years old and below")) {
+            %>        
+            <option value="14 years old and below" selected = "selected">14 years old and below</option>
+            <option value="15-20 years old">15-20 years old</option>
+            <option value="21-30 years old">21-30 years old</option>
+            <option value="31 years old and above">31 years old and above</option>  
+            <%
+            } else if (res.getString("agegroup").equals("15-20 years old")) {
+            %>        
+            <option value="14 years old and below">14 years old and below</option>
+            <option value="15-20 years old"  selected = "selected">15-20 years old</option>
+            <option value="21-30 years old">21-30 years old</option>
+            <option value="31 years old and above">31 years old and above</option>
+            <%
+            } else if (res.getString("agegroup").equals("21-30 years old")) {
+            %>
+            <option value="14 years old and below">14 years old and below</option>
+            <option value="15-20 years old">15-20 years old</option>
+            <option value="21-30 years old" selected = "selected">21-30 years old</option>
+            <option value="31 years old and above">31 years old and above</option>
+            <%
+            } else {
+            %>
+            <option value="14 years old and below">14 years old and below</option>
+            <option value="15-20 years old">15-20 years old</option>
+            <option value="21-30 years old">21-30 years old</option>
+            <option value="31 years old and above" selected = "selected">31 years old and above</option
+            <%
+                }
+            %>
+        </select>
     </div>
     <div class ="form-group">
         <label>Birthday</label>
@@ -47,7 +79,21 @@
     </div>
     <div class ="form-group">
         <label>Gender</label>
-        <input type="text" class="form-control" name ="gender" value = "<%= res.getString("gender")%>"/>
+        <select name="gender" class="age-select">
+            <%
+                if (res.getString("gender").equals("Male(Lalaki)")) {
+            %>         
+            <option value="Male(Lalaki)" selected = "selected">Male(Lalaki)</option>
+            <option value="Female (Babae)">Female (Babae)</option>  
+            <%
+            } else if (res.getString("gender").equals("Female (Babae)")) {
+            %>        
+            <option value="Male(Lalaki)">Male(Lalaki)</option>
+            <option value="Female (Babae)"  selected = "selected">Female (Babae)</option>
+            <%
+                }
+            %>
+        </select>
     </div>
     <div class ="form-group">
         <label>valid ID</label>
@@ -109,11 +155,39 @@
     </div>
     <div class ="form-group">
         <label>Vital Status of Mother</label>
-        <input type="text" class="form-control" name ="vitalStatusMother" value = "<%= res.getString("vitalStatusMother")%>"/>
+        <select name="vitalStatusMother" class="age-select">
+            <%
+                if (res.getString("vitalStatusMother").equals("Living")) {
+            %>         
+            <option value="Living" selected = "selected">Living</option>
+            <option value="Deceased">Deceased</option>  
+            <%
+            } else {
+            %>        
+            <option value="Living">Living</option>
+            <option value="Deceased"  selected = "selected">Deceased</option>
+            <%
+                }
+            %>
+        </select>
     </div>
     <div class ="form-group">
         <label>Vital Status of Father</label>
-        <input type="text" class="form-control" name ="vitalStatusFather" value = "<%= res.getString("vitalStatusFather")%>"/>
+        <select name="vitalStatusFather" class="age-select">
+            <%
+                if (res.getString("vitalStatusFather").equals("Living")) {
+            %>         
+            <option value="Living" selected = "selected">Living</option>
+            <option value="Deceased">Deceased</option>  
+            <%
+            } else {
+            %>        
+            <option value="Living">Living</option>
+            <option value="Deceased"  selected = "selected">Deceased</option>
+            <%
+                }
+            %>
+        </select>
     </div>
     <div class ="form-group">
         <label>Number of Siblings</label>
@@ -142,11 +216,39 @@
     <input type ="hidden" name ="organizationID" value = "<%= res.getString("organizationID")%>"/>
     <div class ="form-group">
         <label>Resident Voter</label>
-        <input type="text" class="form-control" name ="residentVoter" value = "<%= res.getString("residentVoter")%>"/>
+        <select name="residentVoter" class="age-select">
+            <%
+                if (res.getString("residentVoter").equals("Yes")) {
+            %>         
+            <option value="Yes" selected = "selected">Yes</option>
+            <option value="No">No</option>  
+            <%
+            } else {
+            %>        
+            <option value="Yes">Yes</option>
+            <option value="No"  selected = "selected">No</option>
+            <%
+                }
+            %>
+        </select>
     </div>
     <div class ="form-group">
         <label>Member of an Organization</label>
-        <input type="text" class="form-control" name ="memberOfOrg" value = "<%= res.getString("memberOfOrg")%>"/>
+        <select name="memberOfOrg" class="age-select">
+            <%
+                if (res.getString("memberOfOrg").equals("Yes")) {
+            %>         
+            <option value="Yes" selected = "selected">Yes</option>
+            <option value="No">No</option>  
+            <%
+            } else {
+            %>        
+            <option value="Yes">Yes</option>
+            <option value="No"  selected = "selected">No</option>
+            <%
+                }
+            %>
+        </select>
     </div>
     <div class ="form-group">
         <label>Name of Organization</label>
@@ -154,7 +256,29 @@
     </div>
     <div class ="form-group">
         <label>Support SK</label>
-        <input type="text" class="form-control" name ="supportSK" value = "<%= res.getString("supportSK")%>"/>
+        <select name="supportSK" class="age-select">
+            <%
+                if (res.getString("supportSK").equals("Yes")) {
+            %>         
+            <option value="Yes" selected = "selected">Yes</option>
+            <option value="No">No</option>
+            <option value="Maybe">Maybe</option>  
+            <%
+            } else if (res.getString("supportSK").equals("No")) {
+            %>        
+            <option value="Yes">Yes</option>
+            <option value="No"  selected = "selected">No</option>
+            <option value="Maybe">Maybe</option>  
+            <%
+            } else {
+            %>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            <option value="Maybe"  selected = "selected">Maybe</option>
+            <%
+                }
+            %>
+        </select>
     </div>
     <div class ="form-group">
         <label>Show of support to SK</label>
@@ -183,15 +307,187 @@
     <input type ="hidden" name ="statusID" value = "<%= res.getString("statusID")%>"/>
     <div class ="form-group">
         <label>Civil Status</label>
-        <input type="text" class="form-control" name ="civilStatus" value = "<%= res.getString("civilStatus")%>"/>
+        <select name="civilStatus" class="age-select">
+            <%
+                if (res.getString("civilStatus").equals("Single")) {
+            %>         
+            <option value="Single"  selected = "selected">Single</option>
+            <option value="Married">Married</option>
+            <option value="Widowed">Widowed</option>
+            <%
+            } else if (res.getString("civilStatus").equals("Married")) {
+            %>        
+            <option value="Single">Single</option>
+            <option value="Married"  selected = "selected">Married</option>
+            <option value="Widowed">Widowed</option> 
+            <%
+            } else {
+            %>
+            <option value="Single">Single</option>
+            <option value="Married">Married</option>
+            <option value="Widowed">Widowed</option> 
+            <%
+                }
+            %>
+        </select>
     </div>
     <div class ="form-group">
         <label>Working Status</label>
-        <input type="text" class="form-control" name ="workingStatus" value = "<%= res.getString("workingStatus")%>"/>
+        <select name="workingStatus" class="age-select">
+            <%
+                if (res.getString("workingStatus").equals("Full-Time Student")) {
+            %>         
+            <option value="Full-Time Student" selected = "selected">Full-Time Student</option>
+            <option value="Working Student">Working Student</option>
+            <option value="Out of School Youth">Out of School Youth</option>
+            <option value="Working/Employed">Working/Employed</option>
+            <option value="Unemployed">Unemployed</option>
+            <option value="Currently Looking For a Job">Currently Looking For a Job</option>
+            <%
+            } else if (res.getString("workingStatus").equals("Working Student")) {
+            %>        
+            <option value="Full-Time Student">Full-Time Student</option>
+            <option value="Working Student"  selected = "selected">Working Student</option>
+            <option value="Out of School Youth">Out of School Youth</option>
+            <option value="Working/Employed">Working/Employed</option>
+            <option value="Unemployed">Unemployed</option>
+            <option value="Currently Looking For a Job">Currently Looking For a Job</option>
+            <%
+            } else if (res.getString("workingStatus").equals("Out of School Youth")) {
+            %>        
+            <option value="Full-Time Student">Full-Time Student</option>
+            <option value="Working Student">Working Student</option>
+            <option value="Out of School Youth"   selected = "selected">Out of School Youth</option>
+            <option value="Working/Employed">Working/Employed</option>
+            <option value="Unemployed">Unemployed</option>
+            <option value="Currently Looking For a Job">Currently Looking For a Job</option>
+            <%
+            } else if (res.getString("workingStatus").equals("Working/Employed")) {
+            %>        
+            <option value="Full-Time Student">Full-Time Student</option>
+            <option value="Working Student">Working Student</option>
+            <option value="Out of School Youth">Out of School Youth</option>
+            <option value="Working/Employed" selected = "selected">Working/Employed</option>
+            <option value="Unemployed">Unemployed</option>
+            <option value="Currently Looking For a Job">Currently Looking For a Job</option>
+            <%
+            } else if (res.getString("workingStatus").equals("Unemployed")) {
+            %>        
+            <option value="Full-Time Student">Full-Time Student</option>
+            <option value="Working Student">Working Student</option>
+            <option value="Out of School Youth">Out of School Youth</option>
+            <option value="Working/Employed">Working/Employed</option>
+            <option value="Unemployed" selected = "selected">Unemployed</option>
+            <option value="Currently Looking For a Job">Currently Looking For a Job</option>
+            <%
+            } else {
+            %>
+            <option value="Full-Time Student">Full-Time Student</option>
+            <option value="Working Student">Working Student</option>
+            <option value="Out of School Youth">Out of School Youth</option>
+            <option value="Working/Employed">Working/Employed</option>
+            <option value="Unemployed">Unemployed</option>
+            <option value="Currently Looking For a Job" selected = "selected">Currently Looking For a Job</option>
+            <%
+                }
+            %>
+        </select>
     </div>
     <div class ="form-group">
         <label>Education Attainment</label>
-        <input type="text" class="form-control" name ="educationAttainment" value = "<%= res.getString("educationAttainment")%>"/>
+        <select name="educationAttainment" class="age-select">
+            <%
+                if (res.getString("educationAttainment").equals("Elementary Level")) {
+            %>         
+            <option value="Elementary Level" selected = "selected">Elementary Level</option>
+            <option value="Elementary Graduate">Elementary Graduate</option>
+            <option value="Junior High School Level">Junior High School Level</option>
+            <option value="Junior High School Graduate">Junior High School Graduate</option>
+            <option value="Senior High School Level">Senior High School Level</option>
+            <option value="Senior High School Graduate">Senior High School Graduate</option>
+            <option value="College Level">College Level</option>
+            <option value="College Graduate">College Graduate</option>
+            <%
+            } else if (res.getString("educationAttainment").equals("Elementary Graduate")) {
+            %>        
+            <option value="Elementary Level">Elementary Level</option>
+            <option value="Elementary Graduate" selected = "selected">Elementary Graduate</option>
+            <option value="Junior High School Level">Junior High School Level</option>
+            <option value="Junior High School Graduate">Junior High School Graduate</option>
+            <option value="Senior High School Level">Senior High School Level</option>
+            <option value="Senior High School Graduate">Senior High School Graduate</option>
+            <option value="College Level">College Level</option>
+            <option value="College Graduate">College Graduate</option>
+            <%
+            } else if (res.getString("educationAttainment").equals("Junior High School Level")) {
+            %>        
+            <option value="Elementary Level">Elementary Level</option>
+            <option value="Elementary Graduate">Elementary Graduate</option>
+            <option value="Junior High School Level" selected = "selected">Junior High School Level</option>
+            <option value="Junior High School Graduate">Junior High School Graduate</option>
+            <option value="Senior High School Level">Senior High School Level</option>
+            <option value="Senior High School Graduate">Senior High School Graduate</option>
+            <option value="College Level">College Level</option>
+            <option value="College Graduate">College Graduate</option>
+            <%
+            } else if (res.getString("educationAttainment").equals("Junior High School Graduate")) {
+            %>        
+            <option value="Elementary Level">Elementary Level</option>
+            <option value="Elementary Graduate">Elementary Graduate</option>
+            <option value="Junior High School Level">Junior High School Level</option>
+            <option value="Junior High School Graduate" selected = "selected">Junior High School Graduate</option>
+            <option value="Senior High School Level">Senior High School Level</option>
+            <option value="Senior High School Graduate">Senior High School Graduate</option>
+            <option value="College Level">College Level</option>
+            <option value="College Graduate">College Graduate</option>
+            <%
+            } else if (res.getString("educationAttainment").equals("Senior High School Level")) {
+            %>        
+            <option value="Elementary Level">Elementary Level</option>
+            <option value="Elementary Graduate">Elementary Graduate</option>
+            <option value="Junior High School Level">Junior High School Level</option>
+            <option value="Junior High School Graduate">Junior High School Graduate</option>
+            <option value="Senior High School Level" selected = "selected">Senior High School Level</option>
+            <option value="Senior High School Graduate">Senior High School Graduate</option>
+            <option value="College Level">College Level</option>
+            <option value="College Graduate">College Graduate</option>
+            <%
+            } else if (res.getString("educationAttainment").equals("Senior High School Graduate")) {
+            %>        
+            <option value="Elementary Level">Elementary Level</option>
+            <option value="Elementary Graduate">Elementary Graduate</option>
+            <option value="Junior High School Level">Junior High School Level</option>
+            <option value="Junior High School Graduate">Junior High School Graduate</option>
+            <option value="Senior High School Level">Senior High School Level</option>
+            <option value="Senior High School Graduate" selected = "selected">Senior High School Graduate</option>
+            <option value="College Level">College Level</option>
+            <option value="College Graduate">College Graduate</option>
+            <%
+            } else if (res.getString("educationAttainment").equals("College Level")) {
+            %>        
+            <option value="Elementary Level">Elementary Level</option>
+            <option value="Elementary Graduate">Elementary Graduate</option>
+            <option value="Junior High School Level">Junior High School Level</option>
+            <option value="Junior High School Graduate">Junior High School Graduate</option>
+            <option value="Senior High School Level">Senior High School Level</option>
+            <option value="Senior High School Graduate">Senior High School Graduate</option>
+            <option value="College Level" selected = "selected">College Level</option>
+            <option value="College Graduate">College Graduate</option>
+            <%
+            } else {
+            %>
+            <option value="Elementary Level">Elementary Level</option>
+            <option value="Elementary Graduate">Elementary Graduate</option>
+            <option value="Junior High School Level">Junior High School Level</option>
+            <option value="Junior High School Graduate">Junior High School Graduate</option>
+            <option value="Senior High School Level">Senior High School Level</option>
+            <option value="Senior High School Graduate">Senior High School Graduate</option>
+            <option value="College Level">College Level</option>
+            <option value="College Graduate" selected = "selected">College Graduate</option>
+            <%
+                }
+            %>
+        </select>
     </div>
     <div class ="form-group">
         <label>Job Employed</label>
@@ -199,7 +495,21 @@
     </div>
     <div class ="form-group">
         <label>PWD</label>
-        <input type="text" class="form-control" name ="PWD" value = "<%= res.getString("PWD")%>"/>
+        <select name="PWD" class="age-select">
+            <%
+                if (res.getString("PWD").equals("Yes")) {
+            %>         
+            <option value="Yes" selected = "selected">Yes</option>
+            <option value="No">No</option>  
+            <%
+            } else {
+            %>        
+            <option value="Yes">Yes</option>
+            <option value="No"  selected = "selected">No</option>
+            <%
+                }
+            %>
+        </select>
     </div>
     <div class ="form-group">
         <label>Type of Disability</label>
@@ -208,7 +518,7 @@
     <%
         }
     %>
-    
+
     <br>
     <br>
 
@@ -220,19 +530,219 @@
     <input type ="hidden" name ="vaccineID" value = "<%= res.getString("vaccineID")%>"/>
     <div class ="form-group">
         <label>Vaccinated</label>
-        <input type="text" class="form-control" name ="vaccinated" value = "<%= res.getString("vaccinated")%>"/>
+        <select name="vaccinated" class="age-select">
+            <%
+                if (res.getString("vaccinated").equals("N/A")) {
+            %>         
+            <option value="N/A" selected = "selected">N/A</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>  
+            <%
+            } else if (res.getString("vaccinated").equals("Yes")) {
+            %>        
+            <option value="N/A">N/A</option>
+            <option value="Yes" selected = "selected">Yes</option>
+            <option value="No">No</option>  
+            <%
+            } else {
+            %>
+            <option value="N/A">N/A</option>
+            <option value="Yes">Yes</option>
+            <option value="No" selected = "selected">No</option> 
+            <%
+                }
+            %>
+        </select>
     </div>
     <div class ="form-group">
         <label>Willing for Vaccine</label>
-        <input type="text" class="form-control" name ="willingForVaccine" value = "<%= res.getString("willingForVaccine")%>"/>
+        <select name="willingForVaccine" class="age-select">
+            <%
+                if (res.getString("willingForVaccine").equals("N/A")) {
+            %>         
+            <option value="N/A" selected = "selected">N/A</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>  
+            <%
+            } else if (res.getString("willingForVaccine").equals("Yes")) {
+            %>        
+            <option value="N/A">N/A</option>
+            <option value="Yes" selected = "selected">Yes</option>
+            <option value="No">No</option>  
+            <%
+            } else {
+            %>
+            <option value="N/A">N/A</option>
+            <option value="Yes">Yes</option>
+            <option value="No" selected = "selected">No</option> 
+            <%
+                }
+            %>
+        </select>
     </div>
     <div class ="form-group">
         <label>Brand of Vaccine</label>
-        <input type="text" class="form-control" name ="brandOfVaccine" value = "<%= res.getString("brandOfVaccine")%>"/>
+        <select name="brandOfVaccine" class="age-select">
+            <%
+                if (res.getString("brandOfVaccine").equals("N/A")) {
+            %>         
+            <option value="N/A" selected = "selected">N/A</option>
+            <option value="Pfizer-BioNTech">Pfizer-BioNTech</option>
+            <option value="Oxford-AstraZeneca">Oxford-AstraZeneca</option>
+            <option value="CoronaVac (Sinovac)">CoronaVac (Sinovac)</option>
+            <option value="Gamaleya Sputnik V">Gamaleya Sputnik V</option>
+            <option value="Johnson and Johnson's Janssen">Johnson and Johnson's Janssen</option>
+            <option value="Bharat BioTech">Bharat BioTech</option>
+            <option value="Moderna">Moderna</option>
+            <option value="Sinopharm">Sinopharm</option> 
+            <%
+            } else if (res.getString("brandOfVaccine").equals("Pfizer-BioNTech")) {
+            %>        
+            <option value="N/A">N/A</option>
+            <option value="Pfizer-BioNTech" selected = "selected">Pfizer-BioNTech</option>
+            <option value="Oxford-AstraZeneca">Oxford-AstraZeneca</option>
+            <option value="CoronaVac (Sinovac)">CoronaVac (Sinovac)</option>
+            <option value="Gamaleya Sputnik V">Gamaleya Sputnik V</option>
+            <option value="Johnson and Johnson's Janssen">Johnson and Johnson's Janssen</option>
+            <option value="Bharat BioTech">Bharat BioTech</option>
+            <option value="Moderna">Moderna</option>
+            <option value="Sinopharm">Sinopharm</option> 
+            <%
+            } else if (res.getString("brandOfVaccine").equals("Oxford-AstraZeneca")) {
+            %>
+            <option value="N/A">N/A</option>
+            <option value="Pfizer-BioNTech">Pfizer-BioNTech</option>
+            <option value="Oxford-AstraZeneca" selected = "selected">Oxford-AstraZeneca</option>
+            <option value="CoronaVac (Sinovac)">CoronaVac (Sinovac)</option>
+            <option value="Gamaleya Sputnik V">Gamaleya Sputnik V</option>
+            <option value="Johnson and Johnson's Janssen">Johnson and Johnson's Janssen</option>
+            <option value="Bharat BioTech">Bharat BioTech</option>
+            <option value="Moderna">Moderna</option>
+            <option value="Sinopharm">Sinopharm</option> 
+            <%
+            } else if (res.getString("brandOfVaccine").equals("CoronaVac (Sinovac)")) {
+            %>
+            <option value="N/A">N/A</option>
+            <option value="Pfizer-BioNTech">Pfizer-BioNTech</option>
+            <option value="Oxford-AstraZeneca">Oxford-AstraZeneca</option>
+            <option value="CoronaVac (Sinovac)" selected = "selected">CoronaVac (Sinovac)</option>
+            <option value="Gamaleya Sputnik V">Gamaleya Sputnik V</option>
+            <option value="Johnson and Johnson's Janssen">Johnson and Johnson's Janssen</option>
+            <option value="Bharat BioTech">Bharat BioTech</option>
+            <option value="Moderna">Moderna</option>
+            <option value="Sinopharm">Sinopharm</option> 
+            <%
+            } else if (res.getString("brandOfVaccine").equals("Gamaleya Sputnik V")) {
+            %>
+            <option value="N/A">N/A</option>
+            <option value="Pfizer-BioNTech">Pfizer-BioNTech</option>
+            <option value="Oxford-AstraZeneca">Oxford-AstraZeneca</option>
+            <option value="CoronaVac (Sinovac)">CoronaVac (Sinovac)</option>
+            <option value="Gamaleya Sputnik V" selected = "selected">Gamaleya Sputnik V</option>
+            <option value="Johnson and Johnson's Janssen">Johnson and Johnson's Janssen</option>
+            <option value="Bharat BioTech">Bharat BioTech</option>
+            <option value="Moderna">Moderna</option>
+            <option value="Sinopharm">Sinopharm</option> 
+            <%
+            } else if (res.getString("brandOfVaccine").equals("Johnson and Johnson's Janssen")) {
+            %>
+            <option value="N/A">N/A</option>
+            <option value="Pfizer-BioNTech">Pfizer-BioNTech</option>
+            <option value="Oxford-AstraZeneca">Oxford-AstraZeneca</option>
+            <option value="CoronaVac (Sinovac)">CoronaVac (Sinovac)</option>
+            <option value="Gamaleya Sputnik V">Gamaleya Sputnik V</option>
+            <option value="Johnson and Johnson's Janssen" selected = "selected">Johnson and Johnson's Janssen</option>
+            <option value="Bharat BioTech">Bharat BioTech</option>
+            <option value="Moderna">Moderna</option>
+            <option value="Sinopharm">Sinopharm</option> 
+            <%
+            } else if (res.getString("brandOfVaccine").equals("Bharat BioTech")) {
+            %>
+            <option value="N/A">N/A</option>
+            <option value="Pfizer-BioNTech">Pfizer-BioNTech</option>
+            <option value="Oxford-AstraZeneca">Oxford-AstraZeneca</option>
+            <option value="CoronaVac (Sinovac)">CoronaVac (Sinovac)</option>
+            <option value="Gamaleya Sputnik V">Gamaleya Sputnik V</option>
+            <option value="Johnson and Johnson's Janssen">Johnson and Johnson's Janssen</option>
+            <option value="Bharat BioTech" selected = "selected">Bharat BioTech</option>
+            <option value="Moderna">Moderna</option>
+            <option value="Sinopharm">Sinopharm</option> 
+            <%
+            } else if (res.getString("brandOfVaccine").equals("Moderna")) {
+            %>
+            <option value="N/A">N/A</option>
+            <option value="Pfizer-BioNTech">Pfizer-BioNTech</option>
+            <option value="Oxford-AstraZeneca">Oxford-AstraZeneca</option>
+            <option value="CoronaVac (Sinovac)">CoronaVac (Sinovac)</option>
+            <option value="Gamaleya Sputnik V">Gamaleya Sputnik V</option>
+            <option value="Johnson and Johnson's Janssen">Johnson and Johnson's Janssen</option>
+            <option value="Bharat BioTech">Bharat BioTech</option>
+            <option value="Moderna" selected = "selected">Moderna</option>
+            <option value="Sinopharm">Sinopharm</option> 
+            <%
+            } else {
+            %>
+            <option value="N/A">N/A</option>
+            <option value="Pfizer-BioNTech">Pfizer-BioNTech</option>
+            <option value="Oxford-AstraZeneca">Oxford-AstraZeneca</option>
+            <option value="CoronaVac (Sinovac)">CoronaVac (Sinovac)</option>
+            <option value="Gamaleya Sputnik V">Gamaleya Sputnik V</option>
+            <option value="Johnson and Johnson's Janssen">Johnson and Johnson's Janssen</option>
+            <option value="Bharat BioTech">Bharat BioTech</option>
+            <option value="Moderna">Moderna</option>
+            <option value="Sinopharm" selected = "selected">Sinopharm</option> 
+            <%
+                }
+            %>
+        </select>
     </div>
     <div class ="form-group">
         <label>Vaccine Status</label>
-        <input type="text" class="form-control" name ="vaccineStatus" value = "<%= res.getString("vaccineStatus")%>"/>
+        <select name="vaccineStatus" class="age-select">
+            <%
+                if (res.getString("vaccineStatus").equals("N/A")) {
+            %>         
+            <option value="N/A" selected = "selected">N/A</option>
+            <option value="Not Vaccinated">Not Vaccinated</option>
+            <option value="First Dose">First Dose</option>
+            <option value="Second Dose">Second Dose</option>
+            <option value="Booster">Booster</option>
+            <%
+            } else if (res.getString("vaccineStatus").equals("Not Vaccinated")) {
+            %>        
+            <option value="N/A">N/A</option>
+            <option value="Not Vaccinated" selected = "selected">Not Vaccinated</option>
+            <option value="First Dose">First Dose</option>
+            <option value="Second Dose">Second Dose</option>
+            <option value="Booster">Booster</option>
+            <%
+            } else if (res.getString("vaccineStatus").equals("First Dose")) {
+            %>
+            <option value="N/A">N/A</option>
+            <option value="Not Vaccinated">Not Vaccinated</option>
+            <option value="First Dose" selected = "selected">First Dose</option>
+            <option value="Second Dose">Second Dose</option>
+            <option value="Booster">Booster</option>
+            <%
+            } else if (res.getString("vaccineStatus").equals("Second Dose")) {
+            %>
+            <option value="N/A">N/A</option>
+            <option value="Not Vaccinated">Not Vaccinated</option>
+            <option value="First Dose">First Dose</option>
+            <option value="Second Dose"  selected = "selected">Second Dose</option>
+            <option value="Booster">Booster</option>
+            <%
+            } else {
+            %>
+            <option value="N/A">N/A</option>
+            <option value="Not Vaccinated">Not Vaccinated</option>
+            <option value="First Dose">First Dose</option>
+            <option value="Second Dose">Second Dose</option>
+            <option value="Booster"   selected = "selected">Booster</option>
+            <%
+                }
+            %>
+        </select>
     </div>
     <%
         }
@@ -276,7 +786,7 @@
         String showSupport = request.getParameter("showSupport");
         String jobChance = request.getParameter("jobChance");
         String sayToSK = request.getParameter("sayToSK");
-        
+
         String sID = request.getParameter("statusID");
         String civilStatus = request.getParameter("civilStatus");
         String workingStatus = request.getParameter("workingStatus");
@@ -284,13 +794,13 @@
         String jobEmployed = request.getParameter("jobEmployed");
         String PWD = request.getParameter("PWD");
         String typeOfDisability = request.getParameter("typeOfDisability");
-        
+
         String vID = request.getParameter("vaccineID");
         String vaccinated = request.getParameter("vaccinated");
         String willingForVaccine = request.getParameter("willingForVaccine");
         String brandOfVaccine = request.getParameter("brandOfVaccine");
         String vaccineStatus = request.getParameter("vaccineStatus");
-        
+
         if (bID != null && name != null && address != null && validID != null
                 && cID != null && contactNo != null && email != null && fbName != null
                 && fID != null && motherName != null && motherOccupation != null && fatherName != null && fatherOccupation != null && vitalStatusMother != null && vitalStatusFather != null && noOfSiblings != null && siblingEducation != null && breadWinner != null
@@ -337,7 +847,7 @@
             stmt.setString(6, jobChance);
             stmt.setString(7, sayToSK);
             stmt.execute();
-            
+
             String status_query = "UPDATE `skit-yims`.`resident-status` SET `civilStatus` = ?, `workingStatus` = ?, `educationAttainment` = ? , `jobEmployed` = ?, `PWD` = ?, `typeOfDisability` = ? WHERE (`statusID` = '" + sID + "')";
             stmt = conn.prepareStatement(status_query);
             stmt.setString(1, civilStatus);
@@ -347,7 +857,7 @@
             stmt.setString(5, PWD);
             stmt.setString(6, typeOfDisability);
             stmt.execute();
-            
+
             String vaccine_query = "UPDATE `skit-yims`.`vaccine-info` SET `vaccinated` = ?, `willingForVaccine` = ?, `brandOfVaccine` = ? , `vaccineStatus` = ? WHERE (`vaccineID` = '" + vID + "')";
             stmt = conn.prepareStatement(vaccine_query);
             stmt.setString(1, vaccinated);
