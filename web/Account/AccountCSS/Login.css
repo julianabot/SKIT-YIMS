@@ -11,9 +11,20 @@ nav{
     top: 0;
     font-family: Montserrat;
     font-weight: 900;
-    height: 80px;
+    height: 60px;
     background-color: #8B3535;
     padding: 0.5%;
+}
+
+.logo{
+    height: 100%;
+}
+
+#SK-Text-NavBar{
+    padding: 0;
+    display: inline-block;
+    vertical-align:middle;
+
 }
 
 nav .logo{
@@ -24,38 +35,43 @@ nav .logo{
     font-family: Montserrat; 
     font-weight: bold;
     font-style: italic;
-    font-size: 20px;
+    font-size: 1.2em;
     line-height: 80px;
-
 }
+
 nav .links{
     float: right;
     padding: 0;
     margin: 0;
-    width: 35%;
+    width: 20%;
     height: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
-nav .links ul{
-    width: 20%;
+
+nav .links{
+    width: 30%;
 }
+
 nav .links li{
     list-style: none;
 }
+
 nav .links a{
     display: block;
     padding: 1em;
-    font-size: 15px;
+    font-size: 1.2em;
     font-weight: bold;
     color: white;
     text-decoration: none;
 }
+
 #nav-toggle{
     position: absolute;
     top: -100%;
 }
+
 nav .icon-burger{
     display: none;
     position: absolute;
@@ -63,6 +79,7 @@ nav .icon-burger{
     top: 50%;   
     transform: translateY(-50%);
 }
+
 nav .icon-burger .line{
     width: 30px;
     height: 5px;
@@ -71,22 +88,24 @@ nav .icon-burger .line{
     border-radius: 3px;
     transition: all .3s ease-in-out;
 }
+
 #Login{
     background: white;
     color: #8B3535;
     font-family: Montserrat;
-    font-size: 15px;
+    font-size: 1.5;
     font-style: normal;
     font-weight: bold;
     line-height: 30px;
     text-align: center;
-    border-radius: 32.5px;
+    border-radius: 5px;
     padding-top: 2px;
     padding-bottom: 2px;
     padding-right: 15px;
     padding-left: 15px;
 }
-@media screen and (max-width: 780px){
+
+@media screen and (max-width: 1048px){
     nav .logo{
         float: none;
         width: auto;
@@ -99,22 +118,23 @@ nav .icon-burger .line{
         z-index: 9;
         left: 0;
         right: 0;
-        top: 80px;
+        top: 60px;
         bottom: 100%;
         width: auto;
         height: auto;
         flex-direction: column;
         justify-content: space-evenly;
-        background-color: rgba(113, 41, 41, 0.65);
+        background-color: rgba(113, 41, 41, 0.80);
         overflow: hidden;
         box-sizing: border-box;
         transition: all .5s ease-in-out;
     }
     nav .links a{
-        font-size: 20px;      
+        font-size: 1.5em;      
     }    
     nav :checked ~ .links{
         bottom: 0;
+        top: 60px;
     }
     nav .icon-burger{
         display: block; 
@@ -130,9 +150,16 @@ nav .icon-burger .line{
     }
 }
 
+@media (max-width: 600px){
+    #SK-Text-NavBar{
+        display: none;
+
+    }
+}
+
 /*SK LOGO*/
 .header-logo{
-    height: 90%;
+    height: 100%;
     margin-left: 1%;
     margin-right: 1%;
     float: left;
@@ -178,14 +205,14 @@ nav .icon-burger .line{
     top: 7%;
     bottom: 0%;
     justify-content: center;
-    
-    
+
+
 }
 
 .half-blue{
     background: #FFF9E9;
     width: 50%;
-     position: absolute;
+    position: absolute;
     height: 100%;
     top: 0%;
     bottom: 0%;
@@ -196,43 +223,43 @@ nav .icon-burger .line{
 .img-logo{
     height: 35%;
     width: 35%;
-   /* display: block;
-    margin: 8%;*/
+    /* display: block;
+     margin: 8%;*/
     position: absolute;
-right: 0px;
-bottom: 0px;
-/*    margin-right: 1%;*/
+    right: 0px;
+    bottom: 0px;
+    /*    margin-right: 1%;*/
     text-align: center;
     animation: fadeIn 3s;
-  -webkit-animation: fadeIn 3s;
-  -moz-animation: fadeIn 3s;
-  -o-animation: fadeIn 3s;
-  -ms-animation: fadeIn 3s;
+    -webkit-animation: fadeIn 3s;
+    -moz-animation: fadeIn 3s;
+    -o-animation: fadeIn 3s;
+    -ms-animation: fadeIn 3s;
 }
 
 @keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+    0% {opacity:0;}
+    100% {opacity:1;}
 }
 
 @-moz-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+    0% {opacity:0;}
+    100% {opacity:1;}
 }
 
 @-webkit-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+    0% {opacity:0;}
+    100% {opacity:1;}
 }
 
 @-o-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+    0% {opacity:0;}
+    100% {opacity:1;}
 }
 
 @-ms-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+    0% {opacity:0;}
+    100% {opacity:1;}
 }
 
 .goback{
@@ -267,7 +294,7 @@ bottom: 0px;
     position: absolute;
     height: 100%;
     left: 10%;
-   top: 20%;
+    top: 20%;
 }
 
 .Sign{
@@ -277,7 +304,7 @@ bottom: 0px;
     color: black; 
     text-align: center;
     margin: auto;
-    
+
 }
 
 .unp{
@@ -289,10 +316,10 @@ bottom: 0px;
     margin: 10px;
     margin-left: 15%;
     width: 60%;
-     
+
 }
 
- .name{
+.name{
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     color: black; 
@@ -303,7 +330,7 @@ bottom: 0px;
 }
 
 .submitbtn{
-  font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     color: white; 
     padding: 10px;
@@ -316,7 +343,7 @@ bottom: 0px;
 }
 
 .submitbtn1{
-  font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     color: white; 
     padding: 10px;
@@ -344,38 +371,38 @@ bottom: 0px;
     .half-blue{
 
         display: none;
-         clear: both;
-    float: right;
-    margin: 10px auto 5px 20px;
-    width: 28%;
-    display: none;
+        clear: both;
+        float: right;
+        margin: 10px auto 5px 20px;
+        width: 28%;
+        display: none;
     }
-    
+
     .img-logo{
-         display: none;
-         clear: both;
-    float: right;
-    margin: 10px auto 5px 20px;
-    width: 28%;
-    display: none;
+        display: none;
+        clear: both;
+        float: right;
+        margin: 10px auto 5px 20px;
+        width: 28%;
+        display: none;
     }
-    
+
     .half-white{
         width: 100%;
     }
-    
+
     .name{
         width: 92%;
     }
-    
-    
+
+
 }
 
 @media screen and (max-width:1368px) {
     .name{
         width: 92%;
     }
-    
+
     .submitbtn{
         font-size: 12px;
         width: 50%

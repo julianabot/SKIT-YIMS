@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=500, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="icon" type="image/png" href="SK_Logo.png" /> 
-        <link href="../Account/AccountCSS/Login.css" rel="stylesheet">
+        <link href="../Account/AccountCSS/Login.css?v={random number/string}" rel="stylesheet">
         <title>Login</title>
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>
@@ -34,7 +34,7 @@
         </nav>
 
         <div class="half-white">
-            <div class="goback"> <a class="purp-btn" href="HomeForNonUsers.jsp">Go back</a> </div>
+
 
             <div class="signup-form">
                 <h1 class="Sign"> Log in </h1>

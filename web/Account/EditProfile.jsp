@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="skLogo" type="image/png" href="../img/SK_Logo.png"/>
+        <link rel="icon" type="image/png" href="../img/SK_Logo.png"/>
         <link href="../Account/AccountCSS/EditProfile.css" rel="stylesheet" type="text/css">
         <title>Profile Account</title>
     </head>
@@ -13,14 +13,12 @@
             <img src="../img/SK_Logo.png" class="header-logo">
 
             <!--This section contains the "Eruditio Academy" text taken from the webxml-->
-            <div class="logo"><%out.print(getServletContext().getInitParameter("header"));%></div>
+            <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>
 
             <ul class="links">
-                <li class="About"><a href="Welcome.jsp">Home</a></li>
-                <li class="Events"><a href="ViewDatabase.jsp">Database</a></li>
-                <!--Account Tab TBR-->
-                <li class="Events"><a href="AccountInformation.jsp">Account</a></li>
-                <li class="Login"><a href="Login.jsp" id="Login">Log Out</a></li>
+                <li class="Events"><a href="#Events-Section-Header">Events</a></li>
+                <li class="About"><a href="#About-Section">About</a></li>
+                <li class="Login"><a href="Welcome.jsp" id="Login">Logout</a></li>
             </ul>
             <label for="nav-toggle" class="icon-burger">
                 <div class="line"></div>
@@ -30,26 +28,6 @@
         </nav>
 
         <div class="container">
-            <!-- <div class="first-half">
-                 <img src="../img/Picture-Placeholder.png" class="profile-picture">
-                 
-                 <p class="upload-ap">Upload Account Photo</p>
-                 <div class="button-container">
-                     <script>
-                         const actualBtn = document.getElementById('myFile');
- 
-                         const fileChosen = document.getElementById('file-chosen');
- 
-                         actualBtn.addEventListener('change', function () {
-                             fileChosen.textContent = this.files[0].name
-                         })
-                     </script>
-                     <input type="file" id="myFile" name="filename" hidden/>
-                     <label for="myFile" id="fake-button">Upload</label>
-                     <br>
-                     <span id="file-chosen">No file chosen</span>
-                 </div>
-             </div> -->
 
             <div class="second-half">
                 <h1 class="personal-info">Personal Information</h1>
@@ -84,7 +62,6 @@
                     <input type="password" name="newpass" placeholder="Enter New Password"  minlength="8" required required class="input-change"><br>
                     <input type="password" name="confpass" placeholder="Enter Confirm New Password"  minlength="8" required required class="input-change"><br>
                 </form>
-
             </div>
         </div>
     </body>

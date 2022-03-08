@@ -18,9 +18,19 @@ nav{
     top: 0;
     font-family: Montserrat;
     font-weight: 900;
-    height: 7%;
+    height: 45px;
     background-color: #8B3535;
     padding: 0.5%;
+}
+
+.logo{
+    height: 100%;
+}
+
+#SK-Text-NavBar{
+    padding: 0;
+    display: inline-block;
+    vertical-align:middle;
 }
 
 nav .logo{
@@ -31,37 +41,43 @@ nav .logo{
     font-family: Montserrat; 
     font-weight: bold;
     font-style: italic;
-    font-size: 20px;
+    font-size: 1.2em;
     line-height: 80px;
 }
+
 nav .links{
     float: right;
     padding: 0;
     margin: 0;
-    width: 35%;
+    width: 30%;
     height: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
-nav .links ul{
-    width: 20%;
+
+nav .links{
+    width: 30%;
 }
+
 nav .links li{
     list-style: none;
 }
+
 nav .links a{
     display: block;
     padding: 1em;
-    font-size: 15px;
+    font-size: 1.2em;
     font-weight: bold;
     color: white;
     text-decoration: none;
 }
+
 #nav-toggle{
     position: absolute;
     top: -100%;
 }
+
 nav .icon-burger{
     display: none;
     position: absolute;
@@ -69,6 +85,7 @@ nav .icon-burger{
     top: 50%;   
     transform: translateY(-50%);
 }
+
 nav .icon-burger .line{
     width: 30px;
     height: 5px;
@@ -77,24 +94,78 @@ nav .icon-burger .line{
     border-radius: 3px;
     transition: all .3s ease-in-out;
 }
+
 #Login{
     background: white;
     color: #8B3535;
     font-family: Montserrat;
-    font-size: 15px;
+    font-size: 1.5;
     font-style: normal;
     font-weight: bold;
     line-height: 30px;
     text-align: center;
-    border-radius: 32.5px;
+    border-radius: 5px;
     padding-top: 2px;
     padding-bottom: 2px;
     padding-right: 15px;
     padding-left: 15px;
 }
 
+@media screen and (max-width: 1048px){
+    nav .logo{
+        float: none;
+        width: auto;
+        justify-content: center;
+        margin: 0;
+    }
+    nav .links{
+        float: none;
+        position: fixed;
+        z-index: 9;
+        left: 0;
+        right: 0;
+        top: 60px;
+        bottom: 100%;
+        width: auto;
+        height: auto;
+        flex-direction: column;
+        justify-content: space-evenly;
+        background-color: rgba(113, 41, 41, 0.80);
+        overflow: hidden;
+        box-sizing: border-box;
+        transition: all .5s ease-in-out;
+    }
+    nav .links a{
+        font-size: 1.5em;      
+    }    
+    nav :checked ~ .links{
+        bottom: 0;
+        top: 60px;
+    }
+    nav .icon-burger{
+        display: block; 
+    }
+    nav :checked ~ .icon-burger .line:nth-child(1) {
+        transform: translateY(10px) rotate(225deg);
+    }
+    nav :checked ~ .icon-burger .line:nth-child(3) {
+        transform: translateY(-10px) rotate(-225deg);
+    }
+    nav :checked ~ .icon-burger .line:nth-child(2) {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 600px){
+    #SK-Text-NavBar{
+        display: none;
+
+    }
+}
+
+/*SK LOGO*/
 .header-logo{
-    height: 90%;
+    height: 100%;
     margin-left: 1%;
     margin-right: 1%;
     float: left;
@@ -215,10 +286,22 @@ nav .icon-burger .line{
 }
 
 .input-change {
-    padding-top: 2px;
-    padding-bottom: 2px;
-    width: 20%;
-    margin: 3px 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 25%;
+    margin: 5px 0;
     border: 1px solid black;
     border-radius: 4px;
+    font-size: 0.8em;
+}
+
+@media (max-width: 800px){
+    .input-change {
+        width: 90%;
+    }
+    
+    .container {
+        margin-top: 20%;
+        margin-bottom: 0;
+    }
 }
