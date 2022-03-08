@@ -162,9 +162,6 @@ public class SurveyServlet extends HttpServlet {
             session.setAttribute("willingForVaccine", willingForVaccine);
             session.setAttribute("brandOfVaccine", brandOfVaccine);
             session.setAttribute("vaccineStatus", vaccineStatus);
-            
-//            String basicTable = "INSERT INTO `basic-info` (name, agegroup, birthday, address, gender, validID) VALUES (?, ?, ?, ?, ?, ?)";
-//            PreparedStatement insBasic = conn.prepareStatement(basicTable);
 
             String basicTable = "INSERT INTO `basic-info` (name, agegroup, birthday, address, gender, validID) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement insBasic = conn.prepareStatement(basicTable);
@@ -176,6 +173,10 @@ public class SurveyServlet extends HttpServlet {
             insBasic.setString(5, gender);
             insBasic.setString(6, validID);
 
+            insBasic.execute();
+
+            String factTable = "INSERT INTO `resident-info` (basicID) VALUES(LAST_INSERT_ID())";
+            insBasic = conn.prepareStatement(factTable);
             insBasic.execute();
 
             String resStatTable = "INSERT INTO `resident-status` (civilStatus, workingStatus, educationAttainment, jobEmployed, PWD, typeOfDisability) VALUES (?, ?, ?, ?, ?, ?)";
@@ -191,6 +192,10 @@ public class SurveyServlet extends HttpServlet {
             //insResStat.execute();
             insBasic.execute();
 
+            factTable = "UPDATE `resident-info` SET statusID = LAST_INSERT_ID() WHERE residentID = LAST_INSERT_ID()";
+            insBasic = conn.prepareStatement(factTable);
+            insBasic.execute();
+
             String contactTable = "INSERT INTO `contact-info` (contactNo, emailAddress, fbNameURL) VALUES (?, ?, ?)";
             insBasic = conn.prepareStatement(contactTable);
 
@@ -199,6 +204,10 @@ public class SurveyServlet extends HttpServlet {
             insBasic.setString(3, fb);
 
             //insContact.execute();
+            insBasic.execute();
+
+            factTable = "UPDATE `resident-info` SET contactID = LAST_INSERT_ID() WHERE residentID = LAST_INSERT_ID()";
+            insBasic = conn.prepareStatement(factTable);
             insBasic.execute();
 
             String familyTable = "INSERT INTO `fam-status` (motherName, motherOccupation, fatherName, fatherOccupation, vitalStatusMother, vitalStatusFather, noOfSiblings, siblingEducation, breadWinner) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -217,6 +226,10 @@ public class SurveyServlet extends HttpServlet {
             //insFamily.execute();
             insBasic.execute();
 
+            factTable = "UPDATE `resident-info` SET familyID = LAST_INSERT_ID() WHERE residentID = LAST_INSERT_ID()";
+            insBasic = conn.prepareStatement(factTable);
+            insBasic.execute();
+
             String surveyTable = "INSERT INTO `resident-org` (residentVoter, memberOfOrg, nameOfOrg, supportSK, showSupport, jobChance, sayToSK) VALUES (?, ?, ?, ?, ?, ?, ?)";
             insBasic = conn.prepareStatement(surveyTable);
 
@@ -231,6 +244,10 @@ public class SurveyServlet extends HttpServlet {
             //insSurvey.execute();
             insBasic.execute();
 
+            factTable = "UPDATE `resident-info` SET organizationID = LAST_INSERT_ID() WHERE residentID = LAST_INSERT_ID()";
+            insBasic = conn.prepareStatement(factTable);
+            insBasic.execute();
+
             String vaxTable = "INSERT INTO `vaccine-info` (vaccinated, willingForVaccine, brandOfVaccine, vaccineStatus) VALUES (?, ?, ?, ?)";
             insBasic = conn.prepareStatement(vaxTable);
 
@@ -241,12 +258,14 @@ public class SurveyServlet extends HttpServlet {
 
             insBasic.execute();
 
+            factTable = "UPDATE `resident-info` SET vaccineID = LAST_INSERT_ID() WHERE residentID = LAST_INSERT_ID()";
+            insBasic = conn.prepareStatement(factTable);
+            insBasic.execute();
 //            String trialTable = "INSERT INTO trial (trialcol) VALUES (?) ";
 //            PreparedStatement insTrial = conn.prepareStatement(trialTable);
 //
 //            insTrial.setString(1, vaccinated);
 //            insTrial.execute();
-
             request.getRequestDispatcher("Survey Forms/ViewSubmitted.jsp").forward(request, response);
 
         } catch (Exception e) {
