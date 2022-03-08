@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="skLogo" type="image/png" href="img/SK_Logo.png" />
+        <link rel="icon" type="image/png" href="img/SK_Logo.png" />
         <link href="css/Welcome.css" rel="stylesheet" type="text/css">
         <!--INSERT SESSION MANAGEMENT LINE-->
         <title>SKIT-YIMS</title>
@@ -29,7 +29,7 @@
                 <div class="line"></div>
             </label>
         </nav>
-        
+
         <!--Hero Section-->
         <section id="Hero-Section" class="Hero-Section">
             <p class="heading">Title</p>
@@ -37,7 +37,7 @@
             <!-- redirect to About tab -->
             <p class="button"><a href="Survey Forms/Landing.jsp" target="_blank">Fill out Forms</a></p>
         </section>
-        
+
         <div class="space-divider"></div>
         <!--Events Section-->
         <!-- Container for the image gallery -->
@@ -75,7 +75,7 @@
                 </div>
 
                 <!-- Next and previous buttons -->
-                
+
 
                 <!-- Image text -->
                 <div class="caption-container">
