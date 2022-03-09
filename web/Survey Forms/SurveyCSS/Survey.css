@@ -4,40 +4,185 @@ body {
     background-color: #FFF9E9;
 }
 
-img {
-    display: block; 
-    margin-right: auto; 
+#header-container{
+    width: 100%;
+    text-align: center;
+}
+
+/*LOGO*/
+#Logo{
+    width: 150px;
+    display: block;
+    margin-right: auto;
     margin-left: auto;
 }
 
-.heading {
-    font-size: 0.8em;
-    text-align: center;
+/*HEADER TEXT*/
+#header-text{
     font-weight: bold;
+    font-size: 1.5em;
 }
 
-.container {
+/*CONTAINER FOR SURVEY CONTENT PER PAGE*/
+.container{
     background-color: white;
-    width: 80%;
-    margin: auto;
-    padding: 2%;
-    border-radius: 20px;
-
+    width: 90%;
+    display: block;
+    margin: 20px auto;
+    margin-top: 0;
+    border-radius: 0 0 20px 20px; 
 }
 
+/*CONTAINER FOR TEXT AND INPUT CONTENT PER PAGE*/
+.container-main{
+    width: 95%;
+    margin: 30px auto;
+    
+}
+
+/*ENGLISH TEXT LABEL*/
+.label-english{
+    font-size: 1.2em;
+    font-family: 'Montserrat';
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+/*TAGALOG TRANSLATION*/
 span {
     font-style: italic;
     color: #828282;
 }
 
-input[type=text]{
+/*RESIDENT INFORMATION*/
+.long-textbox{
     width: 100%;
-    padding: 0.8%;
-    margin-top: 0.5%;
-    margin-bottom: 0.5%;
+    height: 30px;
+    display: block;
 }
 
-.link-proceed {
+.content-divider{
+    height: 30px;
+}
+
+.table{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-group{
+    width: 90%;
+    margin-bottom: 0px;
+}
+
+.age-select{
+    width: 75%;
+    font-size: 1.2em;
+    height: 30px;
+    border: none;
+    background-color: #E2E2E2;
+    font-family: Montserrat;
+}
+
+.birthday-select{
+    width: 60%;
+    font-size: 1.2em;
+    height: 30px;
+    font-family: Montserrat;
+}
+
+.radial-row{
+    display: flex;
+    align-items: center;
+    padding-top: 0px;
+}
+
+.divider-choices{
+    width: 25px;
+}
+
+.upload-group{
+    text-align: center;
+}
+.upload-group a{
+    font-size: 0.8em;
+}
+
+.button-container{
+    margin: 10px auto;
+    width: 100%;
+    text-align: center;
+}
+
+#upload-button{
+    background-color: #E9DEDE;
+}
+
+#fake-button{
+    background-color: #E9DEDE;
+    color: #828282;
+    font-family: "Montserrat";
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    font-weight: bold;
+    font-size: 1em;
+    padding: 10px 20px;
+}
+#file-chosen{
+    color: #828282;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+
+/*BOTTOM BUTTONS*/
+.buttons{
+    display:flex;
+    justify-content: center;
+}
+
+.next{
+    background-color: #8B3535;
+    border: none;
+    color: white;
+    font-family: Montserrat;
+    padding: 10px 20px;
+    width: 150px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.previous{
+    background-color: white;
+    border-color: #8B3535;
+    color: #8B3535;
+    border-width: 2px;
+    font-family: Montserrat;
+    padding: 10px 20px;
+    width: 150px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.previous:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.next:hover {
+   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+
+
+
+/*.link-proceed {
     text-align: center;
     font-style: italic;
     font-weight: bold;
@@ -54,10 +199,10 @@ input[type=text]{
 
 .button-back {
     background-color: white;
-    border-color: #8B3535;
+    border-color: #712929;
     border-width: 1px;
     width: 15%;
-    color: #8B3535;
+    color: #712929;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
@@ -66,4 +211,4 @@ input[type=text]{
     font-family: Montserrat;
     border-radius: 5px;
     cursor: pointer;
-}
+}*/

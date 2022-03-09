@@ -3,17 +3,21 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="../Survey Forms/SurveyCSS/test.css" rel="stylesheet" type="text/css">
+        <link href="../Survey Forms/SurveyCSS/Survey.css" rel="stylesheet" type="text/css">
         <style>
-            body {font-family: Arial;}
+            body {font-family: 'Montserrat';}
 
             /* Style the tab */
             .tab {
                 overflow: hidden;
                 border: 1px solid #ccc;
-                background-color: #f1f1f1;
+                background-color: #E2E2E2;
                 width: 90%;
                 margin: auto;
+                text-align: center;
+                display: flex;
+                justify-content: space-between;
+                border-radius: 20px 20px 0 0;
             }
 
             /* Style the buttons inside the tab */
@@ -25,24 +29,28 @@
                 cursor: pointer;
                 padding: 14px 16px;
                 transition: 0.3s;
-                font-size: 17px;
+                font-size: 1em;
+                width: 100%;
+                border-radius: 20px 20px 0 0;
+                border: none;
+                font-family: 'Montserrat';
+                font-weight: bold;
             }
 
             /* Change background color of buttons on hover */
             .tab button:hover {
-                background-color: #ddd;
+                background-color: grey;
             }
 
             /* Create an active/current tablink class */
             .tab button.active {
-                background-color: #ccc;
+                background-color: white;
             }
 
             /* Style the tab content */
             .tabcontent {
                 display: none;
                 padding: 6px 12px;
-                border: 1px solid #ccc;
                 border-top: none;
 
             }
@@ -78,8 +86,8 @@
                             <div class="content-divider"></div>
 
                             <div class="table">
-                                <div class="age-group">
-                                    <label for="age" class="label-english" >Age&emsp;<span>Edad</span></label>
+                                <div class="input-group">
+                                    <label for="age" class="label-english" >Age&emsp;<span>Edad</span>&emsp;</label>
                                     <select name="age" class="age-select">
                                         <option value="14 years old and below">14 years old and below</option>
                                         <option value="15-20 years old">15-20 years old</option>
@@ -88,32 +96,36 @@
                                     </select>
                                 </div>
                                 <div class="divider-row"></div>
-                                <div class="age-group">
-                                    <label for="birthday" class="label-english" class="table-cell">Birthday&emsp;<span>Kaarawan</span></label>
+                                <div class="input-group">
+                                    <label for="birthday" class="label-english" class="table-cell">Birthday&emsp;<span>Kaarawan</span>&emsp;</label>
                                     <input type="date" name="birthday" class="birthday-select">
                                 </div>
                             </div>
-
+                            
                             <div class="content-divider"></div>
 
                             <div class="gender-group">
                                 <p class="label-english">Gender&emsp;<span>Kasarian</span></p>
                                 <div class="radial-row">
                                       <input type="radio" id="female" name="gender" value="Female (Babae)">
-                                      <label for="female" class="label-english">Female <span>(Babae)</span></label>
+                                    <label for="female" class="label-english"><span class="radio-btn"></span>Female <span>(Babae)</span></label>
+                                    
                                     <div class="divider-choices"></div>
-                                      <input type="radio" id="male" name="gender" value="Male (Lalaki)">
-                                      <label for="male" class="label-english">Male <span>(Lalaki)</span></label>
+                                    
+                                      <input type="radio" id="male" name="gender" value="Male (Lalaki)" class="radio-btn">
+                                      <label for="male" class="label-english"><span class="radio-btn"></span>Male <span>(Lalaki)</span></label>
+                                    
                                     <div class="divider-choices"></div>
-                                      <input type="radio" id="prefer" name="gender" value="Prefer not to say">
-                                      <label for="prefer" class="label-english">Prefer not to say <span>(Pinipiling hindi sabihin)</span></label>
+                                    
+                                      <input type="radio" id="prefer" name="gender" value="Prefer not to say" class="radio-btn">
+                                      <label for="prefer" class="label-english"><span class="radio-btn"></span>Prefer not to say <span>(Pinipiling hindi sabihin)</span></label>
+                                    
                                 </div>
                             </div>
-
+                            
                             <div class="content-divider"></div>
-                            <div class="content-divider"></div>
 
-                            <div >
+                            <div>
                                 <label for="address" class="label-english">Full Address&emsp;<span>Buong Address ng Tirahan</span></label><br>
                                 <input type="text" id="address" name="address" class="long-textbox"><br>
                             </div>
@@ -455,7 +467,7 @@
                 </div>
                 <div class="buttons">
                     <button id = "backButton" type = "button" onclick="prev()" class="previous">Back</button>
-                    <div class="divider"></div>
+                    <div class="divider-content"></div>
                     <button id="nextButton" type="button" onclick="next()" class="next">Proceed</button>
                     <button id="submitButton" type="submit" value="submit" class = "next">Submit</button>
                 </div>

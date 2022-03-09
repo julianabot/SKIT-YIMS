@@ -146,10 +146,10 @@ span{
 
 .previous {
     background-color: white;
-    border-color: #8B3535;
+    border-color: #712929;
     border-width: 1px;
     width: 15%;
-    color: #8B3535;
+    color: #712929;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
@@ -160,8 +160,7 @@ span{
     cursor: pointer;
     opacity: 0.6;
     transition: 0.3s;
-    font-weight: bold;
-    
+    font-weight: bold;  
     margin: 20px;
 }
 
