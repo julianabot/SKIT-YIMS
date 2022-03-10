@@ -4,23 +4,34 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="icon" type="image/png" href="img/SK_Logo.png"/>
+        <link href="../Account/AccountCSS/AccountInformation.css" rel="stylesheet" type="text/css">
         <link href="Account/AccountCSS/AccountInformation.css" rel="stylesheet" type="text/css">
         <title>Profile Account</title>
     </head>
+    <%
+        response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
+        if (session.getAttribute("loggedIn") == null) {
+            response.sendRedirect("/SKIT-YIMS/Extra/InvalidSession.jsp");
+        }
+    %>
     <body>
         <nav>
             <input id="nav-toggle" type="checkbox">
-            <img src="../img/SK_Logo.png" class="header-logo">
+            <img src="/SKIT-YIMS/img/SK_Logo.png" class="header-logo">
 
             <!--This section contains the "Eruditio Academy" text taken from the webxml-->
             <div class="logo"><%out.print(getServletContext().getInitParameter("header"));%></div>
 
             <ul class="links">
-                <li class="About"><a href="Welcome.jsp">Home</a></li>
-                <li class="Events"><a href="ViewDatabase.jsp">Database</a></li>
+                <li class="About"><a href="/SKIT-YIMS/Welcome.jsp">Home</a></li>
+                <li class="Events"><a href="/SKIT-YIMS/Account/ViewDatabase.jsp">Database</a></li>
                 <!--Account Tab TBR-->
-                <li class="Events"><a href="AccountInformation.jsp">Account</a></li>
-                <li class="Login"><a href="Login.jsp" id="Login">Log Out</a></li>
+                <li class="Events"><a href="/SKIT-YIMS/Account/AccountInformation.jsp">Account</a></li>
+                <li class="Login">
+                    <form action = "../LogoutServlet" method = "GET">
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
             </ul>
             <label for="nav-toggle" class="icon-burger">
                 <div class="line"></div>

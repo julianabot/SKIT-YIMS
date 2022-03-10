@@ -5,26 +5,26 @@
         <meta name="viewport" content="width=500, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="icon" type="image/png" href="SK_Logo.png" /> 
-        <link href="../Account/AccountCSS/Login.css?v={random number/string}" rel="stylesheet">
+        <link href="/SKIT-YIMS/Account/AccountCSS/Login.css?v={random number/string}" rel="stylesheet">
         <title>Login</title>
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>
     <%
         response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
-        if (session.getAttribute("uRole") != null) {
-            response.sendRedirect("Success.jsp");
+        if (session.getAttribute("loggedIn") != null) {
+            response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
         }
     %>
     <body>
         <nav>
             <input id="nav-toggle" type="checkbox">
-            <img src="../img/SK_Logo.png" class="header-logo">
+            <img src="/SKIT-YIMS/img/SK_Logo.png" class="header-logo">
 
             <div class="logo"><%out.print(getServletContext().getInitParameter("header"));%></div>
 
             <ul class="links">
-                <li class="Home"><a href="Welcome.jsp">Home</a></li>
-                <li class="Login"><a href="Login.jsp" id="Login">Login</a></li>
+                <li class="Home"><a href="/SKIT-YIMS/Welcome.jsp">Home</a></li>
+                <li class="Login"><a href="/SKIT-YIMS/Account/Login.jsp" id="Login">Login</a></li>
             </ul>
             <label for="nav-toggle" class="icon-burger">
                 <div class="line"></div>
@@ -55,7 +55,7 @@
             </div>
         </div>
         <div class="half-blue">
-            <center><img src="../img/SK_Logo.png" class="img-logo"></center>
+            <center><img src="/SKIT-YIMS/img/SK_Logo.png" class="img-logo"></center>
         </div>        
     </body>
 </html>

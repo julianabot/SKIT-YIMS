@@ -98,30 +98,40 @@ public class LoginServlet extends HttpServlet {
                 String ePassword = Security.decrypt(iPassword);
                 iPassword = ePassword;
             }
+            HttpSession session = request.getSession();
 
-            if (username.equals(iUsername) && verify ) {
+            if (username.equals(iUsername) && verify) {
                 if (password.equals(iPassword)) {
-                    HttpSession session = request.getSession();
 
                     session.setAttribute("username", iUsername);
                     session.setAttribute("password", iPassword);
                     session.setAttribute("name", iName);
                     session.setAttribute("role", iRole);
+                    session.setAttribute("loggedIn", "yes");
 
-                    request.getRequestDispatcher("Account/AccountInformation.jsp").forward(request, response);
+//                    request.getRequestDispatcher("/Account/AccountInformation.jsp").forward(request, response);
+                    response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
 
                 } else {
-                    request.setAttribute("errorLogin", "Wrong password! Try again.");
-                    request.getRequestDispatcher("Account/Login.jsp").forward(request, response);
+                    session.setAttribute("errorLogin", "Wrong password! Try again.");
+//                    request.getRequestDispatcher("/Account/Login.jsp").forward(request, response);
+                    response.sendRedirect("/SKIT-YIMS/Account/Login.jsp");
                 }
+            } else if (username.equals(iUsername) && !verify) {
+                session.setAttribute("errorLogin", "Please accomplish CAPTCHA.");
+//                request.getRequestDispatcher("/Account/Login.jsp").forward(request, response);
+                response.sendRedirect("/SKIT-YIMS/Account/Login.jsp");
             } else {
-                request.setAttribute("errorLogin", "Username does not exist.");
-                request.getRequestDispatcher("Account/Login.jsp").forward(request, response);
+                session.setAttribute("errorLogin", "Username does not exist.");
+//                request.getRequestDispatcher("/Account/Login.jsp").forward(request, response);
+                response.sendRedirect("/SKIT-YIMS/Account/Login.jsp");
+
             }
 
         } catch (Exception e) {
             request.setAttribute("errorLogin", checkException);
-            request.getRequestDispatcher("Account/Login.jsp").forward(request, response);
+//            request.getRequestDispatcher("/Account/Login.jsp").forward(request, response);
+            response.sendRedirect("/SKIT-YIMS/Account/Login.jsp");
         }
     }
 
