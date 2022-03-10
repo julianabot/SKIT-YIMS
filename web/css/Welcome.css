@@ -613,12 +613,13 @@ nav .icon-burger .line{
     font-family: 'Montserrat';
     font-weight: bold;
     margin-bottom: 5px;
+    font-size: 2.5em;
 }
 .Organizational-Chart-Subheading{
     text-align: center;
     margin-top: 0;
     font-family: 'Montserrat';
-    font-size: 20px;
+    font-size: 1.3em;
     color:#828282;
 }
 

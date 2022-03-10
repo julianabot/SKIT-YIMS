@@ -97,7 +97,7 @@
                                 </div>
                                 <div class="divider-row"></div>
                                 <div class="input-group">
-                                    <label for="birthday" class="label-english" class="table-cell">Birthday&emsp;<span>Kaarawan</span>&emsp;</label>
+                                    <label for="birthday" class="label-english" id="birthday-text">Birthday&emsp;<span>Kaarawan</span>&emsp;</label>
                                     <input type="date" name="birthday" class="birthday-select">
                                 </div>
                             </div>
@@ -106,19 +106,26 @@
 
                             <div class="gender-group">
                                 <p class="label-english">Gender&emsp;<span>Kasarian</span></p>
-                                <div class="radial-row">
-                                      <input type="radio" id="female" name="gender" value="Female (Babae)">
+                                
+                                <div class="radial-row-three">
+                                    <div>
+                                     <input type="radio" id="female" name="gender" value="Female (Babae)">
                                     <label for="female" class="label-english"><span class="radio-btn"></span>Female <span>(Babae)</span></label>
+                                    </div>
                                     
                                     <div class="divider-choices"></div>
                                     
+                                    <div>
                                       <input type="radio" id="male" name="gender" value="Male (Lalaki)" class="radio-btn">
                                       <label for="male" class="label-english"><span class="radio-btn"></span>Male <span>(Lalaki)</span></label>
+                                    </div>
                                     
                                     <div class="divider-choices"></div>
                                     
+                                    <div>
                                       <input type="radio" id="prefer" name="gender" value="Prefer not to say" class="radio-btn">
                                       <label for="prefer" class="label-english"><span class="radio-btn"></span>Prefer not to say <span>(Pinipiling hindi sabihin)</span></label>
+                                    </div>
                                     
                                 </div>
                             </div>
@@ -355,7 +362,7 @@
 
                             <div class="content-divider"></div>
 
-                            <div>
+                            
                                 <p class="label-english">Are you a member of an organization?&emsp;<span>Parte ka ba ng isang organisasyon?</span></p>
                                   <div class="radial-row">
                                     <input type="radio" id="yesorg" name="org" value="Yes">
@@ -364,7 +371,7 @@
                                       <input type="radio" id="noorg" name="org" value="No">
                                       <label for="noorg" class="label-english">No <span>(Hindi)</span></label>
                                 </div>
-                            </div>
+                            
 
                             <div class="content-divider"></div>
 
@@ -378,15 +385,23 @@
                             <div>
                                 <label for="proj" class="label-english">Are you willing to support the incoming projects of SK-Ibayo Tipas?
                                     <br><span>Handa ka bang suportahan ang mga paparating na proyekto ng SK-Ibayo Tipas?</span></label><br>
-                                <div class="radial-row">
+                                <div class="radial-row-three">
+                                    <div>
                                       <input type="radio" id="yesproj" name="proj" value="Yes">
                                       <label for="yesproj" class="label-english">Yes <span>(Oo)</span></label><br>
+                                </div>
                                     <div class="divider-choices"></div>
+                                    
+                                    <div>
                                       <input type="radio" id="noproj" name="proj" value="No">
                                       <label for="noproj" class="label-english">No <span>(Hindi)</span></label><br>
+                                </div>
                                     <div class="divider-choices"></div>
+                                    
+                                    <div>
                                       <input type="radio" id="maybeproj" name="proj" value="Maybe">
                                       <label for="maybeproj" class="label-english">Maybe <span>(Hindi Sigurado)</span></label><br>
+                                    </div>
                                 </div>
                             </div>
 
@@ -420,13 +435,19 @@
                             <div>
                                 <p class="label-english">Have you been vaccinated for Covid-19?&emsp;<span>Ikaw ba ay nabakuna na laban Covid-19?</span>
                                 </p>
-
+                                
+                                <div class="radial-row">
                                   <input type="radio" id="yesvax" name="vax" value="Yes">
                                   <label for="yesvax" class="label-english">Yes <span>(Oo)</span></label><br>
                                 <div class="divider-choices"></div>
                                   <input type="radio" id="novax" name="vax" value="No">
                                   <label for="novax" class="label-english">No <span>(Hindi)</span></label><br>
+                                </div>
+                                
                             </div>
+                            
+                            <div class="content-divider"></div>
+                            
                             <div>
                                 <p class="label-english" class="label-english">If not, are you willing to be vaccinated if given the chance?
                                     &emsp;<span>Kung hindi, may kagustuhan ka ba mabakuna kapag nagkaroon ng pagkakataon?</span>
@@ -439,7 +460,9 @@
                                       <label for="nowilling" class="label-english">No <span>(Hindi)</span></label><br>
                                 </div>
                             </div>
-                            <br>
+                            
+                            <div class="content-divider"></div>
+                            
                             <div>
                                 <label for="brand" class="label-english">If yes, what brand of vaccine did you receive?&emsp;<span>Kung oo, ano ang brand ng iyong bakuna?</span></label>
                                 <select name="brand" class="dropdown">
@@ -453,6 +476,9 @@
                                     <option value="Sinopharm">Sinopharm</option>
                                 </select>
                             </div>
+                            
+                            <div class="content-divider"></div>
+                            
                             <div>
                                 <label for="vstatus" class="label-english">What is your Vaccine Status?&emsp;<span>Ano ang istatus ng iyong bakuna?</span> </label>
                                 <select name="vstatus" class="dropdown" required >
