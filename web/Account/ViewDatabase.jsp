@@ -99,19 +99,19 @@
             </div>
 
             <div class="tab">
-                <button class="tablinks" onclick="showTab(event, 'All')" id="defaultOpen">All</button>
+                <button class="tablinks" onclick="showTab(event, 'All')"  id="defaultOpen">All</button>
                 <button class="tablinks" onclick="showTab(event, 'Information')">Basic Information</button>
                 <button class="tablinks" onclick="showTab(event, 'Contact')">Contact Information</button>
                 <button class="tablinks" onclick="showTab(event, 'Family')">Family</button>
                 <button class="tablinks" onclick="showTab(event, 'Organization')">Resident Organization</button>
-                <button class="tablinks" onclick="showTab(event, 'Status')">Resident Status</button>
+                <button class="tablinks" onclick="showTab(event, 'Status')"  >Resident Status</button>
                 <button class="tablinks" onclick="showTab(event, 'Vaccine')">Vaccine Information</button>
             </div>
             <div id="All" class="tabcontent">
                 <%
                     try {
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "kgarcia24");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "admin1234");
                         String sql = "SELECT `resident-info`.residentID, `contact-info`.emailAddress, `basic-info`.name, `basic-info`.agegroup, `basic-info`.birthday, `basic-info`.address, `basic-info`.gender, `contact-info`.contactNo, `resident-status`.civilStatus, `resident-status`.workingStatus, `resident-status`.jobEmployed, `resident-status`.educationAttainment, `resident-status`.PWD, `resident-status`.typeOfDisability, `contact-info`.fbNameURL, `basic-info`.validID, `fam-status`.motherName, `fam-status`.motherOccupation, `fam-status`.fatherName, `fam-status`.fatherOccupation, `fam-status`.vitalStatusMother, `fam-status`.vitalStatusFather, `fam-status`.noOfSiblings, `fam-status`.siblingEducation, `fam-status`.breadWinner, `resident-org`.residentVoter, `resident-org`.memberOfOrg, `resident-org`.nameOfOrg, `resident-org`.supportSK, `resident-org`.showSupport, `resident-org`.jobChance, `resident-org`.sayToSK, `vaccine-info`.vaccinated, `vaccine-info`.willingForVaccine, `vaccine-info`.brandOfVaccine, `vaccine-info`.vaccineStatus FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID;";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -157,7 +157,7 @@
                 <%
                     try {
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "kgarcia24");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "admin1234");
                         String sql = "SELECT * FROM `skit-yims`.`basic-info`;";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -190,7 +190,7 @@
                     try {
 
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "kgarcia24");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "admin1234");
                         String sql = "SELECT * FROM `skit-yims`.`contact-info`;";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -220,7 +220,7 @@
                 <%
                     try {
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "kgarcia24");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "admin1234");
                         String sql = "SELECT * FROM `skit-yims`.`fam-status`;";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -253,7 +253,7 @@
                 <%
                     try {
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "kgarcia24");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "admin1234");
                         String sql = "SELECT * FROM `skit-yims`.`resident-org`;";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -285,7 +285,7 @@
                 <%
                     try {
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "kgarcia24");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "admin1234");
                         String sql = "SELECT * FROM `skit-yims`.`resident-status`;";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -316,7 +316,7 @@
                 <%
                     try {
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "kgarcia24");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "admin1234");
                         String sql = "SELECT * FROM `skit-yims`.`vaccine-info`;";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -342,8 +342,10 @@
                     %>
                 </table>
             </div>
-            <form action="PDFServlet" target="_blank" method="POST">
-                <button type="button" type="submit">Generate Report</button>
+            <form action="../PDFServlet" method="POST">
+                <input id="pdfdownload" class="pdfdownload" name="pdfdownload" style="display: none">
+                <button type="submit" formtarget="_blank">Generate Report</button>
+
             </form>
             <div>
 
@@ -356,6 +358,7 @@
     var counter = 0;
     function showTab(evt, tabName) {
         var i, tabcontent, tablinks;
+        var pdfname = document.getElementById('pdfdownload');
         tabcontent = document.getElementsByClassName("tabcontent");
         for (i = 0; i < tabcontent.length; i++) {
             tabcontent[i].style.display = "none";
@@ -366,9 +369,12 @@
         }
         document.getElementById(tabName).style.display = "block";
         evt.currentTarget.className += " active";
+        pdfname.value = tabName;
+//        alert(tabName);
     }
 
     // Get the element with id="defaultOpen" and click on it
     document.getElementById("defaultOpen").click();
     evt.currentTarget.className += " active";
+
 </script>
