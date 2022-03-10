@@ -20,7 +20,6 @@ public class EditNameServlet extends HttpServlet {
     String errorEdit;
     String connectURL;
 
-
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
 
@@ -37,7 +36,7 @@ public class EditNameServlet extends HttpServlet {
                     .append(config.getInitParameter("databaseName"));
             conn
                     = DriverManager.getConnection(url.toString(), username, password);
-             connectURL = url.toString();
+            connectURL = url.toString();
             conn.setAutoCommit(true);
         } catch (SQLException sqle) {
             System.out.println("SQLException error occured - "
@@ -74,12 +73,12 @@ public class EditNameServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
+        HttpSession session = request.getSession();
+        session.removeAttribute("update");
 
+        try {
             String username = request.getParameter("username");
             String editname = request.getParameter("editname");
-
-            HttpSession session = request.getSession();
 
             String insertQuery = "UPDATE `admin-info` SET name = ? WHERE username = ?";
             PreparedStatement ins = conn.prepareStatement(insertQuery);
@@ -88,12 +87,14 @@ public class EditNameServlet extends HttpServlet {
             session.setAttribute("name", editname);
             ins.executeUpdate();
 
-            request.setAttribute("update", connectURL);
-            request.getRequestDispatcher("Account/AccountInformation.jsp").forward(request, response);
+            session.setAttribute("update", "Name changed successfully.");
+            response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
+//            request.getRequestDispatcher("Account/AccountInformation.jsp").forward(request, response);
 
         } catch (Exception e) {
-            request.setAttribute("update", e);
-            request.getRequestDispatcher("Account/AccountInformation.jsp").forward(request, response);
+            session.setAttribute("update", e);
+            response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
+//            request.getRequestDispatcher("Account/AccountInformation.jsp").forward(request, response);
         }
     }
 

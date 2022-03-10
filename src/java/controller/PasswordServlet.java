@@ -73,9 +73,9 @@ public class PasswordServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        HttpSession session = request.getSession();
+        session.removeAttribute("update");
         try {
-            HttpSession session = request.getSession();
 
             String currpass = request.getParameter("currpass");
             String newpass = request.getParameter("newpass");
@@ -95,8 +95,9 @@ public class PasswordServlet extends HttpServlet {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
             } else {
-                request.setAttribute("update", "Incorrect current password. Try again.");
-                request.getRequestDispatcher("Account/AccountInformation.jsp").forward(request, response);
+                session.setAttribute("update", "Incorrect current password. Try again.");
+                response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
+                return;
             }
 
             ResultSet records = stmt.executeQuery();
@@ -113,23 +114,18 @@ public class PasswordServlet extends HttpServlet {
                 stmt.setString(2, username);
 
                 stmt.executeUpdate();
-                request.setAttribute("update", "You have successfully changed your password.");
-                request.getRequestDispatcher("Account/AccountInformation.jsp").forward(request, response);
-
+                session.setAttribute("update", "You have successfully changed your password.");
+                response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
+                return;
             } else {
-                request.setAttribute("update", "Incorrrect confirm new password. Try again.");
-                request.getRequestDispatcher("Account/AccountInformation.jsp").forward(request, response);
-
+                session.setAttribute("update", "Incorrrect confirm new password. Try again.");
+                response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
+                return;
             }
-//            request.setAttribute("update", "Current Pass: " + currpass + " New Pass: " + newpass
-//                    + " Conf Pass: " + confpass + " Username: " + username);
-//            request.setAttribute("update", connectURL);
-//            request.setAttribute("update", encryptedOld);
-            request.getRequestDispatcher("Account/AccountInformation.jsp").forward(request, response);
-        } catch (Exception e) {
-            request.setAttribute("update", e.toString());
-            request.getRequestDispatcher("Account/AccountInformation.jsp").forward(request, response);
 
+        } catch (Exception e) {
+            session.setAttribute("update", e.toString());
+            response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
         }
 
     }

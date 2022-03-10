@@ -57,12 +57,12 @@
 
                 <div class="underline">
                     <p class="displayed-info-name">Name:&emsp;${name}</p>
-                    <input type="button" value="Edit" class="edit" onclick="window.location = 'Account/EditProfile.jsp'">
+                    <input type="button" value="Edit" class="edit" onclick="window.location = '/SKIT-YIMS/Account/EditProfile.jsp'">
                 </div>
 
                 <div class="underline">
                     <p class="displayed-info-pass">Password:</p>
-                    <input type="button" value="Edit" class="edit" minlength="8" onclick="window.location = 'Account/EditProfile.jsp'"></button>
+                    <input type="button" value="Edit" class="edit" minlength="8" onclick="window.location = '/SKIT-YIMS/Account/EditProfile.jsp'"></button>
                 </div>
 
                 <div class="underline">
