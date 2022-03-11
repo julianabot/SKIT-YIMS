@@ -13,7 +13,7 @@ try
 {
        
         Class.forName("com.mysql.jdbc.Driver").newInstance();
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false","root","kgarcia24");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false","root","1Europa4!");
         String sql = "SELECT * FROM `skit-yims`.`basic-info`;";
         PreparedStatement stmt = con.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
