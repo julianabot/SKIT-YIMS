@@ -19,6 +19,8 @@
                 justify-content: space-between;
                 border-radius: 20px 20px 0 0;
             }
+            
+          
 
             /* Style the buttons inside the tab */
             .tab button {
@@ -109,18 +111,18 @@
                                 
                                 <div class="radial-row-three">
                                     <div>
-                                     <input type="radio" id="female" name="gender" value="Female (Babae)">
+                                    <input type="radio" id="female" name="gender" value="Female (Babae)">
                                     <label for="female" class="label-english"><span class="radio-btn"></span>Female <span>(Babae)</span></label>
                                     </div>
                                     
-                                    <div class="divider-choices"></div>
+                                    <div class="divider-choices-three"></div>
                                     
-                                    <div>
+                                    <div class="no-padding">
                                       <input type="radio" id="male" name="gender" value="Male (Lalaki)" class="radio-btn">
                                       <label for="male" class="label-english"><span class="radio-btn"></span>Male <span>(Lalaki)</span></label>
                                     </div>
                                     
-                                    <div class="divider-choices"></div>
+                                    <div class="divider-choices-three"></div>
                                     
                                     <div>
                                       <input type="radio" id="prefer" name="gender" value="Prefer not to say" class="radio-btn">
@@ -189,7 +191,7 @@
                             <div class="content-divider"></div>
 
                             <div>
-                                <label for="jobEmployed" class="label-english">If employed, please specify your job. If none, type N/A.&emsp;<span>Kung nagtratrabaho, isulat ang uri ng trabaho. Kung wala, isulat N/A.</span></label><br>
+                                <label for="jobEmployed" class="label-english">If employed, please specify your job. (If none, type N/A)&emsp;<span>Kung nagtratrabaho, isulat ang uri ng trabaho. (Kung wala, isulat N/A)</span></label><br>
                                 <input type="text" id="job" name="jobEmployed" class="long-textbox"><br>
                             </div>
                             <br>
@@ -225,7 +227,7 @@
 
                             <div>
                                 <label for="typePWD" class="label-english">
-                                    Type of disability (Type N/A if not applicable)&emsp;<span>Ano ang uri ng kapansanan? Isulat ang N/A kung wala.</span>
+                                    Type of disability (Type N/A if not applicable)&emsp;<span>Uri ng Kapansanan (Isulat ang N/A kung wala)</span>
                                 </label><br>
                                 <input type="text" id="typePWD" name="typePWD" class="long-textbox"><br>
                             </div>
@@ -253,7 +255,7 @@
                             <div class="content-divider"></div>
 
                             <div>
-                                <label for="fb" class="label-english">Facebook Name or URL&emsp;<span>Pangalan o URLKng Account sa Facebook</span></label>
+                                <label for="fb" class="label-english">Facebook Name or URL&emsp;<span>Pangalan o URL ng Account sa Facebook</span></label>
                                 <input type="fb" id="fbname" name="fb" class="long-textbox">
                             </div>
                         </div>
@@ -266,7 +268,7 @@
                         <div class="content-container">
                             <div>
                                 <label for="mother" class="label-english">Mother's Name&emsp;<span>Pangalan ng iyong Nanay</span></label><br>
-                                <input type="text" id="mother" name="mother" class="long-textbox">
+                                <input type="text" id="mother" name="mother" class="long-textbox" placeholder="First Name Last Name">
                             </div>
 
                             <div class="content-divider"></div>
@@ -292,7 +294,7 @@
 
                             <div>
                                 <label for="father" class="label-english">Father's Name&emsp;<span>Pangalan ng iyong Tatay</span></label><br>
-                                <input type="text" id="father" name="father" class="long-textbox">
+                                <input type="text" id="father" name="father" class="long-textbox" placeholder="First Name Last Name">
                             </div>
 
                             <div class="content-divider"></div>
@@ -318,7 +320,7 @@
                             <div class="content-divider"></div>
 
                             <div>
-                                <label for="nosibs" class="label-english">No. of Siblings&emsp;<span>Ilan kayong Magkakapatid?</span></label><br>
+                                <label for="nosibs" class="label-english">No. of Sibling/s&emsp;<span>Ilan kayong Magkakapatid?</span></label><br>
                                 <input type="number" min="0" value="1" oninput="siblingSelection(this.value)"  id="nosibs" name="nosibs" class="dropdown">
                             </div>
 
@@ -326,7 +328,7 @@
 
                             <!-- dapat may condition dito ilang no. of siblings? Pending pa here-->
                             <div id="sibSelection" class="original">
-                                <label for="workingsib" class="label-english">Sibling Working Status&emsp;<span>Katayuan sa Trabaho</span></label>               
+                                <label for="workingsib" class="label-english">Sibling/s Working Status&emsp;<span>Katayuan sa Trabaho</span></label>               
                                 <select name="workingsib" id="selection" class="dropdown">
                                     <option value="Degree Holder">Degree Holder</option>
                                     <option value="Working">Working</option>
@@ -363,7 +365,7 @@
                             <div class="content-divider"></div>
 
                             
-                                <p class="label-english">Are you a member of an organization?&emsp;<span>Parte ka ba ng isang organisasyon?</span></p>
+                                <p class="label-english">Are you a member of an organization?&emsp;<span>Miyembro ka ba ng isang organisasyon?</span></p>
                                   <div class="radial-row">
                                     <input type="radio" id="yesorg" name="org" value="Yes">
                                       <label for="yesorg" class="label-english">Yes <span>(Oo)</span></label>
@@ -383,8 +385,8 @@
                             <div class="content-divider"></div>
 
                             <div>
-                                <label for="proj" class="label-english">Are you willing to support the incoming projects of SK-Ibayo Tipas?
-                                    <br><span>Handa ka bang suportahan ang mga paparating na proyekto ng SK-Ibayo Tipas?</span></label><br>
+                                <label for="proj" class="label-english">Are you willing to support the incoming projects of SK Ibayo-Tipas?
+                                    <br><span>Handa ka bang suportahan ang mga paparating na proyekto ng SK Ibayo-Tipas?</span></label><br>
                                 <div class="radial-row-three">
                                     <div>
                                       <input type="radio" id="yesproj" name="proj" value="Yes">
@@ -408,8 +410,8 @@
                             <div class="content-divider"></div>
 
                             <div>
-                                <label for="support" class="label-english">How will you show your support in the upcoming projects?
-                                    <br><span>Paano mo maipapakita ang iyong suporta sa mga proyekto ng SK Ibayo Tipas?</span></label><br>
+                                <label for="support" class="label-english">How will you show your support in the upcoming projects of the SK Ibayo-Tipas?
+                                    <br><span>Paano mo maipapakita ang iyong suporta sa mga proyekto ng SK Ibayo-Tipas?</span></label><br>
                                 <input type="text" id="support" name="support" class="long-textbox">
                             </div>
 
@@ -421,8 +423,8 @@
                             </div>
                             <div class="content-divider"></div>
                             <div>
-                                <label for="message" class="label-english">What would you like to say to the current SK-Council of Ibayo-Tipas?
-                                    <br><span>Ano ang iyong mensahe o mungkahi sa kasalukuyang konseho ng Sangguniang Kabataan-Ibayo Tipas?</span></label><br>
+                                <label for="message" class="label-english">What would you like to say to the current SK Council of Ibayo-Tipas?
+                                    <br><span>Ano ang iyong mensahe o mungkahi sa kasalukuyang konseho ng Sangguniang Kabataan Ibayo-Tipas?</span></label><br>
                                 <input type="text" id="message" name="message" class="long-textbox">
 
                             </div>

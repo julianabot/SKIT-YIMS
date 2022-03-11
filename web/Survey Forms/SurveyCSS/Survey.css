@@ -23,6 +23,18 @@ body {
     font-size: 1.5em;
 }
 
+@media (max-width:780px){
+    .tab{
+        flex-direction: column;
+    }
+    
+    .tab button{
+        border-radius: 0;
+    }
+    
+    
+}
+
 /*CONTAINER FOR SURVEY CONTENT PER PAGE*/
 .container{
     background-color: white;
@@ -127,6 +139,7 @@ span {
     padding-top: 0px;
 }
 
+
 @media (max-width:780px){
     .radial-row-three{
         flex-direction: column;
@@ -138,10 +151,14 @@ span {
         width: 100%;
     }
     
-
+    .divider-choices-three{
+        display: none;
+    }
 }
 
-
+.divider-choices-three{
+    width: 25px;
+}
 
 .divider-choices{
     width: 25px;
