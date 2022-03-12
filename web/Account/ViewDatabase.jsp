@@ -9,14 +9,20 @@
         <title>View Database</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
-            body {font-family: Arial;}
 
             /* Style the tab */
             .tab {
                 overflow: hidden;
                 border: 1px solid #ccc;
-                background-color: #f1f1f1;
+                background-color: white;
+                width: 100%;
+                margin: auto;
+                text-align: center;
+                display: flex;
+                justify-content: space-between;
             }
+            
+          
 
             /* Style the buttons inside the tab */
             .tab button {
@@ -27,25 +33,30 @@
                 cursor: pointer;
                 padding: 14px 16px;
                 transition: 0.3s;
-                font-size: 17px;
+                font-size: 1em;
+                width: 100%;
+                border: none;
+                font-family: 'Montserrat';
+                font-weight: bold;
             }
 
             /* Change background color of buttons on hover */
             .tab button:hover {
-                background-color: #ddd;
+                background-color: #E9DEDE;
             }
 
             /* Create an active/current tablink class */
             .tab button.active {
-                background-color: #ccc;
+                background-color: #8B3535;
+                color: white;
             }
 
             /* Style the tab content */
             .tabcontent {
                 display: none;
                 padding: 6px 12px;
-                border: 1px solid #ccc;
                 border-top: none;
+
             }
 
             /* for button */
@@ -67,8 +78,8 @@
 
             <ul class="links">
                 <li class="About"><a href="../Welcome.jsp">Home</a></li>
-                <li class="Events"><a href="#events">Database</a></li>
-                <li class="Events"><a href="#events">Account</a></li>
+                <li class="Events"><a href="ViewArchive.jsp"> Archived Database</a></li>
+                <li class="Events"><a href="AccountInformation.jsp">Account</a></li>
                 <li class="Login"><a href="Login.jsp" id="Login">Log Out</a></li>
             </ul>
             <label for="nav-toggle" class="icon-burger">
@@ -111,7 +122,7 @@
                 <%
                     try {
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "1Europa4!");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "dataware");
                         String sql = "SELECT `resident-info`.residentID, `contact-info`.emailAddress, `basic-info`.name, `basic-info`.agegroup, `basic-info`.birthday, `basic-info`.address, `basic-info`.gender, `contact-info`.contactNo, `resident-status`.civilStatus, `resident-status`.workingStatus, `resident-status`.jobEmployed, `resident-status`.educationAttainment, `resident-status`.PWD, `resident-status`.typeOfDisability, `contact-info`.fbNameURL, `basic-info`.validID, `fam-status`.motherName, `fam-status`.motherOccupation, `fam-status`.fatherName, `fam-status`.fatherOccupation, `fam-status`.vitalStatusMother, `fam-status`.vitalStatusFather, `fam-status`.noOfSiblings, `fam-status`.siblingEducation, `fam-status`.breadWinner, `resident-org`.residentVoter, `resident-org`.memberOfOrg, `resident-org`.nameOfOrg, `resident-org`.supportSK, `resident-org`.showSupport, `resident-org`.jobChance, `resident-org`.sayToSK, `vaccine-info`.vaccinated, `vaccine-info`.willingForVaccine, `vaccine-info`.brandOfVaccine, `vaccine-info`.vaccineStatus FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID;";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -119,7 +130,7 @@
                             out.println("No Records in the table");
                         } else {%>
 
-                <table border="1">
+                <table >
                     <tr><th>Resident ID</th><th>E-mail</th><th>Name</th><th>Age</th><th>Birthday</th><th>Complete Address</th><th>Gender</th>
                         <th>Contact No.</th><th>Civil Status</th><th>Working Status</th><th>Job Employed</th><th>Education Attainment</th><th>PWD</th><th>Type of Disability</th>
                         <th>Facebook Name or URL</th><th>Valid ID</th><th>Mother's Name</th><th>Mother's Occupation</th><th>Father's Name</th><th>Father's Occupation</th>
@@ -139,7 +150,7 @@
                         <td><%= rs.getString(29)%></td><td><%= rs.getString(30)%></td><td><%= rs.getString(31)%></td><td><%= rs.getString(32)%></td>
                         <td><%= rs.getString(33)%></td><td><%= rs.getString(34)%></td><td><%= rs.getString(35)%></td><td><%= rs.getString(36)%></td>
                         <td>
-                            <a href="Edit.jsp?u=<%= rs.getString(1)%>" class="btn btn-warning">Edit</a>
+                            <a href="Edit.jsp?u=<%= rs.getString(1)%>" class="btn-warning">Edit</a>
                         </td></tr>
 
                     <%} while (rs.next());
@@ -157,7 +168,7 @@
                 <%
                     try {
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "1Europa4!");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "dataware");
                         String sql = "SELECT * FROM `skit-yims`.`basic-info`;";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -165,7 +176,7 @@
                             out.println("No Records in the table");
                         } else {%>
 
-                <table border="1">
+                <table >
                     <tr><th>Basic ID</th><th>Name</th><th>Agegroup</th><th>Birthday</th><th>Address</th><th>Gender</th><th>Valid ID</th></tr>
                             <%
                                 do {%>
@@ -190,7 +201,7 @@
                     try {
 
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "1Europa4!");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "dataware");
                         String sql = "SELECT `contact-info`.contactID, `basic-info`.name, `contact-info`.contactNo, `contact-info`.emailAddress, `contact-info`.fbNameURL FROM `contact-info` INNER JOIN `basic-info` ON `contact-info`.contactID = `basic-info`.basicID;";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -198,7 +209,7 @@
                             out.println("No Records in the table");
                         } else {%>
 
-                <table border="1">
+                <table >
                     <tr><th>Contact ID</th><th>Name</th><th>Contact No.</th><th>Email Address</th><th>FB Name URL</th></tr>
                             <%
                                 do {%>
@@ -220,7 +231,7 @@
                 <%
                     try {
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "1Europa4!");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "dataware");
                         String sql = "SELECT `fam-status`.familyID, `basic-info`.name, `fam-status`.motherName, `fam-status`.motherOccupation, `fam-status`.fatherName, `fam-status`.fatherOccupation, `fam-status`.vitalStatusMother, `fam-status`.vitalStatusFather, `fam-status`.noOfSiblings, `fam-status`.siblingEducation, `fam-status`.breadWinner  FROM `fam-status` INNER JOIN `basic-info` ON `fam-status`.familyID = `basic-info`.basicID;";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -228,7 +239,7 @@
                             out.println("No Records in the table");
                         } else {%>
 
-                <table border="1">
+                <table >
                     <tr><th>Family ID</th><th>Name</th><th>Mother Name</th><th>Mother Occupation</th><th>Father Name</th><th>Father Occupation</th><th>Vital Status Mother</th>
                         <th>Vital Status Father</th><th>No. of siblings</th><th>Sibling Education</th><th>Bread Winner</th></tr>
                             <%
@@ -253,7 +264,7 @@
                 <%
                     try {
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "1Europa4!");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "dataware");
                         String sql = "SELECT `resident-org`.organizationID, `basic-info`.name, `resident-org`.residentVoter, `resident-org`.memberOfOrg, `resident-org`.nameOfOrg, `resident-org`.supportSK, `resident-org`.showSupport, `resident-org`.jobChance, `resident-org`.sayToSK FROM `resident-org` INNER JOIN `basic-info` ON `resident-org`.organizationID = `basic-info`.basicID;";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -261,7 +272,7 @@
                             out.println("No Records in the table");
                         } else {%>
 
-                <table border="1">
+                <table >
                     <tr><th>Organization ID</th><th>Name</th><th>Resident Voter</th><th>Member of Organization</th><th>Name of Organization</th><th>Support SK</th><th>Show Support</th>
                         <th>Job Chance</th><th>Say to SK</th></tr>
                             <%
@@ -285,7 +296,7 @@
                 <%
                     try {
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "1Europa4!");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "dataware");
                         String sql = "SELECT `resident-status`.statusID, `basic-info`.name, `resident-status`.civilStatus, `resident-status`.workingStatus, `resident-status`.educationAttainment, `resident-status`.jobEmployed, `resident-status`.PWD, `resident-status`.typeOfDisability FROM `resident-status` INNER JOIN `basic-info` ON `resident-status`.statusID = `basic-info`.basicID;";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -293,7 +304,7 @@
                             out.println("No Records in the table");
                         } else {%>
 
-                <table border="1">
+                <table >
                     <tr><th>Status ID</th><th>Name</th><th>Civil Status</th><th>Working Status</th><th>Education Attainment</th><th>Job Employed</th><th>PWD</th><th>Type of Disability</th></tr>
                             <%
                                 do {%>
@@ -316,7 +327,7 @@
                 <%
                     try {
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "1Europa4!");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "dataware");
                         String sql = "SELECT `vaccine-info`.vaccineID, `basic-info`.name, `vaccine-info`.vaccinated, `vaccine-info`.willingForVaccine, `vaccine-info`.brandOfVaccine, `vaccine-info`.vaccineStatus FROM `vaccine-info` INNER JOIN `basic-info` ON `vaccine-info`.vaccineID = `basic-info`.basicID;";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -324,7 +335,7 @@
                             out.println("No Records in the table");
                         } else {%>
 
-                <table border="1">
+                <table >
                     <tr><th>Vaccine ID</th><th>Name</th><th>Vaccinated</th><th>Willing for Vaccine</th><th>Brand of Vaccine</th><th>Vaccine Status</th></tr>
                             <%
                                 do {%>
@@ -344,7 +355,7 @@
             </div>
             <form action="../PDFServlet" method="POST">
                 <input id="pdfdownload" class="pdfdownload" name="pdfdownload" style="display: none">
-                <button type="submit" formtarget="_blank">Generate Report</button>
+                <button type="submit" formtarget="_blank" class="generate-button">Generate Report</button>
 
             </form>
             <div>
