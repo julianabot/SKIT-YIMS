@@ -21,8 +21,8 @@
                 display: flex;
                 justify-content: space-between;
             }
-            
-          
+
+
 
             /* Style the buttons inside the tab */
             .tab button {
@@ -355,7 +355,7 @@
             </div>
             <form action="../PDFServlet" method="POST">
                 <input id="pdfdownload" class="pdfdownload" name="pdfdownload" style="display: none">
-                <button type="submit" formtarget="_blank" class="generate-button">Generate Report</button>
+                <button type="submit" class="generate-button" onclick="alert('File has been downloaded to your Desktop');">Generate Report</button>
 
             </form>
             <div>
