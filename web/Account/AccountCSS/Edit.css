@@ -7,14 +7,15 @@ body {
 .tab {
     overflow: hidden;
     border: 1px solid #ccc;
-    background-color: #E2E2E2;
+    background-color: white;
     width: 90%;
     margin: auto;
     text-align: center;
     display: flex;
     justify-content: space-between;
-    border-radius: 20px 20px 0 0;
 }
+
+
 
 /* Style the buttons inside the tab */
 .tab button {
@@ -27,7 +28,6 @@ body {
     transition: 0.3s;
     font-size: 1em;
     width: 100%;
-    border-radius: 20px 20px 0 0;
     border: none;
     font-family: 'Montserrat';
     font-weight: bold;
@@ -35,12 +35,13 @@ body {
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-    background-color: grey;
+    background-color: #E9DEDE;
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
-    background-color: white;
+    background-color: #8B3535;
+    color: white;
 }
 
 /* Style the tab content */
@@ -51,13 +52,10 @@ body {
 
 }
 
-.container{
-    background-color: white;
-    width: 90%;
-    display: block;
-    margin: 20px auto;
-    margin-top: 0;
-    border-radius: 0 0 20px 20px; 
+/* for button */
+.wrapper {
+    border:1px solid #000;
+    display:inline-block;
 }
 
 .container{
@@ -76,8 +74,9 @@ body {
 
 }
 
-label, .age-select {
-    display: inline-block;
+.form-group {
+    display: flex;
+    flex-direction: row;
 }
 
 label{
@@ -85,13 +84,20 @@ label{
     font-family: 'Montserrat';
     margin-bottom: 5px;
     margin-top: 5px;
-    width: 18%;
+    width: 25%;
+}
+
+input, select {
+    width: 75%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .form-control{
-    width: 100%;
     height: 30px;
     display: block;
+    font-size: 0.9em;
 }
 
 .content-divider{
@@ -99,11 +105,9 @@ label{
 }
 
 .age-select{
-    width: 30%;
-    font-size: 1.2em;
+    font-size: 1em;
     height: 30px;
     font-family: Montserrat;
-
 }
 
 /*BOTTOM BUTTONS*/
@@ -154,19 +158,27 @@ label{
     .tab {
         display: block;
     }
-    
+
+    .form-group {
+        flex-direction: column;
+    }
+
     label {
         white-space: nowrap;
     }
-    
+
+    .form-control {
+        width: 100%;
+    }
+
     .age-select {
         font-size: 1em;
         width: 100%;
     }
-    
+
     .buttons {
         margin-left: 20%;
     }
-    
-    
+
+
 }
