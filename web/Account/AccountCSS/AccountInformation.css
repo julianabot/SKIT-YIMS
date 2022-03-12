@@ -18,9 +18,19 @@ nav{
     top: 0;
     font-family: Montserrat;
     font-weight: 900;
-    height: 7%;
+    height: 45px;
     background-color: #8B3535;
     padding: 0.5%;
+}
+
+.logo{
+    height: 100%;
+}
+
+#SK-Text-NavBar{
+    padding: 0;
+    display: inline-block;
+    vertical-align:middle;
 }
 
 nav .logo{
@@ -31,9 +41,10 @@ nav .logo{
     font-family: Montserrat; 
     font-weight: bold;
     font-style: italic;
-    font-size: 20px;
+    font-size: 1.2em;
     line-height: 80px;
 }
+
 nav .links{
     float: right;
     padding: 0;
@@ -44,12 +55,15 @@ nav .links{
     justify-content: space-around;
     align-items: center;
 }
+
 nav .links ul{
     width: 20%;
 }
+
 nav .links li{
     list-style: none;
 }
+
 nav .links a{
     display: block;
     padding: 1em;
@@ -58,10 +72,12 @@ nav .links a{
     color: white;
     text-decoration: none;
 }
+
 #nav-toggle{
     position: absolute;
     top: -100%;
 }
+
 nav .icon-burger{
     display: none;
     position: absolute;
@@ -69,6 +85,7 @@ nav .icon-burger{
     top: 50%;   
     transform: translateY(-50%);
 }
+
 nav .icon-burger .line{
     width: 30px;
     height: 5px;
@@ -77,7 +94,8 @@ nav .icon-burger .line{
     border-radius: 3px;
     transition: all .3s ease-in-out;
 }
-#Login{
+
+.logout-btn{
     background: white;
     color: #8B3535;
     font-family: Montserrat;
@@ -86,18 +104,84 @@ nav .icon-burger .line{
     font-weight: bold;
     line-height: 30px;
     text-align: center;
-    border-radius: 32.5px;
+    border-radius: 5px;
     padding-top: 2px;
     padding-bottom: 2px;
     padding-right: 15px;
     padding-left: 15px;
 }
 
+
+
+@media screen and (max-width: 1048px){
+    nav .logo{
+        float: none;
+        width: auto;
+        justify-content: center;
+        margin: 0;
+    }
+    nav .links{
+        float: none;
+        position: fixed;
+        z-index: 9;
+        left: 0;
+        right: 0;
+        top: 80px;
+        bottom: 100%;
+        width: auto;
+        height: auto;
+        flex-direction: column;
+        justify-content: space-evenly;
+        background-color: rgba(113, 41, 41, 0.65);
+        overflow: hidden;
+        box-sizing: border-box;
+        transition: all .5s ease-in-out;
+    }
+    nav .links a{
+        font-size: 1.5em;      
+    }    
+    nav :checked ~ .links{
+        bottom: 0;
+    }
+    nav .icon-burger{
+        display: block; 
+    }
+    nav :checked ~ .icon-burger .line:nth-child(1) {
+        transform: translateY(10px) rotate(225deg);
+    }
+    nav :checked ~ .icon-burger .line:nth-child(3) {
+        transform: translateY(-10px) rotate(-225deg);
+    }
+    nav :checked ~ .icon-burger .line:nth-child(2) {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 600px){
+    #SK-Text-NavBar{
+        display: none;
+    }
+    
+    nav .logo{
+        float: none;
+        width: auto;
+        justify-content: center;
+        margin: 0;
+        font-size: .80em;
+    }
+
+}
+
+/*SK LOGO*/
 .header-logo{
-    height: 90%;
+    height: 100%;
     margin-left: 1%;
     margin-right: 1%;
     float: left;
+}
+
+.navbar-spacer{
+    height: 80px;
 }
 
 .container{
@@ -109,6 +193,14 @@ nav .icon-burger .line{
     margin-right: 10%;
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    align-items: center;
+}
+
+@media screen and (max-width: 1048px){
+    .container{
+        margin-top: 13%; 
+        margin-bottom: 0%;
+    }
 }
 
 .first-half{
@@ -152,6 +244,12 @@ nav .icon-burger .line{
     display: block;
 }
 
+.displayed-message {
+    display: block;
+    color: #F2BB16;
+    
+}
+
 .displayed-info-name {
     display: inline-block;
 
@@ -163,7 +261,8 @@ nav .icon-burger .line{
 
 .edit {
     float: right;
-    margin-right: 5%;
+    top: 0%;
+    left: 0%;
     margin-top: 1.5%;
     background-color: #8B3535;
     border-color: #8B3535;
@@ -171,12 +270,36 @@ nav .icon-burger .line{
     color: white;
     padding: 5px 10px;
     text-align: center;
+    justify-content: center;
     text-decoration: none;
-    display: inline-block;
-    font-family: Montserrat;
+    display: absolute;
+    font-family: 'Montserrat';
     font-weight: bold;
     transition: 0.3s;
     cursor: pointer;
+    
+}
+
+.saveEdit {
+    float: right;
+    top: 0%;
+    left: 0%;
+    margin-top: 1.5%;
+    margin-right: 55px;
+    background-color: #8B3535;
+    border-color: #8B3535;
+    border-width: 1px;
+    color: white;
+    padding: 5px 9px;
+    text-align: center;
+    justify-content: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    
 }
 
 .underline {
@@ -211,5 +334,19 @@ nav .icon-burger .line{
 #file-chosen{
     color: #828282;
     font-weight: bold;
+    font-size: 0.8em;
+}
+
+.showEdit{
+    display: none;
+}
+
+.input-change {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 25%;
+    margin: 5px 0;
+    border: 1px solid black;
+    border-radius: 4px;
     font-size: 0.8em;
 }

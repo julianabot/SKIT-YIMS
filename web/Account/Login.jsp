@@ -4,7 +4,7 @@
     <head>
         <meta name="viewport" content="width=500, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="icon" type="image/png" href="SK_Logo.png" /> 
+        <link rel="icon" type="image/png" href="img/SK_Logo.png" /> 
         <link href="/SKIT-YIMS/Account/AccountCSS/Login.css?v={random number/string}" rel="stylesheet">
         <title>Login</title>
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -16,29 +16,12 @@
         }
     %>
     <body>
-        <nav>
-            <input id="nav-toggle" type="checkbox">
-            <img src="/SKIT-YIMS/img/SK_Logo.png" class="header-logo">
-
-            <div class="logo"><%out.print(getServletContext().getInitParameter("header"));%></div>
-
-            <ul class="links">
-                <li class="Home"><a href="/SKIT-YIMS/Welcome.jsp">Home</a></li>
-                <li class="Login"><a href="/SKIT-YIMS/Account/Login.jsp" id="Login">Login</a></li>
-            </ul>
-            <label for="nav-toggle" class="icon-burger">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </label>
-        </nav>
-
         <div class="half-white">
 
-
+            <div class="goback"> <a class="purp-btn" href="Welcome.jsp">Go back</a> </div>
             <div class="signup-form">
                 <h1 class="Sign"> Log in </h1>
-                <center> <p class ="Error" style="color: black">${errorLogin}</p></center>
+                <center> <p class ="Error" style="color: #F2BB16">${errorLogin}</p></center>
                 <form action="../LoginServlet" method="POST">
 
                     <input class="unp" type="text" name="uname" placeholder="Username" maxlength="16" required><br>
@@ -49,7 +32,7 @@
                              data-sitekey="6LcPvNsaAAAAAB_JssCHLi_bMPU1g9jVrBtaAtpi">
                         </div>
                         <input class="submitbtn" type="Submit" name="Login" value="Log In">
-                        <p class="footer-name"><% out.print(getServletContext().getInitParameter("footer"));%></p>
+                        <p class="footer-name">© Sangguniang Kabataan Ibayo-Tipas 2022. <br> All rights reserved.</p>
                     </center>
                 </form>
             </div>

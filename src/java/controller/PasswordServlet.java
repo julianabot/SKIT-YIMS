@@ -114,17 +114,17 @@ public class PasswordServlet extends HttpServlet {
                 stmt.setString(2, username);
 
                 stmt.executeUpdate();
-                session.setAttribute("update", "You have successfully changed your password.");
+                session.setAttribute("update1", "You have successfully changed your password.");
                 response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
                 return;
             } else {
-                session.setAttribute("update", "Incorrrect confirm new password. Try again.");
+                session.setAttribute("update1", "Incorrrect confirm new password. Try again.");
                 response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
                 return;
             }
 
         } catch (Exception e) {
-            session.setAttribute("update", e.toString());
+            session.setAttribute("update1", e.toString());
             response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
         }
 
