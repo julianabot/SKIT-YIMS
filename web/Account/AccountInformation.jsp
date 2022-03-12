@@ -57,47 +57,47 @@
 
                 <div class="underline">
                     <p class="displayed-info-name">Name:&emsp;${name}</p>
-                    <input type="button" value="Edit" class="edit" onclick="changeName()">
+                    <input type="button" value="Edit" class="edit" id ="editName" onclick="changeName()">
                     <!--                        "window.location = '/SKIT-YIMS/Account/EditProfile.jsp'"-->
                 </div>
 
-                <div class="showEdit" id="changeName">
+                <div class="showEdit" id="changeName" style="display: none;">
 <!--                <p> ${update} ${errorEdit}</p>-->
                     <form action = "../EditNameServlet" method = "POST">
                         <div>
                             <p class="displayed-info-name">Change your name here:</p>
-                            <input type="Submit" name="savechanges" value="Save" class="saveEdit">
+                            <input type="Submit" name="savechanges" value="Save" class="saveEdit" onclick="alert('${update}${errorEdit}')">
                         </div>
                         <input type="hidden" name="username" value ="${username}" class="input">
                         <input type="text" name="editname" placeholder="Enter New Name" required class="input-change"><br>
                     </form>
-                        <div>
-                        <p class="displayed-message">${update}${errorEdit}</p>
-                    </div>
+                    <!--                    <div>
+                                            <p class="displayed-message">${update}${errorEdit}</p>
+                                        </div>-->
                 </div>    
 
 
 
                 <div class="underline">
                     <p class="displayed-info-pass">Password:</p>
-                    <input type="button" value="Edit" class="edit" minlength="8" onclick="changePassword()">
+                    <input type="button" value="Edit" class="edit" id ="editPass" minlength="8" onclick="changePassword()">
                 </div>
 
-                <div class="showEdit" id="changePassword">    
+                <div class="showEdit" id="changePassword" style="display: none;">    
 <!--                    <p> ${update}</p>-->
                     <form action = "../PasswordServlet" method = "POST">
                         <div>
                             <p class="displayed-info-pass">Change your password here:</p>                 
-                            <input type="Submit" value="Save" name="savechanges" class="saveEdit" minlength="8">
+                            <input type="Submit" value="Save" name="savechanges" class="saveEdit" minlength="8" onclick="alert('${update1}')">
                         </div>
                         <input type="hidden" name="username" value ="${username}" class="input">
                         <input type="password" name="currpass" placeholder="Enter Current Password"  minlength="8" required class="input-change"><br>
                         <input type="password" name="newpass" placeholder="Enter New Password"  minlength="8" required required class="input-change"><br>
                         <input type="password" name="confpass" placeholder="Enter Confirm New Password"  minlength="8" required required class="input-change"><br>
                     </form>
-                    <div>
-                        <p class="displayed-message">${update1}</p>
-                    </div>
+                    <!--                    <div>
+                                            <p class="displayed-message">${update1}</p>
+                                        </div>-->
 
                     <!--                <div>
                                         <input type="button" value="Change Name or Password" class="edit" onclick="window.location = '/SKIT-YIMS/Account/EditProfile.jsp'">
@@ -111,13 +111,13 @@
                     var y = document.getElementById("changePassword");
                     if (x.style.display === "none") {
                         x.style.display = "block";
-                        y.style.display  = "none";
-                        x.input.value = 'Cancel';
+                        y.style.display = "none";
+                        document.getElementById("editName").value = "Cancel";
                     } else {
                         x.style.display = "none";
+                        document.getElementById("editName").value = "Edit";
                     }
-                    
-                   
+
                 }
 
                 function changePassword() {
@@ -125,13 +125,17 @@
                     var y = document.getElementById("changeName");
                     if (x.style.display === "none") {
                         x.style.display = "block";
-                        y.style.display  = "none";
-                        x.input.value = 'Cancel';
+                        y.style.display = "none";
+                        document.getElementById("editPass").value = "Cancel";
                     } else {
                         x.style.display = "none";
-                        x.value = 'Edit';
+                        document.getElementById("editPass").value = "Edit";
                     }
- 
+                    if (x.value == "Edit")
+                        x.value = "Cancel";
+                    else
+                        elem.value = "Edit";
+
                 }
 
             </script>
