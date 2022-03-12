@@ -260,12 +260,14 @@ nav .icon-burger .line{
 
 .tabcontent{
     overflow: auto;
+    overflow-y: auto;
     white-space: nowrap;
     background-color: white;
+    height: 400px;
 }
 
 table{
-   
+   table-layout: fixed;
 }
 
 th{
@@ -276,6 +278,12 @@ th{
 th, td{
     padding: 5px;
     border-bottom: 1px solid #ddd;
+    width: 600px;
+}
+
+td{
+    border: 1px solid;
+    word-wrap: break-word;
 }
 
 tr:nth-child(even){
