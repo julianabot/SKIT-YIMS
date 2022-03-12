@@ -19,8 +19,8 @@
                 justify-content: space-between;
                 border-radius: 20px 20px 0 0;
             }
-            
-          
+
+
 
             /* Style the buttons inside the tab */
             .tab button {
@@ -54,9 +54,240 @@
                 display: none;
                 padding: 6px 12px;
                 border-top: none;
-
             }
+
         </style>
+        
+        <script>
+            /*
+            function validate() {
+                var currenttab = document.g;
+
+                var name = document.forms["Survey"]["name"];
+                var age = document.forms["Survey"]["age"];
+                var birthday = document.forms["Survey"]["birthday"];
+                var gender = document.forms["Survey"]["gender"];
+                var address = document.forms["Survey"]["address"];
+                var civil = document.forms["Survey"]["civil"];
+                var working = document.forms["Survey"]["working"];
+                var jobEmployed = document.forms["Survey"]["jobEmployed"];
+                var education = document.forms["Survey"]["education"];
+                var pwd = document.forms["Survey"]["pwd"];
+                var typePWD = document.forms["Survey"]["typePWD"];
+                var phone = document.forms["Survey"]["phone"];
+                var email = document.forms["Survey"]["email"];
+                var fb = document.forms["Survey"]["fb"];
+                var mother = document.forms["Survey"]["mother"];
+                var motherstat = document.forms["Survey"]["motherstat"];
+                var motherwork = document.forms["Survey"]["motherwork"];
+                var father = document.forms["Survey"]["father"];
+                var fatherstat = document.forms["Survey"]["fatherstat"];
+                var fatherwork = document.forms["Survey"]["fatherwork"];
+                var nosibs = document.forms["Survey"]["nosibs"];
+                var workingsib = document.forms["Survey"]["workingsib"];
+                var breadwinner = document.forms["Survey"]["breadwinner"];
+                var voter = document.forms["Survey"]["voter"];
+                var org = document.forms["Survey"]["org"];
+                var orgname = document.forms["Survey"]["orgname"];
+                var proj = document.forms["Survey"]["proj"];
+                var support = document.forms["Survey"]["support"];
+                var jobchance = document.forms["Survey"]["jobchance"];
+                var message = document.forms["Survey"]["message"];
+                var vax = document.forms["Survey"]["vax"];
+                var willing = document.forms["Survey"]["willing"];
+                var brand = document.forms["Survey"]["brand"];
+                var vstatus = document.forms["Survey"]["vstatus"];
+
+                if (currenttab === "Info") {
+                    if (name.value === "") {
+                        window.alert("Please enter your name.");
+                        name.focus();
+                        return false;
+                    }
+                    if (age.value === "") {
+                        window.alert("Please enter your age.");
+                        age.focus();
+                        return false;
+                    }
+                    if (birthday.value === "") {
+                        window.alert("Please enter your birthday.");
+                        birthday.focus();
+                        return false;
+                    }
+                    if (gender.value === "") {
+                        window.alert("Please enter your gender.");
+                        gender.focus();
+                        return false;
+                    }
+                    if (address.value === "") {
+                        window.alert("Please enter your address.");
+                        address.focus();
+                        return false;
+                    }
+                }
+                if (currenttab === Details) {
+                    if (civil.value === "") {
+                        window.alert("Please enter your civil status.");
+                        civil.focus();
+                        return false;
+                    }
+                    if (working.value === "") {
+                        window.alert("Please enter if you have a job.");
+                        working.focus();
+                        return false;
+                    }
+                    if (jobEmployed.value === "") {
+                        window.alert("Please enter your job.");
+                        jobEMployed.focus();
+                        return false;
+                    }
+                    if (education.value === "") {
+                        window.alert("Please enter your your educational attainment.");
+                        education.focus();
+                        return false;
+                    }
+                    if (pwd.value === "") {
+                        window.alert("Please enter if you are a PWD.");
+                        pwd.focus();
+                        return false;
+                    }
+                    if (typePWD.value === "") {
+                        window.alert("Please enter your type of PWD.");
+                        typePWD.focus();
+                        return false;
+                    }
+                }
+
+                if (currentTab === Contact) {
+                    if (phone.value === "") {
+                        window.alert("Please enter your phone/contact number.");
+                        phone.focus();
+                        return false;
+                    }
+                    if (email.value === "") {
+                        window.alert("Please enter your email.");
+                        email.focus();
+                        return false;
+                    }
+                    if (fb.value === "") {
+                        window.alert("Please enter your facebook name or URL.");
+                        fb.focus();
+                        return false;
+                    }
+                }
+
+                if (currenttab === Family) {
+                    if (mother.value === "") {
+                        window.alert("Please enter your mother's name.");
+                        mother.focus();
+                        return false;
+                    }
+                    if (motherstat.value === "") {
+                        window.alert("Please enter your mother's status.");
+                        motherstat.focus();
+                        return false;
+                    }
+                    if (motherwork.value === "") {
+                        window.alert("Please enter your mother's job.");
+                        motherwork.focus();
+                        return false;
+                    }
+                    if (father.value === "") {
+                        window.alert("Please enter your father's name.");
+                        father.focus();
+                        return false;
+                    }
+                    if (fatherstat.value === "") {
+                        window.alert("Please enter your father's status.");
+                        fatherstat.focus();
+                        return false;
+                    }
+                    if (fatherwork.value === "") {
+                        window.alert("Please enter your father's job.");
+                        fatherwork.focus();
+                        return false;
+                    }
+                    if (nosibs.value === "") {
+                        window.alert("Please enter the number of siblings you have.");
+                        nosibs.focus();
+                        return false;
+                    }
+                    if (workingsib.value === "") {
+                        window.alert("Please enter your sibling/s' working status.");
+                        workingsib.focus();
+                        return false;
+                    }
+                    if (breadwinner.value === "") {
+                        window.alert("Please enter the breadwinner of your family.");
+                        breadwinner.focus();
+                        return false;
+                    }
+                }
+
+                if (currenttab === "Survey") {
+                    if (voter.value === "") {
+                        window.alert("Please enter if you are a registered voter.");
+                        voter.focus();
+                        return false;
+                    }
+                    if (org.value === "") {
+                        window.alert("Please enter if you affiliated with an organization.");
+                        org.focus();
+                        return false;
+                    }
+                    if (orgname.value === "") {
+                        window.alert("Please enter the name of your organization.");
+                        orgname.focus();
+                        return false;
+                    }
+                    if (proj.value === "") {
+                        window.alert("Please enter your answer.");
+                        proj.focus();
+                        return false;
+                    }
+                    if (support.value === "") {
+                        window.alert("Please enter your answer.");
+                        support.focus();
+                        return false;
+                    }
+                    if (jobchance.value === "") {
+                        window.alert("Please enter your answer.");
+                        jobchance.focus();
+                        return false;
+                    }
+                    if (message.value === "") {
+                        window.alert("Please enter your message.");
+                        message.focus();
+                        return false;
+                    }
+                }
+
+                if (currenttab === "Vaccination") {
+                    if (vax.value === "") {
+                        window.alert("Please enter vaxine administered.");
+                        vax.focus();
+                        return false;
+                    }
+                    if (willing.value === "") {
+                        window.alert("Please enter your answer.");
+                        willing.focus();
+                        return false;
+                    }
+                    if (brand.value === "") {
+                        window.alert("Please enter your brand name of vaccine.");
+                        brand.focus();
+                        return false;
+                    }
+                    if (vstatus.value === "") {
+                        window.alert("Please enter your vaccination status.");
+                        vstatus.focus();
+                        return false;
+                    }
+                }
+                return true;
+            }*/
+        </script>
+        ->
     </head>
     <body>
         <div id="header-container">
@@ -76,21 +307,21 @@
         </div>
 
         <div overflow:auto class="container">
-            <form action="../SurveyServlet" id = "SurveyForm" method="POST">
+            <form action="../SurveyServlet" id = "SurveyForm" method="POST" name="Survey">
                 <div id="Info" class="tabcontent">
                     <div class="container-main">
                         <div class="content-container">
                             <div>
-                                <label for="name" class="label-english" >Full Name of Resident&emsp;<span>Buong Pangalan ng Residente</span></label><br>
-                                <input type="text" id="name" name="name" class="long-textbox" placeholder=" First Name Last Name">
+                                <label for="name" class="label-english">Full Name of Resident<em class="required"></em>&emsp;<span>Buong Pangalan ng Residente</span></label><br>
+                                <input type="text" id="name" name="name" class="long-textbox" placeholder=" First Name Last Name" required maxlength="50">
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div class="table">
                                 <div class="input-group">
-                                    <label for="age" class="label-english" >Age&emsp;<span>Edad</span>&emsp;</label>
-                                    <select name="age" class="age-select">
+                                    <label for="age" class="label-english">Age<em class="required"></em>&emsp;<span>Edad</span></label>&emsp;
+                                    <select name="age" class="age-select" required>
                                         <option value="14 years old and below">14 years old and below</option>
                                         <option value="15-20 years old">15-20 years old</option>
                                         <option value="21-30 years old">21-30 years old</option>
@@ -99,44 +330,44 @@
                                 </div>
                                 <div class="divider-row"></div>
                                 <div class="input-group">
-                                    <label for="birthday" class="label-english" id="birthday-text">Birthday&emsp;<span>Kaarawan</span>&emsp;</label>
-                                    <input type="date" name="birthday" class="birthday-select">
+                                    <label for="birthday" class="label-english" id="birthday-text">Birthday<em class="required"></em>&emsp;<span>Kaarawan</span></label>&emsp;
+                                    <input type="date" name="birthday" class="birthday-select" required>
                                 </div>
                             </div>
-                            
+
                             <div class="content-divider"></div>
 
                             <div class="gender-group">
-                                <p class="label-english">Gender&emsp;<span>Kasarian</span></p>
-                                
+                                <p class="label-english">Gender<em class="required"></em>&emsp;<span>Kasarian</span></p>
+
                                 <div class="radial-row-three">
                                     <div>
-                                    <input type="radio" id="female" name="gender" value="Female (Babae)">
-                                    <label for="female" class="label-english"><span class="radio-btn"></span>Female <span>(Babae)</span></label>
+                                        <input type="radio" id="female" name="gender" value="Female (Babae)" required>
+                                        <label for="female" class="label-english"><span class="radio-btn"></span>Female <span>(Babae)</span></label>
                                     </div>
-                                    
+
                                     <div class="divider-choices-three"></div>
-                                    
+
                                     <div class="no-padding">
-                                      <input type="radio" id="male" name="gender" value="Male (Lalaki)" class="radio-btn">
-                                      <label for="male" class="label-english"><span class="radio-btn"></span>Male <span>(Lalaki)</span></label>
+                                          <input type="radio" id="male" name="gender" value="Male (Lalaki)" class="radio-btn">
+                                          <label for="male" class="label-english"><span class="radio-btn"></span>Male <span>(Lalaki)</span></label>
                                     </div>
-                                    
+
                                     <div class="divider-choices-three"></div>
-                                    
+
                                     <div>
-                                      <input type="radio" id="prefer" name="gender" value="Prefer not to say" class="radio-btn">
-                                      <label for="prefer" class="label-english"><span class="radio-btn"></span>Prefer not to say <span>(Pinipiling hindi sabihin)</span></label>
+                                          <input type="radio" id="prefer" name="gender" value="Prefer not to say" class="radio-btn">
+                                          <label for="prefer" class="label-english"><span class="radio-btn"></span>Prefer not to say <span>(Pinipiling hindi sabihin)</span></label>
                                     </div>
-                                    
+
                                 </div>
                             </div>
-                            
+
                             <div class="content-divider"></div>
 
                             <div>
-                                <label for="address" class="label-english">Full Address&emsp;<span>Buong Address ng Tirahan</span></label><br>
-                                <input type="text" id="address" name="address" class="long-textbox"><br>
+                                <label for="address" class="label-english">Full Address<em class="required"></em>&emsp;<span>Buong Address ng Tirahan</span></label><br>
+                                <input type="text" id="address" name="address" class="long-textbox" required maxlength="100"><br>
                             </div>
                             <div class="upload-group">
                                 <p class="label-english" id="upload-main-text-english">Upload ID Picture with Complete Address <br>
@@ -165,8 +396,8 @@
                     <div class="container-main">
                         <div class="content-container">
                             <div>
-                                <label for="civil" class="label-english">Civil Status&emsp;<span>Katayuang Sibil</span></label><br>               
-                                <select name="civil" class="dropdown">
+                                <label for="civil" class="label-english">Civil Status<em class="required"></em>&emsp;<span>Katayuang Sibil</span></label><br>               
+                                <select name="civil" class="dropdown" required>
                                     <option value="Single">Single</option>
                                     <option value="Married">Married</option>
                                     <option value="Widowed">Widowed</option>
@@ -176,8 +407,8 @@
                             <div class="content-divider"></div>
 
                             <div>
-                                <label for="working" class="label-english">Working Status&emsp;<span>Katayuan sa Trabaho</span></label><br>               
-                                <select name="working" class="dropdown">
+                                <label for="working" class="label-english">Working Status<em class="required"></em>&emsp;<span>Katayuan sa Trabaho</span></label><br>               
+                                <select name="working" class="dropdown" required>
                                     <option value="Full-Time Student">Full-Time Student</option>
                                     <option value="Working Student">Working Student</option>
                                     <option value="Out of School Youth">Out of School Youth</option>
@@ -191,13 +422,13 @@
                             <div class="content-divider"></div>
 
                             <div>
-                                <label for="jobEmployed" class="label-english">If employed, please specify your job. (If none, type N/A)&emsp;<span>Kung nagtratrabaho, isulat ang uri ng trabaho. (Kung wala, isulat N/A)</span></label><br>
-                                <input type="text" id="job" name="jobEmployed" class="long-textbox"><br>
+                                <label for="jobEmployed" class="label-english">If employed, please specify your job. (If none, type N/A)<em class="required"></em>&emsp;<span>Kung nagtratrabaho, isulat ang uri ng trabaho. (Kung wala, isulat N/A)</span></label><br>
+                                <input type="text" id="job" name="jobEmployed" class="long-textbox" required maxlength="30"><br>
                             </div>
                             <br>
                             <div>
-                                <label for="education" class="label-english">Highest Educational Attainment&emsp;<span>Pinakamataaas na Edukasyon na Natamo</span></label><br>               
-                                <select name="education" class="dropdown">
+                                <label for="education" class="label-english">Highest Educational Attainment<em class="required"></em>&emsp;<span>Pinakamataaas na Edukasyon na Natamo</span></label><br>               
+                                <select name="education" class="dropdown" required>
                                     <option value="Elementary Level">Elementary Level</option>
                                     <option value="Elementary Graduate">Elementary Graduate</option>
                                     <option value="Junior High School Level">Junior High School Level</option>
@@ -213,9 +444,9 @@
                             <div class="content-divider"></div>
 
                             <div>
-                                <p class="label-english">Do you identify as a Person With Disability (PWD)?&emsp;<span>Ikaw ba ay nabibilang sa mga Persons With Disabilities (PWD)?</span></p>
+                                <p class="label-english">Do you identify as a Person With Disability (PWD)?<em class="required"></em>&emsp;<span>Ikaw ba ay nabibilang sa mga Persons With Disabilities (PWD)?</span></p>
                                 <div class="radial-row">
-                                      <input type="radio" id="yes" name="pwd" value="Yes">
+                                      <input type="radio" id="yes" name="pwd" value="Yes" required>
                                       <label for="yes" class="label-english">Yes <span>(Oo)</span></label>
                                     <div class="divider-choices"></div>
                                       <input type="radio" id="no" name="pwd" value="No">
@@ -227,9 +458,9 @@
 
                             <div>
                                 <label for="typePWD" class="label-english">
-                                    Type of disability (Type N/A if not applicable)&emsp;<span>Uri ng Kapansanan (Isulat ang N/A kung wala)</span>
+                                    Type of disability (Type N/A if not applicable)<em class="required"></em>&emsp;<span>Uri ng Kapansanan (Isulat ang N/A kung wala)</span>
                                 </label><br>
-                                <input type="text" id="typePWD" name="typePWD" class="long-textbox"><br>
+                                <input type="text" id="typePWD" name="typePWD" class="long-textbox" required maxlength="40"><br>
                             </div>
                             <br>
                         </div>
@@ -241,22 +472,22 @@
                         <div class="content-container">
                             <div>
                                 <!-- To be fixed formatting!!! para sa database-->
-                                <label for="phone" class="label-english">Contact Number&emsp;<span>Numerong Maaring Tawagan</span></label><br>
-                                <input type="tel" id="phone" name="phone" class="long-textbox">
+                                <label for="phone" class="label-english">Contact Number<em class="required"></em>&emsp;<span>Numerong Maaring Tawagan</span></label><br>
+                                <input type="tel" id="phone" name="phone" class="long-textbox" required maxlength="15">
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div>
-                                <label for="email" class="label-english">Email Address&emsp;<span>Buong Email Address ng Residente</span></label>
-                                <input type="email" id="email" name="email" class="long-textbox">
+                                <label for="email" class="label-english">Email Address<em class="required"></em>&emsp;<span>Buong Email Address ng Residente</span></label>
+                                <input type="email" id="email" name="email" class="long-textbox" required maxlength="45">
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div>
-                                <label for="fb" class="label-english">Facebook Name or URL&emsp;<span>Pangalan o URL ng Account sa Facebook</span></label>
-                                <input type="fb" id="fbname" name="fb" class="long-textbox">
+                                <label for="fb" class="label-english">Facebook Name or URL<em class="required"></em>&emsp;<span>Pangalan o URL ng Account sa Facebook</span></label>
+                                <input type="fb" id="fbname" name="fb" class="long-textbox" required maxlength="35">
                             </div>
                         </div>
                     </div>
@@ -267,16 +498,16 @@
                     <div class="container-main">
                         <div class="content-container">
                             <div>
-                                <label for="mother" class="label-english">Mother's Name&emsp;<span>Pangalan ng iyong Nanay</span></label><br>
-                                <input type="text" id="mother" name="mother" class="long-textbox" placeholder="First Name Last Name">
+                                <label for="mother" class="label-english">Mother's Name<em class="required"></em>&emsp;<span>Pangalan ng iyong Nanay</span></label><br>
+                                <input type="text" id="mother" name="mother" class="long-textbox" placeholder="First Name Last Name" required maxlength="50">
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div>
-                                <p class="label-english">Mother's Status&emsp;<span>Estado ng iyong Nanay</span></p>
+                                <p class="label-english">Mother's Status<em class="required"></em>&emsp;<span>Estado ng iyong Nanay</span></p>
                                 <div class="radial-row">
-                                      <input type="radio" id="livingm" name="motherstat" value="Living">
+                                      <input type="radio" id="livingm" name="motherstat" value="Living" required>
                                       <label for="livingm" class="label-english">Living <span>(Buhay)</span></label><br>
                                     <div class="divider-choices"></div>
                                       <input type="radio" id="deceasedm" name="motherstat" value="Deceased">
@@ -287,22 +518,22 @@
                             <div class="content-divider"></div>
 
                             <div>
-                                <label for="motherwork" class="label-english">Mother's Occupation&emsp;<span>Trabaho ng iyong Nanay</span></label><br>
-                                <input type="text" id="motherwork" name="motherwork" class="long-textbox">
+                                <label for="motherwork" class="label-english">Mother's Occupation<em class="required"></em>&emsp;<span>Trabaho ng iyong Nanay</span></label><br>
+                                <input type="text" id="motherwork" name="motherwork" class="long-textbox" required maxlength="30">
                             </div>
                             <div class="content-divider"></div>
 
                             <div>
-                                <label for="father" class="label-english">Father's Name&emsp;<span>Pangalan ng iyong Tatay</span></label><br>
-                                <input type="text" id="father" name="father" class="long-textbox" placeholder="First Name Last Name">
+                                <label for="father" class="label-english">Father's Name<em class="required"></em>&emsp;<span>Pangalan ng iyong Tatay</span></label><br>
+                                <input type="text" id="father" name="father" class="long-textbox" placeholder="First Name Last Name" required maxlength="50">
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div>
-                                <p class="label-english">Father's Status&emsp;<span>Estado ng iyong Tatay</span></p>
+                                <p class="label-english">Father's Status<em class="required"></em>&emsp;<span>Estado ng iyong Tatay</span></p>
                                 <div class="radial-row">
-                                      <input type="radio" id="livingf" name="fatherstat" value="Living">
+                                      <input type="radio" id="livingf" name="fatherstat" value="Living" required>
                                       <label for="livingf" class="label-english">Living <span>(Buhay)</span></label><br>
                                     <div class="divider-choices"></div>
                                       <input type="radio" id="deceasedf" name="fatherstat" value="Deceased">
@@ -313,23 +544,23 @@
                             <div class="content-divider"></div>
 
                             <div>
-                                <label for="fatherwork" class="label-english">Father's Occupation&emsp;<span>Trabaho ng iyong Tatay</span></label><br>
-                                <input type="text" id="fatherwork" name="fatherwork" class="long-textbox">
+                                <label for="fatherwork" class="label-english">Father's Occupation<em class="required"></em>&emsp;<span>Trabaho ng iyong Tatay</span></label><br>
+                                <input type="text" id="fatherwork" name="fatherwork" class="long-textbox" required maxlength="30">
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div>
-                                <label for="nosibs" class="label-english">No. of Sibling/s&emsp;<span>Ilan kayong Magkakapatid?</span></label><br>
-                                <input type="number" min="0" value="1" oninput="siblingSelection(this.value)"  id="nosibs" name="nosibs" class="dropdown">
+                                <label for="nosibs" class="label-english">No. of Sibling/s<em class="required"></em>&emsp;<span>Ilan kayong Magkakapatid?</span></label><br>
+                                <input type="number" min="0" value="1" oninput="siblingSelection(this.value)"  id="nosibs" name="nosibs" class="dropdown" required>
                             </div>
 
                             <div class="content-divider"></div>
 
                             <!-- dapat may condition dito ilang no. of siblings? Pending pa here-->
                             <div id="sibSelection" class="original">
-                                <label for="workingsib" class="label-english">Sibling/s Working Status&emsp;<span>Katayuan sa Trabaho</span></label>               
-                                <select name="workingsib" id="selection" class="dropdown">
+                                <label for="workingsib" class="label-english">Sibling/s Working Status<em class="required"></em>&emsp;<span>Katayuan sa Trabaho</span></label>               
+                                <select name="workingsib" id="selection" class="dropdown" required>
                                     <option value="Degree Holder">Degree Holder</option>
                                     <option value="Working">Working</option>
                                     <option value="Unemployed">Unemployed</option>
@@ -343,8 +574,8 @@
                             <div class="content-divider"></div>
 
                             <div>
-                                <label for="breadwinner" class="label-english">Who is the breadwinner in your family?&emsp;<span>Sino ang kumikita para sa pamilya?</span></label><br>
-                                <input type="text" id="breadwinner" name="breadwinner" class="long-textbox">
+                                <label for="breadwinner" class="label-english">Who is the breadwinner in your family?<em class="required"></em>&emsp;<span>Sino ang kumikita para sa pamilya?</span></label><br>
+                                <input type="text" id="breadwinner" name="breadwinner" class="long-textbox" required maxlength="30">
                             </div>
                         </div>
                     </div> 
@@ -353,9 +584,9 @@
                 <div id="Survey" class="tabcontent">
                     <div class="container-main">
                         <div class="content-container">
-                            <p class="label-english">Are you a registered SK voter?&emsp;<span>Nakapag-rehistro ka ba upang bumoto sa SK?</span></p>
+                            <p class="label-english">Are you a registered SK voter?<em class="required"></em>&emsp;<span>Nakapag-rehistro ka ba upang bumoto sa SK?</span></p>
                             <div class="radial-row">  
-                                <input type="radio" id="yesvoter" name="voter" value="Yes">
+                                <input type="radio" id="yesvoter" name="voter" value="Yes" required>
                                   <label for="yesvoter" class="label-english">Yes <span>(Oo)</span></label>
                                 <div class="divider-choices"></div>
                                   <input type="radio" id="novoter" name="voter" value="No">
@@ -364,45 +595,45 @@
 
                             <div class="content-divider"></div>
 
-                            
-                                <p class="label-english">Are you a member of an organization?&emsp;<span>Miyembro ka ba ng isang organisasyon?</span></p>
-                                  <div class="radial-row">
-                                    <input type="radio" id="yesorg" name="org" value="Yes">
-                                      <label for="yesorg" class="label-english">Yes <span>(Oo)</span></label>
-                                    <div class="divider-choices"></div>
-                                      <input type="radio" id="noorg" name="org" value="No">
-                                      <label for="noorg" class="label-english">No <span>(Hindi)</span></label>
-                                </div>
-                            
+
+                            <p class="label-english">Are you a member of an organization?<em class="required"></em>&emsp;<span>Miyembro ka ba ng isang organisasyon?</span></p>
+                              <div class="radial-row">
+                                <input type="radio" id="yesorg" name="org" value="Yes" required>
+                                  <label for="yesorg" class="label-english">Yes <span>(Oo)</span></label>
+                                <div class="divider-choices"></div>
+                                  <input type="radio" id="noorg" name="org" value="No">
+                                  <label for="noorg" class="label-english">No <span>(Hindi)</span></label>
+                            </div>
+
 
                             <div class="content-divider"></div>
 
                             <div>
-                                <label for="orgname" class="label-english">If yes, please specify which organization.&emsp;<span>Kung oo, anong organisasyon?</span></label><br>
-                                <input type="text" id="org" name="orgname" class="long-textbox">
+                                <label for="orgname" class="label-english">If yes, please specify which organization.<em class="required"></em>&emsp;<span>Kung oo, anong organisasyon?</span></label><br>
+                                <input type="text" id="org" name="orgname" class="long-textbox" required maxlength="50">
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div>
-                                <label for="proj" class="label-english">Are you willing to support the incoming projects of SK Ibayo-Tipas?
+                                <label for="proj" class="label-english">Are you willing to support the incoming projects of SK Ibayo-Tipas?<em class="required"></em>
                                     <br><span>Handa ka bang suportahan ang mga paparating na proyekto ng SK Ibayo-Tipas?</span></label><br>
                                 <div class="radial-row-three">
                                     <div>
-                                      <input type="radio" id="yesproj" name="proj" value="Yes">
-                                      <label for="yesproj" class="label-english">Yes <span>(Oo)</span></label><br>
-                                </div>
+                                          <input type="radio" id="yesproj" name="proj" value="Yes" required>
+                                          <label for="yesproj" class="label-english">Yes <span>(Oo)</span></label><br>
+                                    </div>
                                     <div class="divider-choices"></div>
-                                    
+
                                     <div>
-                                      <input type="radio" id="noproj" name="proj" value="No">
-                                      <label for="noproj" class="label-english">No <span>(Hindi)</span></label><br>
-                                </div>
+                                          <input type="radio" id="noproj" name="proj" value="No">
+                                          <label for="noproj" class="label-english">No <span>(Hindi)</span></label><br>
+                                    </div>
                                     <div class="divider-choices"></div>
-                                    
+
                                     <div>
-                                      <input type="radio" id="maybeproj" name="proj" value="Maybe">
-                                      <label for="maybeproj" class="label-english">Maybe <span>(Hindi Sigurado)</span></label><br>
+                                          <input type="radio" id="maybeproj" name="proj" value="Maybe">
+                                          <label for="maybeproj" class="label-english">Maybe <span>(Hindi Sigurado)</span></label><br>
                                     </div>
                                 </div>
                             </div>
@@ -410,22 +641,22 @@
                             <div class="content-divider"></div>
 
                             <div>
-                                <label for="support" class="label-english">How will you show your support in the upcoming projects of the SK Ibayo-Tipas?
+                                <label for="support" class="label-english">How will you show your support in the upcoming projects of the SK Ibayo-Tipas?<em class="required"></em>
                                     <br><span>Paano mo maipapakita ang iyong suporta sa mga proyekto ng SK Ibayo-Tipas?</span></label><br>
-                                <input type="text" id="support" name="support" class="long-textbox">
+                                <input type="text" id="support" name="support" class="long-textbox" required maxlength="120">
                             </div>
 
                             <div class="content-divider"></div>
                             <div>
-                                <label for="jobchance" class="label-english">If you are given a chance to have a job, what makes you worthy among others?
+                                <label for="jobchance" class="label-english">If you are given a chance to have a job, what makes you worthy among others?<em class="required"></em>
                                     <br><span>Kung ikaw ay bibigyan ng pagkakataong magkaroon ng  hanapbuhay, bakit ikaw ang karapat-dapat?</span></label><br>
-                                <input type="text" id="message" name="jobchance" class="long-textbox">
+                                <input type="text" id="message" name="jobchance" class="long-textbox" required maxlength="120">
                             </div>
                             <div class="content-divider"></div>
                             <div>
-                                <label for="message" class="label-english">What would you like to say to the current SK Council of Ibayo-Tipas?
+                                <label for="message" class="label-english">What would you like to say to the current SK Council of Ibayo-Tipas?<em class="required"></em>
                                     <br><span>Ano ang iyong mensahe o mungkahi sa kasalukuyang konseho ng Sangguniang Kabataan Ibayo-Tipas?</span></label><br>
-                                <input type="text" id="message" name="message" class="long-textbox">
+                                <input type="text" id="message" name="message" class="long-textbox" required maxlength="120">
 
                             </div>
                         </div>
@@ -435,23 +666,23 @@
                     <div class="container-main">
                         <div class="content-container">
                             <div>
-                                <p class="label-english">Have you been vaccinated for Covid-19?&emsp;<span>Ikaw ba ay nabakuna na laban Covid-19?</span>
+                                <p class="label-english">Have you been vaccinated for Covid-19?<em class="required"></em>&emsp;<span>Ikaw ba ay nabakuna na laban Covid-19?</span>
                                 </p>
-                                
+
                                 <div class="radial-row">
-                                  <input type="radio" id="yesvax" name="vax" value="Yes">
-                                  <label for="yesvax" class="label-english">Yes <span>(Oo)</span></label><br>
-                                <div class="divider-choices"></div>
-                                  <input type="radio" id="novax" name="vax" value="No">
-                                  <label for="novax" class="label-english">No <span>(Hindi)</span></label><br>
+                                      <input type="radio" id="yesvax" name="vax" value="Yes" required>
+                                      <label for="yesvax" class="label-english">Yes <span>(Oo)</span></label><br>
+                                    <div class="divider-choices"></div>
+                                      <input type="radio" id="novax" name="vax" value="No">
+                                      <label for="novax" class="label-english">No <span>(Hindi)</span></label><br>
                                 </div>
-                                
+
                             </div>
-                            
+
                             <div class="content-divider"></div>
-                            
+
                             <div>
-                                <p class="label-english" class="label-english">If not, are you willing to be vaccinated if given the chance?
+                                <p class="label-english" class="label-english">If not, are you willing to be vaccinated if given the chance?<em class="required"></em>
                                     &emsp;<span>Kung hindi, may kagustuhan ka ba mabakuna kapag nagkaroon ng pagkakataon?</span>
                                 </p>
                                 <div class="radial-row">
@@ -462,12 +693,12 @@
                                       <label for="nowilling" class="label-english">No <span>(Hindi)</span></label><br>
                                 </div>
                             </div>
-                            
+
                             <div class="content-divider"></div>
-                            
+
                             <div>
-                                <label for="brand" class="label-english">If yes, what brand of vaccine did you receive?&emsp;<span>Kung oo, ano ang brand ng iyong bakuna?</span></label>
-                                <select name="brand" class="dropdown">
+                                <label for="brand" class="label-english">If yes, what brand of vaccine did you receive?<em class="required"></em>&emsp;<span>Kung oo, ano ang brand ng iyong bakuna?</span></label>
+                                <select name="brand" class="dropdown" required>
                                     <option value="Pfizer-BioNTech">Pfizer-BioNTech</option>
                                     <option value="Oxford-AstraZeneca">Oxford-AstraZeneca</option>
                                     <option value="CoronaVac (Sinovac)">CoronaVac (Sinovac)</option>
@@ -478,11 +709,11 @@
                                     <option value="Sinopharm">Sinopharm</option>
                                 </select>
                             </div>
-                            
+
                             <div class="content-divider"></div>
-                            
+
                             <div>
-                                <label for="vstatus" class="label-english">What is your Vaccine Status?&emsp;<span>Ano ang istatus ng iyong bakuna?</span> </label>
+                                <label for="vstatus" class="label-english">What is your Vaccine Status?<em class="required"></em>&emsp;<span>Ano ang istatus ng iyong bakuna?</span> </label>
                                 <select name="vstatus" class="dropdown" required >
                                     <option value="Not Vaccinated">Not Vaccinated</option>
                                     <option value="First Dose">First Dose</option>
@@ -497,7 +728,7 @@
                     <button id = "backButton" type = "button" onclick="prev()" class="previous">Back</button>
                     <div class="divider-content"></div>
                     <button id="nextButton" type="button" onclick="next()" class="next">Proceed</button>
-                    <button id="submitButton" type="submit" value="submit" class = "next">Submit</button>
+                        <button id="submitButton" type="submit" value="submit" class = "next">Submit</button>
                 </div>
             </form>
         </div>
@@ -577,6 +808,8 @@
                 console.log(tabName);
                 console.log(counter);
                 document.getElementByClassName("tabcontent").style.display = "block";
+
+                return validate();
 
             }
 

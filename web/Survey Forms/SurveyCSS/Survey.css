@@ -52,6 +52,12 @@ body {
     
 }
 
+/*Asterisk marking required fields*/
+.required::after {
+    content: " *";
+    color: red;
+}
+
 /*ENGLISH TEXT LABEL*/
 .label-english{
     font-size: 1.2em;
@@ -72,6 +78,7 @@ span {
     display: block;
     font-family: Montserrat;
     font-size: 1.2em;
+    margin-top: 0.9%;
 }
 
 .content-divider{
