@@ -122,7 +122,7 @@
                 <%
                     try {
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "dataware");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "admin1234");
                         String sql = "SELECT `resident-info`.residentID, `contact-info`.emailAddress, `basic-info`.name, `basic-info`.agegroup, `basic-info`.birthday, `basic-info`.address, `basic-info`.gender, `contact-info`.contactNo, `resident-status`.civilStatus, `resident-status`.workingStatus, `resident-status`.jobEmployed, `resident-status`.educationAttainment, `resident-status`.PWD, `resident-status`.typeOfDisability, `contact-info`.fbNameURL, `basic-info`.validID, `fam-status`.motherName, `fam-status`.motherOccupation, `fam-status`.fatherName, `fam-status`.fatherOccupation, `fam-status`.vitalStatusMother, `fam-status`.vitalStatusFather, `fam-status`.noOfSiblings, `fam-status`.siblingEducation, `fam-status`.breadWinner, `resident-org`.residentVoter, `resident-org`.memberOfOrg, `resident-org`.nameOfOrg, `resident-org`.supportSK, `resident-org`.showSupport, `resident-org`.jobChance, `resident-org`.sayToSK, `vaccine-info`.vaccinated, `vaccine-info`.willingForVaccine, `vaccine-info`.brandOfVaccine, `vaccine-info`.vaccineStatus FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID;";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -168,7 +168,7 @@
                 <%
                     try {
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "dataware");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "admin1234");
                         String sql = "SELECT * FROM `skit-yims`.`basic-info`;";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -201,7 +201,7 @@
                     try {
 
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "dataware");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "admin1234");
                         String sql = "SELECT `contact-info`.contactID, `basic-info`.name, `contact-info`.contactNo, `contact-info`.emailAddress, `contact-info`.fbNameURL FROM `contact-info` INNER JOIN `basic-info` ON `contact-info`.contactID = `basic-info`.basicID;";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -231,7 +231,7 @@
                 <%
                     try {
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "dataware");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "admin1234");
                         String sql = "SELECT `fam-status`.familyID, `basic-info`.name, `fam-status`.motherName, `fam-status`.motherOccupation, `fam-status`.fatherName, `fam-status`.fatherOccupation, `fam-status`.vitalStatusMother, `fam-status`.vitalStatusFather, `fam-status`.noOfSiblings, `fam-status`.siblingEducation, `fam-status`.breadWinner  FROM `fam-status` INNER JOIN `basic-info` ON `fam-status`.familyID = `basic-info`.basicID;";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -264,7 +264,7 @@
                 <%
                     try {
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "dataware");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "admin1234");
                         String sql = "SELECT `resident-org`.organizationID, `basic-info`.name, `resident-org`.residentVoter, `resident-org`.memberOfOrg, `resident-org`.nameOfOrg, `resident-org`.supportSK, `resident-org`.showSupport, `resident-org`.jobChance, `resident-org`.sayToSK FROM `resident-org` INNER JOIN `basic-info` ON `resident-org`.organizationID = `basic-info`.basicID;";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -296,7 +296,7 @@
                 <%
                     try {
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "dataware");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "admin1234");
                         String sql = "SELECT `resident-status`.statusID, `basic-info`.name, `resident-status`.civilStatus, `resident-status`.workingStatus, `resident-status`.educationAttainment, `resident-status`.jobEmployed, `resident-status`.PWD, `resident-status`.typeOfDisability FROM `resident-status` INNER JOIN `basic-info` ON `resident-status`.statusID = `basic-info`.basicID;";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -327,7 +327,7 @@
                 <%
                     try {
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "dataware");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "admin1234");
                         String sql = "SELECT `vaccine-info`.vaccineID, `basic-info`.name, `vaccine-info`.vaccinated, `vaccine-info`.willingForVaccine, `vaccine-info`.brandOfVaccine, `vaccine-info`.vaccineStatus FROM `vaccine-info` INNER JOIN `basic-info` ON `vaccine-info`.vaccineID = `basic-info`.basicID;";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
