@@ -12,9 +12,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="icon" type="image/png" href="../img/SK_Logo.png"/>
+        <link rel="icon" type="image/png" href="img/SK_Logo.png"/>
         <link href="../Account/AccountCSS/Edit.css" rel="stylesheet" type="text/css">
-        <title>Edit</title>
+        <title>Edit Resident Profile</title>
         
     </head>
     <%
@@ -28,6 +28,12 @@
     %>
 
     <body>
+        <div id="header-container">
+            <img src="../img/SK_Logo.png" alt="SK Logo" id="Logo">
+            <div>
+                <h1 id="header-text">SK Ibayo-Tipas:<br>Edit Resident Profile</h1>
+            </div>
+        </div>
         <div class="tab">
             <button class="tablinks" onclick="showTab(event, 'Info')" id="defaultOpen">Resident Information</button>
             <button class="tablinks" onclick="showTab(event, 'Details')">Resident Details</button>

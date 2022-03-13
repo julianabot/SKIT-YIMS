@@ -4,6 +4,25 @@ body {
     background-color: #FFF9E9;
 }
 
+#header-container{
+    width: 100%;
+    text-align: center;
+}
+
+/*LOGO*/
+#Logo{
+    width: 150px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/*HEADER TEXT*/
+#header-text{
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
 .tab {
     overflow: hidden;
     border: 1px solid #ccc;
@@ -14,8 +33,6 @@ body {
     display: flex;
     justify-content: space-between;
 }
-
-
 
 /* Style the buttons inside the tab */
 .tab button {
@@ -49,7 +66,6 @@ body {
     display: none;
     padding: 6px 12px;
     border-top: none;
-
 }
 
 /* for button */
@@ -71,7 +87,6 @@ body {
 .container-main{
     width: 95%;
     margin: 30px auto;
-
 }
 
 .form-group {
@@ -97,7 +112,8 @@ input, select {
 .form-control{
     height: 30px;
     display: block;
-    font-size: 0.9em;
+    font-size: 1em;
+    font-family: 'Montserrat';
 }
 
 .content-divider{

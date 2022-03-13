@@ -117,6 +117,12 @@ span {
     font-family: Montserrat;
 }
 
+.long-textbox, .age-select, .birthday-select, .dropdown {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 .birthday-select{
     width: 60%;
     font-size: 1.2em;
@@ -215,8 +221,6 @@ span {
     background-color: #E2E2E2; 
     font-family: Montserrat;
 }
-
-
 
 /*BOTTOM BUTTONS*/
 .buttons{
