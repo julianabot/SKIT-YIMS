@@ -128,8 +128,10 @@ input, select {
 
 /*BOTTOM BUTTONS*/
 .buttons{
-    display:flex;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .btn-warning{
@@ -138,11 +140,11 @@ input, select {
     color: white;
     font-family: Montserrat;
     padding: 10px 20px;
-    width: 150px;
     font-size: 1em;
     font-weight: bold;
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 20px;  
+    width: 15%;   
     cursor: pointer;
 }
 
@@ -150,14 +152,13 @@ input, select {
     background-color: white;
     border-color: #8B3535;
     color: #8B3535;
-    border-width: 2px;
     font-family: Montserrat;
     padding: 10px 20px;
-    width: 150px;
     font-size: 1em;
     font-weight: bold;
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 20px;    
+    width: 15%;
     cursor: pointer;
 }
 
@@ -190,10 +191,14 @@ input, select {
     .age-select {
         font-size: 1em;
         width: 100%;
-    }
+    }    
 
     .buttons {
-        margin-left: 20%;
+        
+    }
+    
+    .btn-warning {
+        width: 30%;
     }
 
 
