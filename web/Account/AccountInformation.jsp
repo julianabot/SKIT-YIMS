@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="icon" type="image/png" href="img/SK_Logo.png"/>
+        <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png"/>
         <link href="../Account/AccountCSS/AccountInformation.css" rel="stylesheet" type="text/css">
         <link href="/SKIT-YIMS/Account/AccountCSS/AccountInformation.css" rel="stylesheet" type="text/css">
         <title>Account Profile</title>
@@ -23,13 +23,12 @@
             <div class="logo">Sangguniang Kabataan Ibayo-Tipas</div>
 
             <ul class="links">
-                <li class="About"><a href="/SKIT-YIMS/Welcome.jsp">Home</a></li>
                 <li class="Events"><a href="/SKIT-YIMS/Account/ViewDatabase.jsp">Database</a></li>
                 <!--Account Tab TBR-->
                 <li class="Events"><a href="/SKIT-YIMS/Account/AccountInformation.jsp">Account</a></li>
                 <li class="Login">
                     <form action = "../LogoutServlet" method = "GET">
-                        <button class="logout-btn" type="submit">Logout</button>
+                        <button class="logout-btn" type="submit">Log Out</button>
                     </form>
                 </li>
             </ul>
@@ -131,7 +130,7 @@
                         x.style.display = "none";
                         document.getElementById("editPass").value = "Edit";
                     }
-                    if (x.value == "Edit")
+                    if (x.value === "Edit")
                         x.value = "Cancel";
                     else
                         elem.value = "Edit";

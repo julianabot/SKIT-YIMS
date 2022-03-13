@@ -3,7 +3,7 @@
     font-family: 'Montserrat';
 }
 
-.logout-btn{
+/*.logout-btn{
     background:white;
     color: white;
     font-family: 'Montserrat', sans-serif;
@@ -16,9 +16,9 @@
     border-radius: 30px;
     border: none;
     font-weight: bold;
-}
+}*/
 
-.Signin-btn
+/*.Signin-btn
 {
     background:white;
     color: white;
@@ -32,7 +32,7 @@
     border-radius: 30px;
     border: none;
     font-weight: bold;
-}
+}*/
 
 .half-white{
     background: white;
@@ -48,11 +48,11 @@
 }
 
 .half-blue{
-     background-image: url('/SKIT_YIMS/Web Pages/img/hero_gif2.gif');
+/*     background-image: url('/SKIT_YIMS/Web Pages/img/hero_gif2.gif');
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover;*/
     background-color: #FFF9E9;
     width: 50%;
     position: absolute;
@@ -66,11 +66,11 @@
 .img-logo{
     height: 80%;
     width: auto;
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     animation: fadeIn 3s;
     -webkit-animation: fadeIn 5s;
     -moz-animation: fadeIn 5s;
@@ -127,14 +127,17 @@
     font-family: 'Montserrat';
     font-size: 14px;
     margin: 0;
+    margin-top: 10%;
     width: 85%;
     color: black;
     font-weight: bold;
     justify-content: center;
     position: absolute;
-    height: 100%;
-    left: 10%;
-    top: 15%;
+    height: 92%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
 /*    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
 }
 
@@ -156,8 +159,11 @@
     border: 2px solid black;
     padding: 15px;
     margin: 10px;
-    margin-left: 15%;
-    width: 60%;
+    margin-left: 10%;
+    width: 70%;
+    justify-content: center;
+    align-items: center;
+
     
 
 }
@@ -183,6 +189,8 @@
     font-weight: bold;
     letter-spacing: 1px;
     border: none;
+    margin-right: 9px;
+    text-align: center;
 }
 
 /*.submitbtn1{
@@ -207,7 +215,8 @@
 }
 
 .footer-name{
-    margin-top: 15%;
+    margin-top: 30%;
+    text-align: center;
 }
 
 @media screen and (max-width:800px) {
@@ -249,5 +258,27 @@
     .submitbtn{
         font-size: 12px;
         width: 50%
+    }
+}
+
+@media screen and (max-width:1500px) {
+    .img-logo{
+        height: 70%;
+        width: auto;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: fadeIn 3s;
+        -webkit-animation: fadeIn 5s;
+        -moz-animation: fadeIn 5s;
+        -o-animation: fadeIn 5s;
+        -ms-animation: fadeIn 5s;
+    }
+    
+    .footer-name{
+        margin-top: 20%;
+        text-align: center;
     }
 }

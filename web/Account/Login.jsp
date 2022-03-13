@@ -4,7 +4,7 @@
     <head>
         <meta name="viewport" content="width=500, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="icon" type="image/png" href="img/SK_Logo.png" /> 
+        <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png" /> 
         <link href="/SKIT-YIMS/Account/AccountCSS/Login.css?v={random number/string}" rel="stylesheet">
         <title>Login</title>
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -18,10 +18,10 @@
     <body>
         <div class="half-white">
 
-            <div class="goback"> <a class="purp-btn" href="Welcome.jsp">Go back</a> </div>
+            <div class="goback"> <a class="purp-btn" href="/SKIT-YIMS/Welcome.jsp">Go back</a> </div>
             <div class="signup-form">
                 <h1 class="Sign"> Log in </h1>
-                <center> <p class ="Error" style="color: #F2BB16">${errorLogin}</p></center>
+                <center> <p class ="Error" style="color: #712929 ">${errorLogin}</p></center>
                 <form action="../LoginServlet" method="POST">
 
                     <input class="unp" type="text" name="uname" placeholder="Username" maxlength="16" required><br>
@@ -34,6 +34,7 @@
                         <input class="submitbtn" type="Submit" name="Login" value="Log In">
                         <p class="footer-name">© Sangguniang Kabataan Ibayo-Tipas 2022. <br> All rights reserved.</p>
                     </center>
+                    
                 </form>
             </div>
         </div>

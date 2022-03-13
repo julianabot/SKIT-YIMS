@@ -74,7 +74,7 @@ public class PasswordServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        session.removeAttribute("update");
+        session.removeAttribute("update1");
         try {
 
             String currpass = request.getParameter("currpass");
@@ -95,7 +95,7 @@ public class PasswordServlet extends HttpServlet {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
             } else {
-                session.setAttribute("update", "Incorrect current password. Try again.");
+                session.setAttribute("update1", "Incorrect current password. Try again.");
                 response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
                 return;
             }
