@@ -57,237 +57,6 @@
             }
 
         </style>
-        
-        <script>
-            /*
-            function validate() {
-                var currenttab = document.g;
-
-                var name = document.forms["Survey"]["name"];
-                var age = document.forms["Survey"]["age"];
-                var birthday = document.forms["Survey"]["birthday"];
-                var gender = document.forms["Survey"]["gender"];
-                var address = document.forms["Survey"]["address"];
-                var civil = document.forms["Survey"]["civil"];
-                var working = document.forms["Survey"]["working"];
-                var jobEmployed = document.forms["Survey"]["jobEmployed"];
-                var education = document.forms["Survey"]["education"];
-                var pwd = document.forms["Survey"]["pwd"];
-                var typePWD = document.forms["Survey"]["typePWD"];
-                var phone = document.forms["Survey"]["phone"];
-                var email = document.forms["Survey"]["email"];
-                var fb = document.forms["Survey"]["fb"];
-                var mother = document.forms["Survey"]["mother"];
-                var motherstat = document.forms["Survey"]["motherstat"];
-                var motherwork = document.forms["Survey"]["motherwork"];
-                var father = document.forms["Survey"]["father"];
-                var fatherstat = document.forms["Survey"]["fatherstat"];
-                var fatherwork = document.forms["Survey"]["fatherwork"];
-                var nosibs = document.forms["Survey"]["nosibs"];
-                var workingsib = document.forms["Survey"]["workingsib"];
-                var breadwinner = document.forms["Survey"]["breadwinner"];
-                var voter = document.forms["Survey"]["voter"];
-                var org = document.forms["Survey"]["org"];
-                var orgname = document.forms["Survey"]["orgname"];
-                var proj = document.forms["Survey"]["proj"];
-                var support = document.forms["Survey"]["support"];
-                var jobchance = document.forms["Survey"]["jobchance"];
-                var message = document.forms["Survey"]["message"];
-                var vax = document.forms["Survey"]["vax"];
-                var willing = document.forms["Survey"]["willing"];
-                var brand = document.forms["Survey"]["brand"];
-                var vstatus = document.forms["Survey"]["vstatus"];
-
-                if (currenttab === "Info") {
-                    if (name.value === "") {
-                        window.alert("Please enter your name.");
-                        name.focus();
-                        return false;
-                    }
-                    if (age.value === "") {
-                        window.alert("Please enter your age.");
-                        age.focus();
-                        return false;
-                    }
-                    if (birthday.value === "") {
-                        window.alert("Please enter your birthday.");
-                        birthday.focus();
-                        return false;
-                    }
-                    if (gender.value === "") {
-                        window.alert("Please enter your gender.");
-                        gender.focus();
-                        return false;
-                    }
-                    if (address.value === "") {
-                        window.alert("Please enter your address.");
-                        address.focus();
-                        return false;
-                    }
-                }
-                if (currenttab === Details) {
-                    if (civil.value === "") {
-                        window.alert("Please enter your civil status.");
-                        civil.focus();
-                        return false;
-                    }
-                    if (working.value === "") {
-                        window.alert("Please enter if you have a job.");
-                        working.focus();
-                        return false;
-                    }
-                    if (jobEmployed.value === "") {
-                        window.alert("Please enter your job.");
-                        jobEMployed.focus();
-                        return false;
-                    }
-                    if (education.value === "") {
-                        window.alert("Please enter your your educational attainment.");
-                        education.focus();
-                        return false;
-                    }
-                    if (pwd.value === "") {
-                        window.alert("Please enter if you are a PWD.");
-                        pwd.focus();
-                        return false;
-                    }
-                    if (typePWD.value === "") {
-                        window.alert("Please enter your type of PWD.");
-                        typePWD.focus();
-                        return false;
-                    }
-                }
-
-                if (currentTab === Contact) {
-                    if (phone.value === "") {
-                        window.alert("Please enter your phone/contact number.");
-                        phone.focus();
-                        return false;
-                    }
-                    if (email.value === "") {
-                        window.alert("Please enter your email.");
-                        email.focus();
-                        return false;
-                    }
-                    if (fb.value === "") {
-                        window.alert("Please enter your facebook name or URL.");
-                        fb.focus();
-                        return false;
-                    }
-                }
-
-                if (currenttab === Family) {
-                    if (mother.value === "") {
-                        window.alert("Please enter your mother's name.");
-                        mother.focus();
-                        return false;
-                    }
-                    if (motherstat.value === "") {
-                        window.alert("Please enter your mother's status.");
-                        motherstat.focus();
-                        return false;
-                    }
-                    if (motherwork.value === "") {
-                        window.alert("Please enter your mother's job.");
-                        motherwork.focus();
-                        return false;
-                    }
-                    if (father.value === "") {
-                        window.alert("Please enter your father's name.");
-                        father.focus();
-                        return false;
-                    }
-                    if (fatherstat.value === "") {
-                        window.alert("Please enter your father's status.");
-                        fatherstat.focus();
-                        return false;
-                    }
-                    if (fatherwork.value === "") {
-                        window.alert("Please enter your father's job.");
-                        fatherwork.focus();
-                        return false;
-                    }
-                    if (nosibs.value === "") {
-                        window.alert("Please enter the number of siblings you have.");
-                        nosibs.focus();
-                        return false;
-                    }
-                    if (workingsib.value === "") {
-                        window.alert("Please enter your sibling/s' working status.");
-                        workingsib.focus();
-                        return false;
-                    }
-                    if (breadwinner.value === "") {
-                        window.alert("Please enter the breadwinner of your family.");
-                        breadwinner.focus();
-                        return false;
-                    }
-                }
-
-                if (currenttab === "Survey") {
-                    if (voter.value === "") {
-                        window.alert("Please enter if you are a registered voter.");
-                        voter.focus();
-                        return false;
-                    }
-                    if (org.value === "") {
-                        window.alert("Please enter if you affiliated with an organization.");
-                        org.focus();
-                        return false;
-                    }
-                    if (orgname.value === "") {
-                        window.alert("Please enter the name of your organization.");
-                        orgname.focus();
-                        return false;
-                    }
-                    if (proj.value === "") {
-                        window.alert("Please enter your answer.");
-                        proj.focus();
-                        return false;
-                    }
-                    if (support.value === "") {
-                        window.alert("Please enter your answer.");
-                        support.focus();
-                        return false;
-                    }
-                    if (jobchance.value === "") {
-                        window.alert("Please enter your answer.");
-                        jobchance.focus();
-                        return false;
-                    }
-                    if (message.value === "") {
-                        window.alert("Please enter your message.");
-                        message.focus();
-                        return false;
-                    }
-                }
-
-                if (currenttab === "Vaccination") {
-                    if (vax.value === "") {
-                        window.alert("Please enter vaxine administered.");
-                        vax.focus();
-                        return false;
-                    }
-                    if (willing.value === "") {
-                        window.alert("Please enter your answer.");
-                        willing.focus();
-                        return false;
-                    }
-                    if (brand.value === "") {
-                        window.alert("Please enter your brand name of vaccine.");
-                        brand.focus();
-                        return false;
-                    }
-                    if (vstatus.value === "") {
-                        window.alert("Please enter your vaccination status.");
-                        vstatus.focus();
-                        return false;
-                    }
-                }
-                return true;
-            }*/
-        </script>
-        ->
     </head>
     <body>
         <div id="header-container">
@@ -727,8 +496,9 @@
                 <div class="buttons">
                     <button id = "backButton" type = "button" onclick="prev()" class="previous">Back</button>
                     <div class="divider-content"></div>
+
                     <button id="nextButton" type="button" onclick="next()" class="next">Proceed</button>
-                        <button id="submitButton" type="submit" value="submit" class = "next">Submit</button>
+                    <button id="submitButton" type="submit" value="submit" class = "next">Submit</button>
                 </div>
             </form>
         </div>
@@ -809,7 +579,6 @@
                 console.log(counter);
                 document.getElementByClassName("tabcontent").style.display = "block";
 
-                return validate();
 
             }
 
@@ -820,6 +589,10 @@
                     document.getElementById("submitButton").style.visibility = 'hidden';
                 } else {
                     document.getElementById('backButton').style.visibility = 'visible';
+                    if (counter == 5)
+                        document.getElementById('nextButton').style.visibility = 'hidden';
+                    else
+                        document.getElementById('nextButton').style.visibility = 'visible';
                 }
                 document.getElementById("submitButton").style.visibility = 'hidden';
 
@@ -845,6 +618,7 @@
             // Get the element with id="defaultOpen" and click on it
             document.getElementById("defaultOpen").click();
             evt.currentTarget.className += " active";
+
         </script>
     </body>
 </html> 
