@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="AccountCSS/ViewDatabase.css" rel="stylesheet" type="text/css">
+        <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png" /> 
         <title>View Database</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
@@ -64,10 +64,32 @@
                 border:1px solid #000;
                 display:inline-block;
             }
+
+            .form-popup {
+                display: none;
+                position: fixed;
+                bottom: 0;
+                right: 15px;
+                border: 3px solid #f1f1f1;
+                z-index: 9;
+            }
+            .form-container {
+                max-width: 300px;
+                padding: 10px;
+                background-color: white;
+            }
+
+
         </style>
         <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
+    <%
+        response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
+        if (session.getAttribute("loggedIn") == null) {
+            response.sendRedirect("/SKIT-YIMS/Extra/InvalidSession.jsp");
+        }
+    %>
     <body>
         <!--HEADER-->
         <nav>
@@ -93,8 +115,10 @@
 
             <div class="search-archive">
                 <div class="wrapper">
-                    <input type="text" placeholder="Search for a resident">
-                    <button class="search-button"><i class="fas fa-search"></i>&nbsp; Search</button>
+                    <form action="../SearchServlet" method="POST">
+                        <input name="searchResident" type="text" placeholder="Search for a resident" id="searchResident">
+                        <button type="submit" class="search-button"><i class="fas fa-search"></i>&nbsp; Search</button>
+                    </form>
                 </div>
                 <div class="horizontal-spacer"></div>
                 <div class="archive-button-container">
@@ -103,8 +127,65 @@
 
             <div class="database-title-container">
                 <div class="database-title">SK Ibayo-Tipas Youth Residents Database</div>
-                <div class="sort-filter">
-                    <button type="button"><i class='fas fa-sort'></i>&nbsp;&nbsp;Sort</button> 
+                <button class="open-button" onclick="openForm()">Open Form</button>
+                <div class="form-popup" id="myForm" style="overflow:scroll; height:400px;">
+                    <form action="../SortServlet" method="POST" class="form-container">
+                        <p>Sort</p>
+                        <p>by Name</p>
+                        <input type="radio" id="atoz" name="sortBy" value="A to Z">
+                        <label for="atoz">A to Z</label><br>
+                        <input type="radio" id="ztoa" name="sortBy" value="Z to A">
+                        <label for="ztoa">Z to A</label><br>
+
+                        <p>by Age</p>
+                        <input type="radio" id="ytoo" name="sortBy" value="Youngest to Oldest">
+                        <label for="ytoo">Youngest to Oldest</label><br>
+                        <input type="radio" id="otoy" name="sortBy" value="Oldest to Youngest">
+                        <label for="otoy">Oldest to Youngest</label><br>
+
+                        <h3>By Age</h3>
+                        <ul class="filter" style="list-style: none">
+                            <li><input type="checkbox" name="filterage" value="14 years old and below"/>14 years old and below</li>
+                            <li><input type="checkbox" name="filterage" value="15-20 years old"/>15-20 years old</li>
+                            <li><input type="checkbox" name="filterage" value="21-30 years old"/>21-30 years old</li>
+                            <li><input type="checkbox" name="filterage" value="31 years old and above"/>31 years old and above</li>
+                        </ul>
+
+                        <h3>By Gender</h3>
+                        <ul class="filter" style="list-style: none">
+                            <li><input type="checkbox" name="filtergender" value="Female (Babae)"/>Female</li>
+                            <li><input type="checkbox" name="filtergender" value="Male (Lalaki)"/>Male</li>
+                            <li><input type="checkbox" name="filtergender" value="Prefer not to say"/>Prefer not to say</li>
+                        </ul>
+
+                        <h3>By Civil Status</h3>
+                        <ul class="filter" style="list-style: none">
+                            <li><input type="checkbox" name="filterCivilStatus" value="Single"/>Single</li>
+                            <li><input type="checkbox" name="filterCivilStatus" value="Married"/>Married</li>
+                            <li><input type="checkbox" name="filterCivilStatus" value="Widowed"/>Widowed</li>
+                        </ul>
+
+                        <h3>By Working Status</h3>
+                        <ul class="filter" style="list-style: none">
+                            <li><input type="checkbox" name="filterWorkStatus" value="Full Time Student"/>Full Time Student</li>
+                            <li><input type="checkbox" name="filterWorkStatus" value="Working Student"/>Working Student</li>
+                            <li><input type="checkbox" name="filterWorkStatus" value="Out of School Youth"/>Out of School Youth</li>
+                            <li><input type="checkbox" name="filterWorkStatus" value="Working/Employed"/>Working/Employed</li>
+                            <li><input type="checkbox" name="filterWorkStatus" value="Unemployed"/>Unemployed</li>
+                        </ul>
+
+                        <h3>Other</h3>
+                        <ul class="filter" style="list-style: none">
+                            <li><input type="checkbox" name="filterother" value="PWD"/>PWDs</li>
+                            <li><input type="checkbox" name="filterother" value="Vaccinated"/>Vaccinated</li>
+                            <li><input type="checkbox" name="filterother" value="Not Vaccinated"/>Not Vaccinated</li>
+                        </ul>
+
+                        <button name="sortSubmit" type="submit" value="Apply">Apply</button>
+                        <button name="sortSubmit" type="submit" value="Clear">Clear Changes</button>
+                        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                        <p>Query: ${sortQuery}</p>
+                    </form>
                     <button type="button"><i class='fas fa-filter'></i>&nbsp;&nbsp;Filter</button> 
                 </div>
             </div>
@@ -121,9 +202,13 @@
             <div id="All" class="tabcontent">
                 <%
                     try {
+                        String sortQuery = (String) session.getAttribute("sortQuery");
+                        if (sortQuery == null) {
+                            sortQuery = " ";
+                        }
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "1Europa4!");
-                        String sql = "SELECT `resident-info`.residentID, `contact-info`.emailAddress, `basic-info`.name, `basic-info`.agegroup, `basic-info`.birthday, `basic-info`.address, `basic-info`.gender, `contact-info`.contactNo, `resident-status`.civilStatus, `resident-status`.workingStatus, `resident-status`.jobEmployed, `resident-status`.educationAttainment, `resident-status`.PWD, `resident-status`.typeOfDisability, `contact-info`.fbNameURL, `basic-info`.validID, `fam-status`.motherName, `fam-status`.motherOccupation, `fam-status`.fatherName, `fam-status`.fatherOccupation, `fam-status`.vitalStatusMother, `fam-status`.vitalStatusFather, `fam-status`.noOfSiblings, `fam-status`.siblingEducation, `fam-status`.breadWinner, `resident-org`.residentVoter, `resident-org`.memberOfOrg, `resident-org`.nameOfOrg, `resident-org`.supportSK, `resident-org`.showSupport, `resident-org`.jobChance, `resident-org`.sayToSK, `vaccine-info`.vaccinated, `vaccine-info`.willingForVaccine, `vaccine-info`.brandOfVaccine, `vaccine-info`.vaccineStatus FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID;";
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
+                        String sql = "SELECT `resident-info`.residentID, `contact-info`.emailAddress, `basic-info`.name, `basic-info`.agegroup, `basic-info`.birthday, `basic-info`.address, `basic-info`.gender, `contact-info`.contactNo, `resident-status`.civilStatus, `resident-status`.workingStatus, `resident-status`.jobEmployed, `resident-status`.educationAttainment, `resident-status`.PWD, `resident-status`.typeOfDisability, `contact-info`.fbNameURL, `basic-info`.validID, `fam-status`.motherName, `fam-status`.motherOccupation, `fam-status`.fatherName, `fam-status`.fatherOccupation, `fam-status`.vitalStatusMother, `fam-status`.vitalStatusFather, `fam-status`.noOfSiblings, `fam-status`.siblingEducation, `fam-status`.breadWinner, `resident-org`.residentVoter, `resident-org`.memberOfOrg, `resident-org`.nameOfOrg, `resident-org`.supportSK, `resident-org`.showSupport, `resident-org`.jobChance, `resident-org`.sayToSK, `vaccine-info`.vaccinated, `vaccine-info`.willingForVaccine, `vaccine-info`.brandOfVaccine, `vaccine-info`.vaccineStatus FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID " + sortQuery;
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
                         if (rs.next() == false) {
@@ -167,9 +252,14 @@
             <div id="Information" class="tabcontent">
                 <%
                     try {
+                        String sortQuery = (String) session.getAttribute("sortQuery");
+
+                        if (sortQuery == null) {
+                            sortQuery = " ";
+                        }
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "1Europa4!");
-                        String sql = "SELECT * FROM `skit-yims`.`basic-info`;";
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
+                        String sql = "SELECT * FROM `skit-yims`.`basic-info` " + sortQuery;
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
                         if (rs.next() == false) {
@@ -199,10 +289,13 @@
             <div id="Contact" class="tabcontent">
                 <%
                     try {
-
+                        String sortQuery = (String) session.getAttribute("sortQuery");
+                        if (sortQuery == null) {
+                            sortQuery = " ";
+                        }
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "1Europa4!");
-                        String sql = "SELECT `contact-info`.contactID, `basic-info`.name, `contact-info`.contactNo, `contact-info`.emailAddress, `contact-info`.fbNameURL FROM `contact-info` INNER JOIN `basic-info` ON `contact-info`.contactID = `basic-info`.basicID;";
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
+                        String sql = "SELECT `contact-info`.contactID, `basic-info`.name, `contact-info`.contactNo, `contact-info`.emailAddress, `contact-info`.fbNameURL FROM `contact-info` INNER JOIN `basic-info` ON `contact-info`.contactID = `basic-info`.basicID " + sortQuery;
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
                         if (rs.next() == false) {
@@ -230,9 +323,13 @@
             <div id="Family" class="tabcontent">
                 <%
                     try {
+                        String sortQuery = (String) session.getAttribute("sortQuery");
+                        if (sortQuery == null) {
+                            sortQuery = " ";
+                        }
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "1Europa4!");
-                        String sql = "SELECT `fam-status`.familyID, `basic-info`.name, `fam-status`.motherName, `fam-status`.motherOccupation, `fam-status`.fatherName, `fam-status`.fatherOccupation, `fam-status`.vitalStatusMother, `fam-status`.vitalStatusFather, `fam-status`.noOfSiblings, `fam-status`.siblingEducation, `fam-status`.breadWinner  FROM `fam-status` INNER JOIN `basic-info` ON `fam-status`.familyID = `basic-info`.basicID;";
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
+                        String sql = "SELECT `fam-status`.familyID, `basic-info`.name, `fam-status`.motherName, `fam-status`.motherOccupation, `fam-status`.fatherName, `fam-status`.fatherOccupation, `fam-status`.vitalStatusMother, `fam-status`.vitalStatusFather, `fam-status`.noOfSiblings, `fam-status`.siblingEducation, `fam-status`.breadWinner  FROM `fam-status` INNER JOIN `basic-info` ON `fam-status`.familyID = `basic-info`.basicID " + sortQuery;
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
                         if (rs.next() == false) {
@@ -263,9 +360,13 @@
             <div id="Organization" class="tabcontent">
                 <%
                     try {
+                        String sortQuery = (String) session.getAttribute("sortQuery");
+                        if (sortQuery == null) {
+                            sortQuery = " ";
+                        }
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "1Europa4!");
-                        String sql = "SELECT `resident-org`.organizationID, `basic-info`.name, `resident-org`.residentVoter, `resident-org`.memberOfOrg, `resident-org`.nameOfOrg, `resident-org`.supportSK, `resident-org`.showSupport, `resident-org`.jobChance, `resident-org`.sayToSK FROM `resident-org` INNER JOIN `basic-info` ON `resident-org`.organizationID = `basic-info`.basicID;";
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
+                        String sql = "SELECT `resident-org`.organizationID, `basic-info`.name, `resident-org`.residentVoter, `resident-org`.memberOfOrg, `resident-org`.nameOfOrg, `resident-org`.supportSK, `resident-org`.showSupport, `resident-org`.jobChance, `resident-org`.sayToSK FROM `resident-org` INNER JOIN `basic-info` ON `resident-org`.organizationID = `basic-info`.basicID " + sortQuery;
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
                         if (rs.next() == false) {
@@ -295,9 +396,13 @@
             <div id="Status" class="tabcontent">
                 <%
                     try {
+                        String sortQuery = (String) session.getAttribute("sortQuery");
+                        if (sortQuery == null) {
+                            sortQuery = " ";
+                        }
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "1Europa4!");
-                        String sql = "SELECT `resident-status`.statusID, `basic-info`.name, `resident-status`.civilStatus, `resident-status`.workingStatus, `resident-status`.educationAttainment, `resident-status`.jobEmployed, `resident-status`.PWD, `resident-status`.typeOfDisability FROM `resident-status` INNER JOIN `basic-info` ON `resident-status`.statusID = `basic-info`.basicID;";
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
+                        String sql = "SELECT `resident-status`.statusID, `basic-info`.name, `resident-status`.civilStatus, `resident-status`.workingStatus, `resident-status`.educationAttainment, `resident-status`.jobEmployed, `resident-status`.PWD, `resident-status`.typeOfDisability FROM `resident-status` INNER JOIN `basic-info` ON `resident-status`.statusID = `basic-info`.basicID " + sortQuery;
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
                         if (rs.next() == false) {
@@ -326,9 +431,13 @@
             <div id="Vaccine" class="tabcontent">
                 <%
                     try {
+                        String sortQuery = (String) session.getAttribute("sortQuery");
+                        if (sortQuery == null) {
+                            sortQuery = " ";
+                        }
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "1Europa4!");
-                        String sql = "SELECT `vaccine-info`.vaccineID, `basic-info`.name, `vaccine-info`.vaccinated, `vaccine-info`.willingForVaccine, `vaccine-info`.brandOfVaccine, `vaccine-info`.vaccineStatus FROM `vaccine-info` INNER JOIN `basic-info` ON `vaccine-info`.vaccineID = `basic-info`.basicID;";
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
+                        String sql = "SELECT `vaccine-info`.vaccineID, `basic-info`.name, `vaccine-info`.vaccinated, `vaccine-info`.willingForVaccine, `vaccine-info`.brandOfVaccine, `vaccine-info`.vaccineStatus FROM `vaccine-info` INNER JOIN `basic-info` ON `vaccine-info`.vaccineID = `basic-info`.basicID " + sortQuery;
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
                         if (rs.next() == false) {
@@ -364,6 +473,16 @@
         </div>
     </body>
 </html>
+
+<script>
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+</script>
 
 <script>
     var counter = 0;

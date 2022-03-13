@@ -44,7 +44,7 @@ public class SearchServlet extends HttpServlet {
         session.setAttribute("residentName", residentName);
 
         if (residentName.isEmpty() || residentName == null) {
-            response.sendRedirect("/SKIT-YIMS/Account/ViewTest.jsp");
+            response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
         } else {
             response.sendRedirect("/SKIT-YIMS/Account/SearchDatabase.jsp");
         }
