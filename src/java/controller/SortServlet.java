@@ -51,84 +51,100 @@ public class SortServlet extends HttpServlet {
             System.out.println("Walang laman ehe");
         } else {
             if (filterage.length == 1) {
-                filterQuery = filterQuery + "(agegroup = " + filterage[0] + ")";
+                filterQuery = filterQuery + "(agegroup = '" + filterage[0] + "')";
                 System.out.println(filterQuery);
             } else {
                 for (int i = 0; i < filterage.length; i++) {
                     if (i == 0) {
-                        filterQuery = filterQuery + "(agegroup = " + filterage[i] + " OR ";
+                        filterQuery = filterQuery + "(agegroup = '" + filterage[i] + "' OR ";
 //                System.out.println(filterQuery);
                     } else if (i == filterage.length - 1) {
                         //Dito dapat magpprint ng query
-                        filterQuery = filterQuery + "agegroup = " + filterage[i] + ")";
+                        filterQuery = filterQuery + "agegroup = '" + filterage[i] + "')";
                         System.out.println(filterQuery);
                     } else {
-                        filterQuery = filterQuery + "agegroup = " + filterage[i] + " OR ";
+                        filterQuery = filterQuery + "agegroup = '" + filterage[i] + "' OR ";
 //                System.out.println(filterQuery);
                     }
 //            filterQuery = "agegroup = " + filterage[i] + " OR";
                 }
             }
         }
+        if (filterage != null && filtergender != null) {
+            filterQuery = filterQuery + " AND ";
+        }
 
         if (filtergender == null) {
             System.out.println("Walang laman ehe");
         } else {
             if (filtergender.length == 1) {
-                filterQuery = filterQuery + "(gender = " + filtergender[0] + ")";
+                filterQuery = filterQuery + "(gender = '" + filtergender[0] + "')";
                 System.out.println(filterQuery);
             } else {
                 for (int i = 0; i < filtergender.length; i++) {
                     if (i == 0) {
-                        filterQuery = filterQuery + "(gender = " + filtergender[i] + " OR ";
+                        filterQuery = filterQuery + "(gender = '" + filtergender[i] + "' OR ";
                     } else if (i == filtergender.length - 1) {
-                        filterQuery = filterQuery + "gender = " + filtergender[i] + ")";
+                        filterQuery = filterQuery + "gender = '" + filtergender[i] + "')";
                         System.out.println(filterQuery);
                     } else {
-                        filterQuery = filterQuery + "gender = " + filtergender[i] + " OR ";
+                        filterQuery = filterQuery + "gender = '" + filtergender[i] + "' OR ";
                     }
                 }
             }
+        }
+
+        if ((filtergender != null && filterCivilStatus != null) || (filterage != null && filterCivilStatus != null)) {
+            filterQuery = filterQuery + " AND ";
         }
 
         if (filterCivilStatus == null) {
             System.out.println("Walang laman ehe");
         } else {
             if (filterCivilStatus.length == 1) {
-                filterQuery = filterQuery + "(civilStatus = " + filterCivilStatus[0] + ")";
+                filterQuery = filterQuery + "(civilStatus = '" + filterCivilStatus[0] + "')";
                 System.out.println(filterQuery);
             } else {
                 for (int i = 0; i < filterCivilStatus.length; i++) {
                     if (i == 0) {
-                        filterQuery = filterQuery + "(civilStatus = " + filterCivilStatus[i] + " OR ";
+                        filterQuery = filterQuery + "(civilStatus = '" + filterCivilStatus[i] + "' OR ";
                     } else if (i == filterCivilStatus.length - 1) {
-                        filterQuery = filterQuery + "civilStatus = " + filterCivilStatus[i] + ")";
+                        filterQuery = filterQuery + "civilStatus = '" + filterCivilStatus[i] + "')";
                         System.out.println(filterQuery);
                     } else {
-                        filterQuery = filterQuery + "civilStatus = " + filterCivilStatus[i] + " OR ";
+                        filterQuery = filterQuery + "civilStatus = '" + filterCivilStatus[i] + "' OR ";
                     }
                 }
             }
+        }
+
+        if ((filterCivilStatus != null && filterWorkStatus != null) || (filtergender != null && filterWorkStatus != null)
+                || (filterage != null && filterWorkStatus != null)) {
+            filterQuery = filterQuery + " AND ";
         }
 
         if (filterWorkStatus == null) {
             System.out.println("Walang laman ehe");
         } else {
             if (filterWorkStatus.length == 1) {
-                filterQuery = filterQuery + "(workingStatus = " + filterWorkStatus[0] + ")";
+                filterQuery = filterQuery + "(workingStatus = '" + filterWorkStatus[0] + "')";
                 System.out.println(filterQuery);
             } else {
                 for (int i = 0; i < filterWorkStatus.length; i++) {
                     if (i == 0) {
-                        filterQuery = filterQuery + "(workingStatus = " + filterWorkStatus[i] + " OR ";
+                        filterQuery = filterQuery + "(workingStatus = '" + filterWorkStatus[i] + "' OR ";
                     } else if (i == filterWorkStatus.length - 1) {
-                        filterQuery = filterQuery + "workingStatus = " + filterWorkStatus[i] + ")";
+                        filterQuery = filterQuery + "workingStatus = '" + filterWorkStatus[i] + "')";
                         System.out.println(filterQuery);
                     } else {
-                        filterQuery = filterQuery + "workingStatus = " + filterWorkStatus[i] + " OR ";
+                        filterQuery = filterQuery + "workingStatus = '" + filterWorkStatus[i] + "' OR ";
                     }
                 }
             }
+        }
+        if ((filterWorkStatus != null && filterother != null) || (filterCivilStatus != null && filterother != null)
+                || (filtergender != null && filterother != null) || (filterage != null && filterother != null)) {
+            filterQuery = filterQuery + " AND ";
         }
 
         if (filterother == null) {
@@ -136,39 +152,40 @@ public class SortServlet extends HttpServlet {
         } else {
             if (filterother.length == 1) {
                 if (filterother[0].equals("PWD")) {
-                    filterQuery = filterQuery + "(PWD = Yes)";
+                    filterQuery = filterQuery + "(PWD = 'Yes')";
                 } else if (filterother[0].equals("Vaccinated")) {
-                    filterQuery = filterQuery + "(vaccinated = Yes)";
+                    filterQuery = filterQuery + "(vaccinated = 'Yes')";
                 } else {
-                    filterQuery = filterQuery + "(vaccinated = No)";
+                    filterQuery = filterQuery + "(vaccinated = 'No')";
                 }
                 System.out.println(filterQuery);
             } else {
                 for (int i = 0; i < filterother.length; i++) {
                     if (i == 0) {
                         if (filterother[i].equals("PWD")) {
-                            filterQuery = filterQuery + "(PWD = Yes) OR";
-                        } else if (filterother[i].equals("Vaccinated")) {
-                            filterQuery = filterQuery + "(vaccinated = Yes OR";
-                        } else {
-                            filterQuery = filterQuery + "(vaccinated = No OR";
+                            filterQuery = filterQuery + "(PWD = 'Yes') AND ";
                         }
+//                        } else if (filterother[i].equals("Vaccinated")) {
+//                            filterQuery = filterQuery + "(vaccinated = Yes OR";
+//                        } else {
+//                            filterQuery = filterQuery + "(vaccinated = No OR";
+//                        }
                     } else if (i == filterother.length - 1) {
                         if (filterother[i].equals("PWD")) {
-                            filterQuery = filterQuery + "(PWD = Yes)";
+                            filterQuery = filterQuery + "(PWD = 'Yes')";
                         } else if (filterother[i].equals("Vaccinated")) {
-                            filterQuery = filterQuery + "(vaccinated = Yes)";
+                            filterQuery = filterQuery + "(vaccinated = 'Yes')";
                         } else {
-                            filterQuery = filterQuery + "(vaccinated = No)";
+                            filterQuery = filterQuery + "(vaccinated = 'No')";
                         }
                         System.out.println(filterQuery);
                     } else {
                         if (filterother[i].equals("PWD")) {
-                            filterQuery = filterQuery + "(PWD = Yes) OR ";
+                            filterQuery = filterQuery + "(PWD = 'Yes') OR ";
                         } else if (filterother[i].equals("Vaccinated")) {
-                            filterQuery = filterQuery + "(vaccinated = Yes) OR ";
+                            filterQuery = filterQuery + "(vaccinated = 'Yes') OR ";
                         } else {
-                            filterQuery = filterQuery + "(vaccinated = No) OR ";
+                            filterQuery = filterQuery + "(vaccinated = 'No') OR ";
                         }
                     }
                 }
@@ -193,32 +210,25 @@ public class SortServlet extends HttpServlet {
                     sortQuery = sortQuery + "`basic-info`.birthday ASC";
                 } else if (sortBy.equals("Oldest to Youngest")) {
                     sortQuery = sortQuery + "`basic-info`.birthday DESC";
-                }
+                } else if (sortBy.equals("Ascending ID")) {
+                    sortQuery = sortQuery + "`resident-info`.residentID ASC";
+                }  else if (sortBy.equals("Descending ID")) {
+                    sortQuery = sortQuery + "`resident-info`.residentID DESC";
+                } 
                 System.out.println(sortQuery);
                 session.setAttribute("sortQuery", sortQuery);
             }
 
+            if (filterQuery.equals(" WHERE ")) {
+                session.setAttribute("filterQuery", " ");
+            } else {
+                session.setAttribute("filterQuery", filterQuery);
+            }
         } else {
             session.setAttribute("sortQuery", " ");
+            session.setAttribute("filterQuery", " ");
         }
 
-//        if (sortCommand.equals("Apply")) {
-//            if (sortColumn.equals("name")) {
-//                sortQuery = sortQuery + "`basic-info`.name ";
-//            } else if (sortColumn.equals("birthday")) {
-//                sortQuery = sortQuery + "`basic-info`.birthday ";
-//            };
-//
-//            if (sortOrder.equals("ASC")) {
-//                sortQuery = sortQuery + "ASC";
-//            } else if (sortOrder.equals("DESC")) {
-//                sortQuery = sortQuery + "DESC";
-//            }
-//
-//            session.setAttribute("sortQuery", sortQuery);
-//        } else {
-//            session.setAttribute("sortQuery", " ");
-//        }
         response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
     }
 
