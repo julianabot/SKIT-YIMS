@@ -106,7 +106,6 @@ nav .icon-burger .line{
     line-height: 30px;
     text-align: center;
     border-radius: 5px;
-    border-color: white ;
     padding-top: 2px;
     padding-bottom: 2px;
     padding-right: 15px;
@@ -142,7 +141,7 @@ nav .icon-burger .line{
     }    
     nav :checked ~ .links{
         bottom: 0;
-        top: 60px;
+        top: 45px;
     }
     nav .icon-burger{
         display: block; 
@@ -156,23 +155,6 @@ nav .icon-burger .line{
     nav :checked ~ .icon-burger .line:nth-child(2) {
         opacity: 0;
     }
-    
-    .logout-btn{
-    background: white;
-    color: #8B3535;
-    font-family: Montserrat;
-    font-size: 1.5em;
-    font-style: normal;
-    font-weight: bold;
-    line-height: 30px;
-    text-align: center;
-    border-radius: 5px;
-    border-color: white ;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    padding-right: 15px;
-    padding-left: 15px;
-}
 }
 
 @media (max-width: 600px){
@@ -197,13 +179,15 @@ nav .icon-burger .line{
 .container{
     display: flex;
     background: white; 
-    margin-top: 8%;
+    margin-top: 13%;
     margin-bottom: 2%;
     margin-left: 10%;
     margin-right: 10%;
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 80%;
     align-items: center;
+
 }
 
 @media screen and (max-width: 1048px){
@@ -213,31 +197,32 @@ nav .icon-burger .line{
     }
 }
 
-.first-half{
+/*.first-half{
     align-self: center;
     margin: 80px auto 80px auto;
     text-align: center;
     align-self: center;
     margin-left: 0px;
     width: 30%;
-}
+}*/
 
-.profile-picture{
+/*.profile-picture{
     width: 50%;
     background: #E5E5E5;
     border-radius: 50%;
     margin-bottom: 20px;
     align-self: center;
-}
+}*/
 
-.upload-ap {
+/*.upload-ap {
     font-size: 1em;
     font-weight: bold;
-}
+}*/
 
 .second-half{
     width: 100%;
     margin: 5%;
+   
 }
 
 .personal-info {
@@ -295,7 +280,7 @@ nav .icon-burger .line{
     top: 0%;
     left: 0%;
     margin-top: 1.5%;
-    margin-right: 55px;
+/*    margin-right: 50px;*/
     background-color: #8B3535;
     border-color: #8B3535;
     border-width: 1px;
@@ -304,7 +289,7 @@ nav .icon-burger .line{
     text-align: center;
     justify-content: center;
     text-decoration: none;
-    display: inline-block;
+    display: absolute;
     font-family: 'Montserrat';
     font-weight: bold;
     transition: 0.3s;
@@ -314,7 +299,7 @@ nav .icon-burger .line{
 
 .underline {
     border-bottom: 1px solid #828282;
-    width: 95%;  
+    width: 100%;  
 }
 
 .button-container{
@@ -354,9 +339,32 @@ nav .icon-burger .line{
 .input-change {
     padding-top: 10px;
     padding-bottom: 10px;
-    width: 25%;
+    width: 40%;
     margin: 5px 0;
     border: 1px solid black;
     border-radius: 4px;
     font-size: 0.8em;
+}
+
+@media (max-width: 780px){
+    .input-change {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 60%;
+    margin: 5px 0;
+    border: 1px solid black;
+    border-radius: 4px;
+    font-size: 0.8em;
+}
+
+h1{
+    font-size: 1.5em;
+}
+h3{
+    font-size: 1.3em;
+}
+
+.container{
+    margin-top: 20%;
+}
 }

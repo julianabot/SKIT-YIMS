@@ -160,6 +160,7 @@ nav .icon-burger .line{
     nav :checked ~ .icon-burger .line:nth-child(2) {
         opacity: 0;
     }
+    
 }
 
 @media (max-width: 600px){
@@ -258,7 +259,14 @@ nav .icon-burger .line{
     width: 40%;
 }
 
-
+@media (max-width: 924px){
+ 
+    .err-red{
+        font-size: .9em;
+        width: 55%;
+    }
+    
+}
 
 
 /*FOOTER*/
@@ -332,7 +340,29 @@ nav .icon-burger .line{
     text-align: right;
     padding-right: 30px;
 }
+
 @media (max-width:780px){
+    .err-class{
+
+        font-size: 3em;
+    }
+
+    .err-main {
+        margin: 20% auto;
+        width: 70%;
+        justify-content: center;
+        align-content: center;
+    }
+    .err-message{
+        font-size: 1.3em;
+
+    }
+
+    .err-red{
+        font-size: .8em;
+        width: 40%;
+    }
+
     .Footer-Container{
         flex-direction: column;
     }

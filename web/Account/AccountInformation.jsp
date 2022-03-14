@@ -20,7 +20,7 @@
             <img src="/SKIT-YIMS/img/SK_Logo.png" class="header-logo">
 
             <!--This section contains the "Eruditio Academy" text taken from the webxml-->
-            <div class="logo">Sangguniang Kabataan Ibayo-Tipas</div>
+            <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>
 
             <ul class="links">
                 <li class="Events"><a href="/SKIT-YIMS/Account/ViewDatabase.jsp">Database</a></li>

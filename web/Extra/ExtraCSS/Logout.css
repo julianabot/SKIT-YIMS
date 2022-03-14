@@ -270,6 +270,32 @@ nav .icon-burger .line{
     color: #828282;
 }
 
+@media(max-width: 1124px){
+    .err-red{
+        font-size: .8em;
+        width: 50%;
+    }
+    
+    .err-class{
+
+        font-size: 2.8em;
+        margin: 20px auto;
+    }
+}
+
+@media (max-width: 924px){
+ 
+    .err-red{
+        font-size: .7em;
+        width: 70%;
+    }
+    
+    .err-class{
+
+        font-size: 2em;
+        margin: 20px auto;
+    }
+}
 
 /*FOOTER*/
 .Footer-Container{
@@ -343,6 +369,27 @@ nav .icon-burger .line{
     padding-right: 30px;
 }
 @media (max-width:780px){
+    .err-class{
+
+        font-size: 3em;
+    }
+
+    .err-main {
+        margin: 20% auto;
+        width: 70%;
+        justify-content: center;
+        align-content: center;
+    }
+    .err-message{
+        font-size: 1.3em;
+
+    }
+
+    .err-red{
+        font-size: .8em;
+        width: 40%;
+    }
+    
     .Footer-Container{
         flex-direction: column;
     }
