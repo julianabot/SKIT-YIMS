@@ -352,7 +352,7 @@ tr:nth-child(even){
     background-color: white;
     display: inline-flex;
     flex-direction: row;
-    height: 70%;
+    height: 75%;
     overflow-y: scroll;
     position: fixed;
     z-index: 9;
@@ -404,12 +404,25 @@ tr:nth-child(even){
 @media (max-width:780px){
     .form-container{
         flex-direction: column;
-        height: 300px;
+        
+        
+    }
+    
+    .form-popup {
+        height: 60%;
+        margin-top: 7%;
+        width: 100%;
+    }
+    
+    .btn-cancel {
+        margin-top: 5%;
     }
     
     #last-group{
         margin: 5px 30px;
     }
+    
+    
 }
 
 
