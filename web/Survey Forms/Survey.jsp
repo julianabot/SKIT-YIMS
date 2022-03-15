@@ -61,6 +61,14 @@
         </style>
         <title>Survey</title>
     </head>
+    <%
+        response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
+        if (session.getAttribute("captchaSurvey") == null) {
+            response.sendRedirect("/SKIT-YIMS/Survey Forms/Landing.jsp");
+            session.setAttribute("errorCaptcha", "Please accomplish CAPTCHA.");
+
+        }
+    %>
     <body>
         <div id="header-container">
             <img src="/SKIT-YIMS/img/SK_Logo.png" alt="SK Logo" id="Logo">

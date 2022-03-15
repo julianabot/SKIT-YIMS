@@ -8,7 +8,6 @@
         <title>Success</title>
     </head>
     <body>
-        <!--Header-->
         <nav>
             <input id="nav-toggle" type="checkbox">
             <img src="/SKIT-YIMS/img/SK_Logo.png" class="header-logo">

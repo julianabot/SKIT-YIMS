@@ -35,21 +35,23 @@
         <div class="subheading">
             <p>The responses from the Youth Residents of Ibayo-Tipas are collected and processed with the utmost confidentiality according to the Data Privacy Act of 2012. The data collected will be used to monitor youth resident categories in order to help the SK Council organize and plan events. The data from Youth Residents that exceed the 30-year-old mark will be archived and passed on to the respective Ibayo-Tipas' official database.</p>
         </div>
-    <center> 
-        <div class="g-recaptcha"
-             data-sitekey="6LcPvNsaAAAAAB_JssCHLi_bMPU1g9jVrBtaAtpi">
+        <form action="../LandingServlet" method="POST">
+            <center> 
+                <div class="g-recaptcha"
+                     data-sitekey="6LcPvNsaAAAAAB_JssCHLi_bMPU1g9jVrBtaAtpi">
+                </div>
+                <center> <p class ="Error" style="color: #712929 ">${errorCaptcha}</p></center>
+                <!--
+                <input class="submitbtn" type="Submit" name="Login" value="Log In">
+                <p><% out.print(getServletContext().getInitParameter("footer"));%></p>
+                -->
+            </center>
+            <div class="button-container">
+                <button type="submit" class="start-button">Start Survey</button>
+            </div>
+        </form>
+        <div class="terms">
+            <p>Upon starting the survey, you agree to the terms and conditions stated above</p>
         </div>
-
-        <!--
-        <input class="submitbtn" type="Submit" name="Login" value="Log In">
-        <p><% out.print(getServletContext().getInitParameter("footer"));%></p>
-        -->
-    </center>
-    <div class="button-container">
-        <button type="button" class="start-button">Start Survey</button>
-    </div>
-    <div class="terms">
-        <p>Upon starting the survey, you agree to the terms and conditions stated above</p>
-    </div>
-</body>
+    </body>
 </html>

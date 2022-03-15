@@ -266,7 +266,10 @@ public class SurveyServlet extends HttpServlet {
 //
 //            insTrial.setString(1, vaccinated);
 //            insTrial.execute();
-            request.getRequestDispatcher("Survey Forms/ViewSubmitted.jsp").forward(request, response);
+
+            session.removeAttribute("errorCaptcha");
+            session.removeAttribute("captchaSurvey");
+            response.sendRedirect("/SKIT-YIMS/Survey Forms/Success.jsp");
 
         } catch (Exception e) {
             request.setAttribute("errorLogin", e.toString());
