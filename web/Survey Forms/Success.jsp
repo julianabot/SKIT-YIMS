@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png" />
-        <link href="/SKIT-YIMS/Survey Forms/SurveyCSS/Success.css" rel="stylesheet" type="text/css">
+        <link href="/SKIT-YIMS/Survey Forms/SurveyCSS/Success.css?v={random number/string}" rel="stylesheet" type="text/css">
         <title>Success</title>
     </head>
     <body>
@@ -13,11 +13,11 @@
             <img src="/SKIT-YIMS/img/SK_Logo.png" class="header-logo">
 
             <!--This section contains the "Eruditio Academy" text taken from the webxml-->
-            <div class="logo"><%out.print(getServletContext().getInitParameter("header"));%></div>
+            <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>
 
             <ul class="links">
-                <li class="Home"><a href="Welcome.jsp">Home</a></li>
-                <li class="Login"><a href="Login.jsp" id="Login">Login</a></li>
+                <li class="Home"><a href="/SKIT-YIMS/Welcome.jsp">Home</a></li>
+                <li class="Login"><a href="/SKIT-YIMS/Account/Login.jsp" id="Login">Login</a></li>
             </ul>
             <label for="nav-toggle" class="icon-burger">
                 <div class="line"></div>

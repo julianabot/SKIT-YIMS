@@ -12,9 +12,20 @@ nav{
     top: 0;
     font-family: Montserrat;
     font-weight: 900;
-    height: 80px;
+    height: 45px;
     background-color: #8B3535;
     padding: 0.5%;
+}
+
+.logo{
+    height: 100%;
+}
+
+#SK-Text-NavBar{
+    padding: 0;
+    display: inline-block;
+    vertical-align:middle;
+
 }
 
 nav .logo{
@@ -25,7 +36,7 @@ nav .logo{
     font-family: Montserrat; 
     font-weight: bold;
     font-style: italic;
-    font-size: 20px;
+    font-size: 1.1em;
     line-height: 80px;
 
 }
@@ -39,8 +50,8 @@ nav .links{
     justify-content: space-around;
     align-items: center;
 }
-nav .links ul{
-    width: 20%;
+nav .links{
+    width: 30%;
 }
 nav .links li{
     list-style: none;
@@ -48,7 +59,7 @@ nav .links li{
 nav .links a{
     display: block;
     padding: 1em;
-    font-size: 15px;
+    font-size: 1.1em;
     font-weight: bold;
     color: white;
     text-decoration: none;
@@ -76,7 +87,7 @@ nav .icon-burger .line{
     background: white;
     color: #8B3535;
     font-family: Montserrat;
-    font-size: 15px;
+    font-size: 1.1em;
     font-style: normal;
     font-weight: bold;
     line-height: 30px;
@@ -87,7 +98,7 @@ nav .icon-burger .line{
     padding-right: 15px;
     padding-left: 15px;
 }
-@media screen and (max-width: 780px){
+@media screen and (max-width: 1048px){
     nav .logo{
         float: none;
         width: auto;
@@ -100,22 +111,23 @@ nav .icon-burger .line{
         z-index: 9;
         left: 0;
         right: 0;
-        top: 80px;
+        top: 60px;
         bottom: 100%;
         width: auto;
         height: auto;
         flex-direction: column;
         justify-content: space-evenly;
-        background-color: rgba(113, 41, 41, 0.65);
+        background-color: rgba(113, 41, 41, 0.80);
         overflow: hidden;
         box-sizing: border-box;
         transition: all .5s ease-in-out;
     }
     nav .links a{
-        font-size: 20px;      
+        font-size: 1.5em;      
     }    
     nav :checked ~ .links{
         bottom: 0;
+        top: 60px;
     }
     nav .icon-burger{
         display: block; 
@@ -133,7 +145,7 @@ nav .icon-burger .line{
 
 /*SK LOGO IN NAVBAR*/
 .header-logo{
-    height: 90%;
+    height: 100%;
     margin-left: 1%;
     margin-right: 1%;
     float: left;
@@ -149,7 +161,7 @@ body{
 
 /*SK LOGO IN THE BODY*/
 #Logo{
-    margin-top: 150px;
+    margin-top: 200px;
     height: 150px;
     margin-right: auto;
     margin-left: auto;
