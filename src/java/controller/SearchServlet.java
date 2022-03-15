@@ -40,7 +40,7 @@ public class SearchServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         String residentName = request.getParameter("searchResident");
-
+        residentName = "%" + residentName + "%";
         session.setAttribute("residentName", residentName);
 
         if (residentName.isEmpty() || residentName == null) {

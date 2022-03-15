@@ -3,7 +3,9 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="../Survey Forms/SurveyCSS/Survey.css" rel="stylesheet" type="text/css">
+        <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png" />
+
+        <link href="/SKIT-YIMS/Survey Forms/SurveyCSS/Survey.css" rel="stylesheet" type="text/css">
         <style>
             body {font-family: 'Montserrat';}
 
@@ -57,10 +59,11 @@
             }
 
         </style>
+        <title>Survey</title>
     </head>
     <body>
         <div id="header-container">
-            <img src="../img/SK_Logo.png" alt="SK Logo" id="Logo">
+            <img src="/SKIT-YIMS/img/SK_Logo.png" alt="SK Logo" id="Logo">
             <div>
                 <h1 id="header-text">SK Ibayo-Tipas:<br>Youth Resident Survey</h1>
             </div>

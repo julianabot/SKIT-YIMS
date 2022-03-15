@@ -3,8 +3,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="icon" type="image/png" href="img/SK_Logo.png" />
-        <link href="css/Welcome.css" rel="stylesheet" type="text/css">
+        <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png" />
+        <link href="/SKIT-YIMS/css/Welcome.css" rel="stylesheet" type="text/css">
         <!--INSERT SESSION MANAGEMENT LINE-->
         <title>SKIT-YIMS</title>
     </head>

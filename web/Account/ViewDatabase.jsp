@@ -67,10 +67,10 @@
 
             .form-popup {
                 display: none;
-                
+
             }
             .form-container {
-/*                max-width: 300px;*/
+                /*                max-width: 300px;*/
                 padding: 10px;
                 background-color: white;
             }
@@ -96,10 +96,14 @@
             <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>
 
             <ul class="links">
-               <!-- <li class="About"><a href="../Welcome.jsp">Home</a></li> -->
-                <li class="Events"><a href="ViewArchive.jsp"> Archived Database</a></li>
+                <!-- <li class="About"><a href="../Welcome.jsp">Home</a></li> -->
+                <li class="Events"><a href="ViewDatabase.jsp">Database</a></li>
                 <li class="Events"><a href="AccountInformation.jsp">Account</a></li>
-                <li class="Login"><a href="Login.jsp" id="Login">Log Out</a></li>
+                <li class="Login">
+                    <form action = "../LogoutServlet" method = "GET">
+                        <button class="logout-btn" type="submit">Log Out</button>
+                    </form>
+                </li>
             </ul>
             <label for="nav-toggle" class="icon-burger">
                 <div class="line"></div>
@@ -123,22 +127,22 @@
             </div>
 
             <div class="database-title-container">
-                
-                
+
+
                 <div class="database-title">SK Ibayo-Tipas Youth Residents Database</div>
                 <button class="open-button" onclick="openForm()" style="font-weight: bold;">Sort & Filter</button>
             </div>
-                
-                <div class="form-popup" id="myForm">
-                    <form action="../SortServlet" method="POST" class="form-container">
-                        
-                        <div id="close-button-container">
-                            <button type="button" class="btn-cancel" onclick="closeForm()"><i class="material-icons">close</i></button>
-                        </div>
-                        
-                        
-                        <div>
-                                                    
+
+            <div class="form-popup" id="myForm">
+                <form action="../SortServlet" method="POST" class="form-container">
+
+                    <div id="close-button-container">
+                        <button type="button" class="btn-cancel" onclick="closeForm()"><i class="material-icons">close</i></button>
+                    </div>
+
+
+                    <div>
+
                         <h1>Sort</h1>
                         <!--<p>by Name</p>-->
                         <input type="radio" id="atoz" name="sortBy" value="A to Z">
@@ -156,10 +160,10 @@
                         <label for="ascid">Lowest to Highest ID</label><br>
                         <input type="radio" id="descid" name="sortBy" value="Descending ID">
                         <label for="descid">Highest to Lowest ID</label><br>
-                        
-                        </div>
-                        
-                        <div>
+
+                    </div>
+
+                    <div>
 
                         <h1>Filter</h1>
                         <h3>By Age</h3>
@@ -183,10 +187,10 @@
                             <li><input type="checkbox" name="filterCivilStatus" value="Married"/>Married</li>
                             <li><input type="checkbox" name="filterCivilStatus" value="Widowed"/>Widowed</li>
                         </ul>
-                        
-                        </div>
-                        
-                        <div id="last-group">
+
+                    </div>
+
+                    <div id="last-group">
 
                         <h3>By Working Status</h3>
                         <ul class="filter" style="list-style: none">
@@ -203,17 +207,17 @@
                             <li><input type="checkbox" name="filterother" onclick ="vaccineCheck()" id="yesVax" value="Vaccinated"/>Vaccinated</li>
                             <li><input type="checkbox" name="filterother" onclick ="vaccineCheck()" id="noVax" value="Not Vaccinated"/>Not Vaccinated</li>
                         </ul>
-                        
+
                         <button name="sortSubmit" type="submit" value="Apply" class="popup-button" id="popup-button1">Apply</button><br>
                         <button name="sortSubmit" type="submit" value="Clear" class="popup-button" id="popup-button2">Clear Changes</button>
-                        
-                        </div>
 
-                        
+                    </div>
+
+
 
 <!--                        <p>Query: ${filterQuery} ${sortQuery}</p>-->
-                    </form>
-                
+                </form>
+
             </div>
 
             <div class="tab">
@@ -237,7 +241,7 @@
                             filterQuery = " ";
                         }
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "1Europa4!");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
                         String sql = "SELECT `resident-info`.residentID, `contact-info`.emailAddress, `basic-info`.name, `basic-info`.agegroup, `basic-info`.birthday, `basic-info`.address, `basic-info`.gender, `contact-info`.contactNo, `resident-status`.civilStatus, `resident-status`.workingStatus, `resident-status`.jobEmployed, `resident-status`.educationAttainment, `resident-status`.PWD, `resident-status`.typeOfDisability, `contact-info`.fbNameURL, `basic-info`.validID, `fam-status`.motherName, `fam-status`.motherOccupation, `fam-status`.fatherName, `fam-status`.fatherOccupation, `fam-status`.vitalStatusMother, `fam-status`.vitalStatusFather, `fam-status`.noOfSiblings, `fam-status`.siblingEducation, `fam-status`.breadWinner, `resident-org`.residentVoter, `resident-org`.memberOfOrg, `resident-org`.nameOfOrg, `resident-org`.supportSK, `resident-org`.showSupport, `resident-org`.jobChance, `resident-org`.sayToSK, `vaccine-info`.vaccinated, `vaccine-info`.willingForVaccine, `vaccine-info`.brandOfVaccine, `vaccine-info`.vaccineStatus FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID " + filterQuery + sortQuery;
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -246,7 +250,7 @@
                         } else {%>
 
                 <table >
-                    <tr><th>Resident ID</th><th>E-mail</th><th>Name</th><th>Age</th><th>Birthday</th><th>Complete Address</th><th>Gender</th>
+                    <tr><th>ID</th><th>E-mail</th><th>Name</th><th>Age</th><th>Birthday</th><th>Complete Address</th><th>Gender</th>
                         <th>Contact No.</th><th>Civil Status</th><th>Working Status</th><th>Job Employed</th><th>Education Attainment</th><th>PWD</th><th>Type of Disability</th>
                         <th>Facebook Name or URL</th><th>Valid ID</th><th>Mother's Name</th><th>Mother's Occupation</th><th>Father's Name</th><th>Father's Occupation</th>
                         <th>Vital Status Mother</th><th>Vital Status Father</th><th>No. of Siblings</th><th>Sibling Education</th><th>BreadWinner</th><th>Resident Voter</th>
@@ -292,7 +296,7 @@
                             filterQuery = " ";
                         }
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "1Europa4!");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
                         String sql = "SELECT `resident-info`.residentID, `basic-info`.name, `basic-info`.agegroup, `basic-info`.birthday, `basic-info`.address, `basic-info`.gender,`basic-info`.validID FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID " + filterQuery + sortQuery;
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -301,7 +305,7 @@
                         } else {%>
 
                 <table >
-                    <tr><th>Basic ID</th><th>Name</th><th>Agegroup</th><th>Birthday</th><th>Address</th><th>Gender</th><th>Valid ID</th></tr>
+                    <tr><th>ID</th><th>Name</th><th>Agegroup</th><th>Birthday</th><th>Address</th><th>Gender</th><th>Valid ID</th></tr>
                             <%
                                 do {%>
 
@@ -332,7 +336,7 @@
                             filterQuery = " ";
                         }
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "1Europa4!");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
                         String sql = "SELECT `resident-info`.residentID, `basic-info`.name, `contact-info`.contactNo, `contact-info`.emailAddress, `contact-info`.fbNameURL FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID " + filterQuery + sortQuery;
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -341,7 +345,7 @@
                         } else {%>
 
                 <table >
-                    <tr><th>Contact ID</th><th>Name</th><th>Contact No.</th><th>Email Address</th><th>FB Name and/or URL</th></tr>
+                    <tr><th>ID</th><th>Name</th><th>Contact No.</th><th>Email Address</th><th>FB Name and/or URL</th></tr>
                             <%
                                 do {%>
 
@@ -370,7 +374,7 @@
                             filterQuery = " ";
                         }
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "1Europa4!");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
                         String sql = "SELECT `resident-info`.residentID, `basic-info`.name, `fam-status`.motherName, `fam-status`.motherOccupation, `fam-status`.fatherName, `fam-status`.fatherOccupation, `fam-status`.vitalStatusMother, `fam-status`.vitalStatusFather, `fam-status`.noOfSiblings, `fam-status`.siblingEducation, `fam-status`.breadwinner FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID " + filterQuery + sortQuery;
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -379,7 +383,7 @@
                         } else {%>
 
                 <table >
-                    <tr><th>Family ID</th><th>Name</th><th>Mother Name</th><th>Mother Occupation</th><th>Father Name</th><th>Father Occupation</th><th>Vital Status Mother</th>
+                    <tr><th>ID</th><th>Name</th><th>Mother Name</th><th>Mother Occupation</th><th>Father Name</th><th>Father Occupation</th><th>Vital Status Mother</th>
                         <th>Vital Status Father</th><th>No. of siblings</th><th>Sibling Education</th><th>Bread Winner</th></tr>
                             <%
                                 do {%>
@@ -411,7 +415,7 @@
                             filterQuery = " ";
                         }
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "1Europa4!");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
                         String sql = "SELECT `resident-info`.residentID, `basic-info`.name, `resident-org`.residentVoter, `resident-org`.memberOfOrg, `resident-org`.nameOfOrg, `resident-org`.supportSK, `resident-org`.showSupport, `resident-org`.jobChance, `resident-org`.sayToSK FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID " + filterQuery + sortQuery;
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -420,7 +424,7 @@
                         } else {%>
 
                 <table >
-                    <tr><th>Organization ID</th><th>Name</th><th>Resident Voter</th><th>Member of Organization</th><th>Name of Organization</th><th>Support SK</th><th>Show Support</th>
+                    <tr><th>ID</th><th>Name</th><th>Resident Voter</th><th>Member of Organization</th><th>Name of Organization</th><th>Support SK</th><th>Show Support</th>
                         <th>Job Chance</th><th>Say to SK</th></tr>
                             <%
                                 do {%>
@@ -451,7 +455,7 @@
                             filterQuery = " ";
                         }
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "1Europa4!");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
                         String sql = "SELECT `resident-info`.residentID, `basic-info`.name, `resident-status`.civilStatus, `resident-status`.workingStatus, `resident-status`.educationAttainment, `resident-status`.jobEmployed, `resident-status`.PWD, `resident-status`.typeOfDisability FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID " + filterQuery + sortQuery;
                         //String sql = "SELECT `resident-info`.residentID, `basic-info`.name, `vaccine-info`.vaccinated, `vaccine-info`.willingForVaccine, `vaccine-info`.brandOfVaccine, `vaccine-info`.vaccineStatus FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID " + filterQuery + sortQuery;
                         PreparedStatement stmt = con.prepareStatement(sql);
@@ -461,7 +465,7 @@
                         } else {%>
 
                 <table >
-                    <tr><th>Status ID</th><th>Name</th><th>Civil Status</th><th>Working Status</th><th>Education Attainment</th><th>Job Employed</th><th>PWD</th><th>Type of Disability</th></tr>
+                    <tr><th>ID</th><th>Name</th><th>Civil Status</th><th>Working Status</th><th>Education Attainment</th><th>Job Employed</th><th>PWD</th><th>Type of Disability</th></tr>
                             <%
                                 do {%>
 
@@ -491,7 +495,7 @@
                             filterQuery = " ";
                         }
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "1Europa4!");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
                         String sql = "SELECT `resident-info`.residentID, `basic-info`.name, `vaccine-info`.vaccinated, `vaccine-info`.willingForVaccine, `vaccine-info`.brandOfVaccine, `vaccine-info`.vaccineStatus FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID " + filterQuery + sortQuery;
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -500,7 +504,7 @@
                         } else {%>
 
                 <table >
-                    <tr><th>Vaccine ID</th><th>Name</th><th>Vaccinated</th><th>Willing for Vaccine</th><th>Brand of Vaccine</th><th>Vaccine Status</th></tr>
+                    <tr><th>ID</th><th>Name</th><th>Vaccinated</th><th>Willing for Vaccine</th><th>Brand of Vaccine</th><th>Vaccine Status</th></tr>
                             <%
                                 do {%>
 
