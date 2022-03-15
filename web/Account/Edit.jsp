@@ -5,15 +5,11 @@
 <%@page import="java.sql.Connection" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<p>
-    <br/>
-</p>
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="icon" type="image/png" href="img/SK_Logo.png"/>
         <link href="../Account/AccountCSS/Edit.css" rel="stylesheet" type="text/css">
+        <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png" /> 
         <title>Edit Resident Profile</title>
         
     </head>
@@ -58,15 +54,15 @@
                     <div class="container-main">
                         <div class="content-container">
                             <div class ="form-group">
-                                <label>Name</label>
-                                <input type="text" class="form-control" name ="name" value = "<%= res.getString("name")%>"/>
+                                <label>Name<em class="required"></em></label>
+                                <input type="text" class="form-control" name ="name" value = "<%= res.getString("name")%>" required maxlength="50"/>
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Age Group</label>
-                                <select name="age" class="age-select">
+                                <label>Age Group<em class="required"></em></label>
+                                <select name="age" class="age-select" required>
                                     <%
                                         if (res.getString("agegroup").equals("14 years old and below")) {
                                     %>        
@@ -104,22 +100,23 @@
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Birthday</label>
-                                <input type="text" class="form-control" name ="birthday" value = "<%= res.getString("birthday")%>"/>
+                                <label>Birthday<em class="required"></em></label>
+                                <!--CHANGE INPUT TYPE TO DATE-->
+                                <input type="text" class="form-control" name ="birthday" value = "<%= res.getString("birthday")%>" required/>
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Address</label>
-                                <input type="text" class="form-control" name ="address" value = "<%= res.getString("address")%>"/>
+                                <label>Address<em class="required"></em></label>
+                                <input type="text" class="form-control" name ="address" value = "<%= res.getString("address")%>" required maxlength="100"/>
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Gender</label>
-                                <select name="gender" class="age-select">
+                                <label>Gender<em class="required"></em></label>
+                                <select name="gender" class="age-select" required>
                                     <%
                                         if (res.getString("gender").equals("Male(Lalaki)")) {
                                     %>         
@@ -162,22 +159,22 @@
                     <div class="container-main">
                         <div class="content-container">
                             <div class ="form-group">
-                                <label>Contact Number</label>
-                                <input type="text" class="form-control" name ="contactNo" value = "<%= res.getString("contactNo")%>"/>
+                                <label>Contact Number<em class="required"></em></label>
+                                <input type="text" class="form-control" name ="contactNo" value = "<%= res.getString("contactNo")%>" required maxlength="15"/>
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Email Address</label>
-                                <input type="text" class="form-control" name ="emailAddress" value = "<%= res.getString("emailAddress")%>"/>
+                                <label>Email Address<em class="required"></em></label>
+                                <input type="text" class="form-control" name ="emailAddress" value = "<%= res.getString("emailAddress")%>" required maxlength="45"/>
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Facebook Name or URL</label>
-                                <input type="text" class="form-control" name ="fbNameURL" value = "<%= res.getString("fbNameURL")%>"/>
+                                <label>Facebook Name or URL<em class="required"></em></label>
+                                <input type="text" class="form-control" name ="fbNameURL" value = "<%= res.getString("fbNameURL")%>" required maxlength="35"/>
                             </div>
                             <%
                                 }
@@ -201,36 +198,36 @@
                     <div class="container-main">
                         <div class="content-container">
                             <div class ="form-group">
-                                <label>Mother Name</label>
-                                <input type="text" class="form-control" name ="motherName" value = "<%= res.getString("motherName")%>"/>
+                                <label>Mother Name<em class="required"></em></label>
+                                <input type="text" class="form-control" name ="motherName" value = "<%= res.getString("motherName")%>" required maxlength="50"/>
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Mother Occupation</label>
-                                <input type="text" class="form-control" name ="motherOccupation" value = "<%= res.getString("motherOccupation")%>"/>
+                                <label>Mother Occupation<em class="required"></em></label>
+                                <input type="text" class="form-control" name ="motherOccupation" value = "<%= res.getString("motherOccupation")%>" required maxlength="30"/>
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Father Name</label>
-                                <input type="text" class="form-control" name ="fatherName" value = "<%= res.getString("fatherName")%>"/>
+                                <label>Father Name<em class="required"></em></label>
+                                <input type="text" class="form-control" name ="fatherName" value = "<%= res.getString("fatherName")%>" required maxlength="50"/>
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Father Occupation</label>
-                                <input type="text" class="form-control" name ="fatherOccupation" value = "<%= res.getString("fatherOccupation")%>"/>
+                                <label>Father Occupation<em class="required"></em></label>
+                                <input type="text" class="form-control" name ="fatherOccupation" value = "<%= res.getString("fatherOccupation")%>" required maxlength="30"/>
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Vital Status of Mother</label>
-                                <select name="vitalStatusMother" class="age-select">
+                                <label>Vital Status of Mother<em class="required"></em></label>
+                                <select name="vitalStatusMother" class="age-select" required>
                                     <%
                                         if (res.getString("vitalStatusMother").equals("Living")) {
                                     %>         
@@ -250,8 +247,8 @@
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Vital Status of Father</label>
-                                <select name="vitalStatusFather" class="age-select">
+                                <label>Vital Status of Father<em class="required"></em></label>
+                                <select name="vitalStatusFather" class="age-select" required>
                                     <%
                                         if (res.getString("vitalStatusFather").equals("Living")) {
                                     %>         
@@ -271,22 +268,23 @@
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Number of Siblings</label>
-                                <input type="text" class="form-control" name ="noOfSiblings" value = "<%= res.getString("noOfSiblings")%>"/>
+                                <label>Number of Siblings<em class="required"></em></label>
+                                <!--INPUT CHANGE TO INT?-->
+                                <input type="text" class="form-control" name ="noOfSiblings" value = "<%= res.getString("noOfSiblings")%>" required/>
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Sibling Education</label>
-                                <input type="text" class="form-control" name ="siblingEducation" value = "<%= res.getString("siblingEducation")%>"/>
+                                <label>Sibling Education<em class="required"></em></label>
+                                <input type="text" class="form-control" name ="siblingEducation" value = "<%= res.getString("siblingEducation")%>" required/>
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Breadwinner</label>
-                                <input type="text" class="form-control" name ="breadWinner" value = "<%= res.getString("breadWinner")%>"/>
+                                <label>Breadwinner<em class="required"></em></label>
+                                <input type="text" class="form-control" name ="breadWinner" value = "<%= res.getString("breadWinner")%>" required maxlength="30"/>
                             </div>
                             <%
                                 }
@@ -308,8 +306,8 @@
                     <div class="container-main">
                         <div class="content-container">
                             <div class ="form-group">
-                                <label>Resident Voter</label>
-                                <select name="residentVoter" class="age-select">
+                                <label>Resident Voter<em class="required"></em></label>
+                                <select name="residentVoter" class="age-select" required>
                                     <%
                                         if (res.getString("residentVoter").equals("Yes")) {
                                     %>         
@@ -329,8 +327,8 @@
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Member of an Organization</label>
-                                <select name="memberOfOrg" class="age-select">
+                                <label>Member of an Organization<em class="required"></em></label>
+                                <select name="memberOfOrg" class="age-select" required>
                                     <%
                                         if (res.getString("memberOfOrg").equals("Yes")) {
                                     %>         
@@ -350,15 +348,15 @@
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Name of Organization</label>
-                                <input type="text" class="form-control" name ="nameOfOrg" value = "<%= res.getString("nameOfOrg")%>"/>
+                                <label>Name of Organization<em class="required"></em></label>
+                                <input type="text" class="form-control" name ="nameOfOrg" value = "<%= res.getString("nameOfOrg")%>" required maxlength="50"/>
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Support SK</label>
-                                <select name="supportSK" class="age-select">
+                                <label>Support SK<em class="required"></em></label>
+                                <select name="supportSK" class="age-select" required>
                                     <%
                                         if (res.getString("supportSK").equals("Yes")) {
                                     %>         
@@ -386,22 +384,22 @@
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Show of support to SK</label>
-                                <input type="text" class="form-control" name ="showSupport" value = "<%= res.getString("showSupport")%>"/>
+                                <label>Show of support to SK<em class="required"></em></label>
+                                <input type="text" class="form-control" name ="showSupport" value = "<%= res.getString("showSupport")%>" required maxlength="120"/>
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Job Chance</label>
-                                <input type="text" class="form-control" name ="jobChance" value = "<%= res.getString("jobChance")%>"/>
+                                <label>Job Chance<em class="required"></em></label>
+                                <input type="text" class="form-control" name ="jobChance" value = "<%= res.getString("jobChance")%>" required maxlength="120"/>
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Say to SK</label>
-                                <input type="text" class="form-control" name ="sayToSK" value = "<%= res.getString("sayToSK")%>"/>
+                                <label>Say to SK<em class="required"></em></label>
+                                <input type="text" class="form-control" name ="sayToSK" value = "<%= res.getString("sayToSK")%>" required maxlength="120"/>
                             </div>
                             <%
                                 }
@@ -424,8 +422,8 @@
                     <div class="container-main">
                         <div class="content-container">
                             <div class ="form-group">
-                                <label>Civil Status</label>
-                                <select name="civilStatus" class="age-select">
+                                <label>Civil Status<em class="required"></em></label>
+                                <select name="civilStatus" class="age-select" required>
                                     <%
                                         if (res.getString("civilStatus").equals("Single")) {
                                     %>         
@@ -453,8 +451,8 @@
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Working Status</label>
-                                <select name="workingStatus" class="age-select">
+                                <label>Working Status<em class="required"></em></label>
+                                <select name="workingStatus" class="age-select" required>
                                     <%
                                         if (res.getString("workingStatus").equals("Full-Time Student")) {
                                     %>         
@@ -518,8 +516,8 @@
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Education Attainment</label>
-                                <select name="educationAttainment" class="age-select">
+                                <label>Education Attainment<em class="required"></em></label>
+                                <select name="educationAttainment" class="age-select" required>
                                     <%
                                         if (res.getString("educationAttainment").equals("Elementary Level")) {
                                     %>         
@@ -617,15 +615,15 @@
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Job Employed</label>
-                                <input type="text" class="form-control" name ="jobEmployed" value = "<%= res.getString("jobEmployed")%>"/>
+                                <label>Job Employed<em class="required"></em></label>
+                                <input type="text" class="form-control" name ="jobEmployed" value = "<%= res.getString("jobEmployed")%>" required maxlength="30"/>
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>PWD</label>
-                                <select name="PWD" class="age-select">
+                                <label>PWD<em class="required"></em></label>
+                                <select name="PWD" class="age-select" required>
                                     <%
                                         if (res.getString("PWD").equals("Yes")) {
                                     %>         
@@ -645,8 +643,8 @@
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Type of Disability</label>
-                                <input type="text" class="form-control" name ="typeOfDisability" value = "<%= res.getString("typeOfDisability")%>"/>
+                                <label>Type of Disability<em class="required"></em></label>
+                                <input type="text" class="form-control" name ="typeOfDisability" value = "<%= res.getString("typeOfDisability")%>" required maxlength="40"/>
                             </div>
                             <%
                                 }
@@ -669,8 +667,8 @@
                     <div class="container-main">
                         <div class="content-container">
                             <div class ="form-group">
-                                <label>Vaccinated</label>
-                                <select name="vaccinated" class="age-select">
+                                <label>Vaccinated<em class="required"></em></label>
+                                <select name="vaccinated" class="age-select" required>
                                     <%
                                         if (res.getString("vaccinated").equals("N/A")) {
                                     %>         
@@ -698,8 +696,8 @@
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Willing for Vaccine</label>
-                                <select name="willingForVaccine" class="age-select">
+                                <label>Willing for Vaccine<em class="required"></em></label>
+                                <select name="willingForVaccine" class="age-select" required>
                                     <%
                                         if (res.getString("willingForVaccine").equals("N/A")) {
                                     %>         
@@ -727,8 +725,8 @@
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Brand of Vaccine</label>
-                                <select name="brandOfVaccine" class="age-select">
+                                <label>Brand of Vaccine<em class="required"></em></label>
+                                <select name="brandOfVaccine" class="age-select" required>
                                     <%
                                         if (res.getString("brandOfVaccine").equals("N/A")) {
                                     %>         
@@ -846,8 +844,8 @@
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
-                                <label>Vaccine Status</label>
-                                <select name="vaccineStatus" class="age-select">
+                                <label>Vaccine Status<em class="required"></em></label>
+                                <select name="vaccineStatus" class="age-select" required>
                                     <%
                                         if (res.getString("vaccineStatus").equals("N/A")) {
                                     %>         
