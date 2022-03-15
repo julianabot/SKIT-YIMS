@@ -10,17 +10,17 @@
     </head>
 
     <body>
-       <!--Header-->
+        <!--Header-->
         <nav>
             <input id="nav-toggle" type="checkbox">
-            <img src="../img/SK_Logo.png" class="header-logo">
+            <img src="/SKIT-YIMS/img/SK_Logo.png" class="header-logo">
 
             <!--This section contains the "Eruditio Academy" text taken from the webxml-->
             <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>
 
             <ul class="links">
-                <li class="Home"><a href="../Welcome.jsp">Home</a></li>
-                <li class="Login"><a href="Account/Login.jsp" id="Login">Login</a></li>
+                <li class="Home"><a href="/SKIT-YIMS/Welcome.jsp">Home</a></li>
+                <li class="Login"><a href="/SKIT-YIMS/Account/Login.jsp" id="Login">Login</a></li>
             </ul>
             <label for="nav-toggle" class="icon-burger">
                 <div class="line"></div>
@@ -32,9 +32,9 @@
         <div class="err-main">
             <p class="err-class">Error 404 <p>
             <p class="err-message">This page does not exist.</p> 
-            <p><a href="Survey Forms/Welcome.jsp" class="err-red">Go to Home Page</a></p>
+            <p><a href="/SKIT-YIMS/Welcome.jsp" class="err-red">Go to Home Page</a></p>
         </div>
-            
+
         <section class="Footer-Container">
             <div class="Flex-Footer-Content" id="Contact-Us">
                 <p class="label">CONTACT US</p>
@@ -44,8 +44,8 @@
             </div>
             <div class="Flex-Footer-Content" id="Links">
                 <p class="label" id="links-label">LINKS</p>
-                <a href="#About-Section"class="f-content">About</a>
-                <a href="#Hero-Section"class="f-content">Home</a>
+                <a href="/SKIT-YIMS/Welcome.jsp#About-Section"class="f-content">About</a>
+                <a href="/SKIT-YIMS/Welcome.jsp#Hero-Section"class="f-content">Home</a>
                 <a href="https://www.facebook.com/skibayotipas" target="_blank" class="f-content">Facebook </a>  
                 <a href="/SKIT-YIMS/Survey Forms/Landing.jsp" class="f-content">Survey</a>
             </div>
@@ -58,6 +58,6 @@
 
         <!--Footer text from webxml-->
         <footer class="Footer-Actual"><a id="SK-Text-NavBar">&copy; Sangguniang Kabataan Ibayo-Tipas </a></footer>
-        
+
     </body>
 </html>

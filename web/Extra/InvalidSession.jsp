@@ -47,8 +47,8 @@
             </div>
             <div class="Flex-Footer-Content" id="Links">
                 <p class="label" id="links-label">LINKS</p>
-                <a href="#About-Section"class="f-content">About</a>
-                <a href="#Hero-Section"class="f-content">Home</a>
+                <a href="/SKIT-YIMS/Welcome.jsp#About-Section"class="f-content">About</a>
+                <a href="/SKIT-YIMS/Welcome.jsp#Hero-Section"class="f-content">Home</a>
                 <a href="https://www.facebook.com/skibayotipas" target="_blank" class="f-content">Facebook </a>  
                 <a href="/SKIT-YIMS/Survey Forms/Landing.jsp" class="f-content">Survey</a>
             </div>
