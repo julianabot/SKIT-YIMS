@@ -270,13 +270,31 @@ nav .icon-burger .line{
     color: #828282;
 }
 
+@media(max-width: 1124px){
+    .err-red{
+        font-size: .8em;
+        width: 50%;
+    }
+    
+    .err-class{
+
+        font-size: 2.8em;
+        margin: 20px auto;
+    }
+}
+
 @media (max-width: 924px){
  
     .err-red{
-        font-size: .9em;
-        width: 55%;
+        font-size: .7em;
+        width: 70%;
     }
     
+    .err-class{
+
+        font-size: 2em;
+        margin: 20px auto;
+    }
 }
 
 

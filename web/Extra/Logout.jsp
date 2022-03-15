@@ -43,7 +43,7 @@
         <section class="Footer-Container">
             <div class="Flex-Footer-Content" id="Contact-Us">
                 <p class="label">CONTACT US</p>
-                <p class="f-content">Phone: (02) 7213 7246  </p>
+                <p class="f-content">Phone: (02) 8642 2462 | (02) 8880 2766  </p>
                 <p class="f-content">Mobile: 0939 773 3342 | 0976 050 2672</p>
                 <p class="f-content"><br> <br>700 Dr. A. Natividad st., Ibayo-Tipas, Taguig City, M.M.</p>
             </div>
