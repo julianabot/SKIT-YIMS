@@ -493,7 +493,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="buttons">
+                <div class="buttons" >
                     <button id = "backButton" type = "button" onclick="prev()" class="previous">Back</button>
                     <div class="divider-content"></div>
 
@@ -536,17 +536,17 @@
                 counter = tabs.indexOf(tabName);
 
                 if (counter == 5) {
-                    document.getElementById('nextButton').style.visibility = 'hidden';
-                    document.getElementById("submitButton").style.visibility = 'visible';
-                    document.getElementById('backButton').style.visibility = 'visible';
+                    document.getElementById('nextButton').style.display = "none";
+                    document.getElementById("submitButton").style.display = "block";
+                    document.getElementById('backButton').style.display = "block";
                 } else if (counter != 5) {
                     if (counter == 0) {
-                        document.getElementById('backButton').style.visibility = 'hidden';
+                        document.getElementById('backButton').style.display = "none";
                     } else {
-                        document.getElementById('backButton').style.visibility = 'visible';
+                        document.getElementById('backButton').style.display = "block";
                     }
-                    document.getElementById("nextButton").style.visibility = 'visible';
-                    document.getElementById("submitButton").style.visibility = 'hidden';
+                    document.getElementById("nextButton").style.display = "block";
+                    document.getElementById("submitButton").style.display = "none";
                 }
                 console.log(tabName);
                 console.log(counter);
@@ -555,11 +555,11 @@
             function next() {
                 counter = (counter + 1) % 6;
                 if (counter == 5) {
-                    document.getElementById("submitButton").style.visibility = 'visible';
-                    document.getElementById("nextButton").style.visibility = 'hidden';
-                    document.getElementById('backButton').style.visibility = 'visible';
+                    document.getElementById("submitButton").style.display = "block";
+                    document.getElementById("nextButton").style.display = "none";
+                    document.getElementById('backButton').style.display = "block";
                 }
-                document.getElementById('backButton').style.visibility = 'visible';
+                document.getElementById('backButton').style.display = "block";
                 var i, tabcontent, tablinks;
                 tabcontent = document.getElementsByClassName("tabcontent");
                 for (i = 0; i < tabcontent.length; i++) {
@@ -585,16 +585,16 @@
             function prev() {
                 counter = (counter - 1) % 6;
                 if (counter == 0) {
-                    document.getElementById('backButton').style.visibility = 'hidden';
-                    document.getElementById("submitButton").style.visibility = 'hidden';
+                    document.getElementById('backButton').style.display = "none";
+                    document.getElementById("submitButton").style.display = "none";
                 } else {
-                    document.getElementById('backButton').style.visibility = 'visible';
+                    document.getElementById('backButton').style.display = "block";
                     if (counter == 5)
-                        document.getElementById('nextButton').style.visibility = 'hidden';
+                        document.getElementById('nextButton').style.display = "none";
                     else
-                        document.getElementById('nextButton').style.visibility = 'visible';
+                        document.getElementById('nextButton').style.display = "block";
                 }
-                document.getElementById("submitButton").style.visibility = 'hidden';
+                document.getElementById("submitButton").style.display = "none";
 
                 var i, tabcontent, tablinks;
                 tabcontent = document.getElementsByClassName("tabcontent");
