@@ -61,7 +61,7 @@
                 </div>
 
                 <div class="showEdit" id="changeName" style="display: none;">
-<!--                <p> ${update} ${errorEdit}</p>-->
+<!--                <p>${update} ${errorEdit}</p>-->
                     <form action = "../EditNameServlet" method = "POST">
                         <div>
                             <p class="displayed-info-name">Change your name here:</p>
@@ -87,23 +87,32 @@
                     <form action = "../PasswordServlet" method = "POST">
                         <div>
                             <p class="displayed-info-pass">Change your password here:</p>                 
-                            <input type="Submit" value="Save" name="savechanges" class="saveEdit" minlength="8" onclick="alert('${update1}')">
+                            <input type="Submit" value="Save" name="savechanges" class="saveEdit" minlength="8" onload="showAlert()">
                         </div>
                         <input type="hidden" name="username" value ="${username}" class="input">
                         <input type="password" name="currpass" placeholder="Enter Current Password"  minlength="8" required class="input-change"><br>
                         <input type="password" name="newpass" placeholder="Enter New Password"  minlength="8" required required class="input-change"><br>
                         <input type="password" name="confpass" placeholder="Enter Confirm New Password"  minlength="8" required required class="input-change"><br>
                     </form>
-                    <!--                    <div>
-                                            <p class="displayed-message">${update1}</p>
-                                        </div>-->
+                    <div>
+
+                    </div>
 
                     <!--                <div>
                                         <input type="button" value="Change Name or Password" class="edit" onclick="window.location = '/SKIT-YIMS/Account/EditProfile.jsp'">
                                     </div>-->
                 </div>
+                <p class="displayed-message">${update1}</p>
             </div>
 
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script type="text/javascript">
+                                function showAlert() {
+                                    alert('${update1}');
+                                }
+
+            </script>
+            
             <script>
                 function changeName() {
                     var x = document.getElementById("changeName");
@@ -112,9 +121,11 @@
                         x.style.display = "block";
                         y.style.display = "none";
                         document.getElementById("editName").value = "Cancel";
+                        document.getElementById("editPass").value = "Edit";
                     } else {
                         x.style.display = "none";
                         document.getElementById("editName").value = "Edit";
+                        document.getElementById("editPass").value = "Cancel";
                     }
 
                 }
@@ -126,9 +137,11 @@
                         x.style.display = "block";
                         y.style.display = "none";
                         document.getElementById("editPass").value = "Cancel";
+                        document.getElementById("editName").value = "Edit";
                     } else {
                         x.style.display = "none";
                         document.getElementById("editPass").value = "Edit";
+                        document.getElementById("editName").value = "Cancel";
                     }
                     if (x.value === "Edit")
                         x.value = "Cancel";
