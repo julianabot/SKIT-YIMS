@@ -19,6 +19,7 @@
             <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>
 
             <ul class="links">
+                <li class="Events"><a href="Survey Forms/Landing.jsp">Survey</a></li>
                 <li class="Events"><a href="#Events-Section-Header">Events</a></li>
                 <li class="About"><a href="#About-Section">About</a></li>
                 <li class="Login"><a href="Account/Login.jsp" id="Login">Login</a></li>
@@ -205,21 +206,21 @@
         <section class="Footer-Container">
             <div class="Flex-Footer-Content" id="Contact-Us">
                 <p class="label">CONTACT US</p>
-                <p class="f-content">Phone: (02) 7213 7246 | (02) 8478 5165 </p>
-                <p class="f-content">Mobile: 0906 058 5888 | 0921 766 8148 |0917 322 0507</p>
-                <p class="f-content"><br> <br>47 Kalayaan Avenue, Diliman, Quezon City 1101 Philippines</p>
+                <p class="f-content">Phone: (02) 8642 2462 | (02) 8880 2766  </p>
+                <p class="f-content">Mobile: 0939 773 3342 | 0976 050 2672</p>
+                <p class="f-content"><br> <br>700 Dr. A. Natividad st., Ibayo-Tipas, Taguig City, M.M.</p>
             </div>
             <div class="Flex-Footer-Content" id="Links">
                 <p class="label" id="links-label">LINKS</p>
                 <a href="#About-Section"class="f-content">About</a>
                 <a href="#Hero-Section"class="f-content">Home</a>
                 <a href="https://www.facebook.com/skibayotipas" target="_blank" class="f-content">Facebook </a>  
-                <a href="Survey Forms/Landing.jsp" class="f-content">Survey</a>
+                <a href="/SKIT-YIMS/Survey Forms/Landing.jsp" class="f-content">Survey</a>
             </div>
             <div class="Flex-Footer-Content" id="Email-Us">
                 <p class="label">EMAIL US</p>
                 <p class="f-content">For feedback and suggestions, feel free to reach out to us using the e-mail below.</p>
-                <a class="f-content" id="mock-email-button" href="mailto:maxinehuy@gmail.com">Send Email</a>
+                <a class="f-content" id="mock-email-button" href="mailto:ibayotipas.skcouncil@gmail.com">Send Email</a>
             </div>
         </section>
 
