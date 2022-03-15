@@ -123,7 +123,9 @@ public class PDFServlet extends HttpServlet {
                     ResultSet rs = stmt.executeQuery(query);
                     ServletOutputStream sos = response.getOutputStream();
                     PDF doc = new PDF();
+                    doc.contactInfoRecord(rs, username, filename, path);
                     System.out.println(path);
+                    response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
 //                    ByteArrayOutputStream pdf = doc.contactInfoRecord(rs, username, footer, path);
 //                    pdf.writeTo(sos);
                 }
@@ -136,6 +138,7 @@ public class PDFServlet extends HttpServlet {
                     PDF doc = new PDF();
                     System.out.println(path);
                     doc.familyInfoRecord(rs, username, filename, path);
+                    response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
 //                    ByteArrayOutputStream pdf = doc.familyInfoRecord(rs, username, footer, path);
 //                    pdf.writeTo(sos);
                 }
