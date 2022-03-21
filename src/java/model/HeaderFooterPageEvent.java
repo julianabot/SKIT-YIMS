@@ -10,25 +10,18 @@ import java.util.logging.Logger;
 public class HeaderFooterPageEvent extends PdfPageEventHelper {
 
     LocalDateTime date;
+    PdfPTable headTable;
     Image image;
-    String header, footer, name, dateAndTime;
+    String name, dateAndTime, role;
     int total;
+    float headTableHeight;
     String imagePath;
 
-    public HeaderFooterPageEvent(String logoPath) {
+    public HeaderFooterPageEvent(String logoPath, String name, String role) {
         imagePath = logoPath;
-    }
-
-    public void setHeader(String header) {
-        this.header = header;
-    }
-
-    public void setFooter(String footer) {
-        this.footer = footer;
-    }
-
-    public void setUsername(String name) {
         this.name = name;
+        this.role = role;
+        headTableHeight = 70;
     }
 
     public void setTotalPageCount(int total) {
@@ -38,6 +31,10 @@ public class HeaderFooterPageEvent extends PdfPageEventHelper {
     public void setDateAndTime(LocalDateTime date) {
         DateTimeFormatter formatDate = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a");
         dateAndTime = date.format(formatDate);
+    }
+
+    public float getTableHeight() {
+        return headTableHeight;
     }
 
     public void onEndPage(PdfWriter writer, Document document) {
@@ -51,18 +48,20 @@ public class HeaderFooterPageEvent extends PdfPageEventHelper {
 
             PdfContentByte cb = writer.getDirectContent();
             String x = String.valueOf(writer.getPageNumber());
-            //String y = String.valueOf(total);
+            String y = String.valueOf(total);
             //System.out.print("Page event count: " + y);
 
-            PdfPTable headTable = new PdfPTable(1);
+            headTable = new PdfPTable(1);
             headTable.setTotalWidth(523);
             headTable.setLockedWidth(true);
             headTable.setSpacingAfter(20f);
             PdfPCell cell;
             cell = new PdfPCell(new Phrase("Exported by: " + name));
+            System.out.print(name);
             cell.setBorder(Rectangle.NO_BORDER);
             headTable.addCell(cell);
-            cell = new PdfPCell(new Phrase("Position: Dev"));
+            cell = new PdfPCell(new Phrase("Position: " + role));
+            System.out.print(role);
             cell.setBorder(Rectangle.NO_BORDER);
             headTable.addCell(cell);
 
@@ -72,13 +71,13 @@ public class HeaderFooterPageEvent extends PdfPageEventHelper {
             cell = new PdfPCell(new Phrase("Database Report", f));
             cell.setBorder(Rectangle.NO_BORDER);
             headTable.addCell(cell);
-            float headTableHeight = headTable.getTotalHeight();
+            headTableHeight = headTable.getTotalHeight();
 
-            Phrase footer = new Phrase(String.format("Page %s", x), ffont);
+            Phrase footer = new Phrase(String.format("Page %s of %s", x, y), ffont);
 
             headTable.writeSelectedRows(0, -1,
                     document.left(),
-                    document.top() + ((document.topMargin() + headTableHeight) / 4),
+                    document.top() + ((document.topMargin() + headTableHeight) / 2),
                     writer.getDirectContent());
 
             ColumnText.showTextAligned(cb, Element.ALIGN_RIGHT,

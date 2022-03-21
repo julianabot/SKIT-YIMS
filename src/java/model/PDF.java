@@ -30,25 +30,26 @@ import java.time.format.DateTimeFormatter;
  */
 public class PDF {
 
-    public void basicInfoRecord(ResultSet rs, String user, String filename, String path) {
+    public void basicInfoRecord(ResultSet rs, String user, String role, String filename, String path) {
         //DateTimeFormatter is used to set the format of the current date
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         LocalDateTime current = LocalDateTime.now(); //Gets the current date and time
-        String date = dtf.format(current); //DateTimeFormatter pattern is implemented in the current date and time
-
-        byte data[];
-
-        ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        //String path = loader.getResource("../img/SK_Logo.png").getPath();
 
         Document record = new Document();
         record.setPageSize(PageSize.LEGAL.rotate());
+        record.setMargins(30, 30, 20, 30);
 //        ByteArrayOutputStream pdf = new ByteArrayOutputStream();
         int count = 1;
 
         try {
             String home = System.getProperty("user.home");
             PdfWriter writer = PdfWriter.getInstance(record, new FileOutputStream(home + "/Desktop/" + filename));
+
+            HeaderFooterPageEvent event = new HeaderFooterPageEvent(path, user, role);
+            record.setMargins(30, 30, 20 + event.getTableHeight(), 30);
+            writer.setPageEvent((PdfPageEvent) event);
+
+            event.setDateAndTime(current);
 
             record.open();
 
@@ -57,22 +58,8 @@ public class PDF {
             Font f3 = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD);
             BaseColor columnHeaderColor = WebColors.getRGBColor("#8B3535");
 
-//            Image headerImg = Image.getInstance(path);
-//            headerImg.setAbsolutePosition(900, 520);
-//            headerImg.scaleToFit(70, 70);
-            HeaderFooterPageEvent event = new HeaderFooterPageEvent(path);
-            writer.setPageEvent((PdfPageEvent) event);
-            event.setHeader("Header");
-            event.setFooter("Footer");
-            event.setDateAndTime(current);
-            event.setUsername(user);
-
-//            Paragraph drHead = new Paragraph("Database Report", f);
-//            drHead.setAlignment(Element.ALIGN_LEFT);
             PdfPTable basicTable = new PdfPTable(7);
             basicTable.setWidthPercentage(100);
-            basicTable.setSpacingBefore(50f);
-            basicTable.setSpacingAfter(20f);
             PdfPCell cell;
             basicTable.setWidths(new int[]{1, 4, 3, 2, 6, 3, 6});
             cell = new PdfPCell(new Phrase("ID", f2));
@@ -121,9 +108,7 @@ public class PDF {
             basicTable.setHeaderRows(1);
 
             int x = 0;
-            int y = 0;
             while (rs.next()) {
-                //record.add(headerImg);
                 x++;
                 cell = new PdfPCell(new Phrase(rs.getString("basicID")));
                 cell.setVerticalAlignment(Element.ALIGN_CENTER);
@@ -141,73 +126,12 @@ public class PDF {
                 basicTable.addCell(cell);
                 cell = new PdfPCell(new Phrase(rs.getString("validID")));
                 basicTable.addCell(cell);
-                if (x % 15 == 0) {
+                if (x % 16 == 0) {
                     count++;
-                    record.add(new Paragraph(20, "\u00a0"));
-                    //record.add(drHead);
-                    record.add(basicTable);
-                    basicTable = new PdfPTable(7);
-                    basicTable.setWidthPercentage(100);
-                    basicTable.setSpacingBefore(50f);
-                    basicTable.setSpacingAfter(20f);
-                    basicTable.setWidths(new int[]{1, 4, 3, 2, 6, 3, 6});
-                    cell = new PdfPCell(new Phrase("ID", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    basicTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Name", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    basicTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Agegroup", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    basicTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Birthday", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    basicTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Address", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    basicTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Gender", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    basicTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Valid ID", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    basicTable.addCell(cell);
-                    //System.out.print("PDF.java inside if count: " + count);
-//                    count++;
-
                 }
-                //System.out.print("PDF.java inside while count: " + count);
-//                event.setTotalPageCount(count);
+                event.setTotalPageCount(count);
             }
-            record.add(new Paragraph(31, "\u00a0"));
             record.add(basicTable);
-            basicTable = new PdfPTable(7);
-            basicTable.setWidthPercentage(100);
-            basicTable.setSpacingAfter(20f);
-            basicTable.setWidths(new int[]{1, 4, 3, 2, 6, 3, 6});
-
-            event.setTotalPageCount(count);
             record.newPage();
             record.close();
         } catch (Exception e) {
@@ -215,23 +139,26 @@ public class PDF {
         }
     }
 
-    public void contactInfoRecord(ResultSet rs, String user, String filename, String path) {
+    public void contactInfoRecord(ResultSet rs, String user, String role, String filename, String path) {
         //DateTimeFormatter is used to set the format of the current date
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         LocalDateTime current = LocalDateTime.now(); //Gets the current date and time
-        String date = dtf.format(current); //DateTimeFormatter pattern is implemented in the current date and time
-
-        ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        //String path = loader.getResource("../img/SK_Logo.png").getPath();
 
         Document record = new Document();
         record.setPageSize(PageSize.LEGAL.rotate());
-        ByteArrayOutputStream pdf = new ByteArrayOutputStream();
+        record.setMargins(30, 30, 20, 30);
+//        ByteArrayOutputStream pdf = new ByteArrayOutputStream();
         int count = 1;
 
         try {
             String home = System.getProperty("user.home");
             PdfWriter writer = PdfWriter.getInstance(record, new FileOutputStream(home + "/Desktop/" + filename));
+
+            HeaderFooterPageEvent event = new HeaderFooterPageEvent(path, user, role);
+            record.setMargins(30, 30, 20 + event.getTableHeight(), 30);
+            writer.setPageEvent((PdfPageEvent) event);
+
+            event.setDateAndTime(current);
 
             record.open();
 
@@ -240,19 +167,6 @@ public class PDF {
             Font f3 = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD);
             BaseColor columnHeaderColor = WebColors.getRGBColor("#8B3535");
 
-            Image headerImg = Image.getInstance(path);
-            headerImg.setAbsolutePosition(900, 520);
-            headerImg.scaleToFit(70, 70);
-
-            HeaderFooterPageEvent event = new HeaderFooterPageEvent(path);
-            writer.setPageEvent((PdfPageEvent) event);
-            event.setHeader("Header");
-            event.setFooter("Footer");
-            event.setDateAndTime(current);
-            event.setUsername(user);
-
-//            Paragraph drHead = new Paragraph("Database Report", f);
-//            drHead.setAlignment(Element.ALIGN_LEFT);
             PdfPTable contactTable = new PdfPTable(5);
             contactTable.setWidthPercentage(100);
             contactTable.setSpacingBefore(30f);
@@ -290,9 +204,10 @@ public class PDF {
             cell.setBackgroundColor(columnHeaderColor);
             contactTable.addCell(cell);
 
+            contactTable.setHeaderRows(1);
+
             int x = 0;
             while (rs.next()) {
-                //record.add(headerImg);
                 x++;
                 cell = new PdfPCell(new Phrase(rs.getString("contactID")));
                 cell.setVerticalAlignment(Element.ALIGN_CENTER);
@@ -306,64 +221,14 @@ public class PDF {
                 contactTable.addCell(cell);
                 cell = new PdfPCell(new Phrase(rs.getString("fbNameURL")));
                 contactTable.addCell(cell);
-                if (x % 25 == 0) {
+                if (x % 28 == 0) {
                     count++;
-                    record.add(new Paragraph(40, "\u00a0"));
-                    //record.add(drHead);
-                    record.add(contactTable);
-                    contactTable = new PdfPTable(5);
-                    contactTable.setWidthPercentage(100);
-                    contactTable.setSpacingBefore(30f);
-                    contactTable.setSpacingAfter(20f);
-                    contactTable.setWidths(new int[]{1, 6, 4, 6, 7});
-                    cell = new PdfPCell(new Phrase("ID", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    contactTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Name", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    contactTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Contact Number", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    contactTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Email", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    contactTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Facebook Name or Facebook URL", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    contactTable.addCell(cell);
-                    //System.out.print("PDF.java inside if count: " + count);
-//                    count++;
-
                 }
-                //System.out.print("PDF.java inside while count: " + count);
-//                event.setTotalPageCount(count);
+                event.setTotalPageCount(count);
             }
-            record.add(new Paragraph(40, "\u00a0"));
-            record.add(contactTable);
-            contactTable = new PdfPTable(5);
-            contactTable.setWidthPercentage(100);
-            contactTable.setSpacingBefore(30f);
-            contactTable.setSpacingAfter(20f);
-            contactTable.setWidths(new int[]{1, 6, 4, 6, 7});
 
-            event.setTotalPageCount(count);
+            record.add(contactTable);
             record.newPage();
-            event.setTotalPageCount(count);
             record.close();
 
         } catch (Exception e) {
@@ -371,23 +236,26 @@ public class PDF {
         }
     }
 
-    public void familyInfoRecord(ResultSet rs, String user, String filename, String path) {
+    public void familyInfoRecord(ResultSet rs, String user, String role, String filename, String path) {
         //DateTimeFormatter is used to set the format of the current date
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         LocalDateTime current = LocalDateTime.now(); //Gets the current date and time
-        String date = dtf.format(current); //DateTimeFormatter pattern is implemented in the current date and time
-
-        ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        //String path = loader.getResource("../img/SK_Logo.png").getPath();
 
         Document record = new Document();
         record.setPageSize(PageSize.LEGAL.rotate());
-        ByteArrayOutputStream pdf = new ByteArrayOutputStream();
-        int count = 1;
+        record.setMargins(30, 30, 20, 30);
+//        ByteArrayOutputStream pdf = new ByteArrayOutputStream();
+        int count = 0;
 
         try {
             String home = System.getProperty("user.home");
             PdfWriter writer = PdfWriter.getInstance(record, new FileOutputStream(home + "/Desktop/" + filename));
+
+            HeaderFooterPageEvent event = new HeaderFooterPageEvent(path, user, role);
+            record.setMargins(30, 30, 20 + event.getTableHeight(), 30);
+            writer.setPageEvent((PdfPageEvent) event);
+
+            event.setDateAndTime(current);
 
             record.open();
 
@@ -395,13 +263,6 @@ public class PDF {
             Font f2 = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD, BaseColor.WHITE);
             Font f3 = new Font(Font.FontFamily.HELVETICA, 8);
             BaseColor columnHeaderColor = WebColors.getRGBColor("#8B3535");
-
-            HeaderFooterPageEvent event = new HeaderFooterPageEvent(path);
-            writer.setPageEvent((PdfPageEvent) event);
-            event.setHeader("Header");
-            event.setFooter("Footer");
-            event.setDateAndTime(current);
-            event.setUsername(user);
 
             PdfPTable familyTable = new PdfPTable(11);
             familyTable.setWidthPercentage(100);
@@ -476,6 +337,8 @@ public class PDF {
             cell.setBackgroundColor(columnHeaderColor);
             familyTable.addCell(cell);
 
+            familyTable.setHeaderRows(1);
+
             int x = 0;
             while (rs.next()) {
                 x++;
@@ -503,98 +366,13 @@ public class PDF {
                 familyTable.addCell(cell);
                 cell = new PdfPCell(new Phrase(rs.getString("breadWinner"), f3));
                 familyTable.addCell(cell);
-                if (x % 11 == 0) {
+                if (x % 13 == 0) {
                     count++;
-                    record.add(new Paragraph(60, "\u00a0"));
-                    record.add(familyTable);
-                    familyTable = new PdfPTable(11);
-                    familyTable.setWidthPercentage(100);
-                    familyTable.setSpacingBefore(30f);
-                    familyTable.setSpacingAfter(20f);
-                    familyTable.setWidths(new int[]{2, 4, 4, 3, 4, 3, 3, 3, 2, 4, 4});
-                    cell = new PdfPCell(new Phrase("ID", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    familyTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Name", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    familyTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Mother's Name", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    familyTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Mother's Occupation", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    familyTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Father's Name", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    familyTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Father's Occupation", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    familyTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Vital Status of Mother", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    familyTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Vital Status of Father", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    familyTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("# of Sibling", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    familyTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Sibling's Education", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    familyTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Breadwinner", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    familyTable.addCell(cell);
-                    //System.out.print("PDF.java inside if count: " + count);
-//                    count++;
                 }
-                //System.out.print("PDF.java inside while count: " + count);
-//                event.setTotalPageCount(count);
+                event.setTotalPageCount(count);
             }
-            record.add(new Paragraph(60, "\u00a0"));
             record.add(familyTable);
-            familyTable = new PdfPTable(11);
-            familyTable.setWidthPercentage(100);
-            familyTable.setSpacingBefore(30f);
-            familyTable.setSpacingAfter(20f);
-            familyTable.setWidths(new int[]{2, 4, 4, 3, 4, 3, 3, 3, 2, 4, 4});
-
-            event.setTotalPageCount(count);
             record.newPage();
-            event.setTotalPageCount(count);
             record.close();
 
         } catch (Exception e) {
@@ -602,21 +380,26 @@ public class PDF {
         }
     }
 
-    public void orgInfoRecord(ResultSet rs, String user, String filename, String path) {
-
-//DateTimeFormatter is used to set the format of the current date
+    public void orgInfoRecord(ResultSet rs, String user, String role, String filename, String path) {
+        //DateTimeFormatter is used to set the format of the current date
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         LocalDateTime current = LocalDateTime.now(); //Gets the current date and time
-        String date = dtf.format(current); //DateTimeFormatter pattern is implemented in the current date and time
 
         Document record = new Document();
         record.setPageSize(PageSize.LEGAL.rotate());
-
+        record.setMargins(30, 30, 20, 30);
+//        ByteArrayOutputStream pdf = new ByteArrayOutputStream();
         int count = 1;
 
         try {
             String home = System.getProperty("user.home");
-            PdfWriter writer = PdfWriter.getInstance(record, new FileOutputStream("D:/Downloads/" + filename));
+            PdfWriter writer = PdfWriter.getInstance(record, new FileOutputStream(home + "/Desktop/" + filename));
+
+            HeaderFooterPageEvent event = new HeaderFooterPageEvent(path, user, role);
+            record.setMargins(30, 30, 20 + event.getTableHeight(), 30);
+            writer.setPageEvent((PdfPageEvent) event);
+
+            event.setDateAndTime(current);
 
             record.open();
 
@@ -624,13 +407,6 @@ public class PDF {
             Font f2 = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD, BaseColor.WHITE);
             Font f3 = new Font(Font.FontFamily.HELVETICA, 8);
             BaseColor columnHeaderColor = WebColors.getRGBColor("#8B3535");
-
-            HeaderFooterPageEvent event = new HeaderFooterPageEvent(path);
-            writer.setPageEvent((PdfPageEvent) event);
-            event.setHeader("Header");
-            event.setFooter("Footer");
-            event.setDateAndTime(current);
-            event.setUsername(user);
 
             PdfPTable orgTable = new PdfPTable(9);
             orgTable.setWidthPercentage(100);
@@ -693,6 +469,8 @@ public class PDF {
             cell.setBackgroundColor(columnHeaderColor);
             orgTable.addCell(cell);
 
+            orgTable.setHeaderRows(1);
+
             int x = 0;
             while (rs.next()) {
                 x++;
@@ -716,86 +494,13 @@ public class PDF {
                 orgTable.addCell(cell);
                 cell = new PdfPCell(new Phrase(rs.getString("sayToSK"), f3));
                 orgTable.addCell(cell);
-                if (x % 11 == 0) {
+                if (x % 4 == 0) {
                     count++;
-                    record.add(new Paragraph(60, "\u00a0"));
-                    record.add(orgTable);
-                    orgTable = new PdfPTable(9);
-                    orgTable.setWidthPercentage(100);
-                    orgTable.setSpacingBefore(30f);
-                    orgTable.setSpacingAfter(20f);
-                    orgTable.setWidths(new int[]{1, 4, 3, 3, 3, 2, 4, 4, 4});
-                    cell = new PdfPCell(new Phrase("ID", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    orgTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Name", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    orgTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Resident Voter", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    orgTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Member of Organization", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    orgTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Name of Organization", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    orgTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Support SK", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    orgTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Show Support", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    orgTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Job Chance", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    orgTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Say to SK", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    orgTable.addCell(cell);
-                    //System.out.print("PDF.java inside if count: " + count);
-//                    count++;
                 }
-                //System.out.print("PDF.java inside while count: " + count);
-//                event.setTotalPageCount(count);
+                event.setTotalPageCount(count);
             }
-            record.add(new Paragraph(60, "\u00a0"));
             record.add(orgTable);
-            orgTable = new PdfPTable(9);
-            orgTable.setWidthPercentage(100);
-            orgTable.setSpacingBefore(30f);
-            orgTable.setSpacingAfter(20f);
-            orgTable.setWidths(new int[]{1, 4, 3, 3, 3, 2, 4, 4, 4});
-
-            event.setTotalPageCount(count);
             record.newPage();
-            event.setTotalPageCount(count);
             record.close();
 
         } catch (Exception e) {
@@ -803,21 +508,26 @@ public class PDF {
         }
     }
 
-    public void statusInfoRecord(ResultSet rs, String user, String filename, String path) {
-
-//DateTimeFormatter is used to set the format of the current date
+    public void statusInfoRecord(ResultSet rs, String user, String role, String filename, String path) {
+        //DateTimeFormatter is used to set the format of the current date
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         LocalDateTime current = LocalDateTime.now(); //Gets the current date and time
-        String date = dtf.format(current); //DateTimeFormatter pattern is implemented in the current date and time
 
         Document record = new Document();
         record.setPageSize(PageSize.LEGAL.rotate());
-
+        record.setMargins(30, 30, 20, 30);
+//        ByteArrayOutputStream pdf = new ByteArrayOutputStream();
         int count = 1;
 
         try {
             String home = System.getProperty("user.home");
-            PdfWriter writer = PdfWriter.getInstance(record, new FileOutputStream("D:/Downloads/" + filename));
+            PdfWriter writer = PdfWriter.getInstance(record, new FileOutputStream(home + "/Desktop/" + filename));
+
+            HeaderFooterPageEvent event = new HeaderFooterPageEvent(path, user, role);
+            record.setMargins(30, 30, 20 + event.getTableHeight(), 30);
+            writer.setPageEvent((PdfPageEvent) event);
+
+            event.setDateAndTime(current);
 
             record.open();
 
@@ -825,13 +535,6 @@ public class PDF {
             Font f2 = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD, BaseColor.WHITE);
             Font f3 = new Font(Font.FontFamily.HELVETICA, 8);
             BaseColor columnHeaderColor = WebColors.getRGBColor("#8B3535");
-
-            HeaderFooterPageEvent event = new HeaderFooterPageEvent(path);
-            writer.setPageEvent((PdfPageEvent) event);
-            event.setHeader("Header");
-            event.setFooter("Footer");
-            event.setDateAndTime(current);
-            event.setUsername(user);
 
             PdfPTable statusTable = new PdfPTable(8);
             statusTable.setWidthPercentage(100);
@@ -888,6 +591,8 @@ public class PDF {
             cell.setBackgroundColor(columnHeaderColor);
             statusTable.addCell(cell);
 
+            statusTable.setHeaderRows(1);
+
             int x = 0;
             while (rs.next()) {
                 x++;
@@ -909,81 +614,13 @@ public class PDF {
                 statusTable.addCell(cell);
                 cell = new PdfPCell(new Phrase(rs.getString("typeOfDisability"), f3));
                 statusTable.addCell(cell);
-                if (x % 30 == 0) {
+                if (x % 37 == 0) {
                     count++;
-                    record.add(new Paragraph(60, "\u00a0"));
-                    record.add(statusTable);
-                    statusTable = new PdfPTable(8);
-                    statusTable.setWidthPercentage(100);
-                    statusTable.setSpacingBefore(30f);
-                    statusTable.setSpacingAfter(20f);
-                    statusTable.setWidths(new int[]{1, 4, 2, 5, 3, 4, 2, 3});
-                    cell = new PdfPCell(new Phrase("ID", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    statusTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Name", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    statusTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Civil Status", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    statusTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Working Status", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    statusTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Educational Attainment", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    statusTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Job Employed", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    statusTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("PWD", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    statusTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Type of Disability", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    statusTable.addCell(cell);
-
-                    //System.out.print("PDF.java inside if count: " + count);
-//                    count++;
                 }
-                //System.out.print("PDF.java inside while count: " + count);
-//                event.setTotalPageCount(count);
+                event.setTotalPageCount(count);
             }
-            record.add(new Paragraph(60, "\u00a0"));
             record.add(statusTable);
-            statusTable = new PdfPTable(8);
-            statusTable.setWidthPercentage(100);
-            statusTable.setSpacingBefore(30f);
-            statusTable.setSpacingAfter(20f);
-            statusTable.setWidths(new int[]{1, 4, 2, 5, 3, 4, 2, 3});
-
-            event.setTotalPageCount(count);
             record.newPage();
-            event.setTotalPageCount(count);
             record.close();
 
         } catch (Exception e) {
@@ -991,21 +628,26 @@ public class PDF {
         }
     }
 
-    public void vaccInfoRecord(ResultSet rs, String user, String filename, String path) {
-
-//DateTimeFormatter is used to set the format of the current date
+    public void vaccInfoRecord(ResultSet rs, String user, String role, String filename, String path) {
+        //DateTimeFormatter is used to set the format of the current date
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         LocalDateTime current = LocalDateTime.now(); //Gets the current date and time
-        String date = dtf.format(current); //DateTimeFormatter pattern is implemented in the current date and time
 
         Document record = new Document();
         record.setPageSize(PageSize.LEGAL.rotate());
-
+        record.setMargins(30, 30, 20, 30);
+//        ByteArrayOutputStream pdf = new ByteArrayOutputStream();
         int count = 1;
 
         try {
             String home = System.getProperty("user.home");
-            PdfWriter writer = PdfWriter.getInstance(record, new FileOutputStream("D:/Downloads/" + filename));
+            PdfWriter writer = PdfWriter.getInstance(record, new FileOutputStream(home + "/Desktop/" + filename));
+
+            HeaderFooterPageEvent event = new HeaderFooterPageEvent(path, user, role);
+            record.setMargins(30, 30, 20 + event.getTableHeight(), 30);
+            writer.setPageEvent((PdfPageEvent) event);
+
+            event.setDateAndTime(current);
 
             record.open();
 
@@ -1013,13 +655,6 @@ public class PDF {
             Font f2 = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD, BaseColor.WHITE);
             Font f3 = new Font(Font.FontFamily.HELVETICA, 8);
             BaseColor columnHeaderColor = WebColors.getRGBColor("#8B3535");
-
-            HeaderFooterPageEvent event = new HeaderFooterPageEvent(path);
-            writer.setPageEvent((PdfPageEvent) event);
-            event.setHeader("Header");
-            event.setFooter("Footer");
-            event.setDateAndTime(current);
-            event.setUsername(user);
 
             PdfPTable vaccineTable = new PdfPTable(6);
             vaccineTable.setWidthPercentage(100);
@@ -1064,6 +699,8 @@ public class PDF {
             cell.setBackgroundColor(columnHeaderColor);
             vaccineTable.addCell(cell);
 
+            vaccineTable.setHeaderRows(1);
+
             int x = 0;
             while (rs.next()) {
                 x++;
@@ -1081,69 +718,13 @@ public class PDF {
                 vaccineTable.addCell(cell);
                 cell = new PdfPCell(new Phrase(rs.getString("vaccineStatus"), f3));
                 vaccineTable.addCell(cell);
-                if (x % 30 == 0) {
+                if (x % 38 == 0) {
                     count++;
-                    record.add(new Paragraph(60, "\u00a0"));
-                    record.add(vaccineTable);
-                    vaccineTable = new PdfPTable(6);
-                    vaccineTable.setWidthPercentage(100);
-                    vaccineTable.setSpacingBefore(30f);
-                    vaccineTable.setSpacingAfter(20f);
-                    vaccineTable.setWidths(new int[]{1, 3, 3, 3, 3, 3});
-                    cell = new PdfPCell(new Phrase("ID", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    vaccineTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Name", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    vaccineTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Vaccinated", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    vaccineTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Willing for Vaccine", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    vaccineTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Brand of Vaccine", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    vaccineTable.addCell(cell);
-                    cell = new PdfPCell(new Phrase("Vaccine Status", f2));
-                    cell.setVerticalAlignment(Element.ALIGN_CENTER);
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cell.setPadding(10);
-                    cell.setBackgroundColor(columnHeaderColor);
-                    vaccineTable.addCell(cell);
-
-                    //System.out.print("PDF.java inside if count: " + count);
-//                    count++;
                 }
-                //System.out.print("PDF.java inside while count: " + count);
-//                event.setTotalPageCount(count);
+                event.setTotalPageCount(count);
             }
-            record.add(new Paragraph(60, "\u00a0"));
             record.add(vaccineTable);
-            vaccineTable = new PdfPTable(6);
-            vaccineTable.setWidthPercentage(100);
-            vaccineTable.setSpacingBefore(30f);
-            vaccineTable.setSpacingAfter(20f);
-            vaccineTable.setWidths(new int[]{1, 3, 3, 3, 3, 3});
-
-            event.setTotalPageCount(count);
             record.newPage();
-            event.setTotalPageCount(count);
             record.close();
 
         } catch (Exception e) {

@@ -37,6 +37,7 @@ import java.time.format.DateTimeFormatter;
 import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import model.FilterSortPDF;
 
 public class PDFServlet extends HttpServlet {
 
@@ -83,19 +84,24 @@ public class PDFServlet extends HttpServlet {
 
         //String footer = request.getServletContext().getInitParameter("footer");
         String footer = "Footer";
-        response.addHeader("Content-Disposition", "inline; filename=" + filename);
-        //HttpSession session = request.getSession(); TO BE ADDED AFTER FILE PATHING
-        //(String) request.getSession().getAttribute("username") ipapalit sa parameter ng ByteOutputStream
-        String username = "Raph";
+        response.setHeader("Content-Disposition", "inline; filename=" + filename);
+        HttpSession session = request.getSession();
+        String username = (String) session.getAttribute("name");
+        String role = "SK Chairman";
+        if (session.getAttribute("role") != null) {
+            role = (String) session.getAttribute("role");
+        }
+        String filterQuery = (String) session.getAttribute("filterQuery");
+        System.out.print(filterQuery);
+        String sortQuery = (String) session.getAttribute("sortQuery");
+        //String role = "role";
 
         try {
             dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
             current = LocalDateTime.now(); //Gets the current date and time
             date = dtf.format(current); //DateTimeFormatter pattern is implemented in the current date and time
 
-            ClassLoader loader = Thread.currentThread().getContextClassLoader();
             String path = getServletContext().getRealPath("img/SK_Logo.png");
-            //String path = loader.getResource("../img/SK_Logo.png").getPath();
 
             Document record = new Document();
             PdfWriter.getInstance(record, response.getOutputStream());
@@ -106,24 +112,25 @@ public class PDFServlet extends HttpServlet {
             if (conn != null) {
                 System.out.print(button);
                 if (button.equals("Information")) {
-                    String query = "SELECT * FROM `skit-yims`.`basic-info`;";
+                    String query = "SELECT * FROM `skit-yims`.`basic-info`" + filterQuery + sortQuery;
                     Statement stmt = conn.createStatement();
                     ResultSet rs = stmt.executeQuery(query);
 //                    ServletOutputStream sos = response.getOutputStream();
                     PDF doc = new PDF();
                     System.out.println(path);
-                    doc.basicInfoRecord(rs, username, filename, path);
+                    doc.basicInfoRecord(rs, username, role, filename, path);
+                    System.out.println(role);
                     response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
 //                    pdf.writeTo(sos);
                 }
                 if (button.equals("Contact")) {
                     System.out.print("nasa Contact Info");
-                    String query = "SELECT contactID, name, contactNo, emailAddress, fbNameURL FROM `skit-yims`.`contact-info` INNER JOIN `skit-yims`.`basic-info` ON `contact-info`.contactID = `basic-info`.basicID ;";
+                    String query = "SELECT contactID, name, contactNo, emailAddress, fbNameURL FROM `skit-yims`.`contact-info` INNER JOIN `skit-yims`.`basic-info` ON `contact-info`.contactID = `basic-info`.basicID" + filterQuery + sortQuery;;
                     Statement stmt = conn.createStatement();
                     ResultSet rs = stmt.executeQuery(query);
                     ServletOutputStream sos = response.getOutputStream();
                     PDF doc = new PDF();
-                    doc.contactInfoRecord(rs, username, filename, path);
+                    doc.contactInfoRecord(rs, username, role, filename, path);
                     System.out.println(path);
                     response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
 //                    ByteArrayOutputStream pdf = doc.contactInfoRecord(rs, username, footer, path);
@@ -131,25 +138,25 @@ public class PDFServlet extends HttpServlet {
                 }
                 if (button.equals("Family")) {
                     System.out.print("nasa Family Info");
-                    String query = "SELECT familyID, name, motherName, motherOccupation, fatherName, fatherOccupation, vitalStatusMother, vitalStatusFather, noOfSiblings, siblingEducation, breadWinner  FROM `fam-status` INNER JOIN `basic-info` ON `fam-status`.familyID = `basic-info`.basicID;";
+                    String query = "SELECT familyID, name, motherName, motherOccupation, fatherName, fatherOccupation, vitalStatusMother, vitalStatusFather, noOfSiblings, siblingEducation, breadWinner  FROM `fam-status` INNER JOIN `basic-info` ON `fam-status`.familyID = `basic-info`.basicID" + filterQuery + sortQuery;;
                     Statement stmt = conn.createStatement();
                     ResultSet rs = stmt.executeQuery(query);
                     ServletOutputStream sos = response.getOutputStream();
                     PDF doc = new PDF();
                     System.out.println(path);
-                    doc.familyInfoRecord(rs, username, filename, path);
+                    doc.familyInfoRecord(rs, username, role, filename, path);
                     response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
 //                    ByteArrayOutputStream pdf = doc.familyInfoRecord(rs, username, footer, path);
 //                    pdf.writeTo(sos);
                 }
                 if (button.equals("Organization")) {
                     System.out.print("nasa Organization Info");
-                    String query = "SELECT organizationID, name, residentVoter, memberOfOrg, nameOfOrg, supportSK, showSupport, jobChance, sayToSK FROM `resident-org` INNER JOIN `basic-info` ON `resident-org`.organizationID = `basic-info`.basicID;";
+                    String query = "SELECT organizationID, name, residentVoter, memberOfOrg, nameOfOrg, supportSK, showSupport, jobChance, sayToSK FROM `resident-org` INNER JOIN `basic-info` ON `resident-org`.organizationID = `basic-info`.basicID" + filterQuery + sortQuery;;
                     Statement stmt = conn.createStatement();
                     ResultSet rs = stmt.executeQuery(query);
                     ServletOutputStream sos = response.getOutputStream();
                     PDF doc = new PDF();
-                    doc.orgInfoRecord(rs, username, filename, path);
+                    doc.orgInfoRecord(rs, username, role, filename, path);
                     response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
 
 //                    System.out.println(path);
@@ -158,22 +165,22 @@ public class PDFServlet extends HttpServlet {
                 }
                 if (button.equals("Status")) {
                     System.out.print("nasa Status Info");
-                    String query = "SELECT `resident-status`.statusID, `basic-info`.name, `resident-status`.civilStatus, `resident-status`.workingStatus, `resident-status`.educationAttainment, `resident-status`.jobEmployed, `resident-status`.PWD, `resident-status`.typeOfDisability FROM `resident-status` INNER JOIN `basic-info` ON `resident-status`.statusID = `basic-info`.basicID;";
+                    String query = "SELECT `resident-status`.statusID, `basic-info`.name, `resident-status`.civilStatus, `resident-status`.workingStatus, `resident-status`.educationAttainment, `resident-status`.jobEmployed, `resident-status`.PWD, `resident-status`.typeOfDisability FROM `resident-status` INNER JOIN `basic-info` ON `resident-status`.statusID = `basic-info`.basicID" + filterQuery + sortQuery;;
                     Statement stmt = conn.createStatement();
                     ResultSet rs = stmt.executeQuery(query);
                     ServletOutputStream sos = response.getOutputStream();
                     PDF doc = new PDF();
-                    doc.statusInfoRecord(rs, username, filename, path);
+                    doc.statusInfoRecord(rs, username, role, filename, path);
                     response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
                 }
                 if (button.equals("Vaccine")) {
                     System.out.print("nasa Vaccine Info");
-                    String query = "SELECT `vaccine-info`.vaccineID, `basic-info`.name, `vaccine-info`.vaccinated, `vaccine-info`.willingForVaccine, `vaccine-info`.brandOfVaccine, `vaccine-info`.vaccineStatus FROM `vaccine-info` INNER JOIN `basic-info` ON `vaccine-info`.vaccineID = `basic-info`.basicID;";
+                    String query = "SELECT `vaccine-info`.vaccineID, `basic-info`.name, `vaccine-info`.vaccinated, `vaccine-info`.willingForVaccine, `vaccine-info`.brandOfVaccine, `vaccine-info`.vaccineStatus FROM `vaccine-info` INNER JOIN `basic-info` ON `vaccine-info`.vaccineID = `basic-info`.basicID" + filterQuery + sortQuery;;
                     Statement stmt = conn.createStatement();
                     ResultSet rs = stmt.executeQuery(query);
                     ServletOutputStream sos = response.getOutputStream();
                     PDF doc = new PDF();
-                    doc.vaccInfoRecord(rs, username, filename, path);
+                    doc.vaccInfoRecord(rs, username, role, filename, path);
                     response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
                 }
 
