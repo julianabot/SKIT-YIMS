@@ -1,13 +1,21 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package model;
 
+import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class HeaderFooterPageEvent extends PdfPageEventHelper {
+/**
+ *
+ * @author Raphaelle
+ */
+public class HeaderFooterForALL extends PdfPageEventHelper {
 
     LocalDateTime date;
     PdfPTable headTable;
@@ -17,7 +25,7 @@ public class HeaderFooterPageEvent extends PdfPageEventHelper {
     float headTableHeight;
     String imagePath;
 
-    public HeaderFooterPageEvent(String logoPath, String name, String role) {
+    public HeaderFooterForALL(String logoPath, String name, String role) {
         imagePath = logoPath;
         this.name = name;
         this.role = role;
@@ -40,7 +48,7 @@ public class HeaderFooterPageEvent extends PdfPageEventHelper {
     public void onEndPage(PdfWriter writer, Document document) {
         try {
             Image headerImg = Image.getInstance(imagePath);
-            headerImg.setAbsolutePosition(900, 530);
+            headerImg.setAbsolutePosition(510, 930);
             headerImg.scaleToFit(70, 70);
             document.add(headerImg);
             Font ffont = new Font(Font.FontFamily.HELVETICA, 10, Font.NORMAL);
@@ -87,5 +95,4 @@ public class HeaderFooterPageEvent extends PdfPageEventHelper {
         }
 
     }
-
 }

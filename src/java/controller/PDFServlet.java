@@ -1,34 +1,6 @@
 package controller;
 
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Rectangle;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.PDF;
+import model.*;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 import java.io.*;
@@ -91,8 +63,14 @@ public class PDFServlet extends HttpServlet {
             role = (String) session.getAttribute("role");
         }
         String filterQuery = (String) session.getAttribute("filterQuery");
+        if (filterQuery == null) {
+            filterQuery = " ";
+        }
         System.out.print(filterQuery);
         String sortQuery = (String) session.getAttribute("sortQuery");
+        if (sortQuery == null) {
+            sortQuery = " ";
+        }
         //String role = "role";
 
         try {
@@ -110,6 +88,24 @@ public class PDFServlet extends HttpServlet {
             int count = 1;
             if (conn != null) {
                 System.out.print(button);
+                if (button.equals("All")) {
+                    String query = "SELECT `resident-info`.residentID, `contact-info`.emailAddress, `basic-info`.name, `basic-info`.agegroup, `basic-info`.birthday, `basic-info`.address, `basic-info`.gender, `contact-info`.contactNo, `resident-status`.civilStatus, `resident-status`.workingStatus, `resident-status`.jobEmployed, `resident-status`.educationAttainment, `resident-status`.PWD, `resident-status`.typeOfDisability, `contact-info`.fbNameURL, `basic-info`.validID, `fam-status`.motherName, `fam-status`.motherOccupation, `fam-status`.fatherName, `fam-status`.fatherOccupation, `fam-status`.vitalStatusMother, `fam-status`.vitalStatusFather, `fam-status`.noOfSiblings, `fam-status`.siblingEducation, `fam-status`.breadWinner, `resident-org`.residentVoter, `resident-org`.memberOfOrg, `resident-org`.nameOfOrg, `resident-org`.supportSK, `resident-org`.showSupport, `resident-org`.jobChance, `resident-org`.sayToSK, `vaccine-info`.vaccinated, `vaccine-info`.willingForVaccine, `vaccine-info`.brandOfVaccine, `vaccine-info`.vaccineStatus FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID " + filterQuery + sortQuery;
+                    Statement stmt = conn.createStatement();
+                    ResultSet result = stmt.executeQuery(query);
+
+                    int numRecord = 0;
+                    while (result.next()) {
+                        numRecord++;
+                    }
+
+                    ResultSet rs = stmt.executeQuery(query);
+                    AllPDF doc = new AllPDF();
+                    doc.residentRecord(rs, username, role, filename, path, numRecord);
+                    response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
+//                    ServletOutputStream sos = response.getOutputStream();
+//                    ByteArrayOutputStream pdf = doc.residentRecord(rs, username, role, filename, path, numRecord);
+//                    pdf.writeTo(sos);
+                }
                 if (button.equals("Information")) {
                     String query = "SELECT * FROM `skit-yims`.`basic-info`" + filterQuery + sortQuery;
                     Statement stmt = conn.createStatement();
@@ -119,7 +115,7 @@ public class PDFServlet extends HttpServlet {
                     System.out.println(path);
                     doc.basicInfoRecord(rs, username, role, filename, path);
                     System.out.println(role);
-                    response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
+                    response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
 //                    pdf.writeTo(sos);
                 }
                 if (button.equals("Contact")) {
@@ -127,11 +123,10 @@ public class PDFServlet extends HttpServlet {
                     String query = "SELECT contactID, name, contactNo, emailAddress, fbNameURL FROM `skit-yims`.`contact-info` INNER JOIN `skit-yims`.`basic-info` ON `contact-info`.contactID = `basic-info`.basicID" + filterQuery + sortQuery;;
                     Statement stmt = conn.createStatement();
                     ResultSet rs = stmt.executeQuery(query);
-                    ServletOutputStream sos = response.getOutputStream();
                     PDF doc = new PDF();
                     doc.contactInfoRecord(rs, username, role, filename, path);
                     System.out.println(path);
-                    response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
+                    response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
 //                    ByteArrayOutputStream pdf = doc.contactInfoRecord(rs, username, footer, path);
 //                    pdf.writeTo(sos);
                 }
@@ -144,7 +139,7 @@ public class PDFServlet extends HttpServlet {
                     PDF doc = new PDF();
                     System.out.println(path);
                     doc.familyInfoRecord(rs, username, role, filename, path);
-                    response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
+                    response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
 //                    ByteArrayOutputStream pdf = doc.familyInfoRecord(rs, username, footer, path);
 //                    pdf.writeTo(sos);
                 }
@@ -156,7 +151,7 @@ public class PDFServlet extends HttpServlet {
                     ServletOutputStream sos = response.getOutputStream();
                     PDF doc = new PDF();
                     doc.orgInfoRecord(rs, username, role, filename, path);
-                    response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
+                    response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
 
 //                    System.out.println(path);
 //                    ByteArrayOutputStream pdf = doc.orgInfoRecord(rs, username, footer, path);
@@ -170,7 +165,7 @@ public class PDFServlet extends HttpServlet {
                     ServletOutputStream sos = response.getOutputStream();
                     PDF doc = new PDF();
                     doc.statusInfoRecord(rs, username, role, filename, path);
-                    response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
+                    response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
                 }
                 if (button.equals("Vaccine")) {
                     System.out.print("nasa Vaccine Info");
@@ -180,7 +175,7 @@ public class PDFServlet extends HttpServlet {
                     ServletOutputStream sos = response.getOutputStream();
                     PDF doc = new PDF();
                     doc.vaccInfoRecord(rs, username, role, filename, path);
-                    response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
+                    response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
                 }
 
             }
