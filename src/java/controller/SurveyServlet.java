@@ -122,7 +122,11 @@ public class SurveyServlet extends HttpServlet {
             String fatherStatus = request.getParameter("fatherstat");
             String fatherWork = request.getParameter("fatherwork");
             String noSiblings = request.getParameter("nosibs");
-            String workingSibs = request.getParameter("workingsib");
+            String workingSibs1 = request.getParameter("workingsib1");
+            String workingSibs2 = request.getParameter("workingsib2");
+            String workingSibs3 = request.getParameter("workingsib3");
+            String workingSibs4 = request.getParameter("workingsib4");
+            String workingSibs5 = request.getParameter("workingsib5");
             String breadwinner = request.getParameter("breadwinner");
 
             session.setAttribute("mother", mother);
@@ -132,7 +136,7 @@ public class SurveyServlet extends HttpServlet {
             session.setAttribute("fatherStatus", fatherStatus);
             session.setAttribute("fatherWork", fatherWork);
             session.setAttribute("noSiblings", noSiblings);
-            session.setAttribute("workingSibs", workingSibs);
+
             session.setAttribute("breadwinner", breadwinner);
 
             //5. Survey
@@ -220,7 +224,21 @@ public class SurveyServlet extends HttpServlet {
             insBasic.setString(5, motherStatus);
             insBasic.setString(6, fatherStatus);
             insBasic.setString(7, noSiblings);
-            insBasic.setString(8, workingSibs);
+
+            String[] workingSibsArr = {workingSibs1, workingSibs2, workingSibs3, workingSibs4, workingSibs5};
+            String workingSibsFinal = "";
+
+            if (Integer.parseInt(noSiblings) == 0) {
+                workingSibsFinal = "Not Applicable";
+            } else {
+                for (int i = 0; i < Integer.parseInt(noSiblings); i++) {
+                    workingSibsFinal = workingSibsFinal + workingSibsArr[i] + ", ";
+                }
+                workingSibsFinal = workingSibsFinal.substring(0, workingSibsFinal.length() - 2);
+            }
+
+            insBasic.setString(8, workingSibsFinal);
+            session.setAttribute("workingSibs", workingSibsFinal);
             insBasic.setString(9, breadwinner);
 
             //insFamily.execute();
@@ -270,6 +288,7 @@ public class SurveyServlet extends HttpServlet {
             session.removeAttribute("errorCaptcha");
             session.removeAttribute("captchaSurvey");
             response.sendRedirect("/SKIT-YIMS/Survey Forms/Success.jsp");
+            //response.sendRedirect("/SKIT-YIMS/Survey Forms/ViewSubmitted.jsp");
 
         } catch (Exception e) {
             request.setAttribute("errorLogin", e.toString());

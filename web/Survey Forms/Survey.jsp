@@ -101,7 +101,7 @@
                             <div class="table">
                                 <div class="input-group">
                                     <label for="age" class="label-english">Age<em class="required"></em>&emsp;<span>Edad</span></label>&emsp;
-                                    <select name="age" class="age-select" required>
+                                    <select name="age" id="age" class="age-select" required>
                                         <option value="14 years old and below">14 years old and below</option>
                                         <option value="15-20 years old">15-20 years old</option>
                                         <option value="21-30 years old">21-30 years old</option>
@@ -111,7 +111,7 @@
                                 <div class="divider-row"></div>
                                 <div class="input-group">
                                     <label for="birthday" class="label-english" id="birthday-text">Birthday<em class="required"></em>&emsp;<span>Kaarawan</span></label>&emsp;
-                                    <input type="date" name="birthday" class="birthday-select" required>
+                                    <input type="date" name="birthday" id="birthday" class="birthday-select" required>
                                 </div>
                             </div>
 
@@ -177,7 +177,7 @@
                         <div class="content-container">
                             <div>
                                 <label for="civil" class="label-english">Civil Status<em class="required"></em>&emsp;<span>Katayuang Sibil</span></label><br>               
-                                <select name="civil" class="dropdown" required>
+                                <select name="civil" id="civil" class="dropdown" required>
                                     <option value="Single">Single</option>
                                     <option value="Married">Married</option>
                                     <option value="Widowed">Widowed</option>
@@ -188,7 +188,7 @@
 
                             <div>
                                 <label for="working" class="label-english">Working Status<em class="required"></em>&emsp;<span>Katayuan sa Trabaho</span></label><br>               
-                                <select name="working" class="dropdown" required>
+                                <select name="working" id="working" class="dropdown" required>
                                     <option value="Full-Time Student">Full-Time Student</option>
                                     <option value="Working Student">Working Student</option>
                                     <option value="Out of School Youth">Out of School Youth</option>
@@ -208,7 +208,7 @@
                             <br>
                             <div>
                                 <label for="education" class="label-english">Highest Educational Attainment<em class="required"></em>&emsp;<span>Pinakamataaas na Edukasyon na Natamo</span></label><br>               
-                                <select name="education" class="dropdown" required>
+                                <select name="education" id="education" class="dropdown" required>
                                     <option value="Elementary Level">Elementary Level</option>
                                     <option value="Elementary Graduate">Elementary Graduate</option>
                                     <option value="Junior High School Level">Junior High School Level</option>
@@ -331,16 +331,23 @@
                             <div class="content-divider"></div>
 
                             <div>
-                                <label for="nosibs" class="label-english">No. of Sibling/s<em class="required"></em>&emsp;<span>Ilan kayong Magkakapatid?</span></label><br>
-                                <input type="number" min="0" value="1" oninput="siblingSelection(this.value)"  id="nosibs" name="nosibs" class="dropdown" required>
+                                <label for="nosibs" class="label-english">No. of Sibling/s<em class="required"></em>&emsp;<span>Ilan ang iyong mga kapatid?</span></label><br>
+                                <!--                                <input type="number" min="0" value="0"  max="5"   oninput="siblingSelection(this.value)" id="nosibs" name="nosibs" class="dropdown" required>-->
+                                <select name="nosibs" id="nosibs" oninput="siblingSelection(this.value)" id="selection" class="dropdown">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
                             </div>
-
                             <div class="content-divider"></div>
 
                             <!-- dapat may condition dito ilang no. of siblings? Pending pa here-->
-                            <div id="sibSelection" class="original">
-                                <label for="workingsib" class="label-english">Sibling/s Working Status<em class="required"></em>&emsp;<span>Katayuan sa Trabaho</span></label>               
-                                <select name="workingsib" id="selection" class="dropdown" required>
+                            <div id="sibSelection1" name="sibSelection1" class="original" style="display: none">
+                                <label for="workingsib1" class="label-english">Sibling/s Working Status<em class="required"></em>&emsp;<span>Katayuan sa Trabaho</span></label>               
+                                <select name="workingsib1" id="selection" class="dropdown">
                                     <option value="Degree Holder">Degree Holder</option>
                                     <option value="Working">Working</option>
                                     <option value="Unemployed">Unemployed</option>
@@ -348,8 +355,47 @@
                                     <option value="Not Applicable">Not Applicable</option>
                                 </select>
                             </div>
-
-                            <div id="clonecontainer"></div>
+                            <div id="sibSelection2" name="sibSelection2" class="original" style="display: none">
+                                <label for="workingsib2" class="label-english">Sibling/s Working Status<em class="required"></em>&emsp;<span>Katayuan sa Trabaho</span></label>               
+                                <select name="workingsib2" id="selection" class="dropdown">
+                                    <option value="Degree Holder">Degree Holder</option>
+                                    <option value="Working">Working</option>
+                                    <option value="Unemployed">Unemployed</option>
+                                    <option value="Full-Time Student">Full-Time Student</option>
+                                    <option value="Not Applicable">Not Applicable</option>
+                                </select>
+                            </div>
+                            <div id="sibSelection3" name="sibSelection3" class="original" style="display: none">
+                                <label for="workingsib3" class="label-english">Sibling/s Working Status<em class="required"></em>&emsp;<span>Katayuan sa Trabaho</span></label>               
+                                <select name="workingsib3" id="selection" class="dropdown">
+                                    <option value="Degree Holder">Degree Holder</option>
+                                    <option value="Working">Working</option>
+                                    <option value="Unemployed">Unemployed</option>
+                                    <option value="Full-Time Student">Full-Time Student</option>
+                                    <option value="Not Applicable">Not Applicable</option>
+                                </select>
+                            </div>
+                            <div id="sibSelection4" name="sibSelection4" class="original" style="display: none">
+                                <label for="workingsib4" class="label-english">Sibling/s Working Status<em class="required"></em>&emsp;<span>Katayuan sa Trabaho</span></label>               
+                                <select name="workingsib4" id="selection" class="dropdown">
+                                    <option value="Degree Holder">Degree Holder</option>
+                                    <option value="Working">Working</option>
+                                    <option value="Unemployed">Unemployed</option>
+                                    <option value="Full-Time Student">Full-Time Student</option>
+                                    <option value="Not Applicable">Not Applicable</option>
+                                </select>
+                            </div>
+                            <div id="sibSelection5" name="sibSelection5" class="original" style="display: none">
+                                <label for="workingsib5" class="label-english">Sibling/s Working Status<em class="required"></em>&emsp;<span>Katayuan sa Trabaho</span></label>               
+                                <select name="workingsib5" id="selection" class="dropdown">
+                                    <option value="Degree Holder">Degree Holder</option>
+                                    <option value="Working">Working</option>
+                                    <option value="Unemployed">Unemployed</option>
+                                    <option value="Full-Time Student">Full-Time Student</option>
+                                    <option value="Not Applicable">Not Applicable</option>
+                                </select>
+                            </div>
+                            <!--                            <div id="clonecontainer"></div>-->
 
                             <div class="content-divider"></div>
 
@@ -430,7 +476,7 @@
                             <div>
                                 <label for="jobchance" class="label-english">If you are given a chance to have a job, what makes you worthy among others?<em class="required"></em>
                                     <br><span>Kung ikaw ay bibigyan ng pagkakataong magkaroon ng  hanapbuhay, bakit ikaw ang karapat-dapat?</span></label><br>
-                                <input type="text" id="message" name="jobchance" class="long-textbox" required maxlength="120">
+                                <input type="text" id="jobChance" name="jobchance" class="long-textbox" required maxlength="120">
                             </div>
                             <div class="content-divider"></div>
                             <div>
@@ -478,7 +524,7 @@
 
                             <div>
                                 <label for="brand" class="label-english">If yes, what brand of vaccine did you receive?<em class="required"></em>&emsp;<span>Kung oo, ano ang brand ng iyong bakuna?</span></label>
-                                <select name="brand" class="dropdown" required>
+                                <select name="brand" class="dropdown" id="brand" required>
                                     <option value="Pfizer-BioNTech">Pfizer-BioNTech</option>
                                     <option value="Oxford-AstraZeneca">Oxford-AstraZeneca</option>
                                     <option value="CoronaVac (Sinovac)">CoronaVac (Sinovac)</option>
@@ -494,7 +540,7 @@
 
                             <div>
                                 <label for="vstatus" class="label-english">What is your Vaccine Status?<em class="required"></em>&emsp;<span>Ano ang istatus ng iyong bakuna?</span> </label>
-                                <select name="vstatus" class="dropdown" required >
+                                <select name="vstatus" class="dropdown" id="vstatus" required >
                                     <option value="Not Vaccinated">Not Vaccinated</option>
                                     <option value="First Dose">First Dose</option>
                                     <option value="Second Dose">Second Dose</option>
@@ -516,16 +562,98 @@
 
         <!-- remove back in first tab, replace proceed in the last tab with submit-->
 
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script type="text/javascript">
                         function siblingSelection(times) {
-                            $("#clonecontainer").html('');
-                            for (var i = 1; i < times; i++) {
-                                var clons = $(".original").first().clone();
-                                $("#clonecontainer").append(clons);
+
+                            if (times == 0) {
+                                document.getElementById('sibSelection1').style.display = "none";
+                                document.getElementById('sibSelection2').style.display = "none";
+                                document.getElementById('sibSelection3').style.display = "none";
+                                document.getElementById('sibSelection4').style.display = "none";
+                                document.getElementById('sibSelection5').style.display = "none";
+                            } else if (times == 1) {
+                                document.getElementById('sibSelection1').style.display = "block";
+                                document.getElementById('sibSelection2').style.display = "none";
+                                document.getElementById('sibSelection3').style.display = "none";
+                                document.getElementById('sibSelection4').style.display = "none";
+                                document.getElementById('sibSelection5').style.display = "none";
+                            } else if (times == 2) {
+                                document.getElementById('sibSelection1').style.display = "block";
+                                document.getElementById('sibSelection2').style.display = "block";
+                                document.getElementById('sibSelection3').style.display = "none";
+                                document.getElementById('sibSelection4').style.display = "none";
+                                document.getElementById('sibSelection5').style.display = "none";
+                            } else if (times == 3) {
+                                document.getElementById('sibSelection1').style.display = "block";
+                                document.getElementById('sibSelection2').style.display = "block";
+                                document.getElementById('sibSelection3').style.display = "block";
+                                document.getElementById('sibSelection4').style.display = "none";
+                                document.getElementById('sibSelection5').style.display = "none";
+                            } else if (times == 4) {
+                                document.getElementById('sibSelection1').style.display = "block";
+                                document.getElementById('sibSelection2').style.display = "block";
+                                document.getElementById('sibSelection3').style.display = "block";
+                                document.getElementById('sibSelection4').style.display = "block";
+                                document.getElementById('sibSelection5').style.display = "none";
+
+                            } else if (times == 5) {
+                                document.getElementById('sibSelection1').style.display = "block";
+                                document.getElementById('sibSelection2').style.display = "block";
+                                document.getElementById('sibSelection3').style.display = "block";
+                                document.getElementById('sibSelection4').style.display = "block";
+                                document.getElementById('sibSelection5').style.display = "block";
                             }
                         }
+
+        </script>
+
+        <script>
+            //resident info
+            name = document.getElementById("name");
+            age = document.getElementById("age");
+            birthday = document.getElementById("birthday");
+            gender = document.getElementsByName("gender");
+            address = document.getElementById("address");
+
+            //resident details
+            civil = document.getElementById("civil");
+            working = document.getElementById("working");
+            job = document.getElementById("job");
+            education = document.getElementById("education");
+            pwd = document.getElementsByName("pwd");
+            typePWD = document.getElementsByName("typePWD");
+
+            //contact details 
+            phone = document.getElementById("phone");
+            email = document.getElementById("email");
+            fbname = document.getElementById("fbname");
+
+            //family details
+            mother = document.getElementById("mother");
+            motherstat = document.getElementsByName("motherstat");
+            motherwork = document.getElementById("motherwork");
+            father = document.getElementById("father");
+            fatherstat = document.getElementsByName("fatherstat");
+            fatherwork = document.getElementById("fatherwork");
+            nosibs = document.getElementById("nosibs");
+            breadwinner = document.getElementById("breadwinner");
+
+            //survey
+            voter = document.getElementsByName("voter");
+            memberOrg = document.getElementsByName("org");
+            nameOrg = document.getElementById("nameOrg");
+            proj = document.getElementsByName("proj");
+            support = document.getElementById("support");
+            jobChance = document.getElementById("jobChance");
+            message = document.getElementById("message");
+
+            //vaccine
+            vax = document.getElementsByName("vax");
+            willing = document.getElementsByName("willing");
+            brand = document.getElementById("brand");
+            vstatus = document.getElementById("vstatus");
+
 
         </script>
         <script>
@@ -569,9 +697,29 @@
                     document.getElementById("submitButton").style.display = "block";
                     document.getElementById("nextButton").style.display = "none";
                     document.getElementById('backButton').style.display = "block";
+
+//                    if (!residentInfo()) {
+//                        counter = 0;
+//                        var i, tabcontent, tablinks;
+//
+//                        tabcontent = document.getElementsByClassName("tabcontent");
+//                        for (i = 0; i < tabcontent.length; i++) {
+//                            if (i != counter) {
+//                                tabcontent[i].style.display = "none";
+//                            } else {
+//                                tabcontent[i].style.display = "block";
+//                            }
+//                        }
+//                        tablinks = document.getElementsByClassName("tablinks");
+//                        for (i = 0; i < tablinks.length; i++) {
+//                            tablinks[i].className = tablinks[i].className.replace(" active", "");
+//                        }
+//                        tablinks[counter].className += " active";
+//                    }
                 }
                 document.getElementById('backButton').style.display = "block";
                 var i, tabcontent, tablinks;
+
                 tabcontent = document.getElementsByClassName("tabcontent");
                 for (i = 0; i < tabcontent.length; i++) {
                     if (i != counter) {
@@ -590,7 +738,49 @@
                 console.log(counter);
                 document.getElementByClassName("tabcontent").style.display = "block";
 
+            }
 
+            function residentInfo() {
+                if (name != null && age != null && birthday != null & gender != null && address != null) {
+                    return true;
+                } else
+                    return false;
+            }
+
+            function residentDetails() {
+                if (civil != null && working != null && job != null && education != null && pwd != null && typePWD != null) {
+                    return true;
+                } else
+                    return false;
+            }
+
+            function contactDetails() {
+                if (phone != null && email != null && fbname != null) {
+                    return true;
+                } else
+                    return false;
+            }
+
+            function familyDetails() {
+                if (mother != null && motherstat != null && motherwork != null && father != null && fatherstat != null && fatherwork != null &&
+                        nosibs != null && breadwinner != null) {
+                    return true;
+                } else
+                    return false;
+            }
+
+            function survey() {
+                if (voter != null && memberOrg != null && nameOrg != null && proj != null && support != null && jobChance != null && message != null) {
+                    return true;
+                } else
+                    return false;
+            }
+
+            function vaccine() {
+                if (vax != null && willing != null && brand != null && vstatus != null) {
+                    return true;
+                } else
+                    return false;
             }
 
             function prev() {
@@ -606,7 +796,6 @@
                         document.getElementById('nextButton').style.display = "block";
                 }
                 document.getElementById("submitButton").style.display = "none";
-
                 var i, tabcontent, tablinks;
                 tabcontent = document.getElementsByClassName("tabcontent");
                 for (i = 0; i < tabcontent.length; i++) {
