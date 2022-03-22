@@ -139,7 +139,22 @@ input, select {
     position: relative;
 }
 
-.btn-warning{
+/*.btn-warning{
+    background-color: #8B3535;
+    border: none;
+    color: white;
+    font-family: Montserrat;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    width: 10%;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}*/
+
+input[name="conf"] {
     background-color: #8B3535;
     border: none;
     color: white;
@@ -153,6 +168,8 @@ input, select {
     margin-right: 10px;
     cursor: pointer;
 }
+
+
 
 .btn-default{
     background-color: white;
@@ -194,12 +211,17 @@ input, select {
     .age-select {
         font-size: 1em;
         width: 100%;
-    }    
+    } 
+    
+    .buttons {
+        
+    }
 
-    .btn-warning {
+    input[name="conf"] {
         width: 25%;
         margin-right: 5px;
     }
+    
 
 
 }
