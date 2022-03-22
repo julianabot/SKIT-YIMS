@@ -20,7 +20,7 @@
         ResultSet res = null;
         PreparedStatement stmt = null;
         Class.forName("com.mysql.jdbc.Driver").newInstance();
-        conn = DriverManager.getConnection(host, "root", "1Europa4!");
+        conn = DriverManager.getConnection(host, "root", "kgarcia24");
     %>
 
     <body>
@@ -39,7 +39,7 @@
             <button class="tablinks" onclick="showTab(event, 'Vaccination')">Vaccination</button>
         </div>
         <div overflow:auto class="container">
-            <form action = "" method = "post">
+            <form action="../EditServlet" method = "POST">
                 <%
                     stat = conn.createStatement();
                     String u = request.getParameter("u");
@@ -897,26 +897,14 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="buttons">
-                    <button type ="submit" class="btn btn-warning">Update</button>
-                    <a href="../Account/ViewDatabase.jsp" class ="btn btn-default">Back</a>
+                    <input type="submit" value="confirm" name="conf"/></button>
+                    <a href="/SKIT-YIMS/Account/ViewDatabase.jsp" class ="btn btn-default">Cancel</a>
                 </div>
-
         </div>
 
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script type="text/javascript">
-                function siblingSelection(times) {
-                    $("#clonecontainer").html('');
-                    for (var i = 1; i < times; i++) {
-                        var clons = $(".original").first().clone();
-                        $("#clonecontainer").append(clons);
-                    }
-                }
-
-    </script>
     <script>
         var counter = 0;
         var tabs = ["Info", "Details", "Contact", "Family", "Survey", "Vaccination"];
@@ -934,205 +922,15 @@
             document.getElementById(tabName).style.display = "block";
             evt.currentTarget.className += " active";
             counter = tabs.indexOf(tabName);
-
-            if (counter == 5) {
-                document.getElementById('nextButton').style.visibility = 'hidden';
-                document.getElementById("submitButton").style.visibility = 'visible';
-                document.getElementById('backButton').style.visibility = 'visible';
-            } else if (counter != 5) {
-                if (counter == 0) {
-                    document.getElementById('backButton').style.visibility = 'hidden';
-                } else {
-                    document.getElementById('backButton').style.visibility = 'visible';
-                }
-                document.getElementById("nextButton").style.visibility = 'visible';
-                document.getElementById("submitButton").style.visibility = 'hidden';
-            }
-            console.log(tabName);
-            console.log(counter);
-        }
-
-        function next() {
-            counter = (counter + 1) % 6;
-            if (counter == 5) {
-                document.getElementById("submitButton").style.visibility = 'visible';
-                document.getElementById("nextButton").style.visibility = 'hidden';
-                document.getElementById('backButton').style.visibility = 'visible';
-            }
-            document.getElementById('backButton').style.visibility = 'visible';
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                if (i != counter) {
-                    tabcontent[i].style.display = "none";
-                } else {
-                    tabcontent[i].style.display = "block";
-                }
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            tablinks[counter].className += " active";
-
-            console.log(tabName);
-            console.log(counter);
-            document.getElementByClassName("tabcontent").style.display = "block";
-
-        }
-
-        function prev() {
-            counter = (counter - 1) % 6;
-            if (counter == 0) {
-                document.getElementById('backButton').style.visibility = 'hidden';
-                document.getElementById("submitButton").style.visibility = 'hidden';
-            } else {
-                document.getElementById('backButton').style.visibility = 'visible';
-            }
-            document.getElementById("submitButton").style.visibility = 'hidden';
-
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                if (i != counter) {
-                    tabcontent[i].style.display = "none";
-                } else {
-                    tabcontent[i].style.display = "block";
-                }
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            tablinks[counter].className += " active";
-            console.log(tabName);
-            console.log(counter);
-            document.getElementByClassName("tabcontent").style.display = "block";
         }
 
         // Get the element with id="defaultOpen" and click on it
         document.getElementById("defaultOpen").click();
         evt.currentTarget.className += " active";
     </script>
+    
 </body>
 
-
-<%
-    String bID = request.getParameter("basicID");
-    String name = request.getParameter("name");
-    String age = request.getParameter("age");
-    String birthday = request.getParameter("birthday");
-    String address = request.getParameter("address");
-    String gender = request.getParameter("gender");
-    String validID = request.getParameter("validID");
-
-    String cID = request.getParameter("contactID");
-    String contactNo = request.getParameter("contactNo");
-    String email = request.getParameter("emailAddress");
-    String fbName = request.getParameter("fbNameURL");
-
-    String fID = request.getParameter("familyID");
-    String motherName = request.getParameter("motherName");
-    String motherOccupation = request.getParameter("motherOccupation");
-    String fatherName = request.getParameter("fatherName");
-    String fatherOccupation = request.getParameter("fatherOccupation");
-    String vitalStatusMother = request.getParameter("vitalStatusMother");
-    String vitalStatusFather = request.getParameter("vitalStatusFather");
-    String noOfSiblings = request.getParameter("noOfSiblings");
-    String siblingEducation = request.getParameter("siblingEducation");
-    String breadWinner = request.getParameter("breadWinner");
-
-    String oID = request.getParameter("organizationID");
-    String residentVoter = request.getParameter("residentVoter");
-    String memberOfOrg = request.getParameter("memberOfOrg");
-    String nameOfOrg = request.getParameter("nameOfOrg");
-    String supportSK = request.getParameter("supportSK");
-    String showSupport = request.getParameter("showSupport");
-    String jobChance = request.getParameter("jobChance");
-    String sayToSK = request.getParameter("sayToSK");
-
-    String sID = request.getParameter("statusID");
-    String civilStatus = request.getParameter("civilStatus");
-    String workingStatus = request.getParameter("workingStatus");
-    String educationAttainment = request.getParameter("educationAttainment");
-    String jobEmployed = request.getParameter("jobEmployed");
-    String PWD = request.getParameter("PWD");
-    String typeOfDisability = request.getParameter("typeOfDisability");
-
-    String vID = request.getParameter("vaccineID");
-    String vaccinated = request.getParameter("vaccinated");
-    String willingForVaccine = request.getParameter("willingForVaccine");
-    String brandOfVaccine = request.getParameter("brandOfVaccine");
-    String vaccineStatus = request.getParameter("vaccineStatus");
-
-    if (bID != null && name != null && address != null && validID != null
-            && cID != null && contactNo != null && email != null && fbName != null
-            && fID != null && motherName != null && motherOccupation != null && fatherName != null && fatherOccupation != null && vitalStatusMother != null && vitalStatusFather != null && noOfSiblings != null && siblingEducation != null && breadWinner != null
-            && oID != null && residentVoter != null && memberOfOrg != null && nameOfOrg != null && supportSK != null && showSupport != null && jobChance != null && sayToSK != null
-            && sID != null && civilStatus != null && workingStatus != null && educationAttainment != null && jobEmployed != null && PWD != null && typeOfDisability != null
-            && vID != null && vaccinated != null && willingForVaccine != null && brandOfVaccine != null && vaccineStatus != null) {
-        String basic_query = "UPDATE `skit-yims`.`basic-info` SET `name` = ?, `agegroup` = ?, `birthday` = ?, `address` = ?, `gender` = ?, `validID` = ? WHERE (`basicID` = '" + bID + "')";
-        stmt = conn.prepareStatement(basic_query);
-        stmt.setString(1, name);
-        stmt.setString(2, age);
-        stmt.setString(3, birthday);
-        stmt.setString(4, address);
-        stmt.setString(5, gender);
-        stmt.setString(6, validID);
-        stmt.execute();
-
-        String contact_query = "UPDATE `skit-yims`.`contact-info` SET `contactNo` = ?, `emailAddress` = ?, `fbNameURL` = ?  WHERE (`contactID` = '" + cID + "')";
-        stmt = conn.prepareStatement(contact_query);
-        stmt.setString(1, contactNo);
-        stmt.setString(2, email);
-        stmt.setString(3, fbName);
-        stmt.execute();
-
-        String family_query = "UPDATE `skit-yims`.`fam-status` SET `motherName` = ?, `motherOccupation` = ?, `fatherName` = ? , `fatherOccupation` = ?, `vitalStatusMother` = ?, `vitalStatusFather` = ?, `noOfSiblings` = ?, `siblingEducation` = ?, `breadWinner` = ? WHERE (`familyID` = '" + fID + "')";
-        stmt = conn.prepareStatement(family_query);
-        stmt.setString(1, motherName);
-        stmt.setString(2, motherOccupation);
-        stmt.setString(3, fatherName);
-        stmt.setString(4, fatherOccupation);
-        stmt.setString(5, vitalStatusMother);
-        stmt.setString(6, vitalStatusFather);
-        stmt.setString(7, noOfSiblings);
-        stmt.setString(8, siblingEducation);
-        stmt.setString(9, breadWinner);
-        stmt.execute();
-
-        String org_query = "UPDATE `skit-yims`.`resident-org` SET `residentVoter` = ?, `memberOfOrg` = ?, `nameOfOrg` = ? , `supportSK` = ?, `showSupport` = ?, `jobChance` = ?, `sayToSK` = ? WHERE (`organizationID` = '" + oID + "')";
-        stmt = conn.prepareStatement(org_query);
-        stmt.setString(1, residentVoter);
-        stmt.setString(2, memberOfOrg);
-        stmt.setString(3, nameOfOrg);
-        stmt.setString(4, supportSK);
-        stmt.setString(5, showSupport);
-        stmt.setString(6, jobChance);
-        stmt.setString(7, sayToSK);
-        stmt.execute();
-
-        String status_query = "UPDATE `skit-yims`.`resident-status` SET `civilStatus` = ?, `workingStatus` = ?, `educationAttainment` = ? , `jobEmployed` = ?, `PWD` = ?, `typeOfDisability` = ? WHERE (`statusID` = '" + sID + "')";
-        stmt = conn.prepareStatement(status_query);
-        stmt.setString(1, civilStatus);
-        stmt.setString(2, workingStatus);
-        stmt.setString(3, educationAttainment);
-        stmt.setString(4, jobEmployed);
-        stmt.setString(5, PWD);
-        stmt.setString(6, typeOfDisability);
-        stmt.execute();
-
-        String vaccine_query = "UPDATE `skit-yims`.`vaccine-info` SET `vaccinated` = ?, `willingForVaccine` = ?, `brandOfVaccine` = ? , `vaccineStatus` = ? WHERE (`vaccineID` = '" + vID + "')";
-        stmt = conn.prepareStatement(vaccine_query);
-        stmt.setString(1, vaccinated);
-        stmt.setString(2, willingForVaccine);
-        stmt.setString(3, brandOfVaccine);
-        stmt.setString(4, vaccineStatus);
-        stmt.execute();
-
-        response.sendRedirect("../Account/ViewDatabase.jsp");
-    }
-%>
 </html>
 
 <%--
