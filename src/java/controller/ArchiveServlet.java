@@ -65,7 +65,16 @@ public class ArchiveServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            String deleteSQL= "DELETE FROM `skit-yims`.`archive-info`";
+            PreparedStatement stmt = conn.prepareStatement(deleteSQL);
+            stmt.execute();
+
+            response.sendRedirect("/SKIT-YIMS/Account/ViewArchive.jsp");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.getStackTrace();
+        }
     }
 
     @Override
@@ -87,7 +96,7 @@ public class ArchiveServlet extends HttpServlet {
             archiveSQL = "DELETE `resident-info`, `basic-info`, `contact-info`, `fam-status`, `resident-org`, `resident-status`, `vaccine-info` "
                     + "FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID "
                     + "WHERE TIMESTAMPDIFF(YEAR, birthday, CURDATE())  > 30 ";
-            
+
             stmt = conn.prepareStatement(archiveSQL);
             stmt.execute();
             response.sendRedirect("/SKIT-YIMS/Account/ViewArchive.jsp");

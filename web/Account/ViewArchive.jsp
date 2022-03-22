@@ -6,6 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="AccountCSS/ViewDatabase.css" rel="stylesheet" type="text/css">
         <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png" /> 
+
         <title>View Archive</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
@@ -74,8 +75,43 @@
                 padding: 10px;
                 background-color: white;
             }
+            .modal {
+                display: none; /* Hidden by default */
+                position: fixed; /* Stay in place */
+                z-index: 1; /* Sit on top */
+                padding-top: 100px; /* Location of the box */
+                left: 0;
+                top: 0;
+                width: 100%; /* Full width */
+                height: 100%; /* Full height */
+                overflow: auto; /* Enable scroll if needed */
+                background-color: rgb(0,0,0); /* Fallback color */
+                background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            }
 
+            /* Modal Content */
+            .modal-content {
+                background-color: #fefefe;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+            }
 
+            /* The Close Button */
+            .close {
+                color: #aaaaaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
         </style>
         <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -96,7 +132,6 @@
             <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>
 
             <ul class="links">
-                <!-- <li class="About"><a href="../Welcome.jsp">Home</a></li> -->
                 <li class="Events"><a href="ViewDatabase.jsp">Database</a></li>
                 <li class="Events"><a href="AccountInformation.jsp">Account</a></li>
                 <li class="Login">
@@ -113,112 +148,10 @@
         </nav>
         <div class="navbar-spacer"></div> 
         <div>
-
-            <!--            <div class="search-archive">
-                            <div class="wrapper">
-                                <form action="../SearchServlet" method="POST">
-                                    <input name="searchResident" type="text" placeholder="Search for a resident" id="searchResident">
-                                    <button type="submit" class="search-button"><i class="fas fa-search"></i>&nbsp; Search</button>
-                                </form>
-                            </div>
-                            <div class="horizontal-spacer"></div>
-                            <div class="archive-button-container">
-                                <button type="button" class="archive-button">Export Archived Data</button> </div>
-                        </div>-->
-
             <div class="database-title-container">
-
-
                 <div class="database-title">SK Ibayo-Tipas Youth Residents Archive</div>
-                <!--                <button class="open-button" onclick="openForm()" style="font-weight: bold;">Sort & Filter</button>-->
             </div>
 
-            <!--            <div class="form-popup" id="myForm">
-                            <form action="../SortServlet" method="POST" class="form-container">
-            
-                                <div id="close-button-container">
-                                    <button type="button" class="btn-cancel" onclick="closeForm()"><i class="material-icons">close</i></button>
-                                </div>
-            
-            
-                                <div>
-            
-                                    <h1>Sort</h1>
-                                    <p>by Name</p>
-                                    <input type="radio" id="atoz" name="sortBy" value="A to Z">
-                                    <label for="atoz">A to Z</label><br>
-                                    <input type="radio" id="ztoa" name="sortBy" value="Z to A">
-                                    <label for="ztoa">Z to A</label><br>
-            
-                                    <p>by Age</p>
-                                    <input type="radio" id="ytoo" name="sortBy" value="Youngest to Oldest">
-                                    <label for="ytoo">Youngest to Oldest</label><br>
-                                    <input type="radio" id="otoy" name="sortBy" value="Oldest to Youngest">
-                                    <label for="otoy">Oldest to Youngest</label><br>
-            
-                                    <input type="radio" id="ascid" name="sortBy" value="Ascending ID">
-                                    <label for="ascid">Lowest to Highest ID</label><br>
-                                    <input type="radio" id="descid" name="sortBy" value="Descending ID">
-                                    <label for="descid">Highest to Lowest ID</label><br>
-            
-                                </div>
-            
-                                <div>
-            
-                                    <h1>Filter</h1>
-                                    <h3>By Age</h3>
-                                    <ul class="filter" style="list-style: none">
-                                        <li><input type="checkbox" name="filterage" value="14 years old and below"/>14 years old and below</li>
-                                        <li><input type="checkbox" name="filterage" value="15-20 years old"/>15-20 years old</li>
-                                        <li><input type="checkbox" name="filterage" value="21-30 years old"/>21-30 years old</li>
-                                        <li><input type="checkbox" name="filterage" value="31 years old and above"/>31 years old and above</li>
-                                    </ul>
-            
-                                    <h3>By Gender</h3>
-                                    <ul class="filter" style="list-style: none">
-                                        <li><input type="checkbox" name="filtergender" value="Female (Babae)"/>Female</li>
-                                        <li><input type="checkbox" name="filtergender" value="Male(Lalaki)"/>Male</li>
-                                        <li><input type="checkbox" name="filtergender" value="Prefer not to say"/>Prefer not to say</li>
-                                    </ul>
-            
-                                    <h3>By Civil Status</h3>
-                                    <ul class="filter" style="list-style: none">
-                                        <li><input type="checkbox" name="filterCivilStatus" value="Single"/>Single</li>
-                                        <li><input type="checkbox" name="filterCivilStatus" value="Married"/>Married</li>
-                                        <li><input type="checkbox" name="filterCivilStatus" value="Widowed"/>Widowed</li>
-                                    </ul>
-            
-                                </div>
-            
-                                <div id="last-group">
-            
-                                    <h3>By Working Status</h3>
-                                    <ul class="filter" style="list-style: none">
-                                        <li><input type="checkbox" name="filterWorkStatus" value="Full Time Student"/>Full Time Student</li>
-                                        <li><input type="checkbox" name="filterWorkStatus" value="Working Student"/>Working Student</li>
-                                        <li><input type="checkbox" name="filterWorkStatus" value="Out of School Youth"/>Out of School Youth</li>
-                                        <li><input type="checkbox" name="filterWorkStatus" value="Working/Employed"/>Working/Employed</li>
-                                        <li><input type="checkbox" name="filterWorkStatus" value="Unemployed"/>Unemployed</li>
-                                    </ul>
-            
-                                    <h3>Other</h3>
-                                    <ul class="filter" style="list-style: none">
-                                        <li><input type="checkbox" name="filterother" value="PWD"/>PWDs</li>
-                                        <li><input type="checkbox" name="filterother" onclick ="vaccineCheck()" id="yesVax" value="Vaccinated"/>Vaccinated</li>
-                                        <li><input type="checkbox" name="filterother" onclick ="vaccineCheck()" id="noVax" value="Not Vaccinated"/>Not Vaccinated</li>
-                                    </ul>
-            
-                                    <button name="sortSubmit" type="submit" value="Apply" class="popup-button" id="popup-button1">Apply</button><br>
-                                    <button name="sortSubmit" type="submit" value="Clear" class="popup-button" id="popup-button2">Clear Changes</button>
-            
-                                </div>
-            
-            
-            
-                                    <p>Query: ${filterQuery} ${sortQuery}</p>
-                            </form>
-            
-                        </div>-->
 
             <div class="tab">
                 <button class="tablinks" onclick="showTab(event, 'All')"  id="defaultOpen">All</button>
@@ -502,7 +435,7 @@
                             out.println("No Records in the table");
                         } else {%>
 
-                <table >
+                <table>
                     <tr><th>ID</th><th>Name</th><th>Vaccinated</th><th>Willing for Vaccine</th><th>Brand of Vaccine</th><th>Vaccine Status</th></tr>
                             <%
                                 do {%>
@@ -520,15 +453,22 @@
                     %>
                 </table>
             </div>
-
-            <!--         //    <form action="../PDFServlet" method="POST">
-                            <input id="pdfdownload" class="pdfdownload" name="pdfdownload" style="display: none">
-                            <button type="submit" class="generate-button" onclick="alert('File has been downloaded to your Desktop');">Generate Report</button>
-            
+            <!--         //    <form action="../ArchiveServlet" method="GET">
+                            <button type="submit" class="generate-button">Delete Archive</button>
                         </form>-->
-            <div>
+            <button id="myBtn">Delete Archive</button>
 
+            <!-- The Modal -->
+            <div id="myModal" class="modal">  
+                <div class="modal-content">
+                    <form action="../ArchiveServlet" method="GET"> <span class="close">&times;</span>
+                        <h1>Are you sure you want to delete archive?</h1>
+                        <button id="cancel" type="button" class="generate-button">Cancel</button>
+                        <button type="submit" class="generate-button">Delete</button>
+                    </form>
+                </div>
             </div>
+
         </div>
     </body>
 </html>
@@ -584,4 +524,34 @@
     document.getElementById("defaultOpen").click();
     evt.currentTarget.className += " active";
 
+</script>
+
+<script>
+// Get the modal
+    var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+// When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+    cancel.onclick = function () {
+        modal.style.display = "none";
+    }
+// When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 </script>
