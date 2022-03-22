@@ -22,7 +22,7 @@
             <!--This section contains the "Eruditio Academy" text taken from the webxml-->
             <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>
 
-            <ul class="links">
+            <ul class="links" style="width: 30%;">
                 <li class="Events"><a href="/SKIT-YIMS/Account/ViewDatabase.jsp">Database</a></li>
                 <!--Account Tab TBR-->
                 <li class="Events"><a href="/SKIT-YIMS/Account/AccountInformation.jsp">Account</a></li>
