@@ -68,6 +68,15 @@
         <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
+    <%
+        response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
+        if (session.getAttribute("loggedIn") == null) {
+            response.sendRedirect("/SKIT-YIMS/Extra/InvalidSession.jsp");
+        }
+        if (session.getAttribute("residentName").equals("")) {
+            response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
+        }
+    %>
     <body>
         <!--HEADER-->
         <nav>
@@ -82,7 +91,7 @@
                 <li class="Events"><a href="AccountInformation.jsp">Account</a></li>
                 <li class="Login">
                     <form action = "../LogoutServlet" method = "GET">
-                        <button class="logout-btn" type="submit">Log Out</button>
+                        <button id="Login" class="logout-btn" type="submit">Log Out</button>
                     </form>
                 </li>
             </ul>
@@ -94,11 +103,14 @@
         </nav>
         <div class="navbar-spacer"></div> 
         <div>
-
+            <%
+                String residentName = session.getAttribute("residentName").toString();
+                residentName = residentName.replace("%", "");
+            %>
             <div class="search-archive">
                 <div class="wrapper">
                     <form action="../SearchServlet" method="POST">
-                        <input name="searchResident" type="text" placeholder="Search for a resident" id="searchResident">
+                        <input id="search-field" name="searchResident" type="text" value="<%=residentName%>" placeholder="Search for a resident" id="searchResident">
                         <button type="submit" class="search-button"><i class="fas fa-search"></i>&nbsp; Search</button>
                     </form>
                 </div>
@@ -125,8 +137,7 @@
                 <button class="tablinks" onclick="showTab(event, 'Vaccine')">Vaccine Information</button>
             </div>
             <div id="All" class="tabcontent">
-                <%
-                    try {
+                <%                    try {
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
                         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
                         String sql = "SELECT `resident-info`.residentID, `contact-info`.emailAddress, `basic-info`.name, `basic-info`.agegroup, `basic-info`.birthday, `basic-info`.address, `basic-info`.gender, `contact-info`.contactNo, `resident-status`.civilStatus, `resident-status`.workingStatus, `resident-status`.jobEmployed, `resident-status`.educationAttainment, `resident-status`.PWD, `resident-status`.typeOfDisability, `contact-info`.fbNameURL, `basic-info`.validID, `fam-status`.motherName, `fam-status`.motherOccupation, `fam-status`.fatherName, `fam-status`.fatherOccupation, `fam-status`.vitalStatusMother, `fam-status`.vitalStatusFather, `fam-status`.noOfSiblings, `fam-status`.siblingEducation, `fam-status`.breadWinner, `resident-org`.residentVoter, `resident-org`.memberOfOrg, `resident-org`.nameOfOrg, `resident-org`.supportSK, `resident-org`.showSupport, `resident-org`.jobChance, `resident-org`.sayToSK, `vaccine-info`.vaccinated, `vaccine-info`.willingForVaccine, `vaccine-info`.brandOfVaccine, `vaccine-info`.vaccineStatus FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID WHERE `basic-info`.name LIKE ?";

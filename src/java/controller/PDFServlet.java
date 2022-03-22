@@ -37,7 +37,6 @@ import java.time.format.DateTimeFormatter;
 import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import model.FilterSortPDF;
 
 public class PDFServlet extends HttpServlet {
 

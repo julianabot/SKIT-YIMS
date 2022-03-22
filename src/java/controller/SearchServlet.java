@@ -43,7 +43,7 @@ public class SearchServlet extends HttpServlet {
         residentName = "%" + residentName + "%";
         session.setAttribute("residentName", residentName);
 
-        if (residentName.isEmpty() || residentName == null) {
+        if (residentName.isEmpty() || residentName == null || residentName.equals("%%")) {
             response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
         } else {
             response.sendRedirect("/SKIT-YIMS/Account/SearchDatabase.jsp");

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=500, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png" />
-        <link href="ExtraCSS/Error404.css" rel="stylesheet">
+        <link href="/SKIT-YIMS/ExtraCSS/Error404.css" rel="stylesheet">
         <title>Error 404</title>
     </head>
 
