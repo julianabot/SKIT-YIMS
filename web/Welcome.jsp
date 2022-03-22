@@ -33,8 +33,12 @@
 
         <!--Hero Section-->
         <section id="Hero-Section" class="Hero-Section">
-            <p class="heading">Title</p>
-            <p class ="subheading">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p class="heading">SK Ibayo Tipas Youth Information Management System</p>
+            <p class ="subheading">We, the SK council, greatly appreciates your commitment in supporting the previous and upcoming projects of Sangguniang Kabataan Ibayo-Tipas amidst this covid-19 pandemic.
+                <br><br>
+                &emsp;&emsp;With that being said, we encourage you to answer a 10-minute survey questions with regards to your thoughts, ideas and suggestions to our upcoming events that will help us address the problems of the youths in our community.
+                <br><br>
+                &emsp;&emsp;You may access the survey form through the link below and please take note that you need to upload your ID Card that indicates your complete address.</p>
             <!-- redirect to About tab -->
             <p class="button"><a href="Survey Forms/Landing.jsp" target="_blank">Fill out Forms</a></p>
         </section>
@@ -47,16 +51,16 @@
 
         <div class="Events-Section">
             <p class="Events-Section-Header" id="Events-Section-Header">SK Ibayo Tipas' Events</p>
-            <p class="Events-Section-Subheading">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+            <p class="Events-Section-Subheading">The SK Ibayo Tipas holds a variety of events as displayed below.</p>
             <!-- Container for the image gallery -->
             <div class="events-container">
                 <!-- Full-width images with number text -->
                 <div class="mySlides">
-                    <img src="https://i.imgur.com/fp0OhRr.png" style="width:50%" id="imgEvent">
+                    <img src="https://imgur.com/kOpDPHK.png" style="width:50%" id="imgEvent">
                 </div>
 
                 <div class="mySlides">
-                    <img src="https://i.imgur.com/XyxLMQZ.png" style="width:50%" id="imgEvent">
+                    <img src="https://imgur.com/IDOegx9.png" style="width:50%" id="imgEvent">
                 </div>
 
                 <div class="mySlides">
@@ -68,11 +72,11 @@
                 </div>
 
                 <div class="mySlides">
-                    <img src="https://i.imgur.com/RFGU7CQ.png" style="width:50%" id="imgEvent">
+                    <img src="https://imgur.com/PQMYTJh.png" style="width:50%" id="imgEvent">
                 </div>
 
                 <div class="mySlides">
-                    <img src="https://i.imgur.com/VdHjSht.png" style="width:50%" id="imgEvent">
+                    <img src="https://imgur.com/CaXD4fb.png" style="width:50%" id="imgEvent">
                 </div>
 
                 <!-- Next and previous buttons -->
@@ -88,22 +92,22 @@
                 <!-- Thumbnail images -->
                 <div class="row">
                     <div class="column">
-                        <img class="demo cursor" src="https://i.imgur.com/fp0OhRr.png" style="width:100%" onclick="currentSlide(1)" alt="Diorama: Our Future Barangay">
+                        <img class="demo cursor" src="https://imgur.com/kOpDPHK.png" style="width:100%" onclick="currentSlide(1)" alt="YOUTH ACTING WORSHOP AND PERSONALITY DEVELOPMENT (YOUTH EMPOWERMENT SOURCES TEATRO IBAYO)">
                     </div>
                     <div class="column">
-                        <img class="demo cursor" src="https://i.imgur.com/XyxLMQZ.png" style="width:100%" onclick="currentSlide(2)" alt="Parol Making Contest">
+                        <img class="demo cursor" src="https://imgur.com/IDOegx9.png" style="width:100%" onclick="currentSlide(2)" alt="KARATEDO-IBAYO-TIPAS">
                     </div>
                     <div class="column">
-                        <img class="demo cursor" src="https://i.imgur.com/DWHZ9Ur.png" style="width:100%" onclick="currentSlide(3)" alt="Local Brand Holidays Bazaar">
+                        <img class="demo cursor" src="https://i.imgur.com/DWHZ9Ur.png" style="width:100%" onclick="currentSlide(3)" alt="SK IBAYO TIPAS LOCAL BRAND HOLIDAYS BAZAAR">
                     </div>
                     <div class="column">
-                        <img class="demo cursor" src="https://i.imgur.com/Bv5Qfiz.png" style="width:100%" onclick="currentSlide(4)" alt="Mobile Legends Tournament 1 Day League">
+                        <img class="demo cursor" src="https://i.imgur.com/Bv5Qfiz.png" style="width:100%" onclick="currentSlide(4)" alt="SK IBAYO-TIPAS MOBILE LEGEND TOURNAMENT">
                     </div>
                     <div class="column">
-                        <img class="demo cursor" src="https://i.imgur.com/RFGU7CQ.png" style="width:100%" onclick="currentSlide(5)" alt="Salin Kaalaman">
+                        <img class="demo cursor" src="https://imgur.com/PQMYTJh.png" style="width:100%" onclick="currentSlide(5)" alt="BOTE MO, PALIT PAGKAIN PROJECT">
                     </div>
                     <div class="column">
-                        <img class="demo cursor" src="https://i.imgur.com/VdHjSht.png" style="width:100%" onclick="currentSlide(6)" alt="Kasama Kita Ngayong Pasko">
+                        <img class="demo cursor" src="https://imgur.com/CaXD4fb.png" style="width:100%" onclick="currentSlide(6)" alt="SK IBAYO TIPAS BASKETBALL LIGA">
                     </div>
                 </div>
                 <script>
@@ -152,44 +156,28 @@
                     <h1 class="heading">About Us</h1>
 
                     <p class="sub-heading">
-                        “We develop the four human dimensions in children and youth: body, mind, heart and spirit.”
+                        &emsp;&emsp;The Sangguniang Kabataan or youth council is the governing body of the youth assembly or Katipunan ng Kabataan of every barangay. They are elected by the members of, the Katipunan ng Kabataan in elections conducted by the Commission on Elections (COMELEC).
                     </p> 
                 </div>
                 <br>
                 <div class ="about-column-right">
-                    <p class="sub-info"> Eruditio Academy is an education service
-                        institution that offers online and offline
-                        learning and development programs for
-                        preschool to high school. 
+                    <p class="sub-info">&emsp;&emsp; The SK Chairman leads the Sangguniang Kabataan. A Local Youth Development Council (LYDC) composed of representatives of different local youth groups supports the SK and its programs. 
                     </p>
                     <br>
                     <p class="sub-info">
-                        Eruditio subscribes to the whole child
-                        deveopment approach. We develop the four human dimensions in children and
-                        youth: body, mind, heart and spirit.
-                    </p>
-                    <br>
-                    <p class="sub-info">
-                        Moreover, we give equal emphasis to parent education and empowerment
-                        thru parenting seminars, workshops and
-                        access to learning and development
-                        materials.
+                        &emsp;&emsp;The Sangguniang Kabataan is the successor of the Kabataang Barangay (KB; lit. 'Village Youth') which was abolished by the Local Government Code of 1991. The author, Senator Aquilino Pimentel Jr. abolished KB because of allegations that this organization faced.
                     </p>
                 </div>
 
             </div>
             <div class="lower-row">
                 <div class="lower-column-left">
-                    <p class="heading">Our Experience</p>
-                    <p class = "sub-heading">1. We have over 12 years cumulative experience in education services.</p>
-                    <p class = "sub-heading">2. We have successfully delivered online learning programs to over 200 students.</p>
-                    <p class = "sub-heading">3. We have been supporting several homeschooling families during this pandemic.</p>
+                    <p class="heading">Mission</p>
+                    <p class = "sub-heading">&emsp;&emsp;Magtatag ng isang makatao, makadiyos, maka-kalikasan maunlad at mapayapang pamayanan na pinamumunuan ng tapat, may malasakit, may kasanayan at epektibong liderato na magtaguyod ng mga programa at proyektong angkop sa pangunahing pangangailangan ng bawat mamamayan ng Barangay.</p>
                 </div>
                 <div class="lower-column-right">
-                    <p class="heading">Our Approach</p>
-                    <p class = "sub-heading">Eruditio subscribes to the Whole Child 
-                        Development approach. We believe in the development of the 
-                        four human dimensions in children: </p>
+                    <p class="heading">Vision</p>
+                    <p class = "sub-heading">&emsp;&emsp;Isang pamayanang may tinig at lakas, malinis at luntian, malusog at mapayapa kung saan ang ahat ng tao ay may pagkilala sa Diyos at nagkakaisang isinusulong ang kapakanan ng higit na nakararami.</p>
                 </div>
             </div>
         </div>
@@ -198,16 +186,15 @@
         <!--Organizational Chart-->
         <div class="Organizational-Chart">
             <p class="Organizational-Chart-Header">Know our SK-Ibayo Tipas Council Members</p>
-            <p class="Organizational-Chart-Subheading">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+            <p class="Organizational-Chart-Subheading">The SK Chairman leads the Sangguniang Kabataan. A Local Youth Development Council (LYDC) composed of representatives of different local youth groups supports the SK and its programs. </p>
             <img src="img/SK_Organizational_Chart.png" class="Organizational-Chart-Image">
         </div>
-
+ 
         <!--Footer-->
         <section class="Footer-Container">
             <div class="Flex-Footer-Content" id="Contact-Us">
                 <p class="label">CONTACT US</p>
-                <p class="f-content">Phone: (02) 8642 2462 | (02) 8880 2766  </p>
-                <p class="f-content">Mobile: 0939 773 3342 | 0976 050 2672</p>
+                <p class="f-content">Mobile: SK Chairman Rocky: 0961 173 4321</p>
                 <p class="f-content"><br> <br>700 Dr. A. Natividad st., Ibayo-Tipas, Taguig City, M.M.</p>
             </div>
             <div class="Flex-Footer-Content" id="Links">

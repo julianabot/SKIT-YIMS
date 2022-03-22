@@ -183,7 +183,7 @@ nav .icon-burger .line{
 
 /*HERO SECTION*/
 .Hero-Section{
-    background-image: url(../img/hero_gif2.gif);
+    background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../img/hero_gif2.gif);
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -191,18 +191,20 @@ nav .icon-burger .line{
 
 }
 .Hero-Section .heading{
-    font-size: 2.5em;
-    left: 217px;
+    font-size: 2.5rem;
+    /*left: 217px;*/
     padding-top: 200px;
     padding-left: 150px;
     color: rgba(240, 243, 240, 1);
     padding-right:100px;
     font-weight: bold;
+    
+    
 }
 
 .Hero-Section .subheading{
-    font-size: 1.5em;
-    left: 217px;
+    font-size: 1.5rem;
+/*    left: 217px;*/
     padding-left: 150px;
     color: rgba(240, 243, 240, 1);
     padding-right:100px;
@@ -243,11 +245,14 @@ nav .icon-burger .line{
     .Hero-Section{
         text-align: center;
     }
+    
     .Hero-Section .heading{
-        font-size: 2.5rem;
+        font-size: 2rem;
         text-align: center;
-        margin-right: 2%;
-        margin-left: 2%;
+        margin-right: 0.5%;
+        margin-left: 0.5%;
+        padding-right: 0px;
+        padding-left: 0px;
     }
 
     .Hero-Section .subheading{
@@ -394,6 +399,9 @@ nav .icon-burger .line{
 }
 
 @media (max-width: 780px){
+    .Events-Section-Header{
+        font-size: 2em;
+    }
     .row{
         width: 100%;
     }
@@ -432,7 +440,7 @@ nav .icon-burger .line{
 /*ABOUT US SECTION*/
 .AbtBox .heading{  
     text-shadow: 2px 2px 7px rgba(0, 0, 0, 1);    
-    font-size: 60px;
+    font-size: 2em;
     left: 217px;
     padding-top: 300px;
     padding-left: 150px;
@@ -473,7 +481,7 @@ nav .icon-burger .line{
 .about-row .heading {
     font-style: normal;
     font-weight: bold;
-    font-size: 2.5em;
+    font-size: 2em;
     line-height: 89px;
     align-items: center; 
 }
@@ -488,6 +496,7 @@ nav .icon-burger .line{
     align-items: center;
     color: #1C2E4D;
     width: 80%;
+    text-align: justify;
 }
 .about-row .about-column-left{
     margin: 10px;
@@ -621,6 +630,10 @@ nav .icon-burger .line{
     font-family: 'Montserrat';
     font-size: 1.3em;
     color:#828282;
+    width: 80%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .Organizational-Chart-Image{
@@ -640,6 +653,9 @@ nav .icon-burger .line{
         margin-left: 0.5%;
         padding-right: 0px;
         padding-left: 0px;
+    }
+    .Organizational-Chart-Subheading{
+        width: 100%;
     }
 }
 
