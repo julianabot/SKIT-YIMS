@@ -17,7 +17,7 @@
     %>
     <body>
         <div class="half-white">
-
+                    <center><img src="/SKIT-YIMS/img/SK_Logo.png" class="img-logo-half"></center>
             <div class="goback"> <a class="purp-btn" href="/SKIT-YIMS/Welcome.jsp">Go back</a> </div>
             <div class="signup-form">
                 <h1 class="Sign"> Log in </h1>

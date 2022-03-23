@@ -53,7 +53,7 @@
             </div>
             <div class="Flex-Footer-Content" id="Email-Us">
                 <p class="label">EMAIL US</p>
-                <p class="f-content">For feedback and suggestions, feel free to reach out to us using the e-mail below.</p>
+                <p class="f-content">For feedback and suggestions, feel free to reach out to us using the e-mail below.</p><br>
                 <a class="f-content" id="mock-email-button" href="mailto:ibayotipas.skcouncil@gmail.com">Send Email</a>
             </div>
         </section>

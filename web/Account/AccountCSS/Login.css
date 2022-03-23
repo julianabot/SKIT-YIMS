@@ -2,7 +2,15 @@
 *{
     font-family: 'Montserrat';
 }
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 50px;
+}
 
+body {
+    margin: 0;
+    padding: 0;
+}
 /*.logout-btn{
     background:white;
     color: white;
@@ -37,7 +45,7 @@
 .half-white{
     background: white;
     width: 50%;
-    position: fixed;
+    position: absolute;
     height: 100%;
     left: 0%;
     top: 2%;
@@ -55,7 +63,7 @@
     background-size: cover;*/
     background-color: #FFF9E9;
     width: 50%;
-    position: absolute;
+    position: fixed;
     height: 100%;
     top: 0%;
     bottom: 0%;
@@ -77,6 +85,19 @@
     -o-animation: fadeIn 5s;
     -ms-animation: fadeIn 5s;
 }
+
+.img-logo-half{
+    height: 80%;
+    width: auto;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display:none;
+    opacity: .15;
+}
+
 
 @keyframes fadeIn {
     0% {opacity:0;}
@@ -241,6 +262,10 @@
         width: 100%;
     }
 
+    .img-logo-half{
+        display: block;
+     
+    }
     .name{
         width: 92%;
     }
