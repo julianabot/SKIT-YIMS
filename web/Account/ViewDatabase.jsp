@@ -6,6 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="AccountCSS/ViewDatabase.css" rel="stylesheet" type="text/css">
         <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png" /> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>View Database</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
@@ -243,7 +244,7 @@
                         } else {%>
 
                 <table >
-                    <tr><th class="text-center">Action</th><th>ID</th><th>E-mail</th><th>Name</th><th>Age</th><th>Birthday</th><th>Complete Address</th><th>Gender</th>
+                    <tr><th class="text-center"></th><th class="text-center"></th><th>ID</th><th>E-mail</th><th>Name</th><th>Age</th><th>Birthday</th><th>Complete Address</th><th>Gender</th>
                         <th>Contact No.</th><th>Civil Status</th><th>Working Status</th><th>Job Employed</th><th>Education Attainment</th><th>PWD</th><th>Type of Disability</th>
                         <th>Facebook Name or URL</th><th>Valid ID</th><th>Mother's Name</th><th>Mother's Occupation</th><th>Father's Name</th><th>Father's Occupation</th>
                         <th>Vital Status Mother</th><th>Vital Status Father</th><th>No. of Siblings</th><th>Sibling Education</th><th>BreadWinner</th><th>Resident Voter</th>
@@ -253,7 +254,10 @@
                                 do {%>
 
                     <tr><td>
-                            <a href="Edit.jsp?u=<%= rs.getString(1)%>" class="btn-warning">Edit</a>
+                            <a href="Edit.jsp?u=<%= rs.getString(1)%>" class="btn-warning"><i class="fa fa-pencil-square"></i></a>
+                        </td>
+                        <td>
+                            <a href="Delete.jsp?d=<%= rs.getString(1)%>"  onclick="return confirm('Are you sure you want to delete this resident?')" class="btn-danger"><i class="fa fa-close"></i></a>
                         </td><td><%= rs.getString(1)%></td><td><%= rs.getString(2)%></td><td><%= rs.getString(3)%></td><td><%= rs.getString(4)%></td>
                         <td><%= rs.getString(5)%></td><td><%= rs.getString(6)%></td><td><%= rs.getString(7)%></td><td><%= rs.getString(8)%></td>
                         <td><%= rs.getString(9)%></td><td><%= rs.getString(10)%></td><td><%= rs.getString(11)%></td><td><%= rs.getString(12)%></td>
