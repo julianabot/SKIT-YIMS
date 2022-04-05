@@ -19,8 +19,9 @@
         Statement stat = null;
         ResultSet res = null;
         PreparedStatement stmt = null;
-        Class.forName("com.mysql.jdbc.Driver").newInstance();
-        conn = DriverManager.getConnection(host, "root", "admin1234");
+//        Class.forName("com.mysql.jdbc.Driver").newInstance();
+//        conn = DriverManager.getConnection(host, "root", "admin1234");
+        conn = (Connection) getServletContext().getAttribute("dbConnection");
     %>
 
     <body>
@@ -898,7 +899,7 @@
                     </div>
                 </div>
                 <div class="buttons">
-                    <input type="submit" value="confirm" name="conf"/></button>
+                    <input type="submit" value="Confirm" name="conf"/></button>
                     <a href="/SKIT-YIMS/Account/ViewDatabase.jsp" class ="btn btn-default">Cancel</a>
                 </div>
         </div>

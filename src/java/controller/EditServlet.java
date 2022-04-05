@@ -20,33 +20,32 @@ public class EditServlet extends HttpServlet {
     Connection conn;
     String checkException;
 
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-
-        try {
-            Class.forName(config.getInitParameter("jdbcClassName"));
-            String username = config.getInitParameter("dbUsername");
-            String password = config.getInitParameter("dbPassword");
-            StringBuffer url = new StringBuffer(config.getInitParameter("jdbcDriverURL"))
-                    .append("://")
-                    .append(config.getInitParameter("dbHostName"))
-                    .append(":")
-                    .append(config.getInitParameter("dbPort"))
-                    .append("/")
-                    .append(config.getInitParameter("databaseName"));
-            conn
-                    = DriverManager.getConnection(url.toString(), username, password);
-        } catch (SQLException sqle) {
-            checkException = sqle.getMessage();
-            System.out.println("SQLException error occured - "
-                    + sqle.getMessage());
-        } catch (ClassNotFoundException nfe) {
-            checkException = nfe.getMessage();
-            System.out.println("ClassNotFoundException error occured - "
-                    + nfe.getMessage());
-        }
-    }
-
+//    public void init(ServletConfig config) throws ServletException {
+//        super.init(config);
+//
+//        try {
+//            Class.forName(config.getInitParameter("jdbcClassName"));
+//            String username = config.getInitParameter("dbUsername");
+//            String password = config.getInitParameter("dbPassword");
+//            StringBuffer url = new StringBuffer(config.getInitParameter("jdbcDriverURL"))
+//                    .append("://")
+//                    .append(config.getInitParameter("dbHostName"))
+//                    .append(":")
+//                    .append(config.getInitParameter("dbPort"))
+//                    .append("/")
+//                    .append(config.getInitParameter("databaseName"));
+//            conn
+//                    = DriverManager.getConnection(url.toString(), username, password);
+//        } catch (SQLException sqle) {
+//            checkException = sqle.getMessage();
+//            System.out.println("SQLException error occured - "
+//                    + sqle.getMessage());
+//        } catch (ClassNotFoundException nfe) {
+//            checkException = nfe.getMessage();
+//            System.out.println("ClassNotFoundException error occured - "
+//                    + nfe.getMessage());
+//        }
+//    }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -73,6 +72,8 @@ public class EditServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            conn = (Connection) getServletContext().getAttribute("dbConnection");
+            System.out.print("Server inside Edit Servlet");
 
             //Basic info table
             String bID = request.getParameter("basicID");
@@ -193,7 +194,7 @@ public class EditServlet extends HttpServlet {
             }
 
         } catch (SQLException e) {
-
+            e.printStackTrace();
         }
     }
 }

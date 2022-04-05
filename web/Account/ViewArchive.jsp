@@ -173,8 +173,9 @@
                         if (filterQuery == null) {
                             filterQuery = " ";
                         }
-                        Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
+//                        Class.forName("com.mysql.jdbc.Driver").newInstance();
+//                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
+                        Connection con = (Connection) getServletContext().getAttribute("dbConnection");
                         String sql = "SELECT * FROM `archive-info`";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -228,8 +229,9 @@
                         if (filterQuery == null) {
                             filterQuery = " ";
                         }
-                        Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
+//                        Class.forName("com.mysql.jdbc.Driver").newInstance();
+//                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
+                        Connection con = (Connection) getServletContext().getAttribute("dbConnection");
                         String sql = "SELECT residentID, name, agegroup, birthday, address, gender, validID FROM `archive-info`";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -268,8 +270,9 @@
                         if (filterQuery == null) {
                             filterQuery = " ";
                         }
-                        Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
+//                        Class.forName("com.mysql.jdbc.Driver").newInstance();
+//                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
+                        Connection con = (Connection) getServletContext().getAttribute("dbConnection");
                         String sql = "SELECT residentID, name, contactNo, emailAddress, fbNameURL FROM `archive-info`";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -306,8 +309,9 @@
                         if (filterQuery == null) {
                             filterQuery = " ";
                         }
-                        Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
+//                        Class.forName("com.mysql.jdbc.Driver").newInstance();
+//                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
+                        Connection con = (Connection) getServletContext().getAttribute("dbConnection");
                         String sql = "SELECT residentID, name, motherName, motherOccupation, fatherName, fatherOccupation, vitalStatusMother, vitalStatusFather, noOfSiblings, siblingEducation, breadWinner FROM `archive-info`";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -347,8 +351,9 @@
                         if (filterQuery == null) {
                             filterQuery = " ";
                         }
-                        Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
+//                        Class.forName("com.mysql.jdbc.Driver").newInstance();
+//                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
+                        Connection con = (Connection) getServletContext().getAttribute("dbConnection");
                         String sql = "SELECT residentID, name, memberOfOrg, residentVoter, nameOfOrg, supportSK, showSupport, jobChance, sayToSK FROM `archive-info`";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -387,8 +392,9 @@
                         if (filterQuery == null) {
                             filterQuery = " ";
                         }
-                        Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
+//                        Class.forName("com.mysql.jdbc.Driver").newInstance();
+//                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
+                        Connection con = (Connection) getServletContext().getAttribute("dbConnection");
                         String sql = "SELECT residentID, name, civilStatus, workingStatus, educationAttainment, jobEmployed, PWD, typeOfDisability FROM `archive-info`";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
@@ -426,8 +432,9 @@
                         if (filterQuery == null) {
                             filterQuery = " ";
                         }
-                        Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
+//                        Class.forName("com.mysql.jdbc.Driver").newInstance();
+//                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "CSELECC1_DW");
+                        Connection con = (Connection) getServletContext().getAttribute("dbConnection");
                         String sql = "SELECT residentID, name, vaccinated, willingForVaccine, brandOfVaccine, vaccineStatus FROM `archive-info`";
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();

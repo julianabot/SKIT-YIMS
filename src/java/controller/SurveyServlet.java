@@ -18,34 +18,33 @@ public class SurveyServlet extends HttpServlet {
     Connection conn;
     String checkException;
 
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-
-        try {
-            Class.forName(config.getInitParameter("jdbcClassName"));
-            String username = config.getInitParameter("dbUsername");
-            String password = config.getInitParameter("dbPassword");
-            StringBuffer url = new StringBuffer(config.getInitParameter("jdbcDriverURL"))
-                    .append("://")
-                    .append(config.getInitParameter("dbHostName"))
-                    .append(":")
-                    .append(config.getInitParameter("dbPort"))
-                    .append("/")
-                    .append(config.getInitParameter("databaseName"));
-            conn
-                    = DriverManager.getConnection(url.toString(), username, password);
-            conn.setAutoCommit(true);
-        } catch (SQLException sqle) {
-            checkException = sqle.getMessage();
-            System.out.println("SQLException error occured - "
-                    + sqle.getMessage());
-        } catch (ClassNotFoundException nfe) {
-            checkException = nfe.getMessage();
-            System.out.println("ClassNotFoundException error occured - "
-                    + nfe.getMessage());
-        }
-    }
-
+//    public void init(ServletConfig config) throws ServletException {
+//        super.init(config);
+//
+//        try {
+//            Class.forName(config.getInitParameter("jdbcClassName"));
+//            String username = config.getInitParameter("dbUsername");
+//            String password = config.getInitParameter("dbPassword");
+//            StringBuffer url = new StringBuffer(config.getInitParameter("jdbcDriverURL"))
+//                    .append("://")
+//                    .append(config.getInitParameter("dbHostName"))
+//                    .append(":")
+//                    .append(config.getInitParameter("dbPort"))
+//                    .append("/")
+//                    .append(config.getInitParameter("databaseName"));
+//            conn
+//                    = DriverManager.getConnection(url.toString(), username, password);
+//            conn.setAutoCommit(true);
+//        } catch (SQLException sqle) {
+//            checkException = sqle.getMessage();
+//            System.out.println("SQLException error occured - "
+//                    + sqle.getMessage());
+//        } catch (ClassNotFoundException nfe) {
+//            checkException = nfe.getMessage();
+//            System.out.println("ClassNotFoundException error occured - "
+//                    + nfe.getMessage());
+//        }
+//    }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -72,6 +71,8 @@ public class SurveyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            conn = (Connection) getServletContext().getAttribute("dbConnection");
+            System.out.print("Server inside Survey Servlet");
 
             HttpSession session = request.getSession();
 
@@ -291,6 +292,7 @@ public class SurveyServlet extends HttpServlet {
             //response.sendRedirect("/SKIT-YIMS/Survey Forms/ViewSubmitted.jsp");
 
         } catch (Exception e) {
+            e.printStackTrace();
             request.setAttribute("errorLogin", e.toString());
             request.getRequestDispatcher("Survey Forms/ViewSubmitted.jsp").forward(request, response);
 

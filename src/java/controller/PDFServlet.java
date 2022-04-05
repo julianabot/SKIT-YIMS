@@ -15,46 +15,44 @@ public class PDFServlet extends HttpServlet {
     Connection conn;
     String checkException;
 
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-
-        try {
-            Class.forName(config.getInitParameter("jdbcClassName"));
-            String username = config.getInitParameter("dbUsername");
-            String password = config.getInitParameter("dbPassword");
-            StringBuffer url = new StringBuffer(config.getInitParameter("jdbcDriverURL"))
-                    .append("://")
-                    .append(config.getInitParameter("dbHostName"))
-                    .append(":")
-                    .append(config.getInitParameter("dbPort"))
-                    .append("/")
-                    .append(config.getInitParameter("databaseName"));
-            conn
-                    = DriverManager.getConnection(url.toString(), username, password);
-            conn.setAutoCommit(true);
-        } catch (SQLException sqle) {
-            checkException = sqle.getMessage();
-            System.out.println("SQLException error occured - "
-                    + sqle.getMessage());
-        } catch (ClassNotFoundException nfe) {
-            checkException = nfe.getMessage();
-            System.out.println("ClassNotFoundException error occured - "
-                    + nfe.getMessage());
-        }
-    }
-
+//    public void init(ServletConfig config) throws ServletException {
+//        super.init(config);
+//
+//        try {
+//            Class.forName(config.getInitParameter("jdbcClassName"));
+//            String username = config.getInitParameter("dbUsername");
+//            String password = config.getInitParameter("dbPassword");
+//            StringBuffer url = new StringBuffer(config.getInitParameter("jdbcDriverURL"))
+//                    .append("://")
+//                    .append(config.getInitParameter("dbHostName"))
+//                    .append(":")
+//                    .append(config.getInitParameter("dbPort"))
+//                    .append("/")
+//                    .append(config.getInitParameter("databaseName"));
+//            conn
+//                    = DriverManager.getConnection(url.toString(), username, password);
+//            conn.setAutoCommit(true);
+//        } catch (SQLException sqle) {
+//            checkException = sqle.getMessage();
+//            System.out.println("SQLException error occured - "
+//                    + sqle.getMessage());
+//        } catch (ClassNotFoundException nfe) {
+//            checkException = nfe.getMessage();
+//            System.out.println("ClassNotFoundException error occured - "
+//                    + nfe.getMessage());
+//        }
+//    }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/pdf;charset=UTF-8");
-        //DateTimeFormatter is used to set the format of the current date
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
-        LocalDateTime current = LocalDateTime.now(); //Gets the current date and time
-        String date = dtf.format(current); //DateTimeFormatter pattern is implemented in the current date and time
-        //and is converted into a String variable;
-        String filename = date + "-SKITYIMS" + ".pdf"; //Current date and time is used as the name of the CSV File
+        conn = (Connection) getServletContext().getAttribute("dbConnection");
+        System.out.print("Server inside PDF Servlet");
 
-        //String footer = request.getServletContext().getInitParameter("footer");
-        String footer = "Footer";
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        LocalDateTime current = LocalDateTime.now();
+        String date = dtf.format(current);
+        String filename = date + "-SKITYIMS" + ".pdf";
+
         response.setHeader("Content-Disposition", "inline; filename=" + filename);
         HttpSession session = request.getSession();
         String username = (String) session.getAttribute("name");
@@ -71,7 +69,6 @@ public class PDFServlet extends HttpServlet {
         if (sortQuery == null) {
             sortQuery = " ";
         }
-        //String role = "role";
 
         try {
             dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
