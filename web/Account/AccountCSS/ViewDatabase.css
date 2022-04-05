@@ -238,6 +238,7 @@ nav .icon-burger .line{
     color: #8B3535;
     font-weight: bold;
     border-radius: 5px;
+    vertical-align: middle;
 }
 
 .database-title{
@@ -467,5 +468,10 @@ tr:nth-child(even){
     .modal-btn-container{
         flex-direction: column;
     }
+}
+
+.material-icons{
+    height: 10px;
+    
 }
 
