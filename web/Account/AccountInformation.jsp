@@ -112,7 +112,7 @@
                                 }
 
             </script>
-            
+
             <script>
                 function changeName() {
                     var x = document.getElementById("changeName");
@@ -125,7 +125,6 @@
                     } else {
                         x.style.display = "none";
                         document.getElementById("editName").value = "Edit";
-                        document.getElementById("editPass").value = "Cancel";
                     }
 
                 }
@@ -141,13 +140,11 @@
                     } else {
                         x.style.display = "none";
                         document.getElementById("editPass").value = "Edit";
-                        document.getElementById("editName").value = "Cancel";
                     }
                     if (x.value === "Edit")
                         x.value = "Cancel";
                     else
                         elem.value = "Edit";
-
                 }
 
             </script>

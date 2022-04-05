@@ -207,9 +207,9 @@ public class SortServlet extends HttpServlet {
                 } else if (sortBy.equals("Z to A")) {
                     sortQuery = sortQuery + "`basic-info`.name DESC";
                 } else if (sortBy.equals("Youngest to Oldest")) {
-                    sortQuery = sortQuery + "`basic-info`.birthday ASC";
-                } else if (sortBy.equals("Oldest to Youngest")) {
                     sortQuery = sortQuery + "`basic-info`.birthday DESC";
+                } else if (sortBy.equals("Oldest to Youngest")) {
+                    sortQuery = sortQuery + "`basic-info`.birthday ASC";
                 } else if (sortBy.equals("Ascending ID")) {
                     sortQuery = sortQuery + "`resident-info`.residentID ASC";
                 }  else if (sortBy.equals("Descending ID")) {
