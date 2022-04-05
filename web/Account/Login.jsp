@@ -8,6 +8,7 @@
         <link href="/SKIT-YIMS/Account/AccountCSS/Login.css?v={random number/string}" rel="stylesheet">
         <title>Login</title>
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <%
         response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
@@ -25,7 +26,12 @@
                 <form action="../LoginServlet" method="POST">
 
                     <input class="unp" type="text" name="uname" placeholder="Username" maxlength="16" required><br>
-                    <input class="unp" type="password" name="password" placeholder="Password"  minlength="8" required ><br>
+                    
+                    <div class="password-container">
+                    <input class="unp" type="password" name="password" placeholder="Password"  minlength="8" required ><i class="fa fa-eye" ></i><br>
+                    <!--code for eye with slash <i class="fa fa-eye-slash" ></i>-->
+                    </div>
+                    
                     <br>
                     <center> 
                         <div class="g-recaptcha"

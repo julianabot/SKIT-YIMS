@@ -305,3 +305,16 @@ body {
         text-align: center;
     }
 }
+
+
+
+.password-container i{
+    position: absolute;
+    margin-bottom: 10px;
+}
+
+.fa-eye {
+    margin-top: 30px;
+    margin-left: -35px;
+    text-align: center;
+}
