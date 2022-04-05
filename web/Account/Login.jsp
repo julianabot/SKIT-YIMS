@@ -26,12 +26,11 @@
                 <form action="../LoginServlet" method="POST">
 
                     <input class="unp" type="text" name="uname" placeholder="Username" maxlength="16" required><br>
-                    
+
                     <div class="password-container">
-                    <input class="unp" type="password" name="password" placeholder="Password"  minlength="8" required ><i class="fa fa-eye" ></i><br>
-                    <!--code for eye with slash <i class="fa fa-eye-slash" ></i>-->
+                        <input class="unp" id="loginPassword" type="password" name="password" placeholder="Password"  minlength="8" required ><i class="fa fa-eye" id="togglePassword"></i><br>
+                        <script src="../js/toggle.js"></script>
                     </div>
-                    
                     <br>
                     <center> 
                         <div class="g-recaptcha"
