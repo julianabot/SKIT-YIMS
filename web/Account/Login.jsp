@@ -17,11 +17,11 @@
     %>
     <body>
         <div class="half-white">
-                    <center><img src="/SKIT-YIMS/img/SK_Logo.png" class="img-logo-half"></center>
+            <center><img src="/SKIT-YIMS/img/SK_Logo.png" class="img-logo-half"></center>
             <div class="goback"> <a class="purp-btn" href="/SKIT-YIMS/Welcome.jsp">Go back</a> </div>
             <div class="signup-form">
                 <h1 class="Sign"> Log in </h1>
-                <center> <p class ="Error" style="color: #712929 ">${errorLogin}</p></center>
+                <center> <p class ="Error" style="color: red ">${errorLogin}</p></center>
                 <form action="../LoginServlet" method="POST">
 
                     <input class="unp" type="text" name="uname" placeholder="Username" maxlength="16" required><br>
@@ -34,7 +34,7 @@
                         <input class="submitbtn" type="Submit" name="Login" value="Log In">
                         <p class="footer-name">© Sangguniang Kabataan Ibayo-Tipas 2022. <br> All rights reserved.</p>
                     </center>
-                    
+
                 </form>
             </div>
         </div>
