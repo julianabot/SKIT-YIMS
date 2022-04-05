@@ -11,7 +11,7 @@
         <link href="../Account/AccountCSS/Edit.css" rel="stylesheet" type="text/css">
         <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png" /> 
         <title>Edit Resident Profile</title>
-        
+
     </head>
     <%
         String host = "jdbc:mysql://localhost:3306/skit-yims?useSSL=false";
@@ -20,7 +20,7 @@
         ResultSet res = null;
         PreparedStatement stmt = null;
         Class.forName("com.mysql.jdbc.Driver").newInstance();
-        conn = DriverManager.getConnection(host, "root", "kgarcia24");
+        conn = DriverManager.getConnection(host, "root", "admin1234");
     %>
 
     <body>
@@ -160,14 +160,14 @@
                         <div class="content-container">
                             <div class ="form-group">
                                 <label>Contact Number<em class="required"></em></label>
-                                <input type="text" class="form-control" name ="contactNo" value = "<%= res.getString("contactNo")%>" required maxlength="15"/>
+                                <input type="tel" class="form-control" name ="contactNo" value = "<%= res.getString("contactNo")%>" required maxlength="15"/>
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
                                 <label>Email Address<em class="required"></em></label>
-                                <input type="text" class="form-control" name ="emailAddress" value = "<%= res.getString("emailAddress")%>" required maxlength="45"/>
+                                <input type="email" class="form-control" name ="emailAddress" value = "<%= res.getString("emailAddress")%>" required maxlength="45"/>
                             </div>
 
                             <div class="content-divider"></div>
@@ -906,29 +906,29 @@
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
-        var counter = 0;
-        var tabs = ["Info", "Details", "Contact", "Family", "Survey", "Vaccination"];
-        function showTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
+                var counter = 0;
+                var tabs = ["Info", "Details", "Contact", "Family", "Survey", "Vaccination"];
+                function showTab(evt, tabName) {
+                    var i, tabcontent, tablinks;
+                    tabcontent = document.getElementsByClassName("tabcontent");
+                    for (i = 0; i < tabcontent.length; i++) {
+                        tabcontent[i].style.display = "none";
+                    }
+                    tablinks = document.getElementsByClassName("tablinks");
+                    for (i = 0; i < tablinks.length; i++) {
+                        tablinks[i].className = tablinks[i].className.replace(" active", "");
 
-            }
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
-            counter = tabs.indexOf(tabName);
-        }
+                    }
+                    document.getElementById(tabName).style.display = "block";
+                    evt.currentTarget.className += " active";
+                    counter = tabs.indexOf(tabName);
+                }
 
-        // Get the element with id="defaultOpen" and click on it
-        document.getElementById("defaultOpen").click();
-        evt.currentTarget.className += " active";
+                // Get the element with id="defaultOpen" and click on it
+                document.getElementById("defaultOpen").click();
+                evt.currentTarget.className += " active";
     </script>
-    
+
 </body>
 
 </html>
