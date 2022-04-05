@@ -123,7 +123,7 @@
                     </form>
                 </div>
                 <div class="horizontal-spacer"></div>
-                <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db"))) {%>
+                <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
                 <form action="../ArchiveServlet" method="POST">
                     <div class="archive-button-container">
                         <button type="submit" class="archive-button">Archive Database</button>
@@ -247,7 +247,11 @@
                         } else {%>
 
                 <table >
-                    <tr><th class="text-center"></th><th class="text-center"></th><th>ID</th><th>E-mail</th><th>Name</th><th>Age</th><th>Birthday</th><th>Complete Address</th><th>Gender</th>
+                    <tr>
+                        <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
+                        <th class="text-center"></th><th class="text-center"></th>
+                            <% }%>
+                        <th>ID</th><th>E-mail</th><th>Name</th><th>Age</th><th>Birthday</th><th>Complete Address</th><th>Gender</th>
                         <th>Contact No.</th><th>Civil Status</th><th>Working Status</th><th>Job Employed</th><th>Education Attainment</th><th>PWD</th><th>Type of Disability</th>
                         <th>Facebook Name or URL</th><th>Valid ID</th><th>Mother's Name</th><th>Mother's Occupation</th><th>Father's Name</th><th>Father's Occupation</th>
                         <th>Vital Status Mother</th><th>Vital Status Father</th><th>No. of Siblings</th><th>Sibling Education</th><th>BreadWinner</th><th>Resident Voter</th>
@@ -257,7 +261,7 @@
                                 do {%>
 
                     <tr>
-                        <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db"))) {%>
+                        <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
                         <td>
                             <a href="Edit.jsp?u=<%= rs.getString(1)%>" class="btn-warning"><i class="fa fa-pencil-square"></i></a>
                         </td>
