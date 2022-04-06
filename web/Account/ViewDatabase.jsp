@@ -167,27 +167,27 @@
 
                     <div>
 
-                        <h1>Filter</h1>
+                         <h1>Filter</h1>
                         <h3>By Age</h3>
                         <ul class="filter" style="list-style: none">
-                            <li><input type="checkbox" name="filterage" value="14 years old and below"/>14 years old and below</li>
-                            <li><input type="checkbox" name="filterage" value="15-20 years old"/>15-20 years old</li>
-                            <li><input type="checkbox" name="filterage" value="21-30 years old"/>21-30 years old</li>
-                            <li><input type="checkbox" name="filterage" value="31 years old and above"/>31 years old and above</li>
+                            <li><input id="fourteenBelow" type="checkbox" name="filterage" value="14 years old and below"/>14 years old and below</li>
+                            <li><input id="fifteenTwenty" type="checkbox" name="filterage" value="15-20 years old"/>15-20 years old</li>
+                            <li><input id="twentyoneThirty" type="checkbox" name="filterage" value="21-30 years old"/>21-30 years old</li>
+                            <li><input id="thirtyoneAbove" type="checkbox" name="filterage" value="31 years old and above"/>31 years old and above</li>
                         </ul>
 
                         <h3>By Gender</h3>
                         <ul class="filter" style="list-style: none">
-                            <li><input type="checkbox" name="filtergender" value="Female (Babae)"/>Female</li>
-                            <li><input type="checkbox" name="filtergender" value="Male(Lalaki)"/>Male</li>
-                            <li><input type="checkbox" name="filtergender" value="Prefer not to say"/>Prefer not to say</li>
+                            <li><input id="femaleCheck" type="checkbox" name="filtergender" value="Female (Babae)"/>Female</li>
+                            <li><input id="maleCheck" type="checkbox" name="filtergender" value="Male(Lalaki)"/>Male</li>
+                            <li><input id="prefernottosayCheck" type="checkbox" name="filtergender" value="Prefer not to say"/>Prefer not to say</li>
                         </ul>
 
                         <h3>By Civil Status</h3>
                         <ul class="filter" style="list-style: none">
-                            <li><input type="checkbox" name="filterCivilStatus" value="Single"/>Single</li>
-                            <li><input type="checkbox" name="filterCivilStatus" value="Married"/>Married</li>
-                            <li><input type="checkbox" name="filterCivilStatus" value="Widowed"/>Widowed</li>
+                            <li><input id="singleCheck" type="checkbox" name="filterCivilStatus" value="Single"/>Single</li>
+                            <li><input id="marriedCheck" type="checkbox" name="filterCivilStatus" value="Married"/>Married</li>
+                            <li><input id="widowedCheck" type="checkbox" name="filterCivilStatus" value="Widowed"/>Widowed</li>
                         </ul>
 
                     </div>
@@ -196,16 +196,16 @@
 
                         <h3>By Working Status</h3>
                         <ul class="filter" style="list-style: none">
-                            <li><input type="checkbox" name="filterWorkStatus" value="Full-Time Student"/>Full Time Student</li>
-                            <li><input type="checkbox" name="filterWorkStatus" value="Working Student"/>Working Student</li>
-                            <li><input type="checkbox" name="filterWorkStatus" value="Out of School Youth"/>Out of School Youth</li>
-                            <li><input type="checkbox" name="filterWorkStatus" value="Working/Employed"/>Working/Employed</li>
-                            <li><input type="checkbox" name="filterWorkStatus" value="Unemployed"/>Unemployed</li>
+                            <li><input id="fulltimestudent" type="checkbox" name="filterWorkStatus" value="Full-Time Student"/>Full-Time Student</li>
+                            <li><input id="workingstudent" type="checkbox" name="filterWorkStatus" value="Working Student"/>Working Student</li>
+                            <li><input id="outofschool" type="checkbox" name="filterWorkStatus" value="Out of School Youth"/>Out of School Youth</li>
+                            <li><input id="employed" type="checkbox" name="filterWorkStatus" value="Working/Employed"/>Working/Employed</li>
+                            <li><input id="unemployed" type="checkbox" name="filterWorkStatus" value="Unemployed"/>Unemployed</li>
                         </ul>
 
                         <h3>Other</h3>
                         <ul class="filter" style="list-style: none">
-                            <li><input type="checkbox" name="filterother" value="PWD"/>PWDs</li>
+                            <li><input id="pwdcheck" type="checkbox" name="filterother" value="PWD"/>PWDs</li>
                             <li><input type="checkbox" name="filterother" onclick ="vaccineCheck()" id="yesVax" value="Vaccinated"/>Vaccinated</li>
                             <li><input type="checkbox" name="filterother" onclick ="vaccineCheck()" id="noVax" value="Not Vaccinated"/>Not Vaccinated</li>
                         </ul>
@@ -616,7 +616,88 @@
         } else if (sortCheck.includes("residentID DESC")) {
             descid.checked = true;
         }
+        
+        const fourteenBelow = document.getElementById('fourteenBelow');
+        const fifteenTwenty = document.getElementById('fifteenTwenty');
+        const twentyoneThirty = document.getElementById('twentyoneThirty');
+        const thirtyoneAbove = document.getElementById('thirtyoneAbove');
 
+        const femaleCheck = document.getElementById('femaleCheck');
+        const maleCheck = document.getElementById('maleCheck');
+        const prefernottosayCheck = document.getElementById('prefernottosayCheck');
+        
+        const singleCheck = document.getElementById('singleCheck');
+        const marriedCheck = document.getElementById('marriedCheck');
+        const widowedCheck = document.getElementById('widowedCheck');
+        
+        const fulltimestudent = document.getElementById('fulltimestudent');
+        const workingstudent = document.getElementById('workingstudent');
+        const outofschool = document.getElementById('outofschool');
+        const employed = document.getElementById('employed');
+        const unemployed = document.getElementById('unemployed');
+        
+        const pwdcheck = document.getElementById('pwdcheck');
+        const yesVax = document.getElementById('yesVax');
+        const noVax = document.getElementById('noVax');
+        
+        if (filterCheck.includes("14")){
+            fourteenBelow.checked = true;
+        } else {fourteenBelow.checked = false;}
+        if (filterCheck.includes("15")){
+            fifteenTwenty.checked = true;
+        } else {fifteenTwenty.checked = false;}
+        if (filterCheck.includes("21")){
+            twentyoneThirty.checked = true;
+        } else {twentyoneThirty.checked = false;}
+        if (filterCheck.includes("31")){
+            thirtyoneAbove.checked = true;
+        } else {thirtyoneAbove.checked = false;}
+        
+        if (filterCheck.includes("Female")){
+            femaleCheck.checked = true;
+        } else {femaleCheck.checked = false;}
+        if (filterCheck.includes("Male")){
+            maleCheck.checked = true;
+        } else {maleCheck.checked = false;}
+        if (filterCheck.includes("Prefer")){
+            prefernottosayCheck.checked = true;
+        } else {prefernottosayCheck.checked = false;}
+
+        if (filterCheck.includes("Single")){
+            singleCheck.checked = true;
+        } else {singleCheck.checked = false;}
+        if (filterCheck.includes("Married")){
+            marriedCheck.checked = true;
+        } else {marriedCheck.checked = false;}
+        if (filterCheck.includes("Widowed")){
+            widowedCheck.checked = true;
+        } else {widowedCheck.checked = false;}
+        
+        if (filterCheck.includes("Full-Time Student")){
+            fulltimestudent.checked = true;
+        } else {fulltimestudent.checked = false;}
+        if (filterCheck.includes("Working Student")){
+            workingstudent.checked = true;
+        } else {workingstudent.checked = false;}
+        if (filterCheck.includes("Out of School")){
+            outofschool.checked = true;
+        } else {outofschool.checked = false;}
+        if (filterCheck.includes("Employed")){
+            employed.checked = true;
+        } else {employed.checked = false;}
+        if (filterCheck.includes("Unemployed")){
+            unemployed.checked = true;
+        } else {unemployed.checked = false;}
+        
+        if (filterCheck.includes("PWD = 'Yes'")){
+            pwdcheck.checked = true;
+        } else {pwdcheck.checked = false;}
+        if (filterCheck.includes("vaccinated = 'Yes'")){
+            yesVax.checked = true;
+        } else {yesVax.checked = false;}
+        if (filterCheck.includes("vaccinated = 'No'")){
+            noVax.checked = true;
+        } else {noVax.checked = false;}
 
         console.log(sortCheck);
         console.log(filterCheck);
