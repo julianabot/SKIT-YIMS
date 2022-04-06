@@ -16,7 +16,7 @@
         if (rs.next()) {
             Blob blob = rs.getBlob("validID");
             byte byteArray[] = blob.getBytes(1, (int) blob.length());
-            response.setContentType("image/gif");
+            response.setContentType("image/png");
             OutputStream os = response.getOutputStream();
             os.write(byteArray);
             os.flush();
@@ -24,13 +24,5 @@
         }
     } catch (Exception e) {
         e.printStackTrace();
-    } finally {
-        if (con != null) {
-            try {
-                con.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
     }
 %>
