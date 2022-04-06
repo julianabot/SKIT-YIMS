@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,43 +9,19 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
+@MultipartConfig(maxFileSize = 16177215)
 public class SurveyServlet extends HttpServlet {
 
     Connection conn;
     String checkException;
 
-//    public void init(ServletConfig config) throws ServletException {
-//        super.init(config);
-//
-//        try {
-//            Class.forName(config.getInitParameter("jdbcClassName"));
-//            String username = config.getInitParameter("dbUsername");
-//            String password = config.getInitParameter("dbPassword");
-//            StringBuffer url = new StringBuffer(config.getInitParameter("jdbcDriverURL"))
-//                    .append("://")
-//                    .append(config.getInitParameter("dbHostName"))
-//                    .append(":")
-//                    .append(config.getInitParameter("dbPort"))
-//                    .append("/")
-//                    .append(config.getInitParameter("databaseName"));
-//            conn
-//                    = DriverManager.getConnection(url.toString(), username, password);
-//            conn.setAutoCommit(true);
-//        } catch (SQLException sqle) {
-//            checkException = sqle.getMessage();
-//            System.out.println("SQLException error occured - "
-//                    + sqle.getMessage());
-//        } catch (ClassNotFoundException nfe) {
-//            checkException = nfe.getMessage();
-//            System.out.println("ClassNotFoundException error occured - "
-//                    + nfe.getMessage());
-//        }
-//    }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -75,6 +52,21 @@ public class SurveyServlet extends HttpServlet {
             System.out.print("Server inside Survey Servlet");
 
             HttpSession session = request.getSession();
+
+            String message = null;
+            InputStream inputStream = null; // input stream of the upload file
+
+            // obtains the upload file part in this multipart request
+            Part filePart = request.getPart("validID");
+            if (filePart != null) {
+                // prints out some information for debugging
+                System.out.println(filePart.getName());
+                System.out.println(filePart.getSize());
+                System.out.println(filePart.getContentType());
+
+                // obtains input stream of the upload file
+                inputStream = filePart.getInputStream();
+            }
 
             //1. Resident Information
             String residentName = request.getParameter("name");
@@ -176,10 +168,23 @@ public class SurveyServlet extends HttpServlet {
             insBasic.setString(3, birthday);
             insBasic.setString(4, address);
             insBasic.setString(5, gender);
-            insBasic.setString(6, validID);
 
-            insBasic.execute();
+            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~FOR IMAGE ONLY~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            if (inputStream != null) {
+                // fetches input stream of the upload file for the blob column
+                insBasic.setBlob(6, inputStream);
+            }
 
+            int row = insBasic.executeUpdate();
+            if (row > 0) {
+                message = "File uploaded and saved into database";
+            }
+
+            // sets the message in request scope
+            request.setAttribute("Message", message);
+
+            //insBasic.setString(6, validID);
+            //insBasic.execute();
             String factTable = "INSERT INTO `resident-info` (basicID) VALUES(LAST_INSERT_ID())";
             insBasic = conn.prepareStatement(factTable);
             insBasic.execute();
