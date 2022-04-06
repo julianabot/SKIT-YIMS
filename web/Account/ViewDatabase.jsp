@@ -147,7 +147,7 @@
                     <div>
                         <h1>Sort</h1>
                         <!--<p>by Name</p>-->
-                        <input type="radio" id="atoz" name="sortBy" value="A to Z" checked>
+                        <input type="radio" id="atoz" name="sortBy" value="A to Z">
                         <label for="atoz">A to Z</label><br>
                         <input type="radio" id="ztoa" name="sortBy" value="Z to A">
                         <label for="ztoa">Z to A</label><br>
@@ -537,6 +537,10 @@
                         }
                     %>
                 </table>
+
+                <input type="hidden" value="${sortQuery}" id="sort">
+                <input type="hidden" value="${filterQuery}" id="filter">
+
             </div>
             <form action="../PDFServlet" method="POST">
                 <input id="pdfdownload" class="pdfdownload" name="pdfdownload" style="display: none">
@@ -553,6 +557,7 @@
 <script>
     function openForm() {
         document.getElementById("myForm").style.display = "block";
+        checkSortFilter();
     }
 
     function closeForm() {
@@ -575,6 +580,41 @@
         if (document.getElementById("noVax").checked == false) {
             document.getElementById("yesVax").disabled = false;
         }
+    }
+
+</script>
+<script>
+
+    function checkSortFilter() {
+
+        var sortCheck = document.getElementById('sort').value;
+        var filterCheck = document.getElementById('filter').value;
+
+        const atoz = document.getElementById('atoz');
+        const ztoa = document.getElementById('ztoa');
+        const ytoo = document.getElementById('ytoo');
+        const otoy = document.getElementById('otoy');
+        const ascid = document.getElementById('ascid');
+        const descid = document.getElementById('descid');
+
+        if (sortCheck.includes("name ASC")) {
+            atoz.checked = true;
+        } else if (sortCheck.includes("name DESC")) {
+            ztoa.checked = true;
+        } else if (sortCheck.includes("birthday DESC")) {
+            otoy.checked = true;
+        } else if (sortCheck.includes("birthday ASC")) {
+            ytoo.checked = true;
+        } else if (sortCheck.includes("residentID ASC")) {
+            ascid.checked = true;
+        } else if (sortCheck.includes("residentID DESC")) {
+            descid.checked = true;
+        }
+
+
+        console.log(sortCheck);
+        console.log(filterCheck);
+
     }
 
 </script>
