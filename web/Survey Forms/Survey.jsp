@@ -166,7 +166,11 @@
                                     const actualBtn = document.getElementById('myFile');
                                     const fileChosen = document.getElementById('file-chosen');
                                     actualBtn.addEventListener('change', function () {
-                                        fileChosen.textContent = this.files[0].name
+                                        if (this.files[0].size > 4194304){
+                                            fileChosen.textContent = '   no file chosen'
+                                        } else{fileChosen.textContent = this.files[0].name}
+                                        
+                                        
                                     })
                                 </script>
 
