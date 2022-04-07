@@ -129,7 +129,7 @@ public class EditServlet extends HttpServlet {
                     && oID != null && residentVoter != null && memberOfOrg != null && nameOfOrg != null && supportSK != null && showSupport != null && jobChance != null && sayToSK != null
                     && sID != null && civilStatus != null && workingStatus != null && educationAttainment != null && jobEmployed != null && PWD != null && typeOfDisability != null
                     && vID != null && vaccinated != null && willingForVaccine != null && brandOfVaccine != null && vaccineStatus != null) {
-                String basic_query = "UPDATE `skit-yims`.`basic-info` SET `name` = ?, `agegroup` = ?, `birthday` = ?, `address` = ?, `gender` = ?, WHERE (`basicID` = '" + bID + "')";
+                String basic_query = "UPDATE `skit-yims`.`basic-info` SET `name` = ?, `agegroup` = ?, `birthday` = ?, `address` = ?, `gender` = ? WHERE (`basicID` = '" + bID + "')";
                 PreparedStatement stmt = conn.prepareStatement(basic_query);
                 stmt.setString(1, name);
                 stmt.setString(2, age);
