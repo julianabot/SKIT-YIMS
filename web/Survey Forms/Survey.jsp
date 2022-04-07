@@ -157,6 +157,11 @@
                             </div>
                             <div class="button-container">
 
+                                
+                                <input type="file" id="myFile" name="validID" hidden/>
+                                <label for="myFile" id="fake-button" >Choose File</label>
+                                <span id="file-chosen">&nbsp;no file chosen</span>
+                                
                                 <script>
                                     const actualBtn = document.getElementById('myFile');
                                     const fileChosen = document.getElementById('file-chosen');
@@ -164,9 +169,6 @@
                                         fileChosen.textContent = this.files[0].name
                                     })
                                 </script>
-                                <input type="file" id="myFile" name="validID" hidden/>
-                                <label for="myFile" id="fake-button">Choose File</label>
-                                <span id="file-chosen">&emsp;no file chosen</span>
 
                                 <script>
 
