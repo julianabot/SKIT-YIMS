@@ -157,11 +157,11 @@
                             </div>
                             <div class="button-container">
 
-                                
+
                                 <input type="file" id="myFile" name="validID" hidden/>
                                 <label for="myFile" id="fake-button" >Choose File</label>
                                 <span id="file-chosen">&nbsp;no file chosen</span>
-                                
+
                                 <script>
                                     const actualBtn = document.getElementById('myFile');
                                     const fileChosen = document.getElementById('file-chosen');
@@ -268,7 +268,7 @@
                             <div>
                                 <!-- To be fixed formatting!!! para sa database-->
                                 <label for="phone" class="label-english">Contact Number<em class="required"></em>&emsp;<span>Numerong Maaring Tawagan</span></label><br>
-                                <input type="tel" id="phone" name="phone" class="long-textbox" required maxlength="15">
+                                <input type="tel" id="phone" name="phone" pattern="^[0-9]{3,45}$" class="long-textbox" required maxlength="15">
                             </div>
 
                             <div class="content-divider"></div>

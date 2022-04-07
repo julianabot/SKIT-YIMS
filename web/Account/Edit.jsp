@@ -103,7 +103,8 @@
                             <div class ="form-group">
                                 <label>Birthday<em class="required"></em></label>
                                 <!--CHANGE INPUT TYPE TO DATE-->
-                                <input type="text" class="form-control" name ="birthday" value = "<%= res.getString("birthday")%>" required/>
+                                <input type="date" class="form-control" name ="birthday" value = "<%= res.getString("birthday")%>" required/>
+
                             </div>
 
                             <div class="content-divider"></div>
@@ -156,7 +157,7 @@
                         <div class="content-container">
                             <div class ="form-group">
                                 <label>Contact Number<em class="required"></em></label>
-                                <input type="tel" class="form-control" name ="contactNo" value = "<%= res.getString("contactNo")%>" required maxlength="15"/>
+                                <input type="tel" class="form-control" name ="contactNo" pattern="^[0-9]{3,45}$" value = "<%= res.getString("contactNo")%>" required maxlength="15"/>
                             </div>
 
                             <div class="content-divider"></div>
@@ -903,27 +904,27 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script>
-                    var counter = 0;
-                    var tabs = ["Info", "Details", "Contact", "Family", "Survey", "Vaccination"];
-                    function showTab(evt, tabName) {
-                        var i, tabcontent, tablinks;
-                        tabcontent = document.getElementsByClassName("tabcontent");
-                        for (i = 0; i < tabcontent.length; i++) {
-                            tabcontent[i].style.display = "none";
-                        }
-                        tablinks = document.getElementsByClassName("tablinks");
-                        for (i = 0; i < tablinks.length; i++) {
-                            tablinks[i].className = tablinks[i].className.replace(" active", "");
-
-                        }
-                        document.getElementById(tabName).style.display = "block";
-                        evt.currentTarget.className += " active";
-                        counter = tabs.indexOf(tabName);
+                var counter = 0;
+                var tabs = ["Info", "Details", "Contact", "Family", "Survey", "Vaccination"];
+                function showTab(evt, tabName) {
+                    var i, tabcontent, tablinks;
+                    tabcontent = document.getElementsByClassName("tabcontent");
+                    for (i = 0; i < tabcontent.length; i++) {
+                        tabcontent[i].style.display = "none";
                     }
+                    tablinks = document.getElementsByClassName("tablinks");
+                    for (i = 0; i < tablinks.length; i++) {
+                        tablinks[i].className = tablinks[i].className.replace(" active", "");
 
-                    // Get the element with id="defaultOpen" and click on it
-                    document.getElementById("defaultOpen").click();
+                    }
+                    document.getElementById(tabName).style.display = "block";
                     evt.currentTarget.className += " active";
+                    counter = tabs.indexOf(tabName);
+                }
+
+                // Get the element with id="defaultOpen" and click on it
+                document.getElementById("defaultOpen").click();
+                evt.currentTarget.className += " active";
         </script>
 
     </body>
