@@ -102,51 +102,59 @@
                                         <input type="button" value="Change Name or Password" class="edit" onclick="window.location = '/SKIT-YIMS/Account/EditProfile.jsp'">
                                     </div>-->
                 </div>
+                <!--
                 <p class="displayed-message">${update1}</p>
-            </div>
+                -->
+                <c:if test="${not empty update1}">
+                    <div class="displayed-message">
+                        <strong><c:out value="${update1}"/></strong>
+                    </div>
+                    <c:set var="update1" value="" scope="session"/>
+                </c:if>
 
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-            <script type="text/javascript">
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                <script type="text/javascript">
                                 function showAlert() {
                                     alert('${update1}');
                                 }
 
-            </script>
+                </script>
 
-            <script>
-                function changeName() {
-                    var x = document.getElementById("changeName");
-                    var y = document.getElementById("changePassword");
-                    if (x.style.display === "none") {
-                        x.style.display = "block";
-                        y.style.display = "none";
-                        document.getElementById("editName").value = "Cancel";
-                        document.getElementById("editPass").value = "Edit";
-                    } else {
-                        x.style.display = "none";
-                        document.getElementById("editName").value = "Edit";
+                <script>
+                    function changeName() {
+                        var x = document.getElementById("changeName");
+                        var y = document.getElementById("changePassword");
+                        if (x.style.display === "none") {
+                            x.style.display = "block";
+                            y.style.display = "none";
+                            document.getElementById("editName").value = "Cancel";
+                            document.getElementById("editPass").value = "Edit";
+                        } else {
+                            x.style.display = "none";
+                            document.getElementById("editName").value = "Edit";
+                        }
+
                     }
 
-                }
-
-                function changePassword() {
-                    var x = document.getElementById("changePassword");
-                    var y = document.getElementById("changeName");
-                    if (x.style.display === "none") {
-                        x.style.display = "block";
-                        y.style.display = "none";
-                        document.getElementById("editPass").value = "Cancel";
-                        document.getElementById("editName").value = "Edit";
-                    } else {
-                        x.style.display = "none";
-                        document.getElementById("editPass").value = "Edit";
+                    function changePassword() {
+                        var x = document.getElementById("changePassword");
+                        var y = document.getElementById("changeName");
+                        if (x.style.display === "none") {
+                            x.style.display = "block";
+                            y.style.display = "none";
+                            document.getElementById("editPass").value = "Cancel";
+                            document.getElementById("editName").value = "Edit";
+                        } else {
+                            x.style.display = "none";
+                            document.getElementById("editPass").value = "Edit";
+                        }
+                        if (x.value === "Edit")
+                            x.value = "Cancel";
+                        else
+                            elem.value = "Edit";
                     }
-                    if (x.value === "Edit")
-                        x.value = "Cancel";
-                    else
-                        elem.value = "Edit";
-                }
 
-            </script>
-    </body>
-</html>
+                </script>
+                </body>
+                </html>
