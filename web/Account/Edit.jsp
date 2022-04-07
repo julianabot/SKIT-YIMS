@@ -135,11 +135,6 @@
                             </div>
 
                             <div class="content-divider"></div>
-
-                            <div class ="form-group">
-                                <label>valid ID</label>
-                                <input type="text" class="form-control" name ="validID" value = "<%= res.getString("validID")%>">
-                            </div>
                             <%
                                 }
                             %>   

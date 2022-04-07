@@ -82,7 +82,6 @@ public class EditServlet extends HttpServlet {
             String birthday = request.getParameter("birthday");
             String address = request.getParameter("address");
             String gender = request.getParameter("gender");
-            String validID = request.getParameter("validID");
 
             String cID = request.getParameter("contactID");
             String contactNo = request.getParameter("contactNo");
@@ -124,20 +123,19 @@ public class EditServlet extends HttpServlet {
             String vaccineStatus = request.getParameter("vaccineStatus");
 
             //
-            if (bID != null && name != null && address != null && validID != null
+            if (bID != null && name != null && address != null
                     && cID != null && contactNo != null && email != null && fbName != null
                     && fID != null && motherName != null && motherOccupation != null && fatherName != null && fatherOccupation != null && vitalStatusMother != null && vitalStatusFather != null && noOfSiblings != null && siblingEducation != null && breadWinner != null
                     && oID != null && residentVoter != null && memberOfOrg != null && nameOfOrg != null && supportSK != null && showSupport != null && jobChance != null && sayToSK != null
                     && sID != null && civilStatus != null && workingStatus != null && educationAttainment != null && jobEmployed != null && PWD != null && typeOfDisability != null
                     && vID != null && vaccinated != null && willingForVaccine != null && brandOfVaccine != null && vaccineStatus != null) {
-                String basic_query = "UPDATE `skit-yims`.`basic-info` SET `name` = ?, `agegroup` = ?, `birthday` = ?, `address` = ?, `gender` = ?, `validID` = ? WHERE (`basicID` = '" + bID + "')";
+                String basic_query = "UPDATE `skit-yims`.`basic-info` SET `name` = ?, `agegroup` = ?, `birthday` = ?, `address` = ?, `gender` = ?, WHERE (`basicID` = '" + bID + "')";
                 PreparedStatement stmt = conn.prepareStatement(basic_query);
                 stmt.setString(1, name);
                 stmt.setString(2, age);
                 stmt.setString(3, birthday);
                 stmt.setString(4, address);
                 stmt.setString(5, gender);
-                stmt.setString(6, validID);
                 stmt.execute();
 
                 String contact_query = "UPDATE `skit-yims`.`contact-info` SET `contactNo` = ?, `emailAddress` = ?, `fbNameURL` = ?  WHERE (`contactID` = '" + cID + "')";

@@ -87,7 +87,7 @@
         </div>
 
         <div overflow:auto class="container">
-            <form action="../SurveyServlet" id = "SurveyForm" method="POST" name="Survey">
+            <form action="../SurveyServlet" id = "SurveyForm" method="POST" name="Survey" enctype="multipart/form-data">
                 <div id="Info" class="tabcontent">
                     <div class="container-main">
                         <div class="content-container">
@@ -167,6 +167,19 @@
                                 <input type="file" id="myFile" name="validID" hidden/>
                                 <label for="myFile" id="fake-button">Choose File</label>
                                 <span id="file-chosen">&emsp;no file chosen</span>
+
+                                <script>
+
+                                    var uploadField = document.getElementById("myFile");
+
+                                    uploadField.onchange = function () {
+                                        if (this.files[0].size > 4194304) {
+                                            alert("File is too big! (Masyadong malaki ang iyong larawan)");
+                                            this.value = "";
+                                        }
+                                        ;
+                                    };
+                                </script>
                             </div>
                         </div>
                     </div>
