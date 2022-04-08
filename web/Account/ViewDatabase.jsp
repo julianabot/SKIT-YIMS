@@ -32,7 +32,7 @@
                 border: none;
                 outline: none;
                 cursor: pointer;
-                padding: 14px 16px;
+                padding: 10px 16px;
                 transition: 0.3s;
                 font-size: 1em;
                 width: 100%;

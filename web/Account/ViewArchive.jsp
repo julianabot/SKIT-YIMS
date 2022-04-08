@@ -463,7 +463,7 @@
             <!--         //    <form action="../ArchiveServlet" method="GET">
                             <button type="submit" class="generate-button">Delete Archive</button>
                         </form>-->
-            <button id="myBtn">Delete Archive</button>
+            <button id="myBtn" class="generate-button">Delete Archive</button>
 
             <!-- The Modal -->
             <div id="myModal" class="modal">  

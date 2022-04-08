@@ -172,7 +172,7 @@ nav .icon-burger .line{
 
 
 .navbar-spacer{
-    height: 80px;
+    height: 60px; /* 80px */
 }
 
 .search-archive{
@@ -242,11 +242,12 @@ nav .icon-burger .line{
 }
 
 .database-title{
-    font-size: 1.5em;
+    font-size: 1.3em; /*1.5*/
     font-weight: bold;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    align-content: flex-start;
+    margin-top: 20px;
+    margin-bottom: 12px; /*15*/
+    align-content: center; /*flex-start;*/
+    text-align: center;
 }
 
 .database-title-container{
@@ -286,7 +287,7 @@ nav .icon-burger .line{
     color: white;
     font-weight: bold;
     border-radius: 5px;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 .tabcontent{
@@ -294,7 +295,7 @@ nav .icon-burger .line{
     overflow-y: auto;
     white-space: nowrap;
     background-color: white;
-    height: 400px;
+    height: 500px;
 }
 
 table{
@@ -345,8 +346,8 @@ tr:nth-child(even){
     background-color: #8B3535;
     color: white;
     border: none;
-    padding: 10px 20px;
-    font-size: 1.1em;
+    padding: 10px 15px; /*10 20*/
+    font-size: .9em; /*1.1*/
     border-radius: 5px;
 }
 
