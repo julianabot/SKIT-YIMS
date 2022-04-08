@@ -515,7 +515,7 @@
                                 </p>
 
                                 <div class="radial-row">
-                                      <input type="radio" id="yesvax" name="vax" value="Yes" required>
+                                      <input type="radio" id="yesvax" name="vax" value="Yes" >
                                       <label for="yesvax" class="label-english">Yes <span>(Oo)</span></label><br>
                                     <div class="divider-choices"></div>
                                       <input type="radio" id="novax" name="vax" value="No">
@@ -531,7 +531,7 @@
                                     &emsp;<span>Kung hindi, may kagustuhan ka ba mabakuna kapag nagkaroon ng pagkakataon?</span>
                                 </p>
                                 <div class="radial-row">
-                                      <input type="radio" id="yeswilling" name="willing" value="Yes" required>
+                                      <input type="radio" id="yeswilling" name="willing" value="Yes">
                                       <label for="yeswilling" class="label-english">Yes <span>(Oo)</span></label><br>
                                     <div class="divider-choices"></div>
                                       <input type="radio" id="nowilling" name="willing" value="No">
@@ -543,7 +543,7 @@
 
                             <div>
                                 <label for="brand" class="label-english">If yes, what brand of vaccine did you receive?<em class="required"></em>&emsp;<span>Kung oo, ano ang brand ng iyong bakuna?</span></label>
-                                <select name="brand" class="dropdown" id="brand" required>
+                                <select name="brand" class="dropdown" id="brand" >
                                     <option value="Pfizer-BioNTech">Pfizer-BioNTech</option>
                                     <option value="Oxford-AstraZeneca">Oxford-AstraZeneca</option>
                                     <option value="CoronaVac (Sinovac)">CoronaVac (Sinovac)</option>
@@ -559,7 +559,7 @@
 
                             <div>
                                 <label for="vstatus" class="label-english">What is your Vaccine Status?<em class="required"></em>&emsp;<span>Ano ang istatus ng iyong bakuna?</span> </label>
-                                <select name="vstatus" class="dropdown" id="vstatus" required >
+                                <select name="vstatus" class="dropdown" id="vstatus" >
                                     <option value="Not Vaccinated">Not Vaccinated</option>
                                     <option value="First Dose">First Dose</option>
                                     <option value="Second Dose">Second Dose</option>
@@ -573,8 +573,8 @@
                     <button id = "backButton" type = "button" onclick="prev()" class="previous">Back</button>
                     <div class="divider-content"></div>
 
-                    <button id="nextButton" type="button" onclick="next()" class="next">Proceed</button>
-                    <button id="submitButton" type="submit" value="submit" class = "next">Submit</button>
+                    <button id="nextButton" type="button" onclick="validateForm()" class="next">Proceed</button>
+                    <button id="submitButton" type="submit" value="submit" onclick="validateForm()" class = "next">Submit</button>
                 </div>
             </form>
         </div>
@@ -838,6 +838,106 @@
             document.getElementById("defaultOpen").click();
             evt.currentTarget.className += " active";
 
+        </script>
+        <script>
+            function validateForm(){
+                var residentInfo = ["name", "age", "birthday", "gender", "address", "validID"];
+                var residentDetails = ["civil", "working", "jobEmployed", "education", "pwd", "typePWD"];
+                var contactDetails = ["phone", "email", "fbname"];
+                var familyDetails = ["mother", "motherstat", "motherwork", "father", "fatherstat", "fatherwork", "nosibs", "breadwinner"];
+                var survey = ["voter", "org", "orgname", "proj", "support", "jobChance", "message"];
+                var vaccine = ["vax", "willing", "brand", "vstatus"];
+                
+                var regex = /^[a-zA-Z]+$/;
+                var mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+                var i, j, k, l, m, n;
+
+                var fieldname;
+                
+                if(counter == 0){
+                    for(i = 0; i < residentInfo.length; i++){
+                        fieldname = residentInfo[i];
+                        if(document.forms["SurveyForm"][fieldname].value == ""){
+                            alert("Please fill out all field.");
+                            document.forms["SurveyForm"][fieldname].focus();
+                            return false;
+                        }
+                    }
+                    nextButton.onclick(next());
+                }
+                if(counter == 1){
+                    for(i = 0; i < residentDetails.length; i++){
+                        fieldname = residentDetails[i];
+                        if(document.forms["SurveyForm"][fieldname].value == ""){
+                            alert("Please fill out all field.");
+                            document.forms["SurveyForm"][fieldname].focus();
+                            return false;
+                        }
+                    }
+                    nextButton.onclick(next());
+                }
+                if(counter == 2){
+                    for(i = 0; i < contactDetails.length; i++){
+                        fieldname = contactDetails[i];
+                        if(document.forms["SurveyForm"][fieldname].value == ""){
+                            alert("Please fill out all field.");
+                            document.forms["SurveyForm"][fieldname].focus();
+                            return false;
+                        }
+                        if(document.forms["SurveyForm"]["phone"].value.match(regex)){
+                            alert("Please input numbers only for the contact number");
+                            document.forms["SurveyForm"]["phone"].focus();
+                            return false;
+                        }
+                        if(document.forms["SurveyForm"]["email"].value == ""){
+                            alert("Please fill out all field.");
+                            document.forms["SurveyForm"]["email"].focus();
+                            return false;
+                        }
+                        if(!document.forms["SurveyForm"]["email"].value.match(mailFormat)){
+                            alert("Please enter a valid email.");
+                            document.forms["SurveyForm"]["email"].focus();
+                            return false;
+                        }
+                    }
+                    nextButton.onclick(next());
+                }
+                if(counter == 3){
+                    for(i = 0; i < familyDetails.length; i++){
+                        fieldname = familyDetails[i];
+                        if(document.forms["SurveyForm"][fieldname].value == ""){
+                            alert("Please fill out all field.");
+                            document.forms["SurveyForm"][fieldname].focus();
+                            return false;
+                        }
+                    }
+                    nextButton.onclick(next());
+                }
+                if(counter == 4){
+                    for(i = 0; i < survey.length; i++){
+                        fieldname = survey[i];
+                        if(document.forms["SurveyForm"][fieldname].value == ""){
+                            alert("Please fill out all field.");
+                            document.forms["SurveyForm"][fieldname].focus();
+                            return false;
+                        }
+                    }
+                    nextButton.onclick(next());
+                }
+                if(counter == 5){
+                    for(i = 0; i < vaccine.length; i++){
+                        fieldname = vaccine[i];
+                        if(document.forms["SurveyForm"][fieldname].value == ""){
+                            alert("Please fill out all field.");
+                            document.forms["SurveyForm"][fieldname].focus();
+                            return false;
+                        }
+                    }
+                    document.getElementById("SurveyForm").submit();
+                }
+                return true;
+            }
         </script>
     </body>
 </html> 
