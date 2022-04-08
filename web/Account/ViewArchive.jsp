@@ -122,7 +122,17 @@
         if (session.getAttribute("loggedIn") == null) {
             response.sendRedirect("/SKIT-YIMS/Extra/InvalidSession.jsp");
         }
+        //Di ko to mapagana ror T.T
+//        if (!(session.getAttribute("username").equals("skkagawad1db"))
+//                || !(session.getAttribute("username").equals("skkagawad2db"))
+//                || !(session.getAttribute("username").equals("skchairman"))) {
+//
+//            response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
+//
+//        }
+
     %>
+
     <body>
         <!--HEADER-->
         <nav>
@@ -163,8 +173,7 @@
                 <button class="tablinks" onclick="showTab(event, 'Vaccine')">Vaccine Information</button>
             </div>
             <div id="All" class="tabcontent">
-                <%
-                    try {
+                <%                    try {
                         String sortQuery = (String) session.getAttribute("sortQuery");
                         if (sortQuery == null) {
                             sortQuery = " ";
@@ -196,15 +205,20 @@
                     <tr><td><%= rs.getString(1)%></td><td><%= rs.getString(2)%></td><td><%= rs.getString(3)%></td><td><%= rs.getString(4)%></td>
                         <td><%= rs.getString(5)%></td><td><%= rs.getString(6)%></td><td><%= rs.getString(7)%></td><td><%= rs.getString(8)%></td>
                         <td><%= rs.getString(9)%></td><td><%= rs.getString(10)%></td><td><%= rs.getString(11)%></td><td><%= rs.getString(12)%></td>
-                        <td><%= rs.getString(13)%></td><td><%= rs.getString(14)%></td><td><%= rs.getString(15)%></td><td><%= rs.getString(16)%></td>
+                        <td><%= rs.getString(13)%></td><td><%= rs.getString(14)%></td><td><%= rs.getString(15)%></td>
+                        <td>
+                            <a href="GetImageArchive.jsp?id=<%= rs.getString(1)%>" target = "_blank">Valid ID of Resident</a>
+                        </td>
                         <td><%= rs.getString(17)%></td><td><%= rs.getString(18)%></td><td><%= rs.getString(19)%></td><td><%= rs.getString(20)%></td>
                         <td><%= rs.getString(21)%></td><td><%= rs.getString(22)%></td><td><%= rs.getString(23)%></td><td><%= rs.getString(24)%></td>
                         <td><%= rs.getString(25)%></td><td><%= rs.getString(26)%></td><td><%= rs.getString(27)%></td><td><%= rs.getString(28)%></td>
                         <td><%= rs.getString(29)%></td><td><%= rs.getString(30)%></td><td><%= rs.getString(31)%></td><td><%= rs.getString(32)%></td>
                         <td><%= rs.getString(33)%></td><td><%= rs.getString(34)%></td><td><%= rs.getString(35)%></td><td><%= rs.getString(36)%></td>
-                        <td>
-                            <a href="Edit.jsp?u=<%= rs.getString(1)%>" class="btn-warning">Edit</a>
-                        </td></tr>
+                        <!--                        <td>
+                                                    <a href="Edit.jsp?u=<%= rs.getString(1)%>" class="btn-warning">Edit</a>
+                                                </td>-->
+
+                    </tr>
 
                     <%} while (rs.next());
                             }
@@ -245,7 +259,10 @@
                                 do {%>
 
                     <tr><td><%= rs.getString(1)%></td><td><%= rs.getString(2)%></td><td><%= rs.getString(3)%></td><td><%= rs.getString(4)%></td>
-                        <td><%= rs.getString(5)%></td><td><%= rs.getString(6)%></td><td><%= rs.getString(7)%></td>
+                        <td><%= rs.getString(5)%></td><td><%= rs.getString(6)%></td>    
+                        <td>
+                            <a href="GetImageArchive.jsp?id=<%= rs.getString(1)%>" target = "_blank">Valid ID of Resident</a>
+                        </td>
                     </tr>
 
                     <%} while (rs.next());
