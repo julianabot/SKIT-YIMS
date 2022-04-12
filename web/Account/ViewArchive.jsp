@@ -121,15 +121,13 @@
         response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
         if (session.getAttribute("loggedIn") == null) {
             response.sendRedirect("/SKIT-YIMS/Extra/InvalidSession.jsp");
+        } else if (!(session.getAttribute("username").equals("skkagawad1db"))
+                || !(session.getAttribute("username").equals("skkagawad2db"))
+                || !(session.getAttribute("username").equals("skchairman"))) {
+
+            response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
+
         }
-        //Di ko to mapagana ror T.T
-//        if (!(session.getAttribute("username").equals("skkagawad1db"))
-//                || !(session.getAttribute("username").equals("skkagawad2db"))
-//                || !(session.getAttribute("username").equals("skchairman"))) {
-//
-//            response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
-//
-//        }
 
     %>
 

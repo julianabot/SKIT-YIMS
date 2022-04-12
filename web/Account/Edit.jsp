@@ -14,14 +14,22 @@
 
     </head>
     <%
-        String host = "jdbc:mysql://localhost:3306/skit-yims?useSSL=false";
         Connection conn = null;
         Statement stat = null;
         ResultSet res = null;
         PreparedStatement stmt = null;
-//        Class.forName("com.mysql.jdbc.Driver").newInstance();
-//        conn = DriverManager.getConnection(host, "root", "admin1234");
         conn = (Connection) getServletContext().getAttribute("dbConnection");
+
+        response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
+        if (session.getAttribute("loggedIn") == null) {
+            response.sendRedirect("/SKIT-YIMS/Extra/InvalidSession.jsp");
+        } else if (!(session.getAttribute("username").equals("skkagawad1db"))
+                || !(session.getAttribute("username").equals("skkagawad2db"))
+                || !(session.getAttribute("username").equals("skchairman"))) {
+
+            response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
+
+        }
     %>
 
     <body>
