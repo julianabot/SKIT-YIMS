@@ -102,9 +102,9 @@
                                         <input type="button" value="Change Name or Password" class="edit" onclick="window.location = '/SKIT-YIMS/Account/EditProfile.jsp'">
                                     </div>-->
                 </div>
-                <!--
-                <p class="displayed-message">${update1}</p>
-                -->
+                
+                <p id="alertmsg" class="displayed-message">${update1}</p>
+                
                 <c:if test="${not empty update1}">
                     <div class="displayed-message">
                         <strong><c:out value="${update1}"/></strong>
@@ -140,11 +140,14 @@
                     function changePassword() {
                         var x = document.getElementById("changePassword");
                         var y = document.getElementById("changeName");
+                        var z = document.getElementById("alertmsg");
                         if (x.style.display === "none") {
                             x.style.display = "block";
                             y.style.display = "none";
                             document.getElementById("editPass").value = "Cancel";
                             document.getElementById("editName").value = "Edit";
+                            z.style.display = "none";
+                            
                         } else {
                             x.style.display = "none";
                             document.getElementById("editPass").value = "Edit";
