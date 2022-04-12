@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png"/>
-        <link href="../Account/AccountCSS/AccountInformation.css" rel="stylesheet" type="text/css">
+        <link href="../Account/AccountCSS/AccountInformation.css?v={random number/string}" rel="stylesheet" type="text/css">
         <link href="/SKIT-YIMS/Account/AccountCSS/AccountInformation.css" rel="stylesheet" type="text/css">
         <title>Account Profile</title>
     </head>
@@ -65,7 +65,7 @@
                     <form action = "../EditNameServlet" method = "POST">
                         <div>
                             <p class="displayed-info-name">Change your name here:</p>
-                            <input type="Submit" name="savechanges" value="Save" class="saveEdit" onclick="alert('${update}${errorEdit}')">
+                            <input type="Submit" name="savechanges" value="Save" class="saveEdit">
                         </div>
                         <input type="hidden" name="username" value ="${username}" class="input">
                         <input type="text" name="editname" placeholder="Enter New Name" required class="input-change"><br>
@@ -102,61 +102,54 @@
                                         <input type="button" value="Change Name or Password" class="edit" onclick="window.location = '/SKIT-YIMS/Account/EditProfile.jsp'">
                                     </div>-->
                 </div>
-                
-                <p id="alertmsg" class="displayed-message">${update1}</p>
-                
-                <c:if test="${not empty update1}">
-                    <div class="displayed-message">
-                        <strong><c:out value="${update1}"/></strong>
-                    </div>
-                    <c:set var="update1" value="" scope="session"/>
-                </c:if>
+
+                <p id="alertmsg" class="displayed-message" style="display: block;
+                   color: red;
+                   font-weight: 900;
+                   ">
+                    ${update}
+                </p>
+
 
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                <script type="text/javascript">
-                                function showAlert() {
-                                    alert('${update1}');
-                                }
-
-                </script>
 
                 <script>
-                    function changeName() {
-                        var x = document.getElementById("changeName");
-                        var y = document.getElementById("changePassword");
-                        if (x.style.display === "none") {
-                            x.style.display = "block";
-                            y.style.display = "none";
-                            document.getElementById("editName").value = "Cancel";
-                            document.getElementById("editPass").value = "Edit";
-                        } else {
-                            x.style.display = "none";
-                            document.getElementById("editName").value = "Edit";
-                        }
+                                function changeName() {
+                                    var x = document.getElementById("changeName");
+                                    var y = document.getElementById("changePassword");
+                                    if (x.style.display === "none") {
+                                        x.style.display = "block";
+                                        y.style.display = "none";
+                                        document.getElementById("editName").value = "Cancel";
+                                        document.getElementById("editPass").value = "Edit";
+                                    } else {
+                                        x.style.display = "none";
+                                        document.getElementById("editName").value = "Edit";
+                                    }
 
-                    }
+                                }
 
-                    function changePassword() {
-                        var x = document.getElementById("changePassword");
-                        var y = document.getElementById("changeName");
-                        var z = document.getElementById("alertmsg");
-                        if (x.style.display === "none") {
-                            x.style.display = "block";
-                            y.style.display = "none";
-                            document.getElementById("editPass").value = "Cancel";
-                            document.getElementById("editName").value = "Edit";
-                            z.style.display = "none";
-                            
-                        } else {
-                            x.style.display = "none";
-                            document.getElementById("editPass").value = "Edit";
-                        }
-                        if (x.value === "Edit")
-                            x.value = "Cancel";
-                        else
-                            elem.value = "Edit";
-                    }
+                                function changePassword() {
+                                    var x = document.getElementById("changePassword");
+                                    var y = document.getElementById("changeName");
+                                    var z = document.getElementById("alertmsg");
+                                    if (x.style.display === "none") {
+                                        x.style.display = "block";
+                                        y.style.display = "none";
+                                        document.getElementById("editPass").value = "Cancel";
+                                        document.getElementById("editName").value = "Edit";
+                                        z.style.display = "none";
+
+                                    } else {
+                                        x.style.display = "none";
+                                        document.getElementById("editPass").value = "Edit";
+                                    }
+                                    if (x.value === "Edit")
+                                        x.value = "Cancel";
+                                    else
+                                        elem.value = "Edit";
+                                }
 
                 </script>
                 </body>

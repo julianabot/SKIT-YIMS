@@ -38,7 +38,7 @@
                 <br><br>
                 &emsp;&emsp;With that being said, we encourage you to answer a 10-minute survey questions with regards to your thoughts, ideas and suggestions to our upcoming events that will help us address the problems of the youths in our community.
                 <br><br>
-                &emsp;&emsp;You may access the survey form through the link below and please take note that you need to upload your ID Card that indicates your complete address.</p>
+                &emsp;&emsp;You may access the survey form through the button below and please take note that you need to upload your ID Card that indicates your complete address.</p>
             <!-- redirect to About tab -->
             <p class="button"><a href="Survey Forms/Landing.jsp" target="_blank">Fill out Forms</a></p>
         </section>
@@ -189,7 +189,7 @@
             <p class="Organizational-Chart-Subheading">The SK Chairman leads the Sangguniang Kabataan. A Local Youth Development Council (LYDC) composed of representatives of different local youth groups supports the SK and its programs. </p>
             <img src="img/SK_Organizational_Chart.png" class="Organizational-Chart-Image">
         </div>
- 
+
         <!--Footer-->
         <section class="Footer-Container">
             <div class="Flex-Footer-Content" id="Contact-Us">

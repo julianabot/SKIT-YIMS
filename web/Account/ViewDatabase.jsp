@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="AccountCSS/ViewDatabase.css" rel="stylesheet" type="text/css">
+        <link href="AccountCSS/ViewDatabase.css?v={random number/string}" rel="stylesheet" type="text/css">
         <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png" /> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>View Database</title>

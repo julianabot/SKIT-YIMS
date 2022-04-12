@@ -76,7 +76,7 @@ public class PasswordServlet extends HttpServlet {
         System.out.print("Server inside Password Servlet");
 
         HttpSession session = request.getSession();
-        session.removeAttribute("update1");
+        session.removeAttribute("update");
         try {
 
             String currpass = request.getParameter("currpass");
@@ -97,7 +97,7 @@ public class PasswordServlet extends HttpServlet {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
             } else {
-                session.setAttribute("update1", "Incorrect current password. Try again.");
+                session.setAttribute("update", "Incorrect current password. Try again.");
                 response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
                 return;
             }
@@ -116,17 +116,17 @@ public class PasswordServlet extends HttpServlet {
                 stmt.setString(2, username);
 
                 stmt.executeUpdate();
-                session.setAttribute("update1", "You have successfully changed your password.");
+                session.setAttribute("update", "You have successfully changed your password.");
                 response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
                 return;
             } else {
-                session.setAttribute("update1", "Incorrrect confirm new password. Try again.");
+                session.setAttribute("update", "Incorrrect confirm new password. Try again.");
                 response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
                 return;
             }
 
         } catch (Exception e) {
-            session.setAttribute("update1", e.toString());
+            session.setAttribute("update", e.toString());
             response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
         }
 

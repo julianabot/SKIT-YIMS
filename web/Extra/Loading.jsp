@@ -6,7 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png" />
         <link href="/SKIT-YIMS/Extra/ExtraCSS/Loading.css" rel="stylesheet">
-        <title>Log out Successful</title>
+        <title>Download Successful</title>
     </head>
     <%
         response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
@@ -23,8 +23,11 @@
             <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>
 
             <ul class="links">
-                <li class="Home"><a href="/SKIT-YIMS/Welcome.jsp">Home</a></li>
-                <li class="Login"><a href="/SKIT-YIMS/Account/Login.jsp" id="Login">Login</a></li>
+                <li class="Login">
+                    <form action = "../LogoutServlet" method = "GET">
+                        <button id="Login" class="logout-btn" type="submit">Log Out</button>
+                    </form>
+                </li>
             </ul>
             <label for="nav-toggle" class="icon-burger">
                 <div class="line"></div>
@@ -38,7 +41,7 @@
             <p><a href="/SKIT-YIMS/Account/ViewDatabase.jsp" class="err-red">View Database</a></p>
         </div>
 
-        
+
         <!--Footer-->
         <section class="Footer-Container">
             <div class="Flex-Footer-Content" id="Contact-Us">
