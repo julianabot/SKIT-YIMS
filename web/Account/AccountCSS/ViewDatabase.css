@@ -356,14 +356,13 @@ tr:nth-child(even){
     background-color: white;
     display: inline-flex;
     flex-direction: row;
-    height: 75%;
+    height: 70%;
     overflow-y: scroll;
-    position: fixed;
+    /*position: fixed;*/
     z-index: 9;
     right: 0;
     position: absolute;
-    bottom: 0;
-    top: 185px;
+    /*bottom: 0;*/
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
 }
 
@@ -414,7 +413,7 @@ tr:nth-child(even){
     
     .form-popup {
         height: 60%;
-        margin-top: 7%;
+        /*margin-top: 7%;*/
         width: 100%;
     }
     
@@ -432,7 +431,7 @@ tr:nth-child(even){
 
 @media (max-width: 655px){
     .form-popup{
-        top: 280px;
+        
     }
 }
 
