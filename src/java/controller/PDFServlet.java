@@ -15,33 +15,6 @@ public class PDFServlet extends HttpServlet {
     Connection conn;
     String checkException;
 
-//    public void init(ServletConfig config) throws ServletException {
-//        super.init(config);
-//
-//        try {
-//            Class.forName(config.getInitParameter("jdbcClassName"));
-//            String username = config.getInitParameter("dbUsername");
-//            String password = config.getInitParameter("dbPassword");
-//            StringBuffer url = new StringBuffer(config.getInitParameter("jdbcDriverURL"))
-//                    .append("://")
-//                    .append(config.getInitParameter("dbHostName"))
-//                    .append(":")
-//                    .append(config.getInitParameter("dbPort"))
-//                    .append("/")
-//                    .append(config.getInitParameter("databaseName"));
-//            conn
-//                    = DriverManager.getConnection(url.toString(), username, password);
-//            conn.setAutoCommit(true);
-//        } catch (SQLException sqle) {
-//            checkException = sqle.getMessage();
-//            System.out.println("SQLException error occured - "
-//                    + sqle.getMessage());
-//        } catch (ClassNotFoundException nfe) {
-//            checkException = nfe.getMessage();
-//            System.out.println("ClassNotFoundException error occured - "
-//                    + nfe.getMessage());
-//        }
-//    }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/pdf;charset=UTF-8");
@@ -99,77 +72,56 @@ public class PDFServlet extends HttpServlet {
                     AllPDF doc = new AllPDF();
                     doc.residentRecord(rs, username, role, filename, path, numRecord);
                     response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
-//                    ServletOutputStream sos = response.getOutputStream();
-//                    ByteArrayOutputStream pdf = doc.residentRecord(rs, username, role, filename, path, numRecord);
-//                    pdf.writeTo(sos);
                 }
                 if (button.equals("Information")) {
-                    String query = "SELECT * FROM `skit-yims`.`basic-info`" + filterQuery + sortQuery;
+                    String query = "SELECT `resident-info`.residentID, `basic-info`.name, `basic-info`.agegroup, `basic-info`.birthday, `basic-info`.address, `basic-info`.gender,`basic-info`.validID FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID " + filterQuery + sortQuery;
                     Statement stmt = conn.createStatement();
                     ResultSet rs = stmt.executeQuery(query);
-//                    ServletOutputStream sos = response.getOutputStream();
                     PDF doc = new PDF();
                     System.out.println(path);
                     doc.basicInfoRecord(rs, username, role, filename, path);
                     System.out.println(role);
                     response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
-//                    pdf.writeTo(sos);
                 }
                 if (button.equals("Contact")) {
-                    System.out.print("nasa Contact Info");
-                    String query = "SELECT contactID, name, contactNo, emailAddress, fbNameURL FROM `skit-yims`.`contact-info` INNER JOIN `skit-yims`.`basic-info` ON `contact-info`.contactID = `basic-info`.basicID" + filterQuery + sortQuery;;
+                    String query = "SELECT `resident-info`.residentID, `basic-info`.name, `contact-info`.contactNo, `contact-info`.emailAddress, `contact-info`.fbNameURL FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID " + filterQuery + sortQuery;
                     Statement stmt = conn.createStatement();
                     ResultSet rs = stmt.executeQuery(query);
                     PDF doc = new PDF();
                     doc.contactInfoRecord(rs, username, role, filename, path);
                     System.out.println(path);
                     response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
-//                    ByteArrayOutputStream pdf = doc.contactInfoRecord(rs, username, footer, path);
-//                    pdf.writeTo(sos);
                 }
                 if (button.equals("Family")) {
-                    System.out.print("nasa Family Info");
-                    String query = "SELECT familyID, name, motherName, motherOccupation, fatherName, fatherOccupation, vitalStatusMother, vitalStatusFather, noOfSiblings, siblingEducation, breadWinner  FROM `fam-status` INNER JOIN `basic-info` ON `fam-status`.familyID = `basic-info`.basicID" + filterQuery + sortQuery;;
+                    String query = "SELECT `resident-info`.residentID, `basic-info`.name, `fam-status`.motherName, `fam-status`.motherOccupation, `fam-status`.fatherName, `fam-status`.fatherOccupation, `fam-status`.vitalStatusMother, `fam-status`.vitalStatusFather, `fam-status`.noOfSiblings, `fam-status`.siblingEducation, `fam-status`.breadwinner FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID " + filterQuery + sortQuery;
                     Statement stmt = conn.createStatement();
                     ResultSet rs = stmt.executeQuery(query);
-                    ServletOutputStream sos = response.getOutputStream();
                     PDF doc = new PDF();
                     System.out.println(path);
                     doc.familyInfoRecord(rs, username, role, filename, path);
                     response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
-//                    ByteArrayOutputStream pdf = doc.familyInfoRecord(rs, username, footer, path);
-//                    pdf.writeTo(sos);
                 }
                 if (button.equals("Organization")) {
-                    System.out.print("nasa Organization Info");
-                    String query = "SELECT organizationID, name, residentVoter, memberOfOrg, nameOfOrg, supportSK, showSupport, jobChance, sayToSK FROM `resident-org` INNER JOIN `basic-info` ON `resident-org`.organizationID = `basic-info`.basicID" + filterQuery + sortQuery;;
+                    String query = "SELECT `resident-info`.residentID, `basic-info`.name, `resident-org`.residentVoter, `resident-org`.memberOfOrg, `resident-org`.nameOfOrg, `resident-org`.supportSK, `resident-org`.showSupport, `resident-org`.jobChance, `resident-org`.sayToSK FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID " + filterQuery + sortQuery;
                     Statement stmt = conn.createStatement();
                     ResultSet rs = stmt.executeQuery(query);
-                    ServletOutputStream sos = response.getOutputStream();
                     PDF doc = new PDF();
                     doc.orgInfoRecord(rs, username, role, filename, path);
                     response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
 
-//                    System.out.println(path);
-//                    ByteArrayOutputStream pdf = doc.orgInfoRecord(rs, username, footer, path);
-//                    pdf.writeTo(sos);
                 }
                 if (button.equals("Status")) {
-                    System.out.print("nasa Status Info");
-                    String query = "SELECT `resident-status`.statusID, `basic-info`.name, `resident-status`.civilStatus, `resident-status`.workingStatus, `resident-status`.educationAttainment, `resident-status`.jobEmployed, `resident-status`.PWD, `resident-status`.typeOfDisability FROM `resident-status` INNER JOIN `basic-info` ON `resident-status`.statusID = `basic-info`.basicID" + filterQuery + sortQuery;;
+                    String query = "SELECT `resident-info`.residentID, `basic-info`.name, `resident-status`.civilStatus, `resident-status`.workingStatus, `resident-status`.educationAttainment, `resident-status`.jobEmployed, `resident-status`.PWD, `resident-status`.typeOfDisability FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID " + filterQuery + sortQuery;
                     Statement stmt = conn.createStatement();
                     ResultSet rs = stmt.executeQuery(query);
-                    ServletOutputStream sos = response.getOutputStream();
                     PDF doc = new PDF();
                     doc.statusInfoRecord(rs, username, role, filename, path);
                     response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
                 }
                 if (button.equals("Vaccine")) {
-                    System.out.print("nasa Vaccine Info");
-                    String query = "SELECT `vaccine-info`.vaccineID, `basic-info`.name, `vaccine-info`.vaccinated, `vaccine-info`.willingForVaccine, `vaccine-info`.brandOfVaccine, `vaccine-info`.vaccineStatus FROM `vaccine-info` INNER JOIN `basic-info` ON `vaccine-info`.vaccineID = `basic-info`.basicID" + filterQuery + sortQuery;;
+                    String query = "SELECT `resident-info`.residentID, `basic-info`.name, `vaccine-info`.vaccinated, `vaccine-info`.willingForVaccine, `vaccine-info`.brandOfVaccine, `vaccine-info`.vaccineStatus FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID " + filterQuery + sortQuery;
                     Statement stmt = conn.createStatement();
                     ResultSet rs = stmt.executeQuery(query);
-                    ServletOutputStream sos = response.getOutputStream();
                     PDF doc = new PDF();
                     doc.vaccInfoRecord(rs, username, role, filename, path);
                     response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");

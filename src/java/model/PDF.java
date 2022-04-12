@@ -31,19 +31,17 @@ import java.time.format.DateTimeFormatter;
 public class PDF {
 
     public void basicInfoRecord(ResultSet rs, String user, String role, String filename, String path) {
-        //DateTimeFormatter is used to set the format of the current date
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        LocalDateTime current = LocalDateTime.now(); //Gets the current date and time
+        LocalDateTime current = LocalDateTime.now();
 
         Document record = new Document();
         record.setPageSize(PageSize.LEGAL.rotate());
         record.setMargins(30, 30, 20, 30);
-//        ByteArrayOutputStream pdf = new ByteArrayOutputStream();
         int count = 1;
 
         try {
             String home = System.getProperty("user.home");
             PdfWriter writer = PdfWriter.getInstance(record, new FileOutputStream(home + "/Desktop/" + filename));
+            writer.setFullCompression();
 
             HeaderFooterPageEvent event = new HeaderFooterPageEvent(path, user, role);
             record.setMargins(30, 30, 20 + event.getTableHeight(), 30);
@@ -58,10 +56,10 @@ public class PDF {
             Font f3 = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD);
             BaseColor columnHeaderColor = WebColors.getRGBColor("#8B3535");
 
-            PdfPTable basicTable = new PdfPTable(7);
+            PdfPTable basicTable = new PdfPTable(6);
             basicTable.setWidthPercentage(100);
             PdfPCell cell;
-            basicTable.setWidths(new int[]{1, 4, 3, 2, 6, 3, 6});
+            basicTable.setWidths(new int[]{1, 4, 3, 2, 6, 3});
             cell = new PdfPCell(new Phrase("ID", f2));
             cell.setVerticalAlignment(Element.ALIGN_CENTER);
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -98,19 +96,13 @@ public class PDF {
             cell.setPadding(10);
             cell.setBackgroundColor(columnHeaderColor);
             basicTable.addCell(cell);
-            cell = new PdfPCell(new Phrase("Valid ID", f2));
-            cell.setVerticalAlignment(Element.ALIGN_CENTER);
-            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cell.setPadding(10);
-            cell.setBackgroundColor(columnHeaderColor);
-            basicTable.addCell(cell);
 
             basicTable.setHeaderRows(1);
 
             int x = 0;
             while (rs.next()) {
                 x++;
-                cell = new PdfPCell(new Phrase(rs.getString("basicID")));
+                cell = new PdfPCell(new Phrase(rs.getString("residentID")));
                 cell.setVerticalAlignment(Element.ALIGN_CENTER);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 basicTable.addCell(cell);
@@ -123,8 +115,6 @@ public class PDF {
                 cell = new PdfPCell(new Phrase(rs.getString("address")));
                 basicTable.addCell(cell);
                 cell = new PdfPCell(new Phrase(rs.getString("gender")));
-                basicTable.addCell(cell);
-                cell = new PdfPCell(new Phrase(rs.getString("validID")));
                 basicTable.addCell(cell);
                 if (x % 16 == 0) {
                     count++;
@@ -209,7 +199,7 @@ public class PDF {
             int x = 0;
             while (rs.next()) {
                 x++;
-                cell = new PdfPCell(new Phrase(rs.getString("contactID")));
+                cell = new PdfPCell(new Phrase(rs.getString("residentID")));
                 cell.setVerticalAlignment(Element.ALIGN_CENTER);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 contactTable.addCell(cell);
@@ -342,7 +332,7 @@ public class PDF {
             int x = 0;
             while (rs.next()) {
                 x++;
-                cell = new PdfPCell(new Phrase(rs.getString("familyID"), f3));
+                cell = new PdfPCell(new Phrase(rs.getString("residentID"), f3));
                 cell.setVerticalAlignment(Element.ALIGN_CENTER);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 familyTable.addCell(cell);
@@ -474,7 +464,7 @@ public class PDF {
             int x = 0;
             while (rs.next()) {
                 x++;
-                cell = new PdfPCell(new Phrase(rs.getString("organizationID"), f3));
+                cell = new PdfPCell(new Phrase(rs.getString("residentID"), f3));
                 cell.setVerticalAlignment(Element.ALIGN_CENTER);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 orgTable.addCell(cell);
@@ -596,7 +586,7 @@ public class PDF {
             int x = 0;
             while (rs.next()) {
                 x++;
-                cell = new PdfPCell(new Phrase(rs.getString("statusID"), f3));
+                cell = new PdfPCell(new Phrase(rs.getString("residentID"), f3));
                 cell.setVerticalAlignment(Element.ALIGN_CENTER);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 statusTable.addCell(cell);
@@ -704,7 +694,7 @@ public class PDF {
             int x = 0;
             while (rs.next()) {
                 x++;
-                cell = new PdfPCell(new Phrase(rs.getString("vaccineID"), f3));
+                cell = new PdfPCell(new Phrase(rs.getString("residentID"), f3));
                 cell.setVerticalAlignment(Element.ALIGN_CENTER);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 vaccineTable.addCell(cell);
