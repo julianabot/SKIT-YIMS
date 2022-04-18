@@ -383,11 +383,6 @@
                     %>
                 </table>
             </div>
-            <form action="../PDFServlet" method="POST">
-                <input id="pdfdownload" class="pdfdownload" name="pdfdownload" style="display: none">
-                <button type="submit" class="generate-button" onclick="alert('File has been downloaded to your Desktop');">Generate Report</button>
-
-            </form>
             <div>
 
             </div>

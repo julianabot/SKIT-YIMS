@@ -166,11 +166,13 @@
                                     const actualBtn = document.getElementById('myFile');
                                     const fileChosen = document.getElementById('file-chosen');
                                     actualBtn.addEventListener('change', function () {
-                                        if (this.files[0].size > 4194304){
+                                        if (this.files[0].size > 4194304) {
                                             fileChosen.textContent = '   no file chosen'
-                                        } else{fileChosen.textContent = this.files[0].name}
-                                        
-                                        
+                                        } else {
+                                            fileChosen.textContent = this.files[0].name
+                                        }
+
+
                                     })
                                 </script>
 
@@ -840,96 +842,151 @@
 
         </script>
         <script>
-            function validateForm(){
+            function validateForm() {
                 var residentInfo = ["name", "age", "birthday", "gender", "address", "validID"];
                 var residentDetails = ["civil", "working", "jobEmployed", "education", "pwd", "typePWD"];
                 var contactDetails = ["phone", "email", "fbname"];
                 var familyDetails = ["mother", "motherstat", "motherwork", "father", "fatherstat", "fatherwork", "nosibs", "breadwinner"];
                 var survey = ["voter", "org", "orgname", "proj", "support", "jobChance", "message"];
                 var vaccine = ["vax", "willing", "brand", "vstatus"];
-                
+
                 var regex = /^[a-zA-Z]+$/;
                 var mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
                 var i, j, k, l, m, n;
 
                 var fieldname;
-                
-                if(counter == 0){
-                    for(i = 0; i < residentInfo.length; i++){
+
+                if (counter == 0) {
+                    for (i = 0; i < residentInfo.length; i++) {
                         fieldname = residentInfo[i];
-                        if(document.forms["SurveyForm"][fieldname].value == ""){
-                            alert("Please fill out all field.");
+                        if (document.forms["SurveyForm"][fieldname].value == "") {
+                            alert("Please fill out all fields in Resident Information Tab.");
                             document.forms["SurveyForm"][fieldname].focus();
                             return false;
                         }
                     }
                     nextButton.onclick(next());
                 }
-                if(counter == 1){
-                    for(i = 0; i < residentDetails.length; i++){
+                if (counter == 1) {
+                    for (i = 0; i < residentDetails.length; i++) {
                         fieldname = residentDetails[i];
-                        if(document.forms["SurveyForm"][fieldname].value == ""){
-                            alert("Please fill out all field.");
+                        if (document.forms["SurveyForm"][fieldname].value == "") {
+                            alert("Please fill out all fields in Resident Details Tab.");
                             document.forms["SurveyForm"][fieldname].focus();
                             return false;
                         }
                     }
                     nextButton.onclick(next());
                 }
-                if(counter == 2){
-                    for(i = 0; i < contactDetails.length; i++){
+                if (counter == 2) {
+                    for (i = 0; i < contactDetails.length; i++) {
                         fieldname = contactDetails[i];
-                        if(document.forms["SurveyForm"][fieldname].value == ""){
-                            alert("Please fill out all field.");
+                        if (document.forms["SurveyForm"][fieldname].value == "") {
+                            alert("Please fill out all fields in Contact Details Tab.");
                             document.forms["SurveyForm"][fieldname].focus();
                             return false;
                         }
-                        if(document.forms["SurveyForm"]["phone"].value.match(regex)){
-                            alert("Please input numbers only for the contact number");
+                        if (document.forms["SurveyForm"]["phone"].value.match(regex)) {
+                            alert("Please input numbers only for the contact number in Contact Details Tab.");
                             document.forms["SurveyForm"]["phone"].focus();
                             return false;
                         }
-                        if(document.forms["SurveyForm"]["email"].value == ""){
-                            alert("Please fill out all field.");
+                        if (document.forms["SurveyForm"]["email"].value == "") {
+                            alert("Please fill out all fields in Contact Details Tab.");
                             document.forms["SurveyForm"]["email"].focus();
                             return false;
                         }
-                        if(!document.forms["SurveyForm"]["email"].value.match(mailFormat)){
-                            alert("Please enter a valid email.");
+                        if (!document.forms["SurveyForm"]["email"].value.match(mailFormat)) {
+                            alert("Please enter a valid email in Contact Details Tab.");
                             document.forms["SurveyForm"]["email"].focus();
                             return false;
                         }
                     }
                     nextButton.onclick(next());
                 }
-                if(counter == 3){
-                    for(i = 0; i < familyDetails.length; i++){
+                if (counter == 3) {
+                    for (i = 0; i < familyDetails.length; i++) {
                         fieldname = familyDetails[i];
-                        if(document.forms["SurveyForm"][fieldname].value == ""){
-                            alert("Please fill out all field.");
+                        if (document.forms["SurveyForm"][fieldname].value == "") {
+                            alert("Please fill out all fields in Family Details Tab.");
                             document.forms["SurveyForm"][fieldname].focus();
                             return false;
                         }
                     }
                     nextButton.onclick(next());
                 }
-                if(counter == 4){
-                    for(i = 0; i < survey.length; i++){
+                if (counter == 4) {
+                    for (i = 0; i < survey.length; i++) {
                         fieldname = survey[i];
-                        if(document.forms["SurveyForm"][fieldname].value == ""){
-                            alert("Please fill out all field.");
+                        if (document.forms["SurveyForm"][fieldname].value == "") {
+                            alert("Please fill out all fields in Survey Details Tab.");
                             document.forms["SurveyForm"][fieldname].focus();
                             return false;
                         }
                     }
                     nextButton.onclick(next());
                 }
-                if(counter == 5){
-                    for(i = 0; i < vaccine.length; i++){
+                if (counter == 5) {
+                    for (i = 0; i < residentInfo.length; i++) {
+                        fieldname = residentInfo[i];
+                        if (document.forms["SurveyForm"][fieldname].value == "") {
+                            alert("Please fill out all fields in Resident Information Tab.");
+                            document.forms["SurveyForm"][fieldname].focus();
+                            return false;
+                        }
+                    }
+                    for (i = 0; i < residentDetails.length; i++) {
+                        fieldname = residentDetails[i];
+                        if (document.forms["SurveyForm"][fieldname].value == "") {
+                            alert("Please fill out all fields in Resident Details Tab.");
+                            document.forms["SurveyForm"][fieldname].focus();
+                            return false;
+                        }
+                    }
+                    for (i = 0; i < contactDetails.length; i++) {
+                        fieldname = contactDetails[i];
+                        if (document.forms["SurveyForm"][fieldname].value == "") {
+                            alert("Please fill out all fields in Contact Details Tab.");
+                            document.forms["SurveyForm"][fieldname].focus();
+                            return false;
+                        }
+                        if (document.forms["SurveyForm"]["phone"].value.match(regex)) {
+                            alert("Please input numbers only for the contact number in Contact Details Tab.");
+                            document.forms["SurveyForm"]["phone"].focus();
+                            return false;
+                        }
+                        if (document.forms["SurveyForm"]["email"].value == "") {
+                            alert("Please fill out all fields in Contact Details Tab.");
+                            document.forms["SurveyForm"]["email"].focus();
+                            return false;
+                        }
+                        if (!document.forms["SurveyForm"]["email"].value.match(mailFormat)) {
+                            alert("Please enter a valid email in Contact Details Tab.");
+                            document.forms["SurveyForm"]["email"].focus();
+                            return false;
+                        }
+                    }
+                    for (i = 0; i < familyDetails.length; i++) {
+                        fieldname = familyDetails[i];
+                        if (document.forms["SurveyForm"][fieldname].value == "") {
+                            alert("Please fill out all fields in Family Details Tab.");
+                            document.forms["SurveyForm"][fieldname].focus();
+                            return false;
+                        }
+                    }
+                    for (i = 0; i < survey.length; i++) {
+                        fieldname = survey[i];
+                        if (document.forms["SurveyForm"][fieldname].value == "") {
+                            alert("Please fill out all fields in Survey Tab.");
+                            document.forms["SurveyForm"][fieldname].focus();
+                            return false;
+                        }
+                    }
+                    for (i = 0; i < vaccine.length; i++) {
                         fieldname = vaccine[i];
-                        if(document.forms["SurveyForm"][fieldname].value == ""){
-                            alert("Please fill out all field.");
+                        if (document.forms["SurveyForm"][fieldname].value == "") {
+                            alert("Please fill out all fields in Vaccination Tab.");
                             document.forms["SurveyForm"][fieldname].focus();
                             return false;
                         }

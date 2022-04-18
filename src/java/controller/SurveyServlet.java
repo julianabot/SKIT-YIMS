@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-@MultipartConfig(maxFileSize = 16177215)
+@MultipartConfig(maxFileSize = 1024 * 1024 * 5)
 public class SurveyServlet extends HttpServlet {
 
     Connection conn;
@@ -300,7 +300,7 @@ public class SurveyServlet extends HttpServlet {
             e.printStackTrace();
             request.setAttribute("errorLogin", e.toString());
             request.getRequestDispatcher("Survey Forms/ViewSubmitted.jsp").forward(request, response);
-
+           // response.sendRedirect("/SKIT-YIMS/Extra/MissingField.jsp");
         }
     }
 

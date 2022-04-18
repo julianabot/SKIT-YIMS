@@ -23,12 +23,6 @@
         response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
         if (session.getAttribute("loggedIn") == null) {
             response.sendRedirect("/SKIT-YIMS/Extra/InvalidSession.jsp");
-        } else if (!(session.getAttribute("username").equals("skkagawad1db"))
-                || !(session.getAttribute("username").equals("skkagawad2db"))
-                || !(session.getAttribute("username").equals("skchairman"))) {
-
-            response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
-
         }
     %>
 
@@ -129,12 +123,12 @@
                                 <select name="gender" class="age-select" required>
                                     <%
                                         if (res.getString("gender").equals("Male(Lalaki)")) {
-                                    %>         
+                                    %>
                                     <option value="Male(Lalaki)" selected = "selected">Male(Lalaki)</option>
-                                    <option value="Female (Babae)">Female (Babae)</option>  
+                                    <option value="Female (Babae)">Female (Babae)</option>
                                     <%
                                     } else if (res.getString("gender").equals("Female (Babae)")) {
-                                    %>        
+                                    %>
                                     <option value="Male(Lalaki)">Male(Lalaki)</option>
                                     <option value="Female (Babae)"  selected = "selected">Female (Babae)</option>
                                     <%
@@ -658,14 +652,13 @@
                         </div>
                     </div>
                 </div>
-                <!-- <br>
-                 <br> -->
 
                 <%
                     String vaccine_info = "SELECT * FROM `skit-yims`.`vaccine-info` WHERE vaccineID = '" + num + "';";
                     res = stat.executeQuery(vaccine_info);
                     while (res.next()) {
                 %>
+
                 <input type ="hidden" name ="vaccineID" value = "<%= res.getString("vaccineID")%>"/>
 
                 <div id="Vaccination" class="tabcontent">
@@ -909,7 +902,6 @@
             </form>
         </div>
 
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script>
                 var counter = 0;
@@ -934,9 +926,7 @@
                 document.getElementById("defaultOpen").click();
                 evt.currentTarget.className += " active";
         </script>
-
     </body>
-
 </html>
 
 <%--
