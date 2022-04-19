@@ -158,7 +158,7 @@
                             <div class="button-container">
 
 
-                                <input type="file" id="myFile" name="validID" hidden/>
+                                <input type="file" id="myFile" name="validID" accept="image/png, image/jpeg" hidden/>
                                 <label for="myFile" id="fake-button" >Choose File</label>
                                 <span id="file-chosen">&nbsp;no file chosen</span>
 
