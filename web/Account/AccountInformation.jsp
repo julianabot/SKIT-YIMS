@@ -7,6 +7,7 @@
         <link href="../Account/AccountCSS/AccountInformation.css?v={random number/string}" rel="stylesheet" type="text/css">
         <link href="/SKIT-YIMS/Account/AccountCSS/AccountInformation.css" rel="stylesheet" type="text/css">
         <title>Account Profile</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <%
         response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
@@ -90,9 +91,18 @@
                             <input type="Submit" value="Save" name="savechanges" class="saveEdit" minlength="8" onload="showAlert()">
                         </div>
                         <input type="hidden" name="username" value ="${username}" class="input">
-                        <input type="password" name="currpass" placeholder="Enter Current Password"  minlength="8" required class="input-change"><br>
-                        <input type="password" name="newpass" placeholder="Enter New Password"  minlength="8" required required class="input-change"><br>
-                        <input type="password" name="confpass" placeholder="Enter Confirm New Password"  minlength="8" required required class="input-change"><br>
+                        
+                        <div>
+                        <input type="password" name="currpass" placeholder="Enter Current Password"  minlength="8" required class="input-change"><i class="fa fa-eye" id="togglePassword"></i><br>
+                        </div>
+                        
+                        <div>
+                        <input type="password" name="newpass" placeholder="Enter New Password"  minlength="8" required required class="input-change"><i class="fa fa-eye" id="togglePassword"></i><br>
+                        </div>
+                        
+                        <div>
+                        <input type="password" name="confpass" placeholder="Enter Confirm New Password"  minlength="8" required required class="input-change"><i class="fa fa-eye" id="togglePassword"></i><br>
+                        </div>
                     </form>
                     <div>
 
