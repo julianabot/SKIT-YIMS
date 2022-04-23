@@ -35,7 +35,11 @@
         <div class="err-main">
             <p class="err-class">Missing Field!<p>
             <p class="err-message">Please accomplish all the required<br> fields before submitting.</p>
-            <p><a href="/SKIT-YIMS/Survey Forms/Survey.jsp" class="err-red">Go to Home Page</a></p>
+            <!--            <p><a href="/SKIT-YIMS/Survey Forms/Survey.jsp" class="err-red">Go Back</a></p>-->
+            <form>
+                <input type="button" value="Go back" onclick="history.back()"class="err-red">
+            </form>
+
         </div>
 
         <section class="Footer-Container">

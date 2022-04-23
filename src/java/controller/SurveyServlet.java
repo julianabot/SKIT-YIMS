@@ -299,8 +299,8 @@ public class SurveyServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("errorLogin", e.toString());
-            request.getRequestDispatcher("Survey Forms/ViewSubmitted.jsp").forward(request, response);
-           // response.sendRedirect("/SKIT-YIMS/Extra/MissingField.jsp");
+            //request.getRequestDispatcher("Survey Forms/ViewSubmitted.jsp").forward(request, response);
+            response.sendRedirect("/SKIT-YIMS/Extra/MissingField.jsp");
         }
     }
 

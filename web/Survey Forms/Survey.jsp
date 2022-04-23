@@ -989,9 +989,11 @@
                             alert("Please fill out all fields in Vaccination Tab.");
                             document.forms["SurveyForm"][fieldname].focus();
                             return false;
+                        } else{
+                            document.getElementById("SurveyForm").submit();
                         }
                     }
-                    document.getElementById("SurveyForm").submit();
+                    
                 }
                 return true;
             }
