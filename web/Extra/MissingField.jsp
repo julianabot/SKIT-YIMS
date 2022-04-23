@@ -6,7 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png" />
         <link href="/SKIT-YIMS/Extra/ExtraCSS/InvalidSession.css" rel="stylesheet">
-        <title>Invalid Session</title>
+        <title>Incomplete Survey</title>
     </head>
     <%
         response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");

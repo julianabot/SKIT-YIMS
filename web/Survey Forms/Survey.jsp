@@ -158,7 +158,7 @@
                             <div class="button-container">
 
 
-                                <input type="file" id="myFile" name="validID" accept="image/png, image/jpeg" hidden/>
+                                <input type="file" id="myFile" name="validID" accept="image/png, image/jpeg" hidden required/>
                                 <label for="myFile" id="fake-button" >Choose File</label>
                                 <span id="file-chosen">&nbsp;no file chosen</span>
 
@@ -363,7 +363,7 @@
                                     <option value="5">5</option>
                                 </select>
                             </div>
-                            <div class="content-divider"></div>
+                            <!--                            <div class="content-divider"></div>-->
 
                             <!-- dapat may condition dito ilang no. of siblings? Pending pa here-->
                             <div id="sibSelection1" name="sibSelection1" class="original" style="display: none">
@@ -517,7 +517,7 @@
                                 </p>
 
                                 <div class="radial-row">
-                                      <input type="radio" id="yesvax" name="vax" value="Yes" >
+                                      <input type="radio" id="yesvax" name="vax" value="Yes" required>
                                       <label for="yesvax" class="label-english">Yes <span>(Oo)</span></label><br>
                                     <div class="divider-choices"></div>
                                       <input type="radio" id="novax" name="vax" value="No">
@@ -533,7 +533,7 @@
                                     &emsp;<span>Kung hindi, may kagustuhan ka ba mabakuna kapag nagkaroon ng pagkakataon?</span>
                                 </p>
                                 <div class="radial-row">
-                                      <input type="radio" id="yeswilling" name="willing" value="Yes">
+                                      <input type="radio" id="yeswilling" name="willing" value="Yes" required>
                                       <label for="yeswilling" class="label-english">Yes <span>(Oo)</span></label><br>
                                     <div class="divider-choices"></div>
                                       <input type="radio" id="nowilling" name="willing" value="No">
@@ -989,11 +989,11 @@
                             alert("Please fill out all fields in Vaccination Tab.");
                             document.forms["SurveyForm"][fieldname].focus();
                             return false;
-                        } else{
+                        } else {
                             document.getElementById("SurveyForm").submit();
                         }
                     }
-                    
+
                 }
                 return true;
             }
