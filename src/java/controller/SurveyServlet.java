@@ -7,6 +7,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Date;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -70,11 +74,30 @@ public class SurveyServlet extends HttpServlet {
 
             //1. Resident Information
             String residentName = request.getParameter("name");
-            String ageRange = request.getParameter("age");
+            //  String ageRange = request.getParameter("age");
             String birthday = request.getParameter("birthday");
             String address = request.getParameter("address");
             String gender = request.getParameter("gender");
             String validID = request.getParameter("validID");
+
+            String ageRange;
+            int ageGroup;
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = formatter.parse(birthday);
+
+            LocalDate dob = LocalDate.parse(birthday);
+            LocalDate curDate = LocalDate.now();
+            ageGroup = Period.between(dob, curDate).getYears();
+
+            if (ageGroup <= 14) {
+                ageRange = "14 years old and below";
+            } else if (ageGroup >= 15 && ageGroup <= 20) {
+                ageRange = "15-20 years old";
+            } else if (ageGroup >= 21 && ageGroup <= 30) {
+                ageRange = "21-30 years old";
+            } else {
+                ageRange = "31 years old and above";
+            }
 
             session.setAttribute("residentName", residentName);
             session.setAttribute("ageRange", ageRange);
@@ -283,6 +306,10 @@ public class SurveyServlet extends HttpServlet {
             insBasic.execute();
 
             factTable = "UPDATE `resident-info` SET vaccineID = LAST_INSERT_ID() WHERE residentID = LAST_INSERT_ID()";
+            insBasic = conn.prepareStatement(factTable);
+            insBasic.execute();
+
+            factTable = "UPDATE `resident-info` SET timestamp = now() WHERE residentID = LAST_INSERT_ID()";
             insBasic = conn.prepareStatement(factTable);
             insBasic.execute();
 //            String trialTable = "INSERT INTO trial (trialcol) VALUES (?) ";

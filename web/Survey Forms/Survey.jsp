@@ -100,7 +100,7 @@
 
                             <div class="table">
                                 <div class="input-group">
-                                    <label for="age" class="label-english">Age<em class="required"></em>&emsp;<span>Edad</span></label>&emsp;
+                                    <label for="age" class="label-english">Age<em class="required"></em>&emsp;<span>To be removed from jsp and javascript</span></label>&emsp;
                                     <select name="age" id="age" class="age-select" required>
                                         <option value="14 years old and below">14 years old and below</option>
                                         <option value="15-20 years old">15-20 years old</option>
@@ -122,7 +122,7 @@
 
                                 <div class="radial-row-three">
                                     <div>
-                                        <input type="radio" id="female" name="gender" value="Female (Babae)" required>
+                                        <input type="radio" id="female" name="gender" value="Female" required>
                                         <label for="female" class="label-english"><span class="radio-btn"></span>Female <span>(Babae)</span></label>
                                     </div>
 
