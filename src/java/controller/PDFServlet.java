@@ -63,7 +63,7 @@ public class PDFServlet extends HttpServlet {
             Document record = new Document();
             PdfWriter.getInstance(record, response.getOutputStream());
             record.setPageSize(PageSize.LETTER.rotate());
-            String tab ="";
+            String tab = "";
             int count = 1;
             if (conn != null) {
                 System.out.print(button);

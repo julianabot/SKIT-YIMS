@@ -39,6 +39,7 @@ public class HeaderFooterPageEvent extends PdfPageEventHelper {
 
     public void onEndPage(PdfWriter writer, Document document) {
         try {
+            Font FONT = new Font(Font.FontFamily.HELVETICA, 52, Font.BOLD, new GrayColor(0.85f));
             Image headerImg = Image.getInstance(imagePath);
             headerImg.setAbsolutePosition(900, 530);
             headerImg.scaleToFit(70, 70);
@@ -70,7 +71,7 @@ public class HeaderFooterPageEvent extends PdfPageEventHelper {
             headTable.addCell(cell);
             headTableHeight = headTable.getTotalHeight();
 
-            Phrase footer = new Phrase(String.format("Page %s of %s", x, y), ffont);
+            Phrase footer = new Phrase(String.format("Page %s", x), ffont);
 
             headTable.writeSelectedRows(0, -1,
                     document.left(),
@@ -81,6 +82,10 @@ public class HeaderFooterPageEvent extends PdfPageEventHelper {
                     footer,
                     (document.right()),
                     document.bottom() - 10, 0);
+
+            ColumnText.showTextAligned(writer.getDirectContentUnder(),
+                    Element.ALIGN_CENTER, new Phrase("Sangguniang Kabataan Ibayo-Tipas", FONT),
+                    500f, 250, 30);
 
         } catch (Exception e) {
             e.printStackTrace();

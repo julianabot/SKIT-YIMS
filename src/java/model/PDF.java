@@ -119,7 +119,6 @@ public class PDF {
                 if (x % 16 == 0) {
                     count++;
                 }
-                event.setTotalPageCount(count);
             }
             record.add(basicTable);
             record.newPage();
@@ -214,7 +213,6 @@ public class PDF {
                 if (x % 28 == 0) {
                     count++;
                 }
-                event.setTotalPageCount(count);
             }
 
             record.add(contactTable);
@@ -359,7 +357,6 @@ public class PDF {
                 if (x % 13 == 0) {
                     count++;
                 }
-                event.setTotalPageCount(count);
             }
             record.add(familyTable);
             record.newPage();
@@ -487,7 +484,6 @@ public class PDF {
                 if (x % 4 == 0) {
                     count++;
                 }
-                event.setTotalPageCount(count);
             }
             record.add(orgTable);
             record.newPage();
@@ -607,7 +603,6 @@ public class PDF {
                 if (x % 37 == 0) {
                     count++;
                 }
-                event.setTotalPageCount(count);
             }
             record.add(statusTable);
             record.newPage();
@@ -711,7 +706,6 @@ public class PDF {
                 if (x % 38 == 0) {
                     count++;
                 }
-                event.setTotalPageCount(count);
             }
             record.add(vaccineTable);
             record.newPage();
