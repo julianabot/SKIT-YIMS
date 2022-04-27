@@ -138,7 +138,14 @@
                         <button type="submit" class="search-button"><i class="fas fa-search"></i>&nbsp; Search</button>
                     </form>
                 </div>
-                <div class="horizontal-spacer"></div>
+                 <div class="horizontal-spacer"></div>
+                <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
+<!--                <form action="../ArchiveServlet" method="POST">-->
+                    <div class="email-button-container">
+                        <button type="submit" class="email-button">Send Announcements</button>
+                    </div>
+                </form>
+                <% }%>
 
 
             </div>

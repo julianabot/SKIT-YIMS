@@ -473,3 +473,24 @@ tr:nth-child(even){
     height: 10px;
     
 }
+
+.email-button-container{
+    height: 100%;
+    
+}
+
+.email-button{
+    height: 100%;
+    font-size: 0.8em;
+    height: 100%;
+    padding: 7px 10px;
+    background-color: #E9DEDE;
+    border: none;
+/*    border-color: black;*/
+    color: #8B3535;
+    font-weight: bold;
+    border-radius: 5px;
+    vertical-align: middle;
+    
+  
+}
