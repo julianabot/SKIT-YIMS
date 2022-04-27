@@ -265,11 +265,11 @@
                     <tr>
                         <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
                         <td>
-                            <a href="Edit.jsp?u=<%= rs.getString(1)%>" class="btn-warning"><i class="fa fa-pencil-square"></i></a>
+                            <a href="Edit.jsp?u=<%= rs.getString(2)%>" class="btn-warning"><i class="fa fa-pencil-square"></i></a>
                         </td>
 
                         <td>
-                            <a href="Delete.jsp?d=<%= rs.getString(1)%>"  onclick="return confirm('Are you sure you want to delete this resident?')" class="btn-danger"><i class="fa fa-trash" style="color: #8B3535;"></i></a>
+                            <a href="Delete.jsp?d=<%= rs.getString(2)%>"  onclick="return confirm('Are you sure you want to delete this resident?')" class="btn-danger"><i class="fa fa-trash" style="color: #8B3535;"></i></a>
                         </td>
                         <% }%>
                         <td><%= rs.getString(1)%></td><td><%= rs.getString(2)%></td><td><%= rs.getString(3)%></td><td><%= rs.getString(4)%></td>
