@@ -98,11 +98,11 @@
 
                             <div class="content-divider"></div>
 
-
                             <div class="input-group">
                                 <label for="birthday" class="label-english" id="birthday-text">Birthday<em class="required"></em>&emsp;<span>Kaarawan</span></label>&emsp;
                                 <input type="date" name="birthday" id="birthday" class="birthday-select" required>
                             </div>
+                            
 
 
                             <!-- <div class="table">
