@@ -98,22 +98,29 @@
 
                             <div class="content-divider"></div>
 
-                            <div class="table">
-                                <div class="input-group">
-                                    <label for="age" class="label-english">Age<em class="required"></em>&emsp;<span>To be removed from jsp and javascript</span></label>&emsp;
-                                    <select name="age" id="age" class="age-select" required>
-                                        <option value="14 years old and below">14 years old and below</option>
-                                        <option value="15-20 years old">15-20 years old</option>
-                                        <option value="21-30 years old">21-30 years old</option>
-                                        <option value="31 years old and above">31 years old and above</option>
-                                    </select>
-                                </div>
-                                <div class="divider-row"></div>
-                                <div class="input-group">
-                                    <label for="birthday" class="label-english" id="birthday-text">Birthday<em class="required"></em>&emsp;<span>Kaarawan</span></label>&emsp;
-                                    <input type="date" name="birthday" id="birthday" class="birthday-select" required>
-                                </div>
+
+                            <div class="input-group">
+                                <label for="birthday" class="label-english" id="birthday-text">Birthday<em class="required"></em>&emsp;<span>Kaarawan</span></label>&emsp;
+                                <input type="date" name="birthday" id="birthday" class="birthday-select" required>
                             </div>
+
+
+                            <!-- <div class="table">
+                                 <div class="input-group">
+                                     <label for="age" class="label-english">Age<em class="required"></em>&emsp;<span>To be removed from jsp and javascript</span></label>&emsp;
+                                     <select name="age" id="age" class="age-select" required>
+                                         <option value="14 years old and below">14 years old and below</option>
+                                         <option value="15-20 years old">15-20 years old</option>
+                                         <option value="21-30 years old">21-30 years old</option>
+                                         <option value="31 years old and above">31 years old and above</option>
+                                     </select>
+                                 </div> 
+                                 <div class="divider-row"></div>
+                                 <div class="input-group">
+                                     <label for="birthday" class="label-english" id="birthday-text">Birthday<em class="required"></em>&emsp;<span>Kaarawan</span></label>&emsp;
+                                     <input type="date" name="birthday" id="birthday" class="birthday-select" required>
+                                 </div>
+                             </div> -->
 
                             <div class="content-divider"></div>
 

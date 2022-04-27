@@ -104,8 +104,10 @@ span {
 }
 
 .input-group{
-    width: 90%;
-    margin-bottom: 0px;
+    /*width: 90%;
+    margin-bottom: 0px;*/
+    display: flex;
+    flex-direction: row;
 }
 
 .age-select{
@@ -121,13 +123,14 @@ span {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    width: 100%;
 }
 
 .birthday-select{
-    width: 60%;
     font-size: 1.2em;
     height: 30px;
-    font-family: Montserrat;
+    
+    font-family: 'Montserrat';
 }
 
 @media (max-width:780px){
