@@ -138,18 +138,42 @@
                         <button type="submit" class="search-button"><i class="fas fa-search"></i>&nbsp; Search</button>
                     </form>
                 </div>
-                 
+
                 <div class="horizontal-spacer"></div>
-                
-                 <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
-<!--                <form action="../ArchiveServlet" method="POST">-->
-                    <div class="email-button-container">
-                        <button type="submit" class="email-button"><a href="mailto:">Send Announcements</a></button>
-                    </div>
+                <%
+                    try {
+
+                        String sortQuery = (String) session.getAttribute("sortQuery");
+                        if (sortQuery == null) {
+                            sortQuery = " ";
+                        }
+                        String filterQuery = (String) session.getAttribute("filterQuery");
+                        if (filterQuery == null) {
+                            filterQuery = " ";
+                        }
+                        Connection con = (Connection) getServletContext().getAttribute("dbConnection");
+                        String sql = "SELECT GROUP_CONCAT(emailAddress) AS emails FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID " + filterQuery + sortQuery;
+                        PreparedStatement stmt = con.prepareStatement(sql);
+                        String emails = "";
+                        ResultSet rs = stmt.executeQuery();
+                        while (rs.next()) {
+                            emails = rs.getString(1);
+                        }
+
+                        session.setAttribute("emails", emails);
+
+                        System.out.println(emails);
+                    } catch (Exception e) {
+                    }
+
+                %>
+                <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
+                <!--                <form action="../ArchiveServlet" method="POST">-->
+                <div class="email-button-container">
+                    <button type="submit" class="email-button"><a href="mailto:ibayotipas.skcouncil@gmail.com?&bcc=${emails}">Send Announcements</a></button>
+                </div>
                 </form>
                 <% }%>
-
-
             </div>
 
             <div class="database-title-container">
