@@ -80,6 +80,7 @@ public class EditNameServlet extends HttpServlet {
         try {
             String username = request.getParameter("username");
             String editname = request.getParameter("editname");
+            String iName = request.getParameter("SKname");
 
             String insertQuery = "UPDATE `admin-info` SET name = ? WHERE username = ?";
             PreparedStatement ins = conn.prepareStatement(insertQuery);
@@ -87,6 +88,22 @@ public class EditNameServlet extends HttpServlet {
             ins.setString(2, username);
             session.setAttribute("name", editname);
             ins.executeUpdate();
+
+            String query = "INSERT INTO `audit-log` (username, name, changes) VALUES (?, ?, ?)";
+            ins = conn.prepareStatement(query);
+
+            ins.setString(1, username);
+            ins.setString(2, editname);
+
+            String changes = username + ": " + iName + " changed his/her name from " + iName + " to " + editname + ".";
+            ins.setString(3, changes);
+
+            ins.execute();
+
+            query = "UPDATE `audit-log` SET timestamp = now() WHERE auditID = LAST_INSERT_ID()";
+            ins = conn.prepareStatement(query);
+
+            ins.execute();
 
             session.setAttribute("update", "Name changed successfully.");
             response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");

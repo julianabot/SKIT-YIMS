@@ -104,6 +104,8 @@
 
                 <li class="Login">
                     <form action = "../LogoutServlet" method = "GET">
+                        <input type="hidden" name="SKusername" value="${username}"/>
+                        <input type="hidden" name="SKname" value="${name}"/>
                         <button id="Login" class="logout-btn" type="submit">Log Out</button>
                     </form>
                 </li>
@@ -248,7 +250,7 @@
                             out.println("No Records in the table");
                         } else {%>
 
-                <table >
+                <table>
                     <tr>
                         <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
                         <th class="text-center"></th><th class="text-center"></th>
@@ -551,6 +553,8 @@
             </div>
             <form action="../PDFServlet" method="POST">
                 <input id="pdfdownload" class="pdfdownload" name="pdfdownload" style="display: none">
+                <input type="hidden" name="SKusername" value="${username}"/>
+                <input type="hidden" name="SKname" value="${name}"/>
                 <button type="submit" class="generate-button" onclick="alert('File has been downloaded to your Desktop');">Generate Report</button>
 
             </form>

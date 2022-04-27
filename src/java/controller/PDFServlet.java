@@ -44,6 +44,16 @@ public class PDFServlet extends HttpServlet {
         }
 
         try {
+
+            String queryAudit = "INSERT INTO `audit-log` (username, name, changes) VALUES (?, ?, ?)";
+            String button = request.getParameter("pdfdownload");
+
+            PreparedStatement stmtAudit = conn.prepareStatement(queryAudit);
+            String iUsername = request.getParameter("SKusername");
+            String iName = request.getParameter("SKname");
+            stmtAudit.setString(1, iUsername);
+            stmtAudit.setString(2, iName);
+
             dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
             current = LocalDateTime.now(); //Gets the current date and time
             date = dtf.format(current); //DateTimeFormatter pattern is implemented in the current date and time
@@ -53,8 +63,7 @@ public class PDFServlet extends HttpServlet {
             Document record = new Document();
             PdfWriter.getInstance(record, response.getOutputStream());
             record.setPageSize(PageSize.LETTER.rotate());
-            String button = request.getParameter("pdfdownload");
-
+            String tab ="";
             int count = 1;
             if (conn != null) {
                 System.out.print(button);
@@ -71,7 +80,9 @@ public class PDFServlet extends HttpServlet {
                     ResultSet rs = stmt.executeQuery(query);
                     AllPDF doc = new AllPDF();
                     doc.residentRecord(rs, username, role, filename, path, numRecord);
+                    tab = "All";
                     response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
+
                 }
                 if (button.equals("Information")) {
                     String query = "SELECT `resident-info`.residentID, `basic-info`.name, `basic-info`.agegroup, `basic-info`.birthday, `basic-info`.address, `basic-info`.gender,`basic-info`.validID FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID " + filterQuery + sortQuery;
@@ -81,6 +92,7 @@ public class PDFServlet extends HttpServlet {
                     System.out.println(path);
                     doc.basicInfoRecord(rs, username, role, filename, path);
                     System.out.println(role);
+                    tab = "Basic Information";
                     response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
                 }
                 if (button.equals("Contact")) {
@@ -90,6 +102,7 @@ public class PDFServlet extends HttpServlet {
                     PDF doc = new PDF();
                     doc.contactInfoRecord(rs, username, role, filename, path);
                     System.out.println(path);
+                    tab = "Contact Information";
                     response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
                 }
                 if (button.equals("Family")) {
@@ -99,6 +112,7 @@ public class PDFServlet extends HttpServlet {
                     PDF doc = new PDF();
                     System.out.println(path);
                     doc.familyInfoRecord(rs, username, role, filename, path);
+                    tab = "Family";
                     response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
                 }
                 if (button.equals("Organization")) {
@@ -107,6 +121,7 @@ public class PDFServlet extends HttpServlet {
                     ResultSet rs = stmt.executeQuery(query);
                     PDF doc = new PDF();
                     doc.orgInfoRecord(rs, username, role, filename, path);
+                    tab = "Resident Organization";
                     response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
 
                 }
@@ -116,6 +131,7 @@ public class PDFServlet extends HttpServlet {
                     ResultSet rs = stmt.executeQuery(query);
                     PDF doc = new PDF();
                     doc.statusInfoRecord(rs, username, role, filename, path);
+                    tab = "Resident Status";
                     response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
                 }
                 if (button.equals("Vaccine")) {
@@ -124,8 +140,18 @@ public class PDFServlet extends HttpServlet {
                     ResultSet rs = stmt.executeQuery(query);
                     PDF doc = new PDF();
                     doc.vaccInfoRecord(rs, username, role, filename, path);
+                    tab = "Vaccine Information";
                     response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
                 }
+
+                String changes = iUsername + ": " + iName + " generated a PDF in the " + tab + " tab.";
+                stmtAudit.setString(3, changes);
+                stmtAudit.execute();
+
+                queryAudit = "UPDATE `audit-log` SET timestamp = now() WHERE auditID = LAST_INSERT_ID()";
+                stmtAudit = conn.prepareStatement(queryAudit);
+
+                stmtAudit.execute();
 
             }
 
