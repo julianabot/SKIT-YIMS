@@ -138,11 +138,13 @@
                         <button type="submit" class="search-button"><i class="fas fa-search"></i>&nbsp; Search</button>
                     </form>
                 </div>
-                 <div class="horizontal-spacer"></div>
-                <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
+                 
+                <div class="horizontal-spacer"></div>
+                
+                 <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
 <!--                <form action="../ArchiveServlet" method="POST">-->
                     <div class="email-button-container">
-                        <button type="submit" class="email-button">Send Announcements</button>
+                        <button type="submit" class="email-button"><a href="mailto:">Send Announcements</a></button>
                     </div>
                 </form>
                 <% }%>
