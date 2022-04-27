@@ -24,15 +24,29 @@
             <!--This section contains the "Eruditio Academy" text taken from the webxml-->
             <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>
 
-            <ul class="links" style="width: 30%;">
-                <li class="Events"><a href="/SKIT-YIMS/Account/ViewDatabase.jsp">Database</a></li>
-                <!--Account Tab TBR-->
-                <li class="Events"><a href="/SKIT-YIMS/Account/AccountInformation.jsp">Account</a></li>
+            <ul class="links">
+                <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
+                <li class="Events"><a href="AuditLog.jsp">Audit Log</a></li> 
+                <% }%>
+                <li class="Events"><a href="ViewDatabase.jsp">Database</a></li>
+                
+                <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
+                <li class = "Events">
+                <form action="../ArchiveServlet" method="POST">
+<!--                    <div class="archive-button-container">-->
+                        <button type="submit" class="archive-button">Archive</button>
+<!--                    </div>-->
+                </form>
+                <% }%>
+                </li>
+                
+                <li class="Events"><a href="AccountInformation.jsp">Account</a></li>
+
                 <li class="Login">
                     <form action = "../LogoutServlet" method = "GET">
                         <input type="hidden" name="SKusername" value="${username}"/>
                         <input type="hidden" name="SKname" value="${name}"/>
-                        <button class="logout-btn" type="submit">Log Out</button>
+                        <button id="Login" class="logout-btn" type="submit">Log Out</button>
                     </form>
                 </li>
             </ul>

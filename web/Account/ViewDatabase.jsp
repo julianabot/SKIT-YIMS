@@ -98,8 +98,21 @@
             <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>
 
             <ul class="links">
-                <!-- <li class="About"><a href="../Welcome.jsp">Home</a></li> -->
+                <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
+                <li class="Events"><a href="AuditLog.jsp">Audit Log</a></li> 
+                <% }%>
                 <li class="Events"><a href="ViewDatabase.jsp">Database</a></li>
+                
+                <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
+                <li class = "Events">
+                <form action="../ArchiveServlet" method="POST">
+<!--                    <div class="archive-button-container">-->
+                        <button type="submit" class="archive-button">Archive</button>
+<!--                    </div>-->
+                </form>
+                <% }%>
+                </li>
+                
                 <li class="Events"><a href="AccountInformation.jsp">Account</a></li>
 
                 <li class="Login">
@@ -126,13 +139,7 @@
                     </form>
                 </div>
                 <div class="horizontal-spacer"></div>
-                <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
-                <form action="../ArchiveServlet" method="POST">
-                    <div class="archive-button-container">
-                        <button type="submit" class="archive-button">Archive Database</button>
-                    </div>
-                </form>
-                <% }%>
+                
 
             </div>
 

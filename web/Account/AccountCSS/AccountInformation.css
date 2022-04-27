@@ -57,7 +57,7 @@ nav .links{
 }
 
 nav .links{
-    width: 30%;
+    width: 40%;
 }
 
 nav .links li{
@@ -371,4 +371,16 @@ h3{
 .fa-eye{
     margin-left: -25px;
     text-align: center;
+}
+
+.archive-button{
+    height: 100%;
+    font-size: 1.1em;
+    height: 100%;
+    background-color: #8B3535;
+    border: none;
+    color: white;
+    font-weight: bold;
+    vertical-align: middle;
+
 }

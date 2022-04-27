@@ -85,11 +85,28 @@
 
             <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>
 
-            <ul class="links">
-                <li class="Events"><a href="ViewDatabase.jsp"> Database</a></li>
+           <ul class="links">
+                <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
+                <li class="Events"><a href="AuditLog.jsp">Audit Log</a></li> 
+                <% }%>
+                <li class="Events"><a href="ViewDatabase.jsp">Database</a></li>
+                
+                <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
+                <li class = "Events">
+                <form action="../ArchiveServlet" method="POST">
+<!--                    <div class="archive-button-container">-->
+                        <button type="submit" class="archive-button">Archive</button>
+<!--                    </div>-->
+                </form>
+                <% }%>
+                </li>
+                
                 <li class="Events"><a href="AccountInformation.jsp">Account</a></li>
+
                 <li class="Login">
                     <form action = "../LogoutServlet" method = "GET">
+                        <input type="hidden" name="SKusername" value="${username}"/>
+                        <input type="hidden" name="SKname" value="${name}"/>
                         <button id="Login" class="logout-btn" type="submit">Log Out</button>
                     </form>
                 </li>
