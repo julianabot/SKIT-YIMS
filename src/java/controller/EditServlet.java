@@ -187,6 +187,25 @@ public class EditServlet extends HttpServlet {
                 stmt.setString(4, vaccineStatus);
                 stmt.execute();
 
+                String iUsername = (String) request.getSession(false).getAttribute("username");
+                String iName = (String) request.getSession(false).getAttribute("name");
+
+                String query = "INSERT INTO `audit-log` (username, name, changes) VALUES (?, ?, ?)";
+                stmt = conn.prepareStatement(query);
+
+                stmt.setString(1, iUsername);
+                stmt.setString(2, iName);
+
+                String changes = iUsername + ": " + iName + " edited Resident " + bID + ": " + name;
+                stmt.setString(3, changes);
+
+                stmt.execute();
+
+                query = "UPDATE `audit-log` SET timestamp = now() WHERE auditID = LAST_INSERT_ID()";
+                stmt = conn.prepareStatement(query);
+
+                stmt.execute();
+
                 response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
 
             }
