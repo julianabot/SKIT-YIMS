@@ -113,6 +113,22 @@ public class LoginServlet extends HttpServlet {
 //                    request.getRequestDispatcher("/Account/AccountInformation.jsp").forward(request, response);
                     response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
 
+                    query = "INSERT INTO `audit-log` (username, name, changes) VALUES (?, ?, ?)";
+                    stmt = conn.prepareStatement(query);
+
+                    stmt.setString(1, iUsername);
+                    stmt.setString(2, iName);
+
+                    String changes = iUsername + ": " + iName + " successfully logged in.";
+                    stmt.setString(3, changes);
+
+                    stmt.execute();
+
+                    query = "UPDATE `audit-log` SET timestamp = now() WHERE auditID = LAST_INSERT_ID()";
+                    stmt = conn.prepareStatement(query);
+
+                    stmt.execute();
+
                 } else {
                     session.setAttribute("errorLogin", "Wrong password! Try again.");
 //                    request.getRequestDispatcher("/Account/Login.jsp").forward(request, response);
@@ -131,6 +147,7 @@ public class LoginServlet extends HttpServlet {
 
         } catch (Exception e) {
             request.setAttribute("errorLogin", checkException);
+            e.printStackTrace();
 //            request.getRequestDispatcher("/Account/Login.jsp").forward(request, response);
             response.sendRedirect("/SKIT-YIMS/Account/Login.jsp");
         }

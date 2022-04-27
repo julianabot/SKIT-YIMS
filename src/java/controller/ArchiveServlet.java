@@ -69,7 +69,28 @@ public class ArchiveServlet extends HttpServlet {
             String deleteSQL = "DELETE FROM `skit-yims`.`archive-info`";
             PreparedStatement stmt = conn.prepareStatement(deleteSQL);
             stmt.execute();
+            
+            String query = "INSERT INTO `audit-log` (username, name, changes) VALUES (?, ?, ?)";
+            stmt = conn.prepareStatement(query);
 
+            String iUsername = request.getParameter("SKusername");
+            String iName = request.getParameter("SKname");
+
+            stmt = conn.prepareStatement(query);
+
+            stmt.setString(1, iUsername);
+            stmt.setString(2, iName);
+
+            String changes = iUsername + ": " + iName + " deleted the archive table.";
+            stmt.setString(3, changes);
+
+            stmt.execute();
+
+            query = "UPDATE `audit-log` SET timestamp = now() WHERE auditID = LAST_INSERT_ID()";
+            stmt = conn.prepareStatement(query);
+
+            stmt.execute();
+            
             response.sendRedirect("/SKIT-YIMS/Account/ViewArchive.jsp");
         } catch (Exception e) {
             System.out.println(e.getMessage());

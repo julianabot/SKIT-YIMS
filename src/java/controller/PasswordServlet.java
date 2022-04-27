@@ -21,31 +21,6 @@ public class PasswordServlet extends HttpServlet {
     Connection conn;
     String connectURL;
 
-//    public void init(ServletConfig config) throws ServletException {
-//        super.init(config);
-//
-//        try {
-//            Class.forName(config.getInitParameter("jdbcClassName"));
-//            String username = config.getInitParameter("dbUsername");
-//            String password = config.getInitParameter("dbPassword");
-//            StringBuffer url = new StringBuffer(config.getInitParameter("jdbcDriverURL"))
-//                    .append("://")
-//                    .append(config.getInitParameter("dbHostName"))
-//                    .append(":")
-//                    .append(config.getInitParameter("dbPort"))
-//                    .append("/")
-//                    .append(config.getInitParameter("databaseName"));
-//            conn
-//                    = DriverManager.getConnection(url.toString(), username, password);
-//            connectURL = url.toString();
-//        } catch (SQLException sqle) {
-//            System.out.println("SQLException error occured - "
-//                    + sqle.getMessage());
-//        } catch (ClassNotFoundException nfe) {
-//            System.out.println("ClassNotFoundException error occured - "
-//                    + nfe.getMessage());
-//        }
-//    }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -83,6 +58,7 @@ public class PasswordServlet extends HttpServlet {
             String newpass = request.getParameter("newpass");
             String confpass = request.getParameter("confpass");
             String username = request.getParameter("username");
+            String iName = request.getParameter("SKname");
 
             String password = null;
 
@@ -116,6 +92,23 @@ public class PasswordServlet extends HttpServlet {
                 stmt.setString(2, username);
 
                 stmt.executeUpdate();
+
+                query = "INSERT INTO `audit-log` (username, name, changes) VALUES (?, ?, ?)";
+                stmt = conn.prepareStatement(query);
+
+                stmt.setString(1, username);
+                stmt.setString(2, iName);
+
+                String changes = username + ": " + iName + " changed his/her password.";
+                stmt.setString(3, changes);
+
+                stmt.execute();
+
+                query = "UPDATE `audit-log` SET timestamp = now() WHERE auditID = LAST_INSERT_ID()";
+                stmt = conn.prepareStatement(query);
+
+                stmt.execute();
+
                 session.setAttribute("update", "You have successfully changed your password.");
                 response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
                 return;

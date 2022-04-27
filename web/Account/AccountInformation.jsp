@@ -30,6 +30,8 @@
                 <li class="Events"><a href="/SKIT-YIMS/Account/AccountInformation.jsp">Account</a></li>
                 <li class="Login">
                     <form action = "../LogoutServlet" method = "GET">
+                        <input type="hidden" name="SKusername" value="${username}"/>
+                        <input type="hidden" name="SKname" value="${name}"/>
                         <button class="logout-btn" type="submit">Log Out</button>
                     </form>
                 </li>
@@ -71,10 +73,10 @@
                         </div>
                         <input type="hidden" name="username" value ="${username}" class="input">
                         <input type="text" name="editname" placeholder="Enter New Name" required class="input-change"><br>
+
+                        <input type="hidden" name="SKname" value="${name}"/>
+
                     </form>
-                    <!--                    <div>
-                                            <p class="displayed-message">${update}${errorEdit}</p>
-                                        </div>-->
                 </div>    
 
 
@@ -104,6 +106,9 @@
                         <div>
                             <input type="password" id="password-3" name="confpass" placeholder="Enter Confirm New Password"  minlength="8" required required class="input-change"><i class="fa fa-eye" id="togglePassword-3"></i><br>
                         </div>
+
+                        <input type="hidden" name="SKname" value="${name}"/>
+
                         <script src="../js/toggle.js"></script>
                         <script src="../js/toggleNewPass.js"></script>
                         <script src="../js/toggleConfirmPwd.js"></script>

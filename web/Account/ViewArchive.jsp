@@ -478,6 +478,8 @@
                 <div class="modal-content">
                     <form action="../ArchiveServlet" method="GET"> <span class="close">&times;</span>
                         <h1>Are you sure you want to delete archive?</h1>
+                        <input type="hidden" name="SKusername" value="${username}"/>
+                        <input type="hidden" name="SKname" value="${name}"/>
                         <button id="cancel" type="button" class="generate-button">Cancel</button>
                         <button type="submit" class="generate-button">Delete</button>
                     </form>
