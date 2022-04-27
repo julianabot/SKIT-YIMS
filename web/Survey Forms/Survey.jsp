@@ -103,8 +103,6 @@
                                 <input type="date" name="birthday" id="birthday" class="birthday-select" required>
                             </div>
                             
-
-
                             <!-- <div class="table">
                                  <div class="input-group">
                                      <label for="age" class="label-english">Age<em class="required"></em>&emsp;<span>To be removed from jsp and javascript</span></label>&emsp;
