@@ -136,19 +136,19 @@
             <ul class="links">
                 <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
                 <li class="Events"><a href="AuditLog.jsp">Audit Log</a></li> 
-                <% }%>
+                    <% }%>
                 <li class="Events"><a href="ViewDatabase.jsp">Database</a></li>
-                
+
                 <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
                 <li class = "Events">
-                <form action="../ArchiveServlet" method="POST">
-<!--                    <div class="archive-button-container">-->
+                    <form action="../ArchiveServlet" method="POST">
+                        <!--                    <div class="archive-button-container">-->
                         <button type="submit" class="archive-button">Archive</button>
-<!--                    </div>-->
-                </form>
-                <% }%>
+                        <!--                    </div>-->
+                    </form>
+                    <% }%>
                 </li>
-                
+
                 <li class="Events"><a href="AccountInformation.jsp">Account</a></li>
 
                 <li class="Login">
@@ -167,15 +167,15 @@
         </nav>
         <div class="navbar-spacer"></div> 
         <div>
-<!--            <div class="database-title-container">
-                <div class="database-title">SK Ibayo-Tipas Youth Residents AuditLog</div>
-            </div>-->
+            <!--            <div class="database-title-container">
+                            <div class="database-title">SK Ibayo-Tipas Youth Residents AuditLog</div>
+                        </div>-->
 
 
             <div class="tab">
                 <button class="tablinks" onclick="showTab(event, 'AuditLog')"  id="defaultOpen">Audit Log</button>
             </div>
-          
+
             <div id="AuditLog" class="tabcontent">
                 <%
                     try {
@@ -203,8 +203,8 @@
                             <%
                                 do {%>
 
-                    <tr><td><%= rs.getString(2)%></td><td><%= rs.getString(3)%></td><td><%= rs.getString(4)%></td><td><%= rs.getString(5)%></td>
-                        </tr>
+                    <tr><td><%= rs.getString(2)%></td><td  style="width:20%"><%= rs.getString(3)%></td><td style="width:20%"><%= rs.getString(4)%></td><td style="width:60%"><%= rs.getString(5)%></td>
+                    </tr>
 
                     <%} while (rs.next());
                             }
@@ -217,7 +217,7 @@
                 </table>
             </div>
 
-            
+
 
         </div>
     </body>

@@ -135,19 +135,19 @@
             <ul class="links">
                 <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
                 <li class="Events"><a href="AuditLog.jsp">Audit Log</a></li> 
-                <% }%>
+                    <% }%>
                 <li class="Events"><a href="ViewDatabase.jsp">Database</a></li>
-                
+
                 <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
                 <li class = "Events">
-                <form action="../ArchiveServlet" method="POST">
-<!--                    <div class="archive-button-container">-->
+                    <form action="../ArchiveServlet" method="POST">
+                        <!--                    <div class="archive-button-container">-->
                         <button type="submit" class="archive-button">Archive</button>
-<!--                    </div>-->
-                </form>
-                <% }%>
+                        <!--                    </div>-->
+                    </form>
+                    <% }%>
                 </li>
-                
+
                 <li class="Events"><a href="AccountInformation.jsp">Account</a></li>
 
                 <li class="Login">
@@ -266,7 +266,7 @@
                                 do {%>
 
                     <tr><td><%= rs.getString(1)%></td><td><%= rs.getString(2)%></td><td><%= rs.getString(3)%></td><td><%= rs.getString(4)%></td>
-                        <td><%= rs.getString(5)%></td><td><%= rs.getString(6)%></td>    
+                        <td style="width:60%"><%= rs.getString(5)%></td><td><%= rs.getString(6)%></td>    
                         <td>
                             <a href="GetImageArchive.jsp?id=<%= rs.getString(1)%>" target = "_blank">Valid ID of Resident</a>
                         </td>
@@ -309,7 +309,7 @@
                             <%
                                 do {%>
 
-                    <tr><td><%= rs.getString(1)%></td><td><%= rs.getString(2)%></td><td><%= rs.getString(3)%></td><td><%= rs.getString(4)%></td><td><%= rs.getString(5)%></td></tr>
+                    <tr><td><%= rs.getString(1)%></td><td style="width:25%"><%= rs.getString(2)%></td><td style="width:20%"><%= rs.getString(3)%></td><td  style="width: 25%"><%= rs.getString(4)%></td><td  style="width: 30%"><%= rs.getString(5)%></td></tr>
 
                     <%} while (rs.next());
                             }
@@ -432,7 +432,7 @@
                                 do {%>
 
                     <tr><td><%= rs.getString(1)%></td><td><%= rs.getString(2)%></td><td><%= rs.getString(3)%></td><td><%= rs.getString(4)%></td>
-                        <td><%= rs.getString(5)%></td><td><%= rs.getString(6)%></td><td><%= rs.getString(7)%></td><td><%= rs.getString(8)%></td></tr>
+                        <td><%= rs.getString(5)%></td><td><%= rs.getString(6)%></td><td><%= rs.getString(7)%></td><td style="width:100%"><%= rs.getString(8)%></td></tr>
 
                     <%} while (rs.next());
                             }
@@ -471,8 +471,8 @@
                             <%
                                 do {%>
 
-                    <tr><td><%= rs.getString(1)%></td><td><%= rs.getString(2)%></td><td><%= rs.getString(3)%></td><td><%= rs.getString(4)%></td>
-                        <td><%= rs.getString(5)%></td><td><%= rs.getString(6)%></td></tr>
+                    <tr><td><%= rs.getString(1)%></td><td  style="width: 40%"><%= rs.getString(2)%></td><td style="width: 15%"><%= rs.getString(3)%></td><td style="width: 15%"><%= rs.getString(4)%></td>
+                        <td style="width: 15%"><%= rs.getString(5)%></td><td style="width: 15%"><%= rs.getString(6)%></td></tr>
 
                     <%} while (rs.next());
                             }
