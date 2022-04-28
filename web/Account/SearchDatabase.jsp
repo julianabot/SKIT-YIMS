@@ -130,9 +130,42 @@
                         <button type="submit" class="search-button"><i class="fas fa-search"></i>&nbsp; Search</button>
                     </form>
                 </div>
+
                 <div class="horizontal-spacer"></div>
-                <div class="archive-button-container">
-                    <button type="button" class="archive-button">Export Archived Data</button> </div>
+                <%
+                    try {
+
+                        String sortQuery = (String) session.getAttribute("sortQuery");
+                        if (sortQuery == null) {
+                            sortQuery = " ";
+                        }
+                        String filterQuery = (String) session.getAttribute("filterQuery");
+                        if (filterQuery == null) {
+                            filterQuery = " ";
+                        }
+                        Connection con = (Connection) getServletContext().getAttribute("dbConnection");
+                        String sql = "SELECT GROUP_CONCAT(emailAddress) AS emails FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID " + filterQuery + sortQuery;
+                        PreparedStatement stmt = con.prepareStatement(sql);
+                        String emails = "";
+                        ResultSet rs = stmt.executeQuery();
+                        while (rs.next()) {
+                            emails = rs.getString(1);
+                        }
+
+                        session.setAttribute("emails", emails);
+
+                        System.out.println(emails);
+                    } catch (Exception e) {
+                    }
+
+                %>
+                <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
+                <!--                <form action="../ArchiveServlet" method="POST">-->
+                <div class="email-button-container">
+                    <button type="submit" class="email-button"><a href="mailto:ibayotipas.skcouncil@gmail.com?&bcc=${emails}">Send Announcements</a></button>
+                </div>
+                
+                <% }%>
             </div>
 
             <div class="database-title-container">
@@ -222,7 +255,7 @@
                                 do {%>
 
                     <tr><td><%= rs.getString(1)%></td><td><%= rs.getString(2)%></td><td><%= rs.getString(3)%></td><td><%= rs.getString(4)%></td>
-                        <td><%= rs.getString(5)%></td><td><%= rs.getString(6)%></td>
+                        <td style="width:60%"><%= rs.getString(5)%></td><td><%= rs.getString(6)%></td>
                         <td>
                             <a href="GetImage.jsp?id=<%= rs.getString(1)%>" target = "_blank">Valid ID of Resident</a>
                         </td>
@@ -259,7 +292,7 @@
                             <%
                                 do {%>
 
-                    <tr><td><%= rs.getString(1)%></td><td><%= rs.getString(2)%></td><td><%= rs.getString(3)%></td><td><%= rs.getString(4)%></td><td><%= rs.getString(5)%></td></tr>
+                    <tr><td><%= rs.getString(1)%></td><td style="width:25%"><%= rs.getString(2)%></td><td style="width:20%"><%= rs.getString(3)%></td><td  style="width: 25%"><%= rs.getString(4)%></td><td  style="width: 30%"><%= rs.getString(5)%></td></tr>
 
                     <%} while (rs.next());
                             }
@@ -328,7 +361,8 @@
                                 do {%>
 
                     <tr><td><%= rs.getString(1)%></td><td><%= rs.getString(2)%></td><td><%= rs.getString(3)%></td><td><%= rs.getString(4)%></td>
-                        <td><%= rs.getString(5)%></td><td><%= rs.getString(6)%></td><td><%= rs.getString(7)%></td><td><%= rs.getString(8)%></td><td><%= rs.getString(9)%></tr>
+                        <td><%= rs.getString(5)%></td><td><%= rs.getString(6)%></td><td><%= rs.getString(7)%></td><td><%= rs.getString(8)%></td>
+                        <td style="width:100%"><%= rs.getString(9)%></tr>
 
                     <%} while (rs.next());
                             }
@@ -361,7 +395,7 @@
                                 do {%>
 
                     <tr><td><%= rs.getString(1)%></td><td><%= rs.getString(2)%></td><td><%= rs.getString(3)%></td><td><%= rs.getString(4)%></td>
-                        <td><%= rs.getString(5)%></td><td><%= rs.getString(6)%></td><td><%= rs.getString(7)%></td><td><%= rs.getString(8)%></td></tr>
+                        <td><%= rs.getString(5)%></td><td><%= rs.getString(6)%></td><td><%= rs.getString(7)%></td><td style="width:100%"><%= rs.getString(8)%></td></tr>
 
                     <%} while (rs.next());
                             }
@@ -393,8 +427,9 @@
                             <%
                                 do {%>
 
-                    <tr><td><%= rs.getString(1)%></td><td><%= rs.getString(2)%></td><td><%= rs.getString(3)%></td><td><%= rs.getString(4)%></td>
-                        <td><%= rs.getString(5)%></td><td><%= rs.getString(6)%></td></tr>
+                   <tr><td><%= rs.getString(1)%></td><td  style="width: 40%"><%= rs.getString(2)%></td><td style="width: 15%"><%= rs.getString(3)%></td><td style="width: 15%"><%= rs.getString(4)%></td>
+                        <td style="width: 15%"><%= rs.getString(5)%></td><td style="width: 15%"><%= rs.getString(6)%></td></tr>
+
 
                     <%} while (rs.next());
                             }
