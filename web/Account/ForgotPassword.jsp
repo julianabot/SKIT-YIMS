@@ -53,9 +53,13 @@
             }*/
         </style>
     </head>
-    <img src="${pageContext.request.contextPath}/img/SK_Logo.png" alt="SK Logo" id="Logo">
+    
+    
     <body oncontextmenu='return false' class='snippet-body'>
+        <div class="goback"> <a class="purp-btn" href="${pageContext.request.contextPath}/Account/Login.jsp">Go back</a> </div>
+        <img src="${pageContext.request.contextPath}/img/SK_Logo.png" alt="SK Logo" id="Logo">
         <div class="container">
+            
         <div class="main-container">
             <div class="forgot">
                 <h2>Forgot your password?</h2>

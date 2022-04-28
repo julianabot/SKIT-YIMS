@@ -107,7 +107,7 @@
                 <li class = "Events">
                     <form action="../ArchiveServlet" method="POST">
                         <!--                    <div class="archive-button-container">-->
-                        <button type="submit" class="archive-button">Archive</button>
+                        <button type="submit" class = "archive-button-view">Archive</button>
                         <!--                    </div>-->
                     </form>
                     <% }%>
@@ -135,6 +135,7 @@
                 <div class="wrapper">
                     <form action="../SearchServlet" method="POST">
                         <input name="searchResident" type="text" placeholder="Search for a resident" id="searchResident">
+                        <i class="fas fa-search icon"></i>
                         <button type="submit" class="search-button"><i class="fas fa-search"></i>&nbsp; Search</button>
                     </form>
                 </div>

@@ -57,7 +57,7 @@ nav .links{
 }
 
 nav .links{
-    width: 40%;
+    width: 50%;
 }
 
 nav .links li{
@@ -111,7 +111,21 @@ nav .icon-burger .line{
     padding-left: 15px;
 }
 
-@media screen and (max-width: 1048px){
+.archive-button-view{
+    border: none;
+    color: white;
+    background-color: Transparent;
+     font-family: Montserrat;
+    font-size: 1.1em;
+    font-style: normal;
+    font-weight: bold;
+
+}
+
+@media screen and (max-width: 1100px){
+    .archive-button-view{
+    font-size: 1.5em;
+}
     nav .logo{
         float: none;
         width: auto;

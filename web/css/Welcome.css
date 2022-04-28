@@ -54,7 +54,6 @@ nav .links{
     float: right;
     padding: 0;
     margin: 0;
-    width: 20%;
     height: 100%;
     display: flex;
     justify-content: space-around;
@@ -62,7 +61,7 @@ nav .links{
 }
 
 nav .links{
-    width: 30%;
+    width: 40%;
 }
 
 nav .links li{

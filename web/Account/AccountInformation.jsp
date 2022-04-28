@@ -34,7 +34,7 @@
                 <li class = "Events">
                 <form action="../ArchiveServlet" method="POST">
 <!--                    <div class="archive-button-container">-->
-                        <button type="submit" class="archive-button">Archive</button>
+                        <button type="submit" class = "archive-button-view">Archive</button>
 <!--                    </div>-->
                 </form>
                 <% }%>
