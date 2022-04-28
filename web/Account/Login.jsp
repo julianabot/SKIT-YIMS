@@ -30,6 +30,7 @@
                     <div class="password-container">
                         <input class="unp" id="loginPassword" type="password" name="password" placeholder="Password"  minlength="8" required ><i class="fa fa-eye" id="togglePassword"></i><br>
                         <script src="../js/toggle.js"></script>
+                        <a href="ForgotPassword.jsp" class="forgot-pw">Forgot Password?</a>
                     </div>
                     <br>
                     <center> 

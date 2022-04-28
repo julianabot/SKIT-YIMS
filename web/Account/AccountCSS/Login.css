@@ -318,3 +318,10 @@ body {
     margin-left: -35px;
     text-align: center;
 }
+
+.forgot-pw{
+    text-align: center;
+    margin: auto;
+    display: block;
+    color: #8B3535;;
+}
