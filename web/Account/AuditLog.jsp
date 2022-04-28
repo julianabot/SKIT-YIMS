@@ -4,62 +4,62 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="AccountCSS/ViewDatabase.css" rel="stylesheet" type="text/css">
-        <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png" /> 
+        <link href="${pageContext.request.contextPath}/Account/AccountCSS/ViewDatabase.css" rel="stylesheet" type="text/css">
+        <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/SK_Logo.png" /> 
 
         <title>Audit Log</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
 
-/*             Style the tab 
-            .tab {
-                overflow: hidden;
-                border: 1px solid #ccc;
-                background-color: white;
-                width: 100%;
-                margin: auto;
-                text-align: center;
-                display: flex;
-                justify-content: space-between;
-            }
-
-
-
-             Style the buttons inside the tab 
-            .tab button {
-                background-color: inherit;
-                float: left;
-                border: none;
-                outline: none;
-                cursor: pointer;
-                padding: 14px 16px;
-                transition: 0.3s;
-                font-size: 1em;
-                width: 100%;
-                border: none;
-                font-family: 'Montserrat';
-                font-weight: bold;
-            }
-
-             Change background color of buttons on hover 
-            .tab button:hover {
-                background-color: #E9DEDE;
-            }
-
-             Create an active/current tablink class 
-            .tab button.active {
-                background-color: #8B3535;
-                color: white;
-                font-size: 1.5em;
-            }
-
-             Style the tab content 
-            .tabcontent {
-                display: none;
-                padding: 6px 12px;
-                border-top: none;
-
-            }*/
+            /*             Style the tab 
+                        .tab {
+                            overflow: hidden;
+                            border: 1px solid #ccc;
+                            background-color: white;
+                            width: 100%;
+                            margin: auto;
+                            text-align: center;
+                            display: flex;
+                            justify-content: space-between;
+                        }
+            
+            
+            
+                         Style the buttons inside the tab 
+                        .tab button {
+                            background-color: inherit;
+                            float: left;
+                            border: none;
+                            outline: none;
+                            cursor: pointer;
+                            padding: 14px 16px;
+                            transition: 0.3s;
+                            font-size: 1em;
+                            width: 100%;
+                            border: none;
+                            font-family: 'Montserrat';
+                            font-weight: bold;
+                        }
+            
+                         Change background color of buttons on hover 
+                        .tab button:hover {
+                            background-color: #E9DEDE;
+                        }
+            
+                         Create an active/current tablink class 
+                        .tab button.active {
+                            background-color: #8B3535;
+                            color: white;
+                            font-size: 1.5em;
+                        }
+            
+                         Style the tab content 
+                        .tabcontent {
+                            display: none;
+                            padding: 6px 12px;
+                            border-top: none;
+            
+                        }*/
 
             /* for button */
             .wrapper {
@@ -172,10 +172,10 @@
                         </div>-->
 
 
-<!--            <div class="tab">
-                <button class="tablinks" onclick="showTab(event, 'AuditLog')"  id="defaultOpen">Audit Log</button>
-            </div>-->
-            
+            <!--            <div class="tab">
+                            <button class="tablinks" onclick="showTab(event, 'AuditLog')"  id="defaultOpen">Audit Log</button>
+                        </div>-->
+
             <div class="database-title-container">
                 <div class="database-title">SKIT-YIMS Audit Log</div>
                 <button class="open-button" onclick="openForm()" style="font-weight: bold;">  Sort & Filter</button>
@@ -187,26 +187,29 @@
                 </div>
                 <div class="audit-modal">
                     <div class="audit-modal-content">
-                    <h1>Sort</h1>
-                    <div class="sort-text">
-                    <input type="radio" id="latest-oldest" name="sortBy" value="Latest to Oldest" >
-                    <label for="latest-oldest">Latest to Oldest</label><br>
-                    <input type="radio" id="oldest-latest" name="sortBy" value="Oldest to Latest">
-                    <label for="oldest-latest">Oldest to Latest</label><br>
-                    </div>
-                    
-                    <div style="height: 20px;"></div>
-                    
-                    <h1>Filter</h1>
-                    <ul  style="list-style: none">
-                        <li><input id="changes-edit" type="checkbox" /><label for="edited-changes">Edited Changes</label></li>
-                        <li><input id="changes-delete" type="checkbox" /><label for="deleted-changes">Deleted Changes</label></li>
-                        <li><input id="actions-login" type="checkbox"  /><label for="login-actions">Login Actions</label></li>
-                        <li><input id="actions-logout" type="checkbox" /><label for="logout-actions">Logout Actions</label></li>
-                    </ul>
-                    
-                    <button name="sortSubmit" type="submit" value="Apply" class="popup-button" id="popup-button1">Apply</button><br>
-                        <button name="sortSubmit" type="submit" value="Clear" class="popup-button" id="popup-button2">Clear Changes</button>
+
+                        <form action="../SortAuditServlet" method="POST">
+                            <h1>Sort</h1>
+                            <div class="sort-text">
+                                <input type="radio" id="oldest-newest" name="sortBy" value="Oldest to Newest" checked>
+                                <label for="oldest-newest">Oldest to Newest</label><br>
+                                <input type="radio" id="newest-oldest" name="sortBy" value="Newest to Oldest" >
+                                <label for="newest-oldest">Newest to Oldest</label><br>
+                            </div>
+
+                            <div style="height: 20px;"></div>
+
+                            <h1>Filter</h1>
+                            <ul  style="list-style: none">
+                                <li><input id="changes-edit" name="filterAudit" value="edited" type="checkbox" /><label for="changes-edit">Edit Changes</label></li>
+                                <li><input id="changes-delete" name="filterAudit" value="deleted" type="checkbox" /><label for="changes-delete">Delete Changes</label></li>
+                                <li><input id="actions-login" name="filterAudit" value="logged in."  type="checkbox"  /><label for="actions-login">Login Actions</label></li>
+                                <li><input id="actions-logout" name="filterAudit" value="logged out." type="checkbox" /><label for="actions-logout">Logout Actions</label></li>
+                            </ul>
+
+                            <button name="sortSubmit" type="submit" value="Apply" class="popup-button" id="popup-button1">Apply</button><br>
+                            <button name="sortSubmit" type="submit" value="Clear" class="popup-button" id="popup-button2">Clear Changes</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -214,19 +217,18 @@
             <div id="AuditLog" class="audit-table-content">
                 <%
                     try {
-                        String sortQuery = (String) session.getAttribute("sortQuery");
+                        String sortQuery = (String) session.getAttribute("sortAuditQuery");
                         if (sortQuery == null) {
                             sortQuery = " ";
                         }
 
-                        String filterQuery = (String) session.getAttribute("filterQuery");
+                        String filterQuery = (String) session.getAttribute("filterAuditQuery");
                         if (filterQuery == null) {
                             filterQuery = " ";
                         }
-//                        Class.forName("com.mysql.jdbc.Driver").newInstance();
-//                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/skit-yims?useSSL=false", "root", "cselec_DW");
+
                         Connection con = (Connection) getServletContext().getAttribute("dbConnection");
-                        String sql = "SELECT auditID, timestamp, username, name, changes  FROM `audit-log` ORDER BY auditID DESC";
+                        String sql = "SELECT auditID, timestamp, username, name, changes  FROM `audit-log` " + filterQuery + sortQuery;
                         PreparedStatement stmt = con.prepareStatement(sql);
                         ResultSet rs = stmt.executeQuery();
                         if (rs.next() == false) {
@@ -250,9 +252,9 @@
                         }
                     %>
                 </table>
+                <input type="hidden" value="${sortAuditQuery}" id="sortAudit">
+                <input type="hidden" value="${filterAuditQuery}" id="filterAudit">
             </div>
-
-
 
         </div>
     </body>
@@ -261,31 +263,61 @@
 <script>
     function openForm() {
         document.getElementById("myForm1").style.display = "block";
+        checkSortFilter();
     }
 
     function closeForm() {
         document.getElementById("myForm1").style.display = "none";
     }
 </script>
+
+
 <script>
-    function vaccineCheck() {
-        if (document.getElementById("yesVax").checked == true) {
-            document.getElementById("noVax").disabled = true;
-            document.getElementById("noVax").checked = false;
+    function checkSortFilter() {
+
+        var sortCheck = document.getElementById('sortAudit').value;
+        var filterCheck = document.getElementById('filterAudit').value;
+
+        const oton = document.getElementById("oldest-newest");
+        const ntoo = document.getElementById("newest-oldest");
+        const edit = document.getElementById("changes-edit");
+        const del = document.getElementById("changes-delete");
+        const login = document.getElementById("action-login");
+        const logout = document.getElementById("action-logout");
+
+        console.log(sortCheck);
+        console.log(filterCheck);
+
+        if (sortCheck.includes("ASC")) {
+            oton.checked = true;
+        } else if (sortCheck.includes("DESC")) {
+            ntoo.checked = true;
         }
-        if (document.getElementById("yesVax").checked == false) {
-            document.getElementById("noVax").disabled = false;
+        if (filterCheck.includes("edited")) {
+            edit.checked = true;
+        } else {
+            edit.checked = false;
         }
-        if (document.getElementById("noVax").checked == true) {
-            document.getElementById("yesVax").disabled = true;
-            document.getElementById("yesVax").checked = false;
+        if (filterCheck.includes("del")) {
+            del.checked = true;
+        } else {
+            del.checked = false;
         }
-        if (document.getElementById("noVax").checked == false) {
-            document.getElementById("yesVax").disabled = false;
+        if (filterCheck.includes("login")) {
+            login.checked = true;
+        } else {
+            login.checked = false;
         }
+        if (filterCheck.includes("logout")) {
+            logout.checked = true;
+        } else {
+            logout.checked = false;
+        }
+
     }
 
 </script>
+
 <script>
     var counter = 0;
     function showTab(evt, tabName) {
