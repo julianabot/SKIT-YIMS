@@ -43,13 +43,13 @@ public class LandingServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         if (verify) {
-            response.sendRedirect("/SKIT-YIMS/Survey Forms/Survey.jsp");
+            response.sendRedirect(request.getContextPath() + "/Survey Forms/Survey.jsp");
             session.setAttribute("errorCaptcha", "");
             session.setAttribute("captchaSurvey", "true");
         } else {
             session.setAttribute("errorCaptcha", "Please accomplish CAPTCHA.");
             session.removeAttribute("captchaSurvey");
-            response.sendRedirect("/SKIT-YIMS/Survey Forms/Landing.jsp");
+            response.sendRedirect(request.getContextPath() + "/Survey Forms/Landing.jsp");
 
         }
     }

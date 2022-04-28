@@ -111,7 +111,7 @@ public class LoginServlet extends HttpServlet {
                     session.setAttribute("loggedIn", "yes");
 
 //                    request.getRequestDispatcher("/Account/AccountInformation.jsp").forward(request, response);
-                    response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
+                    response.sendRedirect(request.getContextPath() + "/Account/AccountInformation.jsp");
 
                     query = "INSERT INTO `audit-log` (username, name, changes) VALUES (?, ?, ?)";
                     stmt = conn.prepareStatement(query);
@@ -132,16 +132,16 @@ public class LoginServlet extends HttpServlet {
                 } else {
                     session.setAttribute("errorLogin", "Wrong password! Try again.");
 //                    request.getRequestDispatcher("/Account/Login.jsp").forward(request, response);
-                    response.sendRedirect("/SKIT-YIMS/Account/Login.jsp");
+                    response.sendRedirect(request.getContextPath() + "/Account/Login.jsp");
                 }
             } else if (username.equals(iUsername) && !verify) {
                 session.setAttribute("errorLogin", "Please accomplish CAPTCHA.");
 //                request.getRequestDispatcher("/Account/Login.jsp").forward(request, response);
-                response.sendRedirect("/SKIT-YIMS/Account/Login.jsp");
+                response.sendRedirect(request.getContextPath() + "/Account/Login.jsp");
             } else {
                 session.setAttribute("errorLogin", "Username does not exist.");
 //                request.getRequestDispatcher("/Account/Login.jsp").forward(request, response);
-                response.sendRedirect("/SKIT-YIMS/Account/Login.jsp");
+                response.sendRedirect(request.getContextPath() + "/Account/Login.jsp");
 
             }
 
@@ -149,7 +149,7 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("errorLogin", checkException);
             e.printStackTrace();
 //            request.getRequestDispatcher("/Account/Login.jsp").forward(request, response);
-            response.sendRedirect("/SKIT-YIMS/Account/Login.jsp");
+            response.sendRedirect(request.getContextPath() + "/Account/Login.jsp");
         }
     }
 

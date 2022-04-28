@@ -50,10 +50,10 @@ public class ResetPassword extends HttpServlet {
                 int rowCount = pst.executeUpdate();
                 if (rowCount > 0) {
                     request.setAttribute("status", "resetSuccess");
-                    response.sendRedirect("/SKIT-YIMS/Account/Login.jsp");
+                    response.sendRedirect(request.getContextPath() + "/Account/Login.jsp");
                 } else {
                     request.setAttribute("status", "resetFailed");
-                    response.sendRedirect("/SKIT-YIMS/Account/Login.jsp");
+                    response.sendRedirect(request.getContextPath() + "/Account/Login.jsp");
                 }
             } catch (Exception e) {
                 e.printStackTrace();

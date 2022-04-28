@@ -106,12 +106,12 @@ public class EditNameServlet extends HttpServlet {
             ins.execute();
 
             session.setAttribute("update", "Name changed successfully.");
-            response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
+            response.sendRedirect(request.getContextPath() + "/Account/AccountInformation.jsp");
 //            request.getRequestDispatcher("Account/AccountInformation.jsp").forward(request, response);
 
         } catch (Exception e) {
             session.setAttribute("update", e);
-            response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
+            response.sendRedirect(request.getContextPath() + "/Account/AccountInformation.jsp");
 //            request.getRequestDispatcher("Account/AccountInformation.jsp").forward(request, response);
         }
     }

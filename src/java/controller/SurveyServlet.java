@@ -320,14 +320,14 @@ public class SurveyServlet extends HttpServlet {
 
             session.removeAttribute("errorCaptcha");
             session.removeAttribute("captchaSurvey");
-            response.sendRedirect("/SKIT-YIMS/Survey Forms/Success.jsp");
+            response.sendRedirect(request.getContextPath() + "/Survey Forms/Success.jsp");
             //response.sendRedirect("/SKIT-YIMS/Survey Forms/ViewSubmitted.jsp");
 
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("errorLogin", e.toString());
             //request.getRequestDispatcher("Survey Forms/ViewSubmitted.jsp").forward(request, response);
-            response.sendRedirect("/SKIT-YIMS/Extra/MissingField.jsp");
+            response.sendRedirect(request.getContextPath() + "/Extra/MissingField.jsp");
         }
     }
 

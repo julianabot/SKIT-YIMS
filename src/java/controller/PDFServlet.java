@@ -81,7 +81,7 @@ public class PDFServlet extends HttpServlet {
                     AllPDF doc = new AllPDF();
                     doc.residentRecord(rs, username, role, filename, path, numRecord);
                     tab = "All";
-                    response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
+                    response.sendRedirect(request.getContextPath() + "/Extra/Loading.jsp");
 
                 }
                 if (button.equals("Information")) {
@@ -93,7 +93,7 @@ public class PDFServlet extends HttpServlet {
                     doc.basicInfoRecord(rs, username, role, filename, path);
                     System.out.println(role);
                     tab = "Basic Information";
-                    response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
+                    response.sendRedirect(request.getContextPath() + "/Extra/Loading.jsp");
                 }
                 if (button.equals("Contact")) {
                     String query = "SELECT `resident-info`.residentID, `basic-info`.name, `contact-info`.contactNo, `contact-info`.emailAddress, `contact-info`.fbNameURL FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID " + filterQuery + sortQuery;
@@ -103,7 +103,7 @@ public class PDFServlet extends HttpServlet {
                     doc.contactInfoRecord(rs, username, role, filename, path);
                     System.out.println(path);
                     tab = "Contact Information";
-                    response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
+                    response.sendRedirect(request.getContextPath() + "/Extra/Loading.jsp");
                 }
                 if (button.equals("Family")) {
                     String query = "SELECT `resident-info`.residentID, `basic-info`.name, `fam-status`.motherName, `fam-status`.motherOccupation, `fam-status`.fatherName, `fam-status`.fatherOccupation, `fam-status`.vitalStatusMother, `fam-status`.vitalStatusFather, `fam-status`.noOfSiblings, `fam-status`.siblingEducation, `fam-status`.breadwinner FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID " + filterQuery + sortQuery;
@@ -113,7 +113,7 @@ public class PDFServlet extends HttpServlet {
                     System.out.println(path);
                     doc.familyInfoRecord(rs, username, role, filename, path);
                     tab = "Family";
-                    response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
+                    response.sendRedirect(request.getContextPath() + "/Extra/Loading.jsp");
                 }
                 if (button.equals("Organization")) {
                     String query = "SELECT `resident-info`.residentID, `basic-info`.name, `resident-org`.residentVoter, `resident-org`.memberOfOrg, `resident-org`.nameOfOrg, `resident-org`.supportSK, `resident-org`.showSupport, `resident-org`.jobChance, `resident-org`.sayToSK FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID " + filterQuery + sortQuery;
@@ -122,7 +122,7 @@ public class PDFServlet extends HttpServlet {
                     PDF doc = new PDF();
                     doc.orgInfoRecord(rs, username, role, filename, path);
                     tab = "Resident Organization";
-                    response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
+                    response.sendRedirect(request.getContextPath() + "/Extra/Loading.jsp");
 
                 }
                 if (button.equals("Status")) {
@@ -132,7 +132,7 @@ public class PDFServlet extends HttpServlet {
                     PDF doc = new PDF();
                     doc.statusInfoRecord(rs, username, role, filename, path);
                     tab = "Resident Status";
-                    response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
+                    response.sendRedirect(request.getContextPath() + "/Extra/Loading.jsp");
                 }
                 if (button.equals("Vaccine")) {
                     String query = "SELECT `resident-info`.residentID, `basic-info`.name, `vaccine-info`.vaccinated, `vaccine-info`.willingForVaccine, `vaccine-info`.brandOfVaccine, `vaccine-info`.vaccineStatus FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID " + filterQuery + sortQuery;
@@ -141,7 +141,7 @@ public class PDFServlet extends HttpServlet {
                     PDF doc = new PDF();
                     doc.vaccInfoRecord(rs, username, role, filename, path);
                     tab = "Vaccine Information";
-                    response.sendRedirect("/SKIT-YIMS/Extra/Loading.jsp");
+                    response.sendRedirect(request.getContextPath() + "/Extra/Loading.jsp");
                 }
 
                 String changes = iUsername + ": " + iName + " generated a PDF in the " + tab + " tab.";

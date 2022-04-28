@@ -78,7 +78,7 @@ public class ForgotPasswordServlet extends HttpServlet {
                 mySession.setAttribute("otp", otpvalue);
                 mySession.setAttribute("email", email);
 //                dispatcher.forward(request, response);
-                response.sendRedirect("/SKIT-YIMS/Account/EnterOtp.jsp");
+                response.sendRedirect(request.getContextPath() + "/Account/EnterOtp.jsp");
                 //request.setAttribute("status", "success");
             } catch (Exception e) {
                 e.printStackTrace();

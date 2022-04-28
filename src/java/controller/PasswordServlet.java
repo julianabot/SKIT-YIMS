@@ -74,7 +74,7 @@ public class PasswordServlet extends HttpServlet {
             if (rs.next()) {
             } else {
                 session.setAttribute("update", "Incorrect current password. Try again.");
-                response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
+                response.sendRedirect(request.getContextPath() + "/Account/AccountInformation.jsp");
                 return;
             }
 
@@ -110,17 +110,17 @@ public class PasswordServlet extends HttpServlet {
                 stmt.execute();
 
                 session.setAttribute("update", "You have successfully changed your password.");
-                response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
+                response.sendRedirect(request.getContextPath() + "/Account/AccountInformation.jsp");
                 return;
             } else {
                 session.setAttribute("update", "Incorrrect confirm new password. Try again.");
-                response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
+                response.sendRedirect(request.getContextPath() + "/Account/AccountInformation.jsp");
                 return;
             }
 
         } catch (Exception e) {
             session.setAttribute("update", e.toString());
-            response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
+            response.sendRedirect(request.getContextPath() + "/Account/AccountInformation.jsp");
         }
 
     }

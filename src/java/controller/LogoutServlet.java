@@ -67,13 +67,13 @@ public class LogoutServlet extends HttpServlet {
             request.setAttribute("errorLogin", checkException);
             e.printStackTrace();
 //            request.getRequestDispatcher("/Account/Login.jsp").forward(request, response);
-            response.sendRedirect("/SKIT-YIMS/Account/Login.jsp");
+            response.sendRedirect(request.getContextPath() + "/Account/Login.jsp");
         }
 
         HttpSession session = request.getSession();
         session.removeAttribute("loggedIn");
         session.invalidate();
-        response.sendRedirect("/SKIT-YIMS/Extra/Logout.jsp");
+        response.sendRedirect(request.getContextPath() + "/Extra/Logout.jsp");
     }
 
     @Override

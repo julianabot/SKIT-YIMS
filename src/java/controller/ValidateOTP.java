@@ -37,12 +37,12 @@ public class ValidateOTP extends HttpServlet {
 
             request.setAttribute("email", request.getParameter("email"));
             request.setAttribute("status", "success");
-            response.sendRedirect("/SKIT-YIMS/Account/NewPasswordOTP.jsp");
+            response.sendRedirect(request.getContextPath() + "/Account/NewPasswordOTP.jsp");
 
         } else {
             request.setAttribute("message", "wrong otp");
 
-            response.sendRedirect("/SKIT-YIMS/Account/EnterOtp.jsp");
+            response.sendRedirect(request.getContextPath() + "/Account/EnterOtp.jsp");
 
         }
 

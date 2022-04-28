@@ -91,7 +91,7 @@ public class ArchiveServlet extends HttpServlet {
 
             stmt.execute();
             
-            response.sendRedirect("/SKIT-YIMS/Account/ViewArchive.jsp");
+            response.sendRedirect(request.getContextPath() + "/Account/ViewArchive.jsp");
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.getStackTrace();
@@ -122,7 +122,7 @@ public class ArchiveServlet extends HttpServlet {
 
             stmt = conn.prepareStatement(archiveSQL);
             stmt.execute();
-            response.sendRedirect("/SKIT-YIMS/Account/ViewArchive.jsp");
+            response.sendRedirect(request.getContextPath() + "/Account/ViewArchive.jsp");
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.getStackTrace();

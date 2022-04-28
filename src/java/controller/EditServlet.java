@@ -204,7 +204,7 @@ public class EditServlet extends HttpServlet {
 
                 stmt.execute();
 
-                response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
+                response.sendRedirect(request.getContextPath() + "/Account/ViewDatabase.jsp");
 
             } else {
                 System.out.println("empty fields!");

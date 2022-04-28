@@ -95,7 +95,7 @@ public class SortAuditServlet extends HttpServlet {
             session.setAttribute("filterAuditQuery", " ");
             
         }
-        response.sendRedirect("/SKIT-YIMS/Account/AuditLog.jsp");
+        response.sendRedirect(request.getContextPath() + "/Account/AuditLog.jsp");
     }
     
     @Override

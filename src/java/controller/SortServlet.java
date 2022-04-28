@@ -229,7 +229,7 @@ public class SortServlet extends HttpServlet {
             session.setAttribute("filterQuery", " ");
         }
 
-        response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
+        response.sendRedirect(request.getContextPath() + "/Account/ViewDatabase.jsp");
     }
 
     @Override
