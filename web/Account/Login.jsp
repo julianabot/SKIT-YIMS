@@ -4,8 +4,8 @@
     <head>
         <meta name="viewport" content="width=500, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png" /> 
-        <link href="/SKIT-YIMS/Account/AccountCSS/Login.css?v={random number/string}" rel="stylesheet">
+        <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/SK_Logo.png" /> 
+        <link href="${pageContext.request.contextPath}/Account/AccountCSS/Login.css?v={random number/string}" rel="stylesheet">
         <title>Login</title>
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -13,13 +13,13 @@
     <%
         response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
         if (session.getAttribute("loggedIn") != null) {
-            response.sendRedirect("/SKIT-YIMS/Account/AccountInformation.jsp");
+            response.sendRedirect("${pageContext.request.contextPath}/Account/AccountInformation.jsp");
         }
     %>
     <body>
         <div class="half-white">
-            <center><img src="/SKIT-YIMS/img/SK_Logo.png" class="img-logo-half"></center>
-            <div class="goback"> <a class="purp-btn" href="/SKIT-YIMS/Welcome.jsp">Go back</a> </div>
+            <center><img src="${pageContext.request.contextPath}/img/SK_Logo.png" class="img-logo-half"></center>
+            <div class="goback"> <a class="purp-btn" href="${pageContext.request.contextPath}/Welcome.jsp">Go back</a> </div>
             <div class="signup-form">
                 <h1 class="Sign"> Log in </h1>
                 <center> <p class ="Error" style="color: red ">${errorLogin}</p></center>
@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="half-blue">
-            <center><img src="/SKIT-YIMS/img/SK_Logo.png" class="img-logo"></center>
+            <center><img src="${pageContext.request.contextPath}/img/SK_Logo.png" class="img-logo"></center>
         </div>        
     </body>
 </html>

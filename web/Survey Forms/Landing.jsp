@@ -3,8 +3,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png" />
-        <link href="/SKIT-YIMS/Survey Forms/SurveyCSS/Landing.css" rel="stylesheet" type="text/css">
+        <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/SK_Logo.png" />
+        <link href="${pageContext.request.contextPath}/Survey Forms/SurveyCSS/Landing.css" rel="stylesheet" type="text/css">
         <title>Landing Page</title>
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>
@@ -12,14 +12,14 @@
         <!--Header-->
         <nav>
             <input id="nav-toggle" type="checkbox">
-            <img src="../img/SK_Logo.png" class="header-logo">
+            <img src="${pageContext.request.contextPath}/img/SK_Logo.png" class="header-logo">
 
             <!--This section contains the "Eruditio Academy" text taken from the webxml-->
             <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>
 
             <ul class="links">
-                <li class="Home"><a href="/SKIT-YIMS/Welcome.jsp">Home</a></li>
-                <li class="Login"><a href="/SKIT-YIMS/Account/Login.jsp" id="Login">Login</a></li>
+                <li class="Home"><a href="${pageContext.request.contextPath}/Welcome.jsp">Home</a></li>
+                <li class="Login"><a href="${pageContext.request.contextPath}/Account/Login.jsp" id="Login">Login</a></li>
             </ul>
             <label for="nav-toggle" class="icon-burger">
                 <div class="line"></div>
@@ -28,7 +28,7 @@
             </label>
         </nav>
 
-        <img src="../img/SK_Logo.png" alt="SK Logo" id="Logo">
+        <img src="${pageContext.request.contextPath}/img/SK_Logo.png" alt="SK Logo" id="Logo">
         <div class="heading">
             <h1>Welcome to the SK Ibayo-Tipas Youth Resident Survey</h1>
         </div>

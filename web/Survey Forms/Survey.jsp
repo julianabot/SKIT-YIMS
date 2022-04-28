@@ -3,9 +3,9 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png" />
+        <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/SK_Logo.png" />
 
-        <link href="/SKIT-YIMS/Survey Forms/SurveyCSS/Survey.css" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/Survey Forms/SurveyCSS/Survey.css" rel="stylesheet" type="text/css">
         <style>
             body {font-family: 'Montserrat';}
 
@@ -64,16 +64,16 @@
     <%
         response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
         if (session.getAttribute("captchaSurvey") == null) {
-            response.sendRedirect("/SKIT-YIMS/Survey Forms/Landing.jsp");
+            response.sendRedirect("${pageContext.request.contextPath}/Survey Forms/Landing.jsp");
             session.setAttribute("errorCaptcha", "Please accomplish CAPTCHA.");
 
         }
     %>
-    <div class="goback"> <a class="purp-btn" href="/SKIT-YIMS/Survey Forms/Landing.jsp">Go back</a> </div>
+    <div class="goback"> <a class="purp-btn" href="${pageContext.request.contextPath}/Survey Forms/Landing.jsp">Go back</a> </div>
 
     <body>
         <div id="header-container">
-            <img src="/SKIT-YIMS/img/SK_Logo.png" alt="SK Logo" id="Logo">
+            <img src="${pageContext.request.contextPath}/img/SK_Logo.png" alt="SK Logo" id="Logo">
             <div>
                 <h1 id="header-text">SK Ibayo-Tipas:<br>Youth Resident Survey</h1>
             </div>

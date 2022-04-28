@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="AccountCSS/ViewDatabase.css" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/AccountCSS/ViewDatabase.css" rel="stylesheet" type="text/css">
         <title>Search Database</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
@@ -71,17 +71,17 @@
     <%
         response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
         if (session.getAttribute("loggedIn") == null) {
-            response.sendRedirect("/SKIT-YIMS/Extra/InvalidSession.jsp");
+            response.sendRedirect("${pageContext.request.contextPath}/Extra/InvalidSession.jsp");
         }
         if (session.getAttribute("residentName").equals("")) {
-            response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
+            response.sendRedirect("${pageContext.request.contextPath}/Account/ViewDatabase.jsp");
         }
     %>
     <body>
         <!--HEADER-->
         <nav>
             <input id="nav-toggle" type="checkbox">
-            <img src="../img/SK_Logo.png" class="header-logo">
+            <img src="${pageContext.request.contextPath}/img/SK_Logo.png" class="header-logo">
 
             <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>
 

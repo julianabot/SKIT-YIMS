@@ -405,9 +405,7 @@ tr:nth-child(even){
 
 @media (max-width:780px){
     .form-container{
-        flex-direction: column;
-        
-        
+        flex-direction: column;               
     }
     
     .form-popup {
@@ -432,6 +430,7 @@ tr:nth-child(even){
     .form-popup{
         
     }
+        
 }
 
 .modal-content{

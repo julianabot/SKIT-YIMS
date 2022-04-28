@@ -3,21 +3,21 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png" />
-        <link href="/SKIT-YIMS/Survey Forms/SurveyCSS/Success.css?v={random number/string}" rel="stylesheet" type="text/css">
+        <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/SK_Logo.png" />
+        <link href="${pageContext.request.contextPath}/Survey Forms/SurveyCSS/Success.css?v={random number/string}" rel="stylesheet" type="text/css">
         <title>Success</title>
     </head>
     <body>
         <nav>
             <input id="nav-toggle" type="checkbox">
-            <img src="/SKIT-YIMS/img/SK_Logo.png" class="header-logo">
+            <img src="${pageContext.request.contextPath}/img/SK_Logo.png" class="header-logo">
 
             <!--This section contains the "Eruditio Academy" text taken from the webxml-->
             <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>
 
             <ul class="links">
-                <li class="Home"><a href="/SKIT-YIMS/Welcome.jsp">Home</a></li>
-                <li class="Login"><a href="/SKIT-YIMS/Account/Login.jsp" id="Login">Login</a></li>
+                <li class="Home"><a href="${pageContext.request.contextPath}/Welcome.jsp">Home</a></li>
+                <li class="Login"><a href="${pageContext.request.contextPath}/Account/Login.jsp" id="Login">Login</a></li>
             </ul>
             <label for="nav-toggle" class="icon-burger">
                 <div class="line"></div>
@@ -27,7 +27,7 @@
         </nav>
 
         <div class="container">
-            <img src="/SKIT-YIMS/img/SK_Logo.png" alt="SK Logo" id="Logo">
+            <img src="${pageContext.request.contextPath}/img/SK_Logo.png" alt="SK Logo" id="Logo">
             <div class="heading">
                 <h1>Your response is submitted.</h1>
                 <p class="subheading">
@@ -36,7 +36,7 @@
                     <br><br>
                     Keep safe, Ka-barangay!
                 </p>
-                <h3 class="bottom-text">You may exit or close this tab or you may go to the <a href="/SKIT-YIMS/Welcome.jsp" id="redirect-home">Home Page</a>.</h3> <!--Link to Welcome Page-->
+                <h3 class="bottom-text">You may exit or close this tab or you may go to the <a href="${pageContext.request.contextPath}/Welcome.jsp" id="redirect-home">Home Page</a>.</h3> <!--Link to Welcome Page-->
             </div>
         </div>
 

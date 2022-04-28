@@ -8,8 +8,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="../Account/AccountCSS/Edit.css?v={random number/string}" rel="stylesheet" type="text/css">
-        <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png" /> 
+        <link href="${pageContext.request.contextPath}/Account/AccountCSS/Edit.css?v={random number/string}" rel="stylesheet" type="text/css">
+        <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/SK_Logo.png" /> 
         <title>Edit Resident Profile</title>
 
     </head>
@@ -22,13 +22,13 @@
 
         response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
         if (session.getAttribute("loggedIn") == null) {
-            response.sendRedirect("/SKIT-YIMS/Extra/InvalidSession.jsp");
+            response.sendRedirect("${pageContext.request.contextPath}/Extra/InvalidSession.jsp");
         }
     %>
 
     <body>
         <div id="header-container">
-            <img src="../img/SK_Logo.png" alt="SK Logo" id="Logo">
+            <img src="${pageContext.request.contextPath}/img/SK_Logo.png" alt="SK Logo" id="Logo">
             <div>
                 <h1 id="header-text">SK Ibayo-Tipas:<br>Edit Resident Profile</h1>
             </div>
@@ -848,7 +848,7 @@
                 <!--</div>-->
                 <div class="buttons">
                     <input type="submit" value="Confirm" name="conf"/></button>
-                    <a href="/SKIT-YIMS/Account/ViewDatabase.jsp" class ="btn btn-default">Cancel</a>
+                    <a href="${pageContext.request.contextPath}/Account/ViewDatabase.jsp" class ="btn btn-default">Cancel</a>
                 </div>
             </form>
         </div>

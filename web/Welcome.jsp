@@ -3,8 +3,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png" />
-        <link href="/SKIT-YIMS/css/Welcome.css" rel="stylesheet" type="text/css">
+        <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/SK_Logo.png" />
+        <link href="${pageContext.request.contextPath}/css/Welcome.css" rel="stylesheet" type="text/css">
         <!--INSERT SESSION MANAGEMENT LINE-->
         <title>SKIT-YIMS</title>
     </head>
@@ -13,7 +13,7 @@
         <!--Header-->
         <nav>
             <input id="nav-toggle" type="checkbox">
-            <img src="img/SK_Logo.png" class="header-logo">
+            <img src="${pageContext.request.contextPath}/img/SK_Logo.png" class="header-logo">
 
             <!--This section contains the "Eruditio Academy" text taken from the webxml-->
             <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>

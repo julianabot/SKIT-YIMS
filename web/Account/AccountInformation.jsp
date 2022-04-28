@@ -3,9 +3,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png"/>
-        <link href="../Account/AccountCSS/AccountInformation.css?v={random number/string}" rel="stylesheet" type="text/css">
-        <link href="/SKIT-YIMS/Account/AccountCSS/AccountInformation.css" rel="stylesheet" type="text/css">
+        <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/SK_Logo.png"/>
+        <link href="${pageContext.request.contextPath}/Account/AccountCSS/AccountInformation.css?v={random number/string}" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/Account/AccountCSS/AccountInformation.css" rel="stylesheet" type="text/css">
         <title>Account Profile</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
@@ -13,13 +13,13 @@
     <%
         response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
         if (session.getAttribute("loggedIn") == null) {
-            response.sendRedirect("/SKIT-YIMS/Extra/InvalidSession.jsp");
+            response.sendRedirect("${pageContext.request.contextPath}/Extra/InvalidSession.jsp");
         }
     %>
     <body>
         <nav>
             <input id="nav-toggle" type="checkbox">
-            <img src="/SKIT-YIMS/img/SK_Logo.png" class="header-logo">
+            <img src="${pageContext.request.contextPath}/img/SK_Logo.png" class="header-logo">
 
             <!--This section contains the "Eruditio Academy" text taken from the webxml-->
             <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>

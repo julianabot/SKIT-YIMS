@@ -4,21 +4,21 @@
     <head>
         <meta name="viewport" content="width=500, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png" />
-        <link href="/SKIT-YIMS/Extra/ExtraCSS/Loading.css" rel="stylesheet">
+        <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/SK_Logo.png" />
+        <link href="${pageContext.request.contextPath}/Extra/ExtraCSS/Loading.css" rel="stylesheet">
         <title>Download Successful</title>
     </head>
     <%
         response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
         if (session.getAttribute("loggedIn") == null) {
-            response.sendRedirect("/SKIT-YIMS/Extra/InvalidSession.jsp");
+            response.sendRedirect("${pageContext.request.contextPath}/Extra/InvalidSession.jsp");
         }
     %>
     <body>
         <!--Header-->
         <nav>
             <input id="nav-toggle" type="checkbox">
-            <img src="/SKIT-YIMS/img/SK_Logo.png" class="header-logo">
+            <img src="${pageContext.request.contextPath}/img/SK_Logo.png" class="header-logo">
 
             <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>
 
@@ -38,7 +38,7 @@
 
         <div class="err-main">
             <p class="err-class">Download Successful <p>
-            <p><a href="/SKIT-YIMS/Account/ViewDatabase.jsp" class="err-red">View Database</a></p>
+            <p><a href="${pageContext.request.contextPath}/Account/ViewDatabase.jsp" class="err-red">View Database</a></p>
         </div>
 
 
@@ -54,7 +54,7 @@
                 <a href="#About-Section"class="f-content">About</a>
                 <a href="#Hero-Section"class="f-content">Home</a>
                 <a href="https://www.facebook.com/skibayotipas" target="_blank" class="f-content">Facebook </a>  
-                <a href="/SKIT-YIMS/Survey Forms/Landing.jsp" class="f-content">Survey</a>
+                <a href="${pageContext.request.contextPath}/Survey Forms/Landing.jsp" class="f-content">Survey</a>
             </div>
             <div class="Flex-Footer-Content" id="Email-Us">
                 <p class="label">EMAIL US</p>

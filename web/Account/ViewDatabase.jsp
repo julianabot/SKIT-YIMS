@@ -5,7 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="AccountCSS/ViewDatabase.css?v={random number/string}" rel="stylesheet" type="text/css">
-        <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png" /> 
+        <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/SK_Logo.png" /> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>View Database</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -86,14 +86,14 @@
     <%
         response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
         if (session.getAttribute("loggedIn") == null) {
-            response.sendRedirect("/SKIT-YIMS/Extra/InvalidSession.jsp");
+            response.sendRedirect("${pageContext.request.contextPath}/Extra/InvalidSession.jsp");
         }
     %>
     <body>
         <!--HEADER-->
         <nav>
             <input id="nav-toggle" type="checkbox">
-            <img src="../img/SK_Logo.png" class="header-logo">
+            <img src="${pageContext.request.contextPath}/img/SK_Logo.png" class="header-logo">
 
             <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>
 
