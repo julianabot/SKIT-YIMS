@@ -31,7 +31,7 @@
                     <h2>
                         <strong>Reset Password</strong>
                     </h2>
-                </div>
+                    </div>
                 <div class="password-input">
                     <form class="form-horizontal" action="../ResetPassword" method="POST">
                         <!-- User Name Input -->
@@ -55,6 +55,7 @@
                         <!-- Log in Button -->
                         <div >
                             <div >
+                                <center> <p class ="Error" style="color: red; font-weight: bold ">${status}</p></center>
                                 <input type="submit" value="Reset" class="btn" style="margin-top: 10px;"> 
                             </div>
                         </div>

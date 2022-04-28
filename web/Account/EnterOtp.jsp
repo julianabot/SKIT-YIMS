@@ -32,16 +32,16 @@
 
             %>
 
-
+                <center> <p class ="Error" style="color: red ">${message}</p></center>
                 <form id="register-form" action="../ValidateOTP" role="form" autocomplete="off"
                       class="form" method="post">
-
-                        <div class="input-group">
+                            <div class="input-group">
                             <input
                                 id="opt" name="otp" placeholder="Enter OTP"
                                 class="form-control" type="text" required="required">
                         </div>
                     <div class="form-group">
+                        <center> <p class ="Error"  style="color: red; font-weight: bold; "> ${OtpError}</p></center>
                         <input name="recover-submit"
                                class="btn"
                                value="Reset Password" type="submit">

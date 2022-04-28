@@ -41,23 +41,22 @@ public class ResetPassword extends HttpServlet {
         if (newPassword != null && confPassword != null && newPassword.equals(confPassword)) {
 
             try {
-                String updateQuery = "UPDATE `admin-info` SET password = ? WHERE email = ?";
+                String updateQuery = "UPDATE admin-info SET password = ? WHERE email = ?";
                 String encryptedNew = Security.encrypt((confPassword));
                 PreparedStatement pst = conn.prepareStatement(updateQuery);
                 pst.setString(1, encryptedNew);
                 pst.setString(2, (String) session.getAttribute("email"));
 
-                int rowCount = pst.executeUpdate();
-                if (rowCount > 0) {
-                    request.setAttribute("status", "resetSuccess");
-                    response.sendRedirect(request.getContextPath() + "/Account/Login.jsp");
-                } else {
-                    request.setAttribute("status", "resetFailed");
-                    response.sendRedirect(request.getContextPath() + "/Account/Login.jsp");
-                }
+                pst.executeUpdate();
+
+                session.setAttribute("status", "resetSuccess");
+                response.sendRedirect(request.getContextPath() + "/Account/Login.jsp");
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        } else {
+            session.setAttribute("status", "Passwords do not match. Please Try Again!");
+            response.sendRedirect(request.getContextPath() + "/Account/NewPasswordOTP.jsp");
         }
     }
 

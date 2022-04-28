@@ -40,7 +40,7 @@ public class ValidateOTP extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/Account/NewPasswordOTP.jsp");
 
         } else {
-            request.setAttribute("message", "wrong otp");
+            session.setAttribute("OtpError", "Wrong OTP. Please Try again.");
 
             response.sendRedirect(request.getContextPath() + "/Account/EnterOtp.jsp");
 
