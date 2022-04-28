@@ -41,7 +41,7 @@ public class ResetPassword extends HttpServlet {
         if (newPassword != null && confPassword != null && newPassword.equals(confPassword)) {
 
             try {
-                String updateQuery = "UPDATE admin-info SET password = ? WHERE email = ?";
+                String updateQuery = "UPDATE `admin-info` SET password = ? WHERE email = ?";
                 String encryptedNew = Security.encrypt((confPassword));
                 PreparedStatement pst = conn.prepareStatement(updateQuery);
                 pst.setString(1, encryptedNew);
