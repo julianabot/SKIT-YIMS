@@ -188,20 +188,25 @@
                 <div class="audit-modal">
                     <div class="audit-modal-content">
                     <h1>Sort</h1>
-                    <input type="radio" id="latest-oldest" name="sortBy" value="Latest to Oldest">
+                    <div class="sort-text">
+                    <input type="radio" id="latest-oldest" name="sortBy" value="Latest to Oldest" >
                     <label for="latest-oldest">Latest to Oldest</label><br>
                     <input type="radio" id="oldest-latest" name="sortBy" value="Oldest to Latest">
                     <label for="oldest-latest">Oldest to Latest</label><br>
+                    </div>
                     
                     <div style="height: 20px;"></div>
                     
                     <h1>Filter</h1>
                     <ul  style="list-style: none">
-                        <li><input id="changes-edit" type="checkbox" /><label for="fourteenBelow">Edited Changes</label></li>
-                        <li><input id="changes-delete" type="checkbox" /><label for="fifteenTwenty">Deleted Changes</label></li>
-                        <li><input id="actions-login" type="checkbox"  /><label for="twentyoneThirty">Login Actions</label></li>
-                        <li><input id="actions-logout" type="checkbox" /><label for="thirtyoneAbove">Logout Actions</label></li>
+                        <li><input id="changes-edit" type="checkbox" /><label for="edited-changes">Edited Changes</label></li>
+                        <li><input id="changes-delete" type="checkbox" /><label for="deleted-changes">Deleted Changes</label></li>
+                        <li><input id="actions-login" type="checkbox"  /><label for="login-actions">Login Actions</label></li>
+                        <li><input id="actions-logout" type="checkbox" /><label for="logout-actions">Logout Actions</label></li>
                     </ul>
+                    
+                    <button name="sortSubmit" type="submit" value="Apply" class="popup-button" id="popup-button1">Apply</button><br>
+                        <button name="sortSubmit" type="submit" value="Clear" class="popup-button" id="popup-button2">Clear Changes</button>
                     </div>
                 </div>
             </div>

@@ -516,8 +516,12 @@ tr:nth-child(even){
     height: 40px;
 }
 
+.sort-text{
+    margin-left: 18px;
+}
+
 .audit-modal ul{
-    padding-left: 0px;
+    padding-left: 20px;
 }
 
 .audit-modal-content{
@@ -530,7 +534,7 @@ tr:nth-child(even){
 }
 
 #myForm1{
-    height: 300px;
+    height: 430px;
     padding: 10px;
 }
 .close-button-container{
