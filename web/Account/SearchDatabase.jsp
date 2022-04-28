@@ -85,22 +85,22 @@
 
             <div class="logo"><a id="SK-Text-NavBar">Sangguniang Kabataan Ibayo-Tipas</a></div>
 
-           <ul class="links">
+            <ul class="links">
                 <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
                 <li class="Events"><a href="AuditLog.jsp">Audit Log</a></li> 
-                <% }%>
+                    <% }%>
                 <li class="Events"><a href="ViewDatabase.jsp">Database</a></li>
-                
+
                 <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
                 <li class = "Events">
-                <form action="../ArchiveServlet" method="POST">
-<!--                    <div class="archive-button-container">-->
+                    <form action="../ArchiveServlet" method="POST">
+                        <!--                    <div class="archive-button-container">-->
                         <button type="submit" class="archive-button">Archive</button>
-<!--                    </div>-->
-                </form>
-                <% }%>
+                        <!--                    </div>-->
+                    </form>
+                    <% }%>
                 </li>
-                
+
                 <li class="Events"><a href="AccountInformation.jsp">Account</a></li>
 
                 <li class="Login">
@@ -135,23 +135,24 @@
                 <%
                     try {
 
-                        String sortQuery = (String) session.getAttribute("sortQuery");
-                        if (sortQuery == null) {
-                            sortQuery = " ";
+                        String resName = (String) session.getAttribute("residentName");
+                        if (resName == null) {
+                            resName = " ";
                         }
-                        String filterQuery = (String) session.getAttribute("filterQuery");
-                        if (filterQuery == null) {
-                            filterQuery = " ";
-                        }
+
                         Connection con = (Connection) getServletContext().getAttribute("dbConnection");
-                        String sql = "SELECT GROUP_CONCAT(emailAddress) AS emails FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID " + filterQuery + sortQuery;
+
+                        String sql = "SELECT GROUP_CONCAT(emailAddress) AS emails"
+                                + " FROM `resident-info` INNER JOIN `contact-info` ON `resident-info`.residentID = `contact-info`.contactID INNER JOIN `basic-info` ON `resident-info`.residentID = `basic-info`.basicID INNER JOIN `resident-status` ON `resident-info`.residentID = `resident-status`.statusID INNER JOIN `fam-status` ON `resident-info`.residentID = `fam-status`.familyID INNER JOIN `resident-org` ON `resident-info`.residentID = `resident-org`.organizationID INNER JOIN `vaccine-info` ON `resident-info`.residentID = `vaccine-info`.vaccineID"
+                                + " WHERE `basic-info`.name LIKE '" + resName + "'";
+                        System.out.println(resName);
                         PreparedStatement stmt = con.prepareStatement(sql);
                         String emails = "";
                         ResultSet rs = stmt.executeQuery();
                         while (rs.next()) {
                             emails = rs.getString(1);
                         }
-
+                        System.out.println(emails);
                         session.setAttribute("emails", emails);
 
                         System.out.println(emails);
@@ -164,7 +165,7 @@
                 <div class="email-button-container">
                     <button type="submit" class="email-button"><a href="mailto:ibayotipas.skcouncil@gmail.com?&bcc=${emails}">Send Announcements</a></button>
                 </div>
-                
+
                 <% }%>
             </div>
 
@@ -427,7 +428,7 @@
                             <%
                                 do {%>
 
-                   <tr><td><%= rs.getString(1)%></td><td  style="width: 40%"><%= rs.getString(2)%></td><td style="width: 15%"><%= rs.getString(3)%></td><td style="width: 15%"><%= rs.getString(4)%></td>
+                    <tr><td><%= rs.getString(1)%></td><td  style="width: 40%"><%= rs.getString(2)%></td><td style="width: 15%"><%= rs.getString(3)%></td><td style="width: 15%"><%= rs.getString(4)%></td>
                         <td style="width: 15%"><%= rs.getString(5)%></td><td style="width: 15%"><%= rs.getString(6)%></td></tr>
 
 
