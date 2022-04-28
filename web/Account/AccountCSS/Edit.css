@@ -89,6 +89,12 @@ body {
     margin: 30px auto;
 }
 
+p {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #8B3535;
+}
+
 .form-group {
     display: flex;
     flex-direction: row;

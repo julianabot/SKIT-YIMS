@@ -33,14 +33,14 @@
                 <h1 id="header-text">SK Ibayo-Tipas:<br>Edit Resident Profile</h1>
             </div>
         </div>
-        <div class="tab">
+<!--        <div class="tab">
             <button class="tablinks" onclick="showTab(event, 'Info')" id="defaultOpen">Resident Information</button>
             <button class="tablinks" onclick="showTab(event, 'Details')">Resident Details</button>
             <button class="tablinks" onclick="showTab(event, 'Contact')">Contact Details</button>
             <button class="tablinks" onclick="showTab(event, 'Family')">Family Details</button>
             <button class="tablinks" onclick="showTab(event, 'Survey')">Survey</button>
             <button class="tablinks" onclick="showTab(event, 'Vaccination')">Vaccination</button>
-        </div>
+        </div>-->
         <div overflow:auto class="container">
             <form action="../EditServlet" method = "POST">
                 <%
@@ -53,9 +53,11 @@
                 %>   
                 <input type ="hidden" name ="basicID" value = "<%= res.getString("basicID")%>"/>
 
-                <div id="Info" class="tabcontent">
+                <!--<div id="Info" class="tabcontent">-->
                     <div class="container-main">
-                        <div class="content-container">
+                        <!--<div class="content-container">-->
+                        <div class="content-divider"></div>
+                        <p>Resident Information</p>
                             <div class ="form-group">
                                 <label>Name<em class="required"></em></label>
                                 <input type="text" class="form-control" name ="name" value = "<%= res.getString("name")%>" required maxlength="50"/>
@@ -63,49 +65,50 @@
 
                             <div class="content-divider"></div>
 
+                            <!--
                             <div class ="form-group">
                                 <label>Age Group<em class="required"></em></label>
                                 <select name="age" class="age-select" required>
-                                    <%
-                                        if (res.getString("agegroup").equals("14 years old and below")) {
-                                    %>        
-                                    <option value="14 years old and below" selected = "selected">14 years old and below</option>
-                                    <option value="15-20 years old">15-20 years old</option>
-                                    <option value="21-30 years old">21-30 years old</option>
-                                    <option value="31 years old and above">31 years old and above</option>  
-                                    <%
-                                    } else if (res.getString("agegroup").equals("15-20 years old")) {
-                                    %>        
-                                    <option value="14 years old and below">14 years old and below</option>
-                                    <option value="15-20 years old"  selected = "selected">15-20 years old</option>
-                                    <option value="21-30 years old">21-30 years old</option>
-                                    <option value="31 years old and above">31 years old and above</option>
-                                    <%
-                                    } else if (res.getString("agegroup").equals("21-30 years old")) {
-                                    %>
-                                    <option value="14 years old and below">14 years old and below</option>
-                                    <option value="15-20 years old">15-20 years old</option>
-                                    <option value="21-30 years old" selected = "selected">21-30 years old</option>
-                                    <option value="31 years old and above">31 years old and above</option>
-                                    <%
-                                    } else {
-                                    %>
-                                    <option value="14 years old and below">14 years old and below</option>
-                                    <option value="15-20 years old">15-20 years old</option>
-                                    <option value="21-30 years old">21-30 years old</option>
-                                    <option value="31 years old and above" selected = "selected">31 years old and above</option
-                                    <%
-                                        }
-                                    %>
-                                </select>
-                            </div>
+                            <%-- <%
+                                  if (res.getString("agegroup").equals("14 years old and below")) {
+                              %>        
+                              <option value="14 years old and below" selected = "selected">14 years old and below</option>
+                              <option value="15-20 years old">15-20 years old</option>
+                              <option value="21-30 years old">21-30 years old</option>
+                              <option value="31 years old and above">31 years old and above</option>  
+                              <%
+                              } else if (res.getString("agegroup").equals("15-20 years old")) {
+                              %>        
+                              <option value="14 years old and below">14 years old and below</option>
+                              <option value="15-20 years old"  selected = "selected">15-20 years old</option>
+                              <option value="21-30 years old">21-30 years old</option>
+                              <option value="31 years old and above">31 years old and above</option>
+                              <%
+                              } else if (res.getString("agegroup").equals("21-30 years old")) {
+                              %>
+                              <option value="14 years old and below">14 years old and below</option>
+                              <option value="15-20 years old">15-20 years old</option>
+                              <option value="21-30 years old" selected = "selected">21-30 years old</option>
+                              <option value="31 years old and above">31 years old and above</option>
+                              <%
+                              } else {
+                              %>
+                              <option value="14 years old and below">14 years old and below</option>
+                              <option value="15-20 years old">15-20 years old</option>
+                              <option value="21-30 years old">21-30 years old</option>
+                              <option value="31 years old and above" selected = "selected">31 years old and above</option
+                              <%
+                                  }
+                              %> --%>
+                          </select>
+                      </div>
 
-                            <div class="content-divider"></div>
+                      <div class="content-divider"></div> --!>
 
                             <div class ="form-group">
                                 <label>Birthday<em class="required"></em></label>
                                 <!--CHANGE INPUT TYPE TO DATE-->
-                                <input type="date" class="form-control" name ="birthday" value = "<%= res.getString("birthday")%>" required/>
+                                <input type="date" class="form-control" name ="birthday" value = "<%= res.getString("birthday")%>" required readonly/>
 
                             </div>
 
@@ -122,15 +125,15 @@
                                 <label>Gender<em class="required"></em></label>
                                 <select name="gender" class="age-select" required>
                                     <%
-                                        if (res.getString("gender").equals("Male(Lalaki)")) {
+                                        if (res.getString("gender").equals("Male")) {
                                     %>
-                                    <option value="Male(Lalaki)" selected = "selected">Male(Lalaki)</option>
-                                    <option value="Female (Babae)">Female (Babae)</option>
+                                    <option value="Male(Lalaki)" selected = "selected" disabled>Male(Lalaki)</option>
+                                    <option value="Female (Babae)" disabled>Female (Babae)</option>
                                     <%
-                                    } else if (res.getString("gender").equals("Female (Babae)")) {
+                                    } else if (res.getString("gender").equals("Female")) {
                                     %>
-                                    <option value="Male(Lalaki)">Male(Lalaki)</option>
-                                    <option value="Female (Babae)"  selected = "selected">Female (Babae)</option>
+                                    <option value="Male(Lalaki)" disabled>Male(Lalaki)</option>
+                                    <option value="Female (Babae)"  selected = "selected" disabled>Female (Babae)</option>
                                     <%
                                         }
                                     %>
@@ -141,9 +144,9 @@
                             <%
                                 }
                             %>   
-                        </div>
-                    </div>
-                </div>
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
                 <!--  <br>
                   <br> -->
 
@@ -154,9 +157,10 @@
                 %>
                 <input type ="hidden" name ="contactID" value = "<%= res.getString("contactID")%>"/>
 
-                <div id="Contact" class="tabcontent">
-                    <div class="container-main">
-                        <div class="content-container">
+                <!--<div id="Contact" class="tabcontent">-->
+                <p>Contact Details</p>
+                    <!--<div class="container-main">-->
+                        <!--<div class="content-container">-->
                             <div class ="form-group">
                                 <label>Contact Number<em class="required"></em></label>
                                 <input type="tel" class="form-control" name ="contactNo" pattern="^[0-9]{3,45}$" value = "<%= res.getString("contactNo")%>" required maxlength="15"/>
@@ -178,9 +182,10 @@
                             <%
                                 }
                             %>    
-                        </div>
-                    </div>
-                </div>
+                            <div class="content-divider"></div>
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
 
                 <!--  <br>
                   <br> -->
@@ -193,12 +198,13 @@
                 %>
                 <input type ="hidden" name ="familyID" value = "<%= res.getString("familyID")%>"/>
 
-                <div id="Family" class="tabcontent">
-                    <div class="container-main">
-                        <div class="content-container">
+                <!--<div id="Family" class="tabcontent">-->
+                <p>Family Details</p>
+                    <!--<div class="container-main">-->
+                        <!--<div class="content-container">-->
                             <div class ="form-group">
                                 <label>Mother Name<em class="required"></em></label>
-                                <input type="text" class="form-control" name ="motherName" value = "<%= res.getString("motherName")%>" required maxlength="50"/>
+                                <input type="text" class="form-control" name ="motherName" value = "<%= res.getString("motherName")%>" required maxlength="50" readonly/>
                             </div>
 
                             <div class="content-divider"></div>
@@ -212,7 +218,7 @@
 
                             <div class ="form-group">
                                 <label>Father Name<em class="required"></em></label>
-                                <input type="text" class="form-control" name ="fatherName" value = "<%= res.getString("fatherName")%>" required maxlength="50"/>
+                                <input type="text" class="form-control" name ="fatherName" value = "<%= res.getString("fatherName")%>" required maxlength="50" readonly/>
                             </div>
 
                             <div class="content-divider"></div>
@@ -288,9 +294,10 @@
                             <%
                                 }
                             %>
-                        </div>
-                    </div>
-                </div>
+                            <div class="content-divider"></div>
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
                 <!-- <br>
                  <br> -->
 
@@ -301,9 +308,10 @@
                 %>
                 <input type ="hidden" name ="organizationID" value = "<%= res.getString("organizationID")%>"/>
 
-                <div id="Survey" class="tabcontent">
-                    <div class="container-main">
-                        <div class="content-container">
+                <!--<div id="Survey" class="tabcontent">-->
+                <p>Survey</p>
+                    <!--<div class="container-main">-->
+                        <!--<div class="content-container">-->
                             <div class ="form-group">
                                 <label>Resident Voter<em class="required"></em></label>
                                 <select name="residentVoter" class="age-select" required>
@@ -359,21 +367,21 @@
                                     <%
                                         if (res.getString("supportSK").equals("Yes")) {
                                     %>         
-                                    <option value="Yes" selected = "selected">Yes</option>
-                                    <option value="No">No</option>
-                                    <option value="Maybe">Maybe</option>  
+                                    <option value="Yes" selected = "selected" disabled>Yes</option>
+                                    <option value="No" disabled>No</option>
+                                    <option value="Maybe" disabled>Maybe</option>  
                                     <%
                                     } else if (res.getString("supportSK").equals("No")) {
                                     %>        
-                                    <option value="Yes">Yes</option>
-                                    <option value="No"  selected = "selected">No</option>
-                                    <option value="Maybe">Maybe</option>  
+                                    <option value="Yes" disabled>Yes</option>
+                                    <option value="No"  selected = "selected" disabled>No</option>
+                                    <option value="Maybe" disabled>Maybe</option>  
                                     <%
                                     } else {
                                     %>
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-                                    <option value="Maybe"  selected = "selected">Maybe</option>
+                                    <option value="Yes" disabled>Yes</option>
+                                    <option value="No" disabled>No</option>
+                                    <option value="Maybe"  selected = "selected" disabled>Maybe</option>
                                     <%
                                         }
                                     %>
@@ -384,29 +392,30 @@
 
                             <div class ="form-group">
                                 <label>Show of support to SK<em class="required"></em></label>
-                                <input type="text" class="form-control" name ="showSupport" value = "<%= res.getString("showSupport")%>" required maxlength="120"/>
+                                <input type="text" class="form-control" name ="showSupport" value = "<%= res.getString("showSupport")%>" required maxlength="120" readonly/>
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
                                 <label>Job Chance<em class="required"></em></label>
-                                <input type="text" class="form-control" name ="jobChance" value = "<%= res.getString("jobChance")%>" required maxlength="120"/>
+                                <input type="text" class="form-control" name ="jobChance" value = "<%= res.getString("jobChance")%>" required maxlength="120" readonly/>
                             </div>
 
                             <div class="content-divider"></div>
 
                             <div class ="form-group">
                                 <label>Say to SK<em class="required"></em></label>
-                                <input type="text" class="form-control" name ="sayToSK" value = "<%= res.getString("sayToSK")%>" required maxlength="120"/>
+                                <input type="text" class="form-control" name ="sayToSK" value = "<%= res.getString("sayToSK")%>" required maxlength="120" readonly/>
                             </div>
                             <%
                                 }
                             %>
+                            <div class="content-divider"></div>
 
-                        </div>
-                    </div>
-                </div>
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
                 <!-- <br>
                  <br> -->
 
@@ -417,9 +426,10 @@
                 %>
                 <input type ="hidden" name ="statusID" value = "<%= res.getString("statusID")%>"/>
 
-                <div id="Details" class="tabcontent">
-                    <div class="container-main">
-                        <div class="content-container">
+                <!--<div id="Details" class="tabcontent">-->
+                <p>Resident Details</p>
+                    <!--<div class="container-main">-->
+                        <!--<div class="content-container">-->
                             <div class ="form-group">
                                 <label>Civil Status<em class="required"></em></label>
                                 <select name="civilStatus" class="age-select" required>
@@ -648,10 +658,11 @@
                             <%
                                 }
                             %>
+                            <div class="content-divider"></div>
 
-                        </div>
-                    </div>
-                </div>
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
 
                 <%
                     String vaccine_info = "SELECT * FROM `skit-yims`.`vaccine-info` WHERE vaccineID = '" + num + "';";
@@ -661,9 +672,10 @@
 
                 <input type ="hidden" name ="vaccineID" value = "<%= res.getString("vaccineID")%>"/>
 
-                <div id="Vaccination" class="tabcontent">
-                    <div class="container-main">
-                        <div class="content-container">
+                <!--<div id="Vaccination" class="tabcontent">-->
+                <p>Vaccine</p>
+                    <!--<div class="container-main">-->
+                        <!--<div class="content-container">-->
                             <div class ="form-group">
                                 <label>Vaccinated<em class="required"></em></label>
                                 <select name="vaccinated" class="age-select" required>
@@ -891,10 +903,11 @@
                             </div>
                             <%
                                 }
-                            %>    
-                        </div>
-                    </div>
-                </div>
+                            %>  
+                            <div class="content-divider"></div>
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
                 <div class="buttons">
                     <input type="submit" value="Confirm" name="conf"/></button>
                     <a href="/SKIT-YIMS/Account/ViewDatabase.jsp" class ="btn btn-default">Cancel</a>
