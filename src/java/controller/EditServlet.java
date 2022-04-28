@@ -129,13 +129,11 @@ public class EditServlet extends HttpServlet {
                     && oID != null && residentVoter != null && memberOfOrg != null && nameOfOrg != null && supportSK != null && showSupport != null && jobChance != null && sayToSK != null
                     && sID != null && civilStatus != null && workingStatus != null && educationAttainment != null && jobEmployed != null && PWD != null && typeOfDisability != null
                     && vID != null && vaccinated != null && willingForVaccine != null && brandOfVaccine != null && vaccineStatus != null) {
-                String basic_query = "UPDATE `skit-yims`.`basic-info` SET `name` = ?, `agegroup` = ?, `birthday` = ?, `address` = ?, `gender` = ? WHERE (`basicID` = '" + bID + "')";
+                String basic_query = "UPDATE `skit-yims`.`basic-info` SET `name` = ?, `birthday` = ?, `address` = ? WHERE (`basicID` = '" + bID + "')";
                 PreparedStatement stmt = conn.prepareStatement(basic_query);
                 stmt.setString(1, name);
-                stmt.setString(2, age);
-                stmt.setString(3, birthday);
-                stmt.setString(4, address);
-                stmt.setString(5, gender);
+                stmt.setString(2, birthday);
+                stmt.setString(3, address);
                 stmt.execute();
 
                 String contact_query = "UPDATE `skit-yims`.`contact-info` SET `contactNo` = ?, `emailAddress` = ?, `fbNameURL` = ?  WHERE (`contactID` = '" + cID + "')";
@@ -207,6 +205,51 @@ public class EditServlet extends HttpServlet {
                 stmt.execute();
 
                 response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
+
+            } else {
+                System.out.println("empty fields!");
+
+                System.out.println(bID);
+                System.out.println(name);
+                System.out.println(address);
+
+                System.out.println(cID);
+                System.out.println(contactNo);
+                System.out.println(fbName);
+
+                System.out.println(fID);
+                System.out.println(motherName);
+                System.out.println(motherOccupation);
+                System.out.println(fatherName);
+                System.out.println(fatherOccupation);
+                System.out.println(vitalStatusMother);
+                System.out.println(vitalStatusFather);
+                System.out.println(noOfSiblings);
+                System.out.println(siblingEducation);
+                System.out.println(breadWinner);
+
+                System.out.println(oID);
+                System.out.println(residentVoter);
+                System.out.println(memberOfOrg);
+                System.out.println(nameOfOrg);
+                System.out.println(supportSK);
+                System.out.println(showSupport);
+                System.out.println(jobChance);
+                System.out.println(sayToSK);
+
+                System.out.println(sID);
+                System.out.println(civilStatus);
+                System.out.println(workingStatus);
+                System.out.println(educationAttainment);
+                System.out.println(jobEmployed);
+                System.out.println(PWD);
+                System.out.println(typeOfDisability);
+
+                System.out.println(vID);
+                System.out.println(vaccinated);
+                System.out.println(willingForVaccine);
+                System.out.println(brandOfVaccine);
+                System.out.println(vaccineStatus);
 
             }
 

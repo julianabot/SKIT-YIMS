@@ -69,6 +69,8 @@
 
         }
     %>
+    <div class="goback"> <a class="purp-btn" href="/SKIT-YIMS/Survey Forms/Landing.jsp">Go back</a> </div>
+
     <body>
         <div id="header-container">
             <img src="/SKIT-YIMS/img/SK_Logo.png" alt="SK Logo" id="Logo">
@@ -76,7 +78,6 @@
                 <h1 id="header-text">SK Ibayo-Tipas:<br>Youth Resident Survey</h1>
             </div>
         </div>
-
         <div class="tab">
             <button class="tablinks" onclick="showTab(event, 'Info')" id="defaultOpen">Resident Information</button>
             <button class="tablinks" onclick="showTab(event, 'Details')">Resident Details</button>
@@ -97,14 +98,14 @@
                             </div>
 
                             <div class="content-divider"></div>
-                            
-                            
+
+
                             <div class="table">
                                 <div class="input-group">
                                     <label for="birthday" class="label-english" id="birthday-text">Birthday<em class="required"></em>&emsp;<span>Kaarawan</span></label>
                                     <input type="date" name="birthday" id="birthday" class="birthday-select" required>
                                 </div>
-                                
+
                                 <div class="divider-row"></div>
 
                                 <!-- <div class="table">
@@ -128,7 +129,7 @@
                                     <div>
                                         <label for="gender" class="label-english">Gender<em class="required"></em>&emsp;<span>Kasarian</span></label>    
                                     </div>
-                                    
+
                                     <select name="gender" id="gender" class="dropdown" required>
                                         <option id="female" value="Female">Female (Babae)</option>
                                         <option id="male" value="Male">Male (Lalaki)</option>
@@ -138,31 +139,31 @@
 
                             </div>
 
-<!--                            <div class="gender-group">
-                                <p class="label-english">Gender<em class="required"></em>&emsp;<span>Kasarian</span></p>
-
-                                <div class="radial-row-three">
-                                    <div>
-                                        <input type="radio" id="female" name="gender" value="Female" required>
-                                        <label for="female" class="label-english"><span class="radio-btn"></span>Female <span>(Babae)</span></label>
-                                    </div>
-
-                                    <div class="divider-choices-three"></div>
-
-                                    <div class="no-padding">
-                                          <input type="radio" id="male" name="gender" value="Male (Lalaki)" class="radio-btn">
-                                          <label for="male" class="label-english"><span class="radio-btn"></span>Male <span>(Lalaki)</span></label>
-                                    </div>
-
-                                    <div class="divider-choices-three"></div>
-
-                                    <div>
-                                          <input type="radio" id="prefer" name="gender" value="Prefer not to say" class="radio-btn">
-                                          <label for="prefer" class="label-english"><span class="radio-btn"></span>Prefer not to say <span>(Pinipiling hindi sabihin)</span></label>
-                                    </div>
-
-                                </div>
-                            </div>-->
+                            <!--                            <div class="gender-group">
+                                                            <p class="label-english">Gender<em class="required"></em>&emsp;<span>Kasarian</span></p>
+                            
+                                                            <div class="radial-row-three">
+                                                                <div>
+                                                                    <input type="radio" id="female" name="gender" value="Female" required>
+                                                                    <label for="female" class="label-english"><span class="radio-btn"></span>Female <span>(Babae)</span></label>
+                                                                </div>
+                            
+                                                                <div class="divider-choices-three"></div>
+                            
+                                                                <div class="no-padding">
+                                                                      <input type="radio" id="male" name="gender" value="Male (Lalaki)" class="radio-btn">
+                                                                      <label for="male" class="label-english"><span class="radio-btn"></span>Male <span>(Lalaki)</span></label>
+                                                                </div>
+                            
+                                                                <div class="divider-choices-three"></div>
+                            
+                                                                <div>
+                                                                      <input type="radio" id="prefer" name="gender" value="Prefer not to say" class="radio-btn">
+                                                                      <label for="prefer" class="label-english"><span class="radio-btn"></span>Prefer not to say <span>(Pinipiling hindi sabihin)</span></label>
+                                                                </div>
+                            
+                                                            </div>
+                                                        </div>-->
 
                             <div class="content-divider"></div>
 
