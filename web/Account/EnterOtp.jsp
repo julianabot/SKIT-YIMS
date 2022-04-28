@@ -6,6 +6,7 @@
             rel="stylesheet" id="bootstrap-css">
         <script
         src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/SK_Logo.png" />
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <!------ Include the above in your HEAD tag ---------->
 
@@ -18,6 +19,7 @@
     </head>
 
     <body>
+        <img src="${pageContext.request.contextPath}/img/SK_Logo.png" alt="SK Logo" id="Logo">
         <div class="main-container">
             <h4>
                 <i class="fa fa-lock"></i>

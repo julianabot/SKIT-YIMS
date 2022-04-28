@@ -3,6 +3,7 @@
     <head>
         <meta charset='utf-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/SK_Logo.png" />
         <title>Change Password</title>
         <link href="${pageContext.request.contextPath}/Account/AccountCSS/ForgotPassword.css" rel="stylesheet" type="text/css">
         <link
@@ -22,6 +23,7 @@
         </style>
     </head>
     <body oncontextmenu='return false' class='snippet-body bg-info'>
+        <img src="${pageContext.request.contextPath}/img/SK_Logo.png" alt="SK Logo" id="Logo">
         <div>
             <!-- Container containing all contents -->
             <div class="main-container">

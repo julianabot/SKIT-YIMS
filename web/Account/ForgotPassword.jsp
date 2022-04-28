@@ -3,6 +3,7 @@
     <head>
         <meta charset='utf-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/SK_Logo.png" />
         <title>Forgot Password</title>
 <!--        <link
             href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'
@@ -52,6 +53,7 @@
             }*/
         </style>
     </head>
+    <img src="${pageContext.request.contextPath}/img/SK_Logo.png" alt="SK Logo" id="Logo">
     <body oncontextmenu='return false' class='snippet-body'>
         <div class="container">
         <div class="main-container">
