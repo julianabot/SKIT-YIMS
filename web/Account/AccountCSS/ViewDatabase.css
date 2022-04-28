@@ -476,21 +476,29 @@ tr:nth-child(even){
 
 .email-button-container{
     height: 100%;
+    text-decoration: none;
+    color: #8B3535;
     
 }
 
 .email-button{
+    text-decoration: none;
+    color: #8B3535;
     height: 100%;
     font-size: 0.8em;
     height: 100%;
     padding: 7px 10px;
     background-color: #E9DEDE;
     border: none;
-/*    border-color: black;*/
     color: #8B3535;
     font-weight: bold;
     border-radius: 5px;
     vertical-align: middle;
-    
-  
+    text-decoration: none;
+    color: #8B3535;
+}
+
+.email-button a{
+    text-decoration: none;
+    color: #8B3535;
 }

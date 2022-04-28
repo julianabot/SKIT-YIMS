@@ -97,32 +97,48 @@
                             </div>
 
                             <div class="content-divider"></div>
-
-                            <div class="input-group">
-                                <label for="birthday" class="label-english" id="birthday-text">Birthday<em class="required"></em>&emsp;<span>Kaarawan</span></label>&emsp;
-                                <input type="date" name="birthday" id="birthday" class="birthday-select" required>
-                            </div>
                             
-                            <!-- <div class="table">
-                                 <div class="input-group">
-                                     <label for="age" class="label-english">Age<em class="required"></em>&emsp;<span>To be removed from jsp and javascript</span></label>&emsp;
-                                     <select name="age" id="age" class="age-select" required>
-                                         <option value="14 years old and below">14 years old and below</option>
-                                         <option value="15-20 years old">15-20 years old</option>
-                                         <option value="21-30 years old">21-30 years old</option>
-                                         <option value="31 years old and above">31 years old and above</option>
-                                     </select>
-                                 </div> 
-                                 <div class="divider-row"></div>
-                                 <div class="input-group">
-                                     <label for="birthday" class="label-english" id="birthday-text">Birthday<em class="required"></em>&emsp;<span>Kaarawan</span></label>&emsp;
-                                     <input type="date" name="birthday" id="birthday" class="birthday-select" required>
-                                 </div>
-                             </div> -->
+                            
+                            <div class="table">
+                                <div class="input-group">
+                                    <label for="birthday" class="label-english" id="birthday-text">Birthday<em class="required"></em>&emsp;<span>Kaarawan</span></label>
+                                    <input type="date" name="birthday" id="birthday" class="birthday-select" required>
+                                </div>
+                                
+                                <div class="divider-row"></div>
 
-                            <div class="content-divider"></div>
+                                <!-- <div class="table">
+                                     <div class="input-group">
+                                         <label for="age" class="label-english">Age<em class="required"></em>&emsp;<span>To be removed from jsp and javascript</span></label>&emsp;
+                                         <select name="age" id="age" class="age-select" required>
+                                             <option value="14 years old and below">14 years old and below</option>
+                                             <option value="15-20 years old">15-20 years old</option>
+                                             <option value="21-30 years old">21-30 years old</option>
+                                             <option value="31 years old and above">31 years old and above</option>
+                                         </select>
+                                     </div> 
+                                     <div class="divider-row"></div>
+                                     <div class="input-group">
+                                         <label for="birthday" class="label-english" id="birthday-text">Birthday<em class="required"></em>&emsp;<span>Kaarawan</span></label>&emsp;
+                                         <input type="date" name="birthday" id="birthday" class="birthday-select" required>
+                                     </div>
+                                 </div> -->
 
-                            <div class="gender-group">
+                                <div class="input-group">
+                                    <div>
+                                        <label for="gender" class="label-english">Gender<em class="required"></em>&emsp;<span>Kasarian</span></label>    
+                                    </div>
+                                    
+                                    <select name="gender" id="gender" class="dropdown" required>
+                                        <option id="female" value="Female">Female (Babae)</option>
+                                        <option id="male" value="Male">Male (Lalaki)</option>
+                                        <option id="prefer" value="Prefer not to say">Prefer not to say (Pinipiling hindi sabihin)</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+<!--                            <div class="gender-group">
                                 <p class="label-english">Gender<em class="required"></em>&emsp;<span>Kasarian</span></p>
 
                                 <div class="radial-row-three">
@@ -146,7 +162,7 @@
                                     </div>
 
                                 </div>
-                            </div>
+                            </div>-->
 
                             <div class="content-divider"></div>
 
@@ -637,7 +653,7 @@
         <script>
             //resident info
             name = document.getElementById("name");
-            age = document.getElementById("age");
+//            age = document.getElementById("age");
             birthday = document.getElementById("birthday");
             gender = document.getElementsByName("gender");
             address = document.getElementById("address");
@@ -767,7 +783,7 @@
             }
 
             function residentInfo() {
-                if (name != null && age != null && birthday != null & gender != null && address != null) {
+                if (name != null && birthday != null & gender != null && address != null) {
                     return true;
                 } else
                     return false;
@@ -848,7 +864,7 @@
         </script>
         <script>
             function validateForm() {
-                var residentInfo = ["name", "age", "birthday", "gender", "address", "validID"];
+                var residentInfo = ["name", "birthday", "gender", "address", "validID"];
                 var residentDetails = ["civil", "working", "jobEmployed", "education", "pwd", "typePWD"];
                 var contactDetails = ["phone", "email", "fbname"];
                 var familyDetails = ["mother", "motherstat", "motherwork", "father", "fatherstat", "fatherwork", "nosibs", "breadwinner"];
