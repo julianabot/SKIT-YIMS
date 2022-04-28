@@ -12,14 +12,14 @@
         <script type='text/javascript'
         src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
         <style>
-/*            .placeicon {
-                font-family: fontawesome
-            }
-
-            .custom-control-label::before {
-                background-color: #dee2e6;
-                border: #dee2e6
-            }*/
+            /*            .placeicon {
+                            font-family: fontawesome
+                        }
+            
+                        .custom-control-label::before {
+                            background-color: #dee2e6;
+                            border: #dee2e6
+                        }*/
         </style>
     </head>
     <body oncontextmenu='return false' class='snippet-body bg-info'>
@@ -37,16 +37,20 @@
                         <!-- User Name Input -->
                         <div >
                             <div class="new-password-input">
-                                <input type="text" name="password" placeholder="New Password" class="form-control"> <i class="fa fa-eye" id="togglePassword"></i>
+                                <input type="password" id="password-2" name="password" placeholder="New Password" class="form-control"> <i class="fa fa-eye" id="togglePassword-2"></i>
+                                <script src="../js/toggleNewPass.js"></script>
                             </div>
                         </div>
                         <!-- Password Input -->
                         <div >
                             <div class="new-password-input">
-                                <input type="password" name="confPassword"
-                                       placeholder="Confirm New Password" class="form-control"> <i class="fa fa-eye" id="togglePassword"></i>
+                                <input type="password" id="password-3" name="confPassword"
+                                       placeholder="Confirm New Password" class="form-control"> <i class="fa fa-eye" id="togglePassword-3"></i>
                             </div>
+
+                            <script src="../js/toggleConfirmPwd.js"></script>
                         </div>
+
 
                         <!-- Log in Button -->
                         <div >
@@ -61,7 +65,7 @@
 
                     <!-- Horizontal Line -->
                     <div class="px-4 pt-5">
-                        
+
                     </div>
 
                 </div>
