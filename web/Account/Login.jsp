@@ -13,7 +13,7 @@
     <%
         response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
         if (session.getAttribute("loggedIn") != null) {
-            response.sendRedirect("${pageContext.request.contextPath}/Account/AccountInformation.jsp");
+            response.sendRedirect(request.getContextPath() + "/Account/AccountInformation.jsp");
         }
     %>
     <body>

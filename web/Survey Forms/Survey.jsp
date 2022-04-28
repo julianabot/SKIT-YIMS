@@ -64,7 +64,7 @@
     <%
         response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
         if (session.getAttribute("captchaSurvey") == null) {
-            response.sendRedirect("${pageContext.request.contextPath}/Survey Forms/Landing.jsp");
+            response.sendRedirect(request.getContextPath() + "/Survey Forms/Landing.jsp");
             session.setAttribute("errorCaptcha", "Please accomplish CAPTCHA.");
 
         }

@@ -11,7 +11,7 @@
     <%
         response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
         if (session.getAttribute("loggedIn") != null) {
-            response.sendRedirect("${pageContext.request.contextPath}/Account/AccountInformation.jsp");
+            response.sendRedirect(request.getContextPath() + "/Account/AccountInformation.jsp");
         }
     %>
     <body>
@@ -38,7 +38,7 @@
             <p><a href="${pageContext.request.contextPath}/Welcome.jsp" class="err-red">Go to Home Page</a></p>
         </div>
 
-        
+
         <!--Footer-->
         <section class="Footer-Container">
             <div class="Flex-Footer-Content" id="Contact-Us">

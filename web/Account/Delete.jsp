@@ -47,6 +47,6 @@
     stat.executeUpdate("DELETE FROM `skit-yims`.`resident-status` WHERE statusID = '" + no + "'");
     stat.executeUpdate("DELETE FROM `skit-yims`.`vaccine-info` WHERE vaccineID = '" + no + "'");
 
-    response.sendRedirect("/SKIT-YIMS/Account/ViewDatabase.jsp");
+    response.sendRedirect(request.getContextPath() + "/Account/ViewDatabase.jsp");
 %>
 

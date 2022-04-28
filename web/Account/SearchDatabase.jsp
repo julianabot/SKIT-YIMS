@@ -71,10 +71,10 @@
     <%
         response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
         if (session.getAttribute("loggedIn") == null) {
-            response.sendRedirect("${pageContext.request.contextPath}/Extra/InvalidSession.jsp");
+            response.sendRedirect(request.getContextPath() + "/Extra/InvalidSession.jsp");
         }
         if (session.getAttribute("residentName").equals("")) {
-            response.sendRedirect("${pageContext.request.contextPath}/Account/ViewDatabase.jsp");
+            response.sendRedirect(request.getContextPath() + "/Account/ViewDatabase.jsp");
         }
     %>
     <body>

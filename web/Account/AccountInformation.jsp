@@ -13,7 +13,7 @@
     <%
         response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
         if (session.getAttribute("loggedIn") == null) {
-            response.sendRedirect("${pageContext.request.contextPath}/Extra/InvalidSession.jsp");
+            response.sendRedirect(request.getContextPath() + "/Extra/InvalidSession.jsp");
         }
     %>
     <body>
@@ -27,19 +27,19 @@
             <ul class="links">
                 <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
                 <li class="Events"><a href="AuditLog.jsp">Audit Log</a></li> 
-                <% }%>
+                    <% }%>
                 <li class="Events"><a href="ViewDatabase.jsp">Database</a></li>
-                
+
                 <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
                 <li class = "Events">
-                <form action="../ArchiveServlet" method="POST">
-<!--                    <div class="archive-button-container">-->
+                    <form action="../ArchiveServlet" method="POST">
+                        <!--                    <div class="archive-button-container">-->
                         <button type="submit" class = "archive-button-view">Archive</button>
-<!--                    </div>-->
-                </form>
-                <% }%>
+                        <!--                    </div>-->
+                    </form>
+                    <% }%>
                 </li>
-                
+
                 <li class="Events"><a href="AccountInformation.jsp">Account</a></li>
 
                 <li class="Login">
