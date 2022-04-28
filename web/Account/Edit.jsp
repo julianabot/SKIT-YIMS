@@ -52,9 +52,10 @@
                     while (res.next()) {
                 %>   
                 <input type ="hidden" name ="basicID" value = "<%= res.getString("basicID")%>"/>
-
-                <!--<div id="Info" class="tabcontent">-->
+                
                 <div class="container-main">
+                <!--<div id="Info" class="tabcontent">-->
+                
                     <!--<div class="content-container">-->
                     <div class="content-divider"></div>
                     <p>Resident Information</p>
@@ -64,10 +65,11 @@
                     </div>
 
                     <div class="content-divider"></div>
-
+                    <div class="form-group">
+                        <label>Birthday<em class="required"></em></label>
                     <input type="date" class="form-control" name ="birthday" value = "<%= res.getString("birthday")%>" required readonly/>
-
-                </div>
+                    </div>
+                
 
                 <div class="content-divider"></div>
 
@@ -835,6 +837,7 @@
                             }
                         %>
                     </select>
+                </div>
                 </div>
                 <%
                     }
