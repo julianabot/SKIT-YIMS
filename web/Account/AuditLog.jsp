@@ -7,11 +7,11 @@
         <link href="AccountCSS/ViewDatabase.css" rel="stylesheet" type="text/css">
         <link rel="icon" type="image/png" href="/SKIT-YIMS/img/SK_Logo.png" /> 
 
-        <title>View Archive</title>
+        <title>Audit Log</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
 
-            /* Style the tab */
+/*             Style the tab 
             .tab {
                 overflow: hidden;
                 border: 1px solid #ccc;
@@ -25,7 +25,7 @@
 
 
 
-            /* Style the buttons inside the tab */
+             Style the buttons inside the tab 
             .tab button {
                 background-color: inherit;
                 float: left;
@@ -41,25 +41,25 @@
                 font-weight: bold;
             }
 
-            /* Change background color of buttons on hover */
+             Change background color of buttons on hover 
             .tab button:hover {
                 background-color: #E9DEDE;
             }
 
-            /* Create an active/current tablink class */
+             Create an active/current tablink class 
             .tab button.active {
                 background-color: #8B3535;
                 color: white;
                 font-size: 1.5em;
             }
 
-            /* Style the tab content */
+             Style the tab content 
             .tabcontent {
                 display: none;
                 padding: 6px 12px;
                 border-top: none;
 
-            }
+            }*/
 
             /* for button */
             .wrapper {
@@ -166,17 +166,47 @@
             </label>
         </nav>
         <div class="navbar-spacer"></div> 
-        <div>
+        <div class="audit-container">
             <!--            <div class="database-title-container">
                             <div class="database-title">SK Ibayo-Tipas Youth Residents AuditLog</div>
                         </div>-->
 
 
-            <div class="tab">
+<!--            <div class="tab">
                 <button class="tablinks" onclick="showTab(event, 'AuditLog')"  id="defaultOpen">Audit Log</button>
+            </div>-->
+            
+            <div class="database-title-container">
+                <div class="database-title">SKIT-YIMS Audit Log</div>
+                <button class="open-button" onclick="openForm()" style="font-weight: bold;">  Sort & Filter</button>
             </div>
 
-            <div id="AuditLog" class="tabcontent">
+            <div class="form-popup" id="myForm1">
+                <div id="close-button-container">
+                    <button type="button" class="btn-cancel" onclick="closeForm()"><i class="material-icons">close</i></button>
+                </div>
+                <div class="audit-modal">
+                    <div class="audit-modal-content">
+                    <h1>Sort</h1>
+                    <input type="radio" id="latest-oldest" name="sortBy" value="Latest to Oldest">
+                    <label for="latest-oldest">Latest to Oldest</label><br>
+                    <input type="radio" id="oldest-latest" name="sortBy" value="Oldest to Latest">
+                    <label for="oldest-latest">Oldest to Latest</label><br>
+                    
+                    <div style="height: 20px;"></div>
+                    
+                    <h1>Filter</h1>
+                    <ul  style="list-style: none">
+                        <li><input id="changes-edit" type="checkbox" /><label for="fourteenBelow">Edited Changes</label></li>
+                        <li><input id="changes-delete" type="checkbox" /><label for="fifteenTwenty">Deleted Changes</label></li>
+                        <li><input id="actions-login" type="checkbox"  /><label for="twentyoneThirty">Login Actions</label></li>
+                        <li><input id="actions-logout" type="checkbox" /><label for="thirtyoneAbove">Logout Actions</label></li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="AuditLog" class="audit-table-content">
                 <%
                     try {
                         String sortQuery = (String) session.getAttribute("sortQuery");
@@ -225,11 +255,11 @@
 
 <script>
     function openForm() {
-        document.getElementById("myForm").style.display = "block";
+        document.getElementById("myForm1").style.display = "block";
     }
 
     function closeForm() {
-        document.getElementById("myForm").style.display = "none";
+        document.getElementById("myForm1").style.display = "none";
     }
 </script>
 <script>

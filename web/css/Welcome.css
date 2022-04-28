@@ -370,6 +370,19 @@ nav .icon-burger .line{
     -webkit-user-select: none;
 }
 
+.prev1,
+.next1 {
+    cursor: pointer;
+    width: auto;
+    padding: 16px;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
 /* Position the "next button" to the right */
 .next {
     right: 0;
@@ -409,6 +422,7 @@ nav .icon-burger .line{
 
 /* Container for image text */
 .caption-container {
+    align-items: center;
     text-align: center;
     background-color: #712929;
     padding: 2px 16px;
@@ -423,6 +437,7 @@ nav .icon-burger .line{
     justify-content: space-between
 }
 .caption-container1 {
+    align-items: center;
     text-align: center;
     background-color: #712929;
     padding: 2px 16px;

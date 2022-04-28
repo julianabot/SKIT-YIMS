@@ -502,3 +502,37 @@ tr:nth-child(even){
     text-decoration: none;
     color: #8B3535;
 }
+
+.audit-table-content{
+    overflow: auto;
+    overflow-y: auto;
+    white-space: nowrap;
+    background-color: white;
+    height: 600px;
+}
+
+.audit-modal{
+    width: 300px;
+    height: 40px;
+}
+
+.audit-modal ul{
+    padding-left: 0px;
+}
+
+.audit-modal-content{
+    padding: 10px;
+}
+
+.audit-modal-content h1{
+    margin: 10px;
+    margin-top: 0;
+}
+
+#myForm1{
+    height: 300px;
+    padding: 10px;
+}
+.close-button-container{
+    float: right;
+}

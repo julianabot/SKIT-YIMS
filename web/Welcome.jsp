@@ -237,9 +237,9 @@
 
                 <!-- Image text -->
                 <div class="caption-container1">
-                    <a class="prev1" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="prev1" onclick="plusSlides1(-1)">&#10094;</a>
                     <p id="caption1"></p>
-                    <a class="next1" onclick="plusSlides(1)">&#10095;</a>
+                    <a class="next1" onclick="plusSlides1(1)">&#10095;</a>
                 </div>
 
                 <!-- Thumbnail images -->
