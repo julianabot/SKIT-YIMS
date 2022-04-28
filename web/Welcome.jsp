@@ -189,6 +189,129 @@
             <p class="Organizational-Chart-Subheading">The SK Chairman leads the Sangguniang Kabataan. A Local Youth Development Council (LYDC) composed of representatives of different local youth groups supports the SK and its programs. </p>
             <img src="img/SK_Organizational_Chart.png" class="Organizational-Chart-Image">
         </div>
+        
+        <div class="Organizational-Chart">
+            <p class="Organizational-Chart-Header">Meet the SK-Ibayo Tipas Members</p>
+            <p class="Organizational-Chart-Subheading">Take a further look at the members of the SK-Ibayo Tipas Council Members.</p>
+            <!-- Container for the image gallery -->
+            <div class="events-container">
+                <!-- Full-width images with number text -->
+                <div class="mySlides1">
+                    <img src="https://imgur.com/DlW9bUB.png" style="width:50%" id="imgEvent1">
+                </div>
+
+                <div class="mySlides1">
+                    <img src="https://imgur.com/mA29OkG.png" style="width:50%" id="imgEvent1">
+                </div>
+
+                <div class="mySlides1">
+                    <img src="https://imgur.com/h803Ktf.png" style="width:50%" id="imgEvent1">
+                </div>
+
+                <div class="mySlides1">
+                    <img src="https://imgur.com/7kzNjhZ.png" style="width:50%" id="imgEvent1">
+                </div>
+
+                <div class="mySlides1">
+                    <img src="https://imgur.com/y9WS2WA.png" style="width:50%" id="imgEvent1">
+                </div>
+
+                <div class="mySlides1">
+                    <img src="https://imgur.com/JXbeNdo.png" style="width:50%" id="imgEvent1">
+                </div>
+                
+                <div class="mySlides1">
+                    <img src="https://imgur.com/wzgYYHT.png" style="width:50%" id="imgEvent1">
+                </div>
+                
+                <div class="mySlides1">
+                    <img src="https://imgur.com/ZEpK3AE.png" style="width:50%" id="imgEvent1">
+                </div>
+                
+                <div class="mySlides1">
+                    <img src="https://imgur.com/KZt6g3e.png" style="width:50%" id="imgEvent1">
+                </div>
+
+                <!-- Next and previous buttons -->
+
+
+                <!-- Image text -->
+                <div class="caption-container1">
+                    <a class="prev1" onclick="plusSlides(-1)">&#10094;</a>
+                    <p id="caption1"></p>
+                    <a class="next1" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+
+                <!-- Thumbnail images -->
+                <div class="row1">
+                    <div class="column1">
+                        <img class="demo1 cursor1" src="https://imgur.com/DlW9bUB.png" style="width:100%" onclick="currentSlide1(1)" alt="SK CHAIRMAN ROCKY G. REYES">
+                    </div>
+                    <div class="column1">
+                        <img class="demo1 cursor1" src="https://imgur.com/mA29OkG.png" style="width:100%" onclick="currentSlide1(2)" alt="SK KAGAWAD KRISHA CATHERINE LONTOC">
+                    </div>
+                    <div class="column1">
+                        <img class="demo1 cursor1" src="https://imgur.com/h803Ktf.png" style="width:100%" onclick="currentSlide1(3)" alt="SK KAGAWAD CLARIZ CAPISTRANO">
+                    </div>
+                    <div class="column1">
+                        <img class="demo1 cursor1" src="https://imgur.com/7kzNjhZ.png" style="width:100%" onclick="currentSlide1(4)" alt="SK KAGAWAD MICHELLE KAREN CRUZ">
+                    </div>
+                    <div class="column1">
+                        <img class="demo1 cursor1" src="https://imgur.com/y9WS2WA.png" style="width:100%" onclick="currentSlide1(5)" alt="SK KAGAWAD JANE PAULINE CLORES">
+                    </div>
+                    <div class="column1">
+                        <img class="demo1 cursor1" src="https://imgur.com/JXbeNdo.png" style="width:100%" onclick="currentSlide1(6)" alt="SK KAGAWAD ROHANDREW RYE BOBOTIOK">
+                    </div>
+                    <div class="column1">
+                        <img class="demo1 cursor1" src="https://imgur.com/wzgYYHT.png" style="width:100%" onclick="currentSlide1(7)" alt="SK KAGAWAD EUGENE G. GARAN">
+                    </div>
+                    <div class="column1">
+                        <img class="demo1 cursor1" src="https://imgur.com/ZEpK3AE.png" style="width:100%" onclick="currentSlide1(8)" alt="SK TREASURER LALAINE O. RAFAEL ">
+                    </div>
+                    <div class="column1">
+                        <img class="demo1 cursor1" src="https://imgur.com/KZt6g3e.png" style="width:100%" onclick="currentSlide1(9)" alt="SK SECRETARY MICHELLE VICTORIANO">
+                    </div>
+                </div>
+                <script>
+                    var slideIndex1 = 1;
+                    showSlides1(slideIndex1);
+
+// Next/previous controls
+                    function plusSlides1(n) {
+                        showSlides1(slideIndex1 += n);
+                    }
+
+// Thumbnail image controls
+                    function currentSlide1(n) {
+                        showSlides1(slideIndex1 = n);
+                    }
+
+                    function showSlides1(n) {
+                        var i;
+                        var slides = document.getElementsByClassName("mySlides1");
+                        var dots = document.getElementsByClassName("demo1");
+                        var captionText = document.getElementById("caption1");
+                        if (n > slides.length) {
+                            slideIndex1 = 1
+                        }
+                        if (n < 1) {
+                            slideIndex1 = slides.length
+                        }
+                        for (i = 0; i < slides.length; i++) {
+                            slides[i].style.display = "none";
+                        }
+                        for (i = 0; i < dots.length; i++) {
+                            dots[i].className = dots[i].className.replace(" active", "");
+                        }
+                        slides[slideIndex1 - 1].style.display = "block";
+                        dots[slideIndex1 - 1].className += " active";
+                        captionText.innerHTML = dots[slideIndex1 - 1].alt;
+                    }
+                </script>
+            </div>
+        </div>
+        
+        
 
         <!--Footer-->
         <section class="Footer-Container">

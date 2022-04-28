@@ -327,6 +327,21 @@ nav .icon-burger .line{
 }
 
 /* Hide the images by default */
+.mySlides1 {
+    display: none;
+    background-color: #8B3535;
+    width: 80%;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#imgEvent1 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .mySlides {
     display: none;
     background-color: #8B3535;
@@ -374,8 +389,40 @@ nav .icon-burger .line{
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.next1 {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+    color: #C4C4C4;
+}
+
+.prev1 {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+    color: #C4C4C4;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev1:hover,
+.next1:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 /* Container for image text */
 .caption-container {
+    text-align: center;
+    background-color: #712929;
+    padding: 2px 16px;
+    color: white;
+    width: 80%;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+    font-size: 1.1em;
+    display: flex;
+    justify-content: space-between
+}
+.caption-container1 {
     text-align: center;
     background-color: #712929;
     padding: 2px 16px;
@@ -420,11 +467,48 @@ nav .icon-burger .line{
     clear: both;
 }
 
+.row1{
+    width: 80%;
+    display:block;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 780px){
+    .Events-Section-Header{
+        font-size: 2em;
+    }
+    .row1{
+        width: 100%;
+    }
+    .caption-container1{
+        width: 100%;
+    }
+    
+    .mySlides1{
+        width: 100%;
+    }
+}
+
+.row1:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 /* Six columns side by side */
 .column {
     float: left;
     width: 16.66%;
 }
+
+.column1 {
+    float: left;
+    width: 11.1%;
+}
+
+
 
 /* Add a transparency effect for thumnbail images */
 .demo {
@@ -433,6 +517,15 @@ nav .icon-burger .line{
 
 .active,
 .demo:hover {
+    opacity: 1;
+}
+
+.demo1 {
+    opacity: 0.6;
+}
+
+.active,
+.demo1:hover {
     opacity: 1;
 }
 
