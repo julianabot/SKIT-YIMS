@@ -1,3 +1,4 @@
+<%@page import="java.sql.Time"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -231,9 +232,9 @@
 
                             <div>
                                 <label for="working" class="label-english">Working Status<em class="required"></em>&emsp;<span>Katayuan sa Trabaho</span></label><br>               
-                                <select name="working" id="working" class="dropdown" required>
+                                <select onclick="selectWorkingStatus()" name="working" id="working" class="dropdown" required>
                                     <option value="Full-Time Student">Full-Time Student</option>
-                                    <option value="Working Student">Working Student</option>
+                                    <option  value="Working Student">Working Student</option>
                                     <option value="Out of School Youth">Out of School Youth</option>
                                     <option value="Working/Employed">Working/Employed</option>
                                     <option value="Unemployed">Unemployed</option>
@@ -241,12 +242,29 @@
                                     <!-- others with input type field-->
                                 </select>
                             </div>
-
+                            
                             <div class="content-divider"></div>
+                            
+                            <script>
+                                function selectWorkingStatus() {
+//                                    document.getElementById("job").value = "N/A";
+                                    var workStat = document.getElementById("working").value;
+                                    if (workStat == "Full-Time Student"
+                                            || workStat == "Out of School Youth"
+                                            || workStat == "Unemployed"
+                                            || workStat == "Currently Looking For a Job"){
+                                        document.getElementById("job").value = "N/A";
+                                        document.getElementById("job").readOnly = true;
+                                    } else{
+                                        document.getElementById("job").value = "";
+                                        document.getElementById("job").readOnly = false;
+                                    }
+                                }
+                            </script>
 
                             <div>
                                 <label for="jobEmployed" class="label-english">If employed, please specify your job. (If none, type N/A)<em class="required"></em>&emsp;<span>Kung nagtratrabaho, isulat ang uri ng trabaho. (Kung wala, isulat N/A)</span></label><br>
-                                <input type="text" id="job" name="jobEmployed" class="long-textbox" required maxlength="30"><br>
+                                <input type="text" id="job" name="jobEmployed" class="long-textbox" required maxlength="30" value="N/A" readonly><br>
                             </div>
                             <br>
                             <div>
@@ -269,13 +287,25 @@
                             <div>
                                 <p class="label-english">Do you identify as a Person With Disability (PWD)?<em class="required"></em>&emsp;<span>Ikaw ba ay nabibilang sa mga Persons With Disabilities (PWD)?</span></p>
                                 <div class="radial-row">
-                                      <input type="radio" id="yes" name="pwd" value="Yes" required>
+                                      <input type="radio" id="yes" name="pwd" value="Yes" required onclick="enablePWD()">
                                       <label for="yes" class="label-english">Yes <span>(Oo)</span></label>
                                     <div class="divider-choices"></div>
-                                      <input type="radio" id="no" name="pwd" value="No">
+                                      <input type="radio" id="no" name="pwd" value="No" onclick="disablePWD()">
                                       <label for="no" class="label-english">No <span>(Hindi)</span></label>
                                 </div>
                             </div>
+                            
+                            <script>
+                                function enablePWD(){
+                                    document.getElementById("typePWD").value = "";
+                                    document.getElementById("typePWD").readOnly = false;
+                                }
+                                
+                                function disablePWD(){
+                                    document.getElementById("typePWD").value = "N/A";
+                                    document.getElementById("typePWD").readOnly = true;
+                                }
+                            </script>
 
                             <div class="content-divider"></div>
 
@@ -330,13 +360,25 @@
                             <div>
                                 <p class="label-english">Mother's Status<em class="required"></em>&emsp;<span>Estado ng iyong Nanay</span></p>
                                 <div class="radial-row">
-                                      <input type="radio" id="livingm" name="motherstat" value="Living" required>
+                                      <input type="radio" id="livingm" name="motherstat" value="Living" required onclick="enablemotherstatus()">
                                       <label for="livingm" class="label-english">Living <span>(Buhay)</span></label><br>
                                     <div class="divider-choices"></div>
-                                      <input type="radio" id="deceasedm" name="motherstat" value="Deceased">
+                                      <input type="radio" id="deceasedm" name="motherstat" value="Deceased" onclick="disablemotherstatus()">
                                       <label for="deceasedm" class="label-english">Deceased <span>(Pumanaw)</span></label><br>
                                 </div>
                             </div>
+                            
+                            <script>
+                                function enablemotherstatus(){
+                                    document.getElementById("motherwork").value = "";
+                                    document.getElementById("motherwork").readOnly = false;
+                                }
+                                function disablemotherstatus(){
+                                    document.getElementById("motherwork").value = "N/A";
+                                    document.getElementById("motherwork").readOnly = true;
+                                }
+                                
+                            </script>
 
                             <div class="content-divider"></div>
 
@@ -356,13 +398,25 @@
                             <div>
                                 <p class="label-english">Father's Status<em class="required"></em>&emsp;<span>Estado ng iyong Tatay</span></p>
                                 <div class="radial-row">
-                                      <input type="radio" id="livingf" name="fatherstat" value="Living" required>
+                                      <input type="radio" id="livingf" name="fatherstat" value="Living" required onclick="enablefatherstatus()">
                                       <label for="livingf" class="label-english">Living <span>(Buhay)</span></label><br>
                                     <div class="divider-choices"></div>
-                                      <input type="radio" id="deceasedf" name="fatherstat" value="Deceased">
+                                      <input type="radio" id="deceasedf" name="fatherstat" value="Deceased" onclick="disablefatherstatus()">
                                       <label for="deceasedf" class="label-english">Deceased <span>(Pumanaw)</span></label><br>
                                 </div>
                             </div>
+                            
+                            <script>
+                                function enablefatherstatus(){
+                                    document.getElementById("fatherwork").value = "";
+                                    document.getElementById("fatherwork").readOnly = false;
+                                }
+                                function disablefatherstatus(){
+                                    document.getElementById("fatherwork").value = "N/A";
+                                    document.getElementById("fatherwork").readOnly = true;
+                                }
+                                
+                            </script>
 
                             <div class="content-divider"></div>
 
@@ -467,18 +521,30 @@
 
                             <p class="label-english">Are you a member of an organization?<em class="required"></em>&emsp;<span>Miyembro ka ba ng isang organisasyon?</span></p>
                               <div class="radial-row">
-                                <input type="radio" id="yesorg" name="org" value="Yes" required>
+                                <input type="radio" id="yesorg" name="org" value="Yes" required onclick="enableorg()">
                                   <label for="yesorg" class="label-english">Yes <span>(Oo)</span></label>
                                 <div class="divider-choices"></div>
-                                  <input type="radio" id="noorg" name="org" value="No">
+                                  <input type="radio" id="noorg" name="org" value="No" onclick="disableorg()">
                                   <label for="noorg" class="label-english">No <span>(Hindi)</span></label>
                             </div>
+                            
+                            <script>
+                                function enableorg(){
+                                    document.getElementById("org").value = "";
+                                    document.getElementById("org").readOnly = false;
+                                }
+                                function disableorg(){
+                                    document.getElementById("org").value = "N/A";
+                                    document.getElementById("org").readOnly = true;
+                                }
+                                
+                            </script>
 
 
                             <div class="content-divider"></div>
 
                             <div>
-                                <label for="orgname" class="label-english">If yes, please specify which organization.<em class="required"></em>&emsp;<span>Kung oo, anong organisasyon?</span></label><br>
+                                <label for="orgname" class="label-english">If yes, please specify which organization. Type N/A if No.<em class="required"></em>&emsp;<span>Kung oo, anong organisasyon? Isulat ang N/A kung hindi.</span></label><br>
                                 <input type="text" id="org" name="orgname" class="long-textbox" required maxlength="50">
                             </div>
 
@@ -489,23 +555,35 @@
                                     <br><span>Handa ka bang suportahan ang mga paparating na proyekto ng SK Ibayo-Tipas?</span></label><br>
                                 <div class="radial-row-three">
                                     <div>
-                                          <input type="radio" id="yesproj" name="proj" value="Yes" required>
+                                          <input type="radio" id="yesproj" name="proj" value="Yes" required onclick="enableshowofsupport()">
                                           <label for="yesproj" class="label-english">Yes <span>(Oo)</span></label><br>
                                     </div>
                                     <div class="divider-choices"></div>
 
                                     <div>
-                                          <input type="radio" id="noproj" name="proj" value="No">
+                                          <input type="radio" id="noproj" name="proj" value="No" onclick="disableshowofsupport()">
                                           <label for="noproj" class="label-english">No <span>(Hindi)</span></label><br>
                                     </div>
                                     <div class="divider-choices"></div>
 
                                     <div>
-                                          <input type="radio" id="maybeproj" name="proj" value="Maybe">
+                                          <input type="radio" id="maybeproj" name="proj" value="Maybe" onclick="enableshowofsupport()">
                                           <label for="maybeproj" class="label-english">Maybe <span>(Hindi Sigurado)</span></label><br>
                                     </div>
                                 </div>
                             </div>
+                            
+                            <script>
+                                function enableshowofsupport(){
+                                    document.getElementById("support").value = "";
+                                    document.getElementById("support").readOnly = false;
+                                }
+                                function disableshowofsupport(){
+                                    document.getElementById("support").value = "N/A";
+                                    document.getElementById("support").readOnly = true;
+                                }
+                                
+                            </script>
 
                             <div class="content-divider"></div>
 
@@ -539,14 +617,39 @@
                                 </p>
 
                                 <div class="radial-row">
-                                      <input type="radio" id="yesvax" name="vax" value="Yes" required>
+                                      <input type="radio" id="yesvax" name="vax" value="Yes" required onclick="vaccinatedfunction()">
                                       <label for="yesvax" class="label-english">Yes <span>(Oo)</span></label><br>
                                     <div class="divider-choices"></div>
-                                      <input type="radio" id="novax" name="vax" value="No">
+                                      <input type="radio" id="novax" name="vax" value="No" onclick="notvaccinatedfunction()">
                                       <label for="novax" class="label-english">No <span>(Hindi)</span></label><br>
                                 </div>
 
                             </div>
+                            
+                            <script>
+                                function vaccinatedfunction(){
+                                    document.getElementById("notapplicablewilling").checked = true;
+                                    document.getElementById("brand").value = "Pfizer-BioNTech";
+                                    document.getElementById("brand").readOnly = false;
+                                    document.getElementById("vstatus").readOnly = false;
+                                    document.getElementById("vstatus").value = "First Dose";
+                                    document.getElementById("yeswilling").disabled = true;
+                                    document.getElementById("nowilling").disabled = true;
+                                    document.getElementById("notapplicablewilling").disabled = false;
+                                }
+                                function notvaccinatedfunction(){
+                                    document.getElementById("notapplicablewilling").checked = false;
+                                    document.getElementById("brand").value = "Not yet vaccinated/Hindi pa nababakuhanahan";
+                                    document.getElementById("brand").readOnly = true;
+                                    document.getElementById("vstatus").value = "Not Vaccinated";
+                                    document.getElementById("vstatus").readOnly = true;
+                                    document.getElementById("yeswilling").disabled = false;
+                                    document.getElementById("nowilling").disabled = false;
+                                    document.getElementById("notapplicablewilling").disabled = true;
+                                }
+                                
+                            </script>
+                            
 
                             <div class="content-divider"></div>
 
@@ -560,6 +663,9 @@
                                     <div class="divider-choices"></div>
                                       <input type="radio" id="nowilling" name="willing" value="No">
                                       <label for="nowilling" class="label-english">No <span>(Hindi)</span></label><br>
+                                    <div class="divider-choices"></div>
+                                    <input type="radio" id="notapplicablewilling" name="willing" value="N/A">
+                                      <label for="notapplicablewilling" class="label-english">N/A (Vaccinated)<span> (Nabakunahan)</span></label><br>
                                 </div>
                             </div>
 
@@ -576,6 +682,7 @@
                                     <option value="Bharat BioTech">Bharat BioTech</option>
                                     <option value="Moderna">Moderna</option>
                                     <option value="Sinopharm">Sinopharm</option>
+                                    <option value="Not yet vaccinated/Hindi pa nababakuhanahan">Not yet vaccinated/Hindi pa nababakunahan</option>
                                 </select>
                             </div>
 
