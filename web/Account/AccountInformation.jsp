@@ -4,7 +4,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/SK_Logo.png"/>
-        <link href="${pageContext.request.contextPath}/Account/AccountCSS/AccountInformation.css?v={random number/string}" rel="stylesheet" type="text/css">
         <link href="${pageContext.request.contextPath}/Account/AccountCSS/AccountInformation.css" rel="stylesheet" type="text/css">
         <title>Account Profile</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -26,9 +25,9 @@
 
             <ul class="links">
                 <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
-                <li class="Events"><a href="AuditLog.jsp">Audit Log</a></li> 
+                <li class="Events"><a href="${pageContext.request.contextPath}/Account/AuditLog.jsp">Audit Log</a></li> 
                     <% }%>
-                <li class="Events"><a href="ViewDatabase.jsp">Database</a></li>
+                <li class="Events"><a href="${pageContext.request.contextPath}/Account/ViewDatabase.jsp">Database</a></li>
 
                 <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
                 <li class = "Events">
@@ -40,7 +39,7 @@
                     <% }%>
                 </li>
 
-                <li class="Events"><a href="AccountInformation.jsp">Account</a></li>
+                <li class="Events"><a href="${pageContext.request.contextPath}/Account/AccountInformation.jsp">Account</a></li>
 
                 <li class="Login">
                     <form action = "../LogoutServlet" method = "GET">

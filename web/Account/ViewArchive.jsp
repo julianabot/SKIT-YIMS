@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="AccountCSS/ViewDatabase.css" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/Account/AccountCSS/ViewDatabase.css" rel="stylesheet" type="text/css">
         <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/SK_Logo.png" /> 
 
         <title>View Archive</title>
@@ -134,21 +134,21 @@
 
             <ul class="links">
                 <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
-                <li class="Events"><a href="AuditLog.jsp">Audit Log</a></li> 
+                <li class="Events"><a href="${pageContext.request.contextPath}/Account/AuditLog.jsp">Audit Log</a></li> 
                     <% }%>
-                <li class="Events"><a href="ViewDatabase.jsp">Database</a></li>
+                <li class="Events"><a href="${pageContext.request.contextPath}/Account/ViewDatabase.jsp">Database</a></li>
 
                 <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
                 <li class = "Events">
                     <form action="../ArchiveServlet" method="POST">
                         <!--                    <div class="archive-button-container">-->
-                        <button type="submit" class="archive-button">Archive</button>
+                        <button type="submit" class="archive-button-view">Archive</button>
                         <!--                    </div>-->
                     </form>
                     <% }%>
                 </li>
 
-                <li class="Events"><a href="AccountInformation.jsp">Account</a></li>
+                <li class="Events"><a href="${pageContext.request.contextPath}/Account/AccountInformation.jsp">Account</a></li>
 
                 <li class="Login">
                     <form action = "../LogoutServlet" method = "GET">
@@ -214,7 +214,7 @@
                         <td><%= rs.getString(9)%></td><td><%= rs.getString(10)%></td><td><%= rs.getString(11)%></td><td><%= rs.getString(12)%></td>
                         <td><%= rs.getString(13)%></td><td><%= rs.getString(14)%></td><td><%= rs.getString(15)%></td>
                         <td>
-                            <a href="GetImageArchive.jsp?id=<%= rs.getString(1)%>" target = "_blank">Valid ID of Resident</a>
+                            <a href="${pageContext.request.contextPath}/Account/GetImageArchive.jsp?id=<%= rs.getString(1)%>" target = "_blank">Valid ID of Resident</a>
                         </td>
                         <td><%= rs.getString(17)%></td><td><%= rs.getString(18)%></td><td><%= rs.getString(19)%></td><td><%= rs.getString(20)%></td>
                         <td><%= rs.getString(21)%></td><td><%= rs.getString(22)%></td><td><%= rs.getString(23)%></td><td><%= rs.getString(24)%></td>
@@ -268,7 +268,7 @@
                     <tr><td><%= rs.getString(1)%></td><td><%= rs.getString(2)%></td><td><%= rs.getString(3)%></td><td><%= rs.getString(4)%></td>
                         <td style="width:60%"><%= rs.getString(5)%></td><td><%= rs.getString(6)%></td>    
                         <td>
-                            <a href="GetImageArchive.jsp?id=<%= rs.getString(1)%>" target = "_blank">Valid ID of Resident</a>
+                            <a href="${pageContext.request.contextPath}/Account/GetImageArchive.jsp?id=<%= rs.getString(1)%>" target = "_blank">Valid ID of Resident</a>
                         </td>
                     </tr>
 

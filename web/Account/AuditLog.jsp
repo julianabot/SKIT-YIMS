@@ -135,9 +135,9 @@
 
             <ul class="links">
                 <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
-                <li class="Events"><a href="AuditLog.jsp">Audit Log</a></li> 
+                <li class="Events"><a href="${pageContext.request.contextPath}/Account/AuditLog.jsp">Audit Log</a></li> 
                     <% }%>
-                <li class="Events"><a href="ViewDatabase.jsp">Database</a></li>
+                <li class="Events"><a href="${pageContext.request.contextPath}/Account/ViewDatabase.jsp">Database</a></li>
 
                 <% if ((session.getAttribute("username").equals("skkagawad1db")) || (session.getAttribute("username").equals("skkagawad2db")) || (session.getAttribute("username").equals("skchairman"))) {%>
                 <li class = "Events">
@@ -149,7 +149,7 @@
                     <% }%>
                 </li>
 
-                <li class="Events"><a href="AccountInformation.jsp">Account</a></li>
+                <li class="Events"><a href="${pageContext.request.contextPath}/Account/AccountInformation.jsp">Account</a></li>
 
                 <li class="Login">
                     <form action = "../LogoutServlet" method = "GET">
