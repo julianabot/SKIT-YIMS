@@ -8,7 +8,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="${pageContext.request.contextPath}/Account/AccountCSS/Edit.css?v={random number/string}" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/Account/AccountCSS/Edit.css" rel="stylesheet" type="text/css">
         <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/SK_Logo.png" /> 
         <title>Edit Resident Profile</title>
 
