@@ -78,9 +78,10 @@
                     <center> 
                         <div class="captcha">
                             <label for="captcha-input">Enter Captcha</label>
-                            <div class="preview"></div>
+                            <div class="preview" name="preview"></div>
+                            <input type="hidden" name="captcha-generated" id="captcha-generated"/>
                             <div class="captcha-form">
-                                <input type="text" id="captcha-form" placeholder="Enter captcha text">
+                                <input type="text" id="captcha-form" name="captcha-input" placeholder="Enter captcha text">
                                 <button class="captcha-refresh">
                                     <i class="fa fa-refresh"></i>
                                 </button>

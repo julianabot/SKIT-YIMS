@@ -128,7 +128,7 @@
                 <div class="wrapper">
                     <form action="../SearchServlet" method="POST">
                         <input id="search-field" name="searchResident" type="text" value="<%=residentName%>" placeholder="Search for a resident" id="searchResident">
-                        <button type="submit" class="search-button"><i class="fas fa-search"></i>&nbsp; Search</button>
+                        <button type="submit" class="search-button"><i class="fa fa-search"></i>&nbsp; Search</button>
                     </form>
                 </div>
 

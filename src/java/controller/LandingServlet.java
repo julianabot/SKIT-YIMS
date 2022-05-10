@@ -36,13 +36,15 @@ public class LandingServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
-        boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
+        String captchaInput = request.getParameter("captcha-input");
+        String captchaGenerated = request.getParameter("captcha-generated");
 
-        System.out.println(verify);
+        System.out.println("ETO INPUT: " + captchaInput);
+        System.out.println("ETO GENERATED: " + captchaGenerated);
+
         HttpSession session = request.getSession();
 
-        if (verify) {
+        if (captchaGenerated.equals(captchaInput)) {
             response.sendRedirect(request.getContextPath() + "/Survey Forms/Survey.jsp");
             session.setAttribute("errorCaptcha", "");
             session.setAttribute("captchaSurvey", "true");

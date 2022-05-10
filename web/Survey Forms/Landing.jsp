@@ -9,6 +9,48 @@
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
+    <style>
+        .captcha label {
+            display:block;
+            font-size:15px;
+            color:#111;
+            margin-bottom:5px;
+        }
+        .captcha {
+            margin:15px 0px;
+        }
+        .captcha .preview {
+            color:#555;
+            width:100%;
+            text-align:center;
+            height:40px;
+            line-height:40px;
+            letter-spacing:8px;
+            border:1px dashed #888;
+            font-family:"monospace";
+        }
+        .captcha .preview span {
+            display:inline-block;
+            user-select:none;
+        }
+        .captcha .captcha-form {
+            display:flex;
+        }
+        .captcha .captcha-form input {
+            width:100%;
+            padding:8px;
+            border:1px solid #888;
+        }
+        .captcha .captcha-form .captcha-refresh {
+            width:40px;
+            border:none;
+            outline:none;
+            background:#888;
+            color:#eee;
+            cursor:pointer;
+        }
+    </style>
+
     <body>
         <!--Header-->
         <nav>
@@ -40,9 +82,10 @@
             <center> 
                 <div class="captcha">
                     <label for="captcha-input">Enter Captcha</label>
-                    <div class="preview"></div>
+                    <div class="preview" name="preview"></div>
+                    <input type="hidden" name="captcha-generated" id="captcha-generated"/>
                     <div class="captcha-form">
-                        <input type="text" id="captcha-form" placeholder="Enter captcha text">
+                        <input type="text" id="captcha-form" name="captcha-input" placeholder="Enter captcha text">
                         <button class="captcha-refresh">
                             <i class="fa fa-refresh"></i>
                         </button>

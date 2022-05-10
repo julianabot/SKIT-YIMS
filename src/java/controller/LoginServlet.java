@@ -20,32 +20,6 @@ public class LoginServlet extends HttpServlet {
     Connection conn;
     String checkException;
 
-//    public void init(ServletConfig config) throws ServletException {
-//        super.init(config);
-//
-//        try {
-//            Class.forName(config.getInitParameter("jdbcClassName"));
-//            String username = config.getInitParameter("dbUsername");
-//            String password = config.getInitParameter("dbPassword");
-//            StringBuffer url = new StringBuffer(config.getInitParameter("jdbcDriverURL"))
-//                    .append("://")
-//                    .append(config.getInitParameter("dbHostName"))
-//                    .append(":")
-//                    .append(config.getInitParameter("dbPort"))
-//                    .append("/")
-//                    .append(config.getInitParameter("databaseName"));
-//            conn
-//                    = DriverManager.getConnection(url.toString(), username, password);
-//        } catch (SQLException sqle) {
-//            checkException = sqle.getMessage();
-//            System.out.println("SQLException error occured - "
-//                    + sqle.getMessage());
-//        } catch (ClassNotFoundException nfe) {
-//            checkException = nfe.getMessage();
-//            System.out.println("ClassNotFoundException error occured - "
-//                    + nfe.getMessage());
-//        }
-//    }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -74,10 +48,10 @@ public class LoginServlet extends HttpServlet {
         try {
             conn = (Connection) request.getServletContext().getAttribute("dbConnection");
             System.out.print("Server inside Login Servlet");
+
             //Captcha
-            String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
-            System.out.println(gRecaptchaResponse);
-            boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
+            String captchaInput = request.getParameter("captcha-input");
+            String captchaGenerated = request.getParameter("captcha-generated");
 
             String username = request.getParameter("uname");
             String password = request.getParameter("password");
@@ -100,8 +74,11 @@ public class LoginServlet extends HttpServlet {
                 iPassword = ePassword;
             }
             HttpSession session = request.getSession();
+            
+            System.out.println("ETO INPUT: " + captchaInput);
+            System.out.println("ETO GENERATED: " + captchaGenerated);
 
-            if (username.equals(iUsername) && verify) {
+            if (username.equals(iUsername) && captchaGenerated.equals(captchaInput)) {
                 if (password.equals(iPassword)) {
 
                     session.setAttribute("username", iUsername);
@@ -128,13 +105,13 @@ public class LoginServlet extends HttpServlet {
                     stmt = conn.prepareStatement(query);
 
                     stmt.execute();
-
+                    System.out.println("hello");
                 } else {
                     session.setAttribute("errorLogin", "Wrong password! Try again.");
 //                    request.getRequestDispatcher("/Account/Login.jsp").forward(request, response);
                     response.sendRedirect(request.getContextPath() + "/Account/Login.jsp");
                 }
-            } else if (username.equals(iUsername) && !verify) {
+            } else if (username.equals(iUsername) && !captchaGenerated.equals(captchaInput)) {
                 session.setAttribute("errorLogin", "Please accomplish CAPTCHA.");
 //                request.getRequestDispatcher("/Account/Login.jsp").forward(request, response);
                 response.sendRedirect(request.getContextPath() + "/Account/Login.jsp");
@@ -144,6 +121,7 @@ public class LoginServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/Account/Login.jsp");
 
             }
+            System.out.println("hello 2");
 
         } catch (Exception e) {
             request.setAttribute("errorLogin", checkException);
