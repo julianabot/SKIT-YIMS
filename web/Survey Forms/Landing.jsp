@@ -95,13 +95,15 @@
             <center> 
                 <div class="captcha">
                     <label for="captcha-input">Enter Captcha</label>
-                    <div class="preview" name="preview"></div>
+                    <div class="preview" name="preview" onmousedown="return false" onselectstart="return false"></div>
                     <input type="hidden" name="captcha-generated" id="captcha-generated"/>
                     <div class="captcha-form">
                         <div class="input-captcha-container">
+                            
                         <input type="text" id="captcha-form" name="captcha-input" placeholder="Enter captcha text">
                         <button class="captcha-refresh">
                             <i class="fa fa-refresh"></i>
+                            
                         </button>
                         </div>
                     </div>
