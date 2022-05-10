@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=500, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/SK_Logo.png" />
-        <link href="${pageContext.request.contextPath}/Extra/ExtraCSS/Error404.css?v={random number/string}" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/Extra/ExtraCSS/Error404.css" rel="stylesheet">
         <title>Error 404</title>
     </head>
 

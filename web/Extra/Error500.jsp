@@ -6,7 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/SK_Logo.png" />
         <link href="${pageContext.request.contextPath}/Extra/ExtraCSS/InvalidSession.css" rel="stylesheet">
-        <title>Invalid Session</title>
+        <title>Server Error</title>
     </head>
     <%
         response.setHeader("Cache-control", "no-cache, no-store, must-revalidate");
@@ -23,7 +23,7 @@
 
             <ul class="links">
                 <li class="Home"><a href="${pageContext.request.contextPath}/Welcome.jsp">Home</a></li>
-                <li class="Login"><a href="${pageContext.request.contextPath}S/Account/Login.jsp" id="Login">Login</a></li>
+                <li class="Login"><a href="${pageContext.request.contextPath}/Account/Login.jsp" id="Login">Login</a></li>
             </ul>
             <label for="nav-toggle" class="icon-burger">
                 <div class="line"></div>
