@@ -12,16 +12,17 @@
     <style>
         .captcha label {
             display:block;
-            font-size:15px;
-            color:#111;
+            font-size:1.1em;
+/*            color:#111;*/
             margin-bottom:5px;
         }
         .captcha {
             margin:15px 0px;
+            align-content: center;
         }
         .captcha .preview {
             color:#555;
-            width:100%;
+            width:460px;
             text-align:center;
             height:40px;
             line-height:40px;
@@ -31,21 +32,33 @@
         }
         .captcha .preview span {
             display:inline-block;
-            user-select:none;
+            /*user-select:none;*/
+            font-size:1.1em;
         }
         .captcha .captcha-form {
             display:flex;
+            width: 100%;
+            align-content: center;
+            font-size:1.1em;
+
         }
         .captcha .captcha-form input {
-            width:100%;
+            width:400px;
             padding:8px;
             border:1px solid #888;
+            font-size:1.1em;
+            
+        }
+        .input-captcha-container{
+            margin-right: auto;
+            margin-left: auto;
         }
         .captcha .captcha-form .captcha-refresh {
             width:40px;
+            height: 35px;
             border:none;
             outline:none;
-            background:#888;
+            background:#8B3535;
             color:#eee;
             cursor:pointer;
         }
@@ -85,10 +98,12 @@
                     <div class="preview" name="preview"></div>
                     <input type="hidden" name="captcha-generated" id="captcha-generated"/>
                     <div class="captcha-form">
+                        <div class="input-captcha-container">
                         <input type="text" id="captcha-form" name="captcha-input" placeholder="Enter captcha text">
                         <button class="captcha-refresh">
                             <i class="fa fa-refresh"></i>
                         </button>
+                        </div>
                     </div>
                     <script src="../js/CaptchaGenerator.js"></script>
                 </div>
