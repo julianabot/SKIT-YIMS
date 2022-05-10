@@ -7,6 +7,7 @@
         <link href="${pageContext.request.contextPath}/Survey Forms/SurveyCSS/Landing.css" rel="stylesheet" type="text/css">
         <title>Landing Page</title>
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
         <!--Header-->
@@ -37,8 +38,16 @@
         </div>
         <form action="../LandingServlet" method="POST">
             <center> 
-                <div class="g-recaptcha"
-                     data-sitekey="6LcPvNsaAAAAAB_JssCHLi_bMPU1g9jVrBtaAtpi">
+                <div class="captcha">
+                    <label for="captcha-input">Enter Captcha</label>
+                    <div class="preview"></div>
+                    <div class="captcha-form">
+                        <input type="text" id="captcha-form" placeholder="Enter captcha text">
+                        <button class="captcha-refresh">
+                            <i class="fa fa-refresh"></i>
+                        </button>
+                    </div>
+                    <script src="../js/CaptchaGenerator.js"></script>
                 </div>
                 <center> <p class ="Error" style="color: #712929 ">${errorCaptcha}</p></center>
                 <!--
@@ -47,7 +56,7 @@
                 -->
             </center>
             <div class="button-container">
-                <button type="submit" class="start-button">Start Survey</button>
+                <button type="submit" class="submitbtn">Start Survey</button>
             </div>
         </form>
         <div class="terms">

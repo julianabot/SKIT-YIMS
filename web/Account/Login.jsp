@@ -1,11 +1,53 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <style>
+        .captcha label {
+            display:block;
+            font-size:15px;
+            color:#111;
+            margin-bottom:5px;
+        }
+        .captcha {
+            margin:15px 0px;
+        }
+        .captcha .preview {
+            color:#555;
+            width:100%;
+            text-align:center;
+            height:40px;
+            line-height:40px;
+            letter-spacing:8px;
+            border:1px dashed #888;
+            font-family:"monospace";
+        }
+        .captcha .preview span {
+            display:inline-block;
+            user-select:none;
+        }
+        .captcha .captcha-form {
+            display:flex;
+        }
+        .captcha .captcha-form input {
+            width:100%;
+            padding:8px;
+            border:1px solid #888;
+        }
+        .captcha .captcha-form .captcha-refresh {
+            width:40px;
+            border:none;
+            outline:none;
+            background:#888;
+            color:#eee;
+            cursor:pointer;
+        }
+
+    </style>
     <head>
         <meta name="viewport" content="width=500, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/img/SK_Logo.png" /> 
-        <link href="${pageContext.request.contextPath}/Account/AccountCSS/Login.css?v={random number/string}" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/Account/AccountCSS/Login.css" rel="stylesheet">
         <title>Login</title>
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -34,8 +76,16 @@
                     </div>
                     <br>
                     <center> 
-                        <div class="g-recaptcha"
-                             data-sitekey="6LcPvNsaAAAAAB_JssCHLi_bMPU1g9jVrBtaAtpi">
+                        <div class="captcha">
+                            <label for="captcha-input">Enter Captcha</label>
+                            <div class="preview"></div>
+                            <div class="captcha-form">
+                                <input type="text" id="captcha-form" placeholder="Enter captcha text">
+                                <button class="captcha-refresh">
+                                    <i class="fa fa-refresh"></i>
+                                </button>
+                            </div>
+                            <script src="../js/CaptchaGenerator.js"></script>
                         </div>
                         <input class="submitbtn" type="Submit" name="Login" value="Log In">
                         <p class="footer-name">© Sangguniang Kabataan Ibayo-Tipas 2022. <br> All rights reserved.</p>
